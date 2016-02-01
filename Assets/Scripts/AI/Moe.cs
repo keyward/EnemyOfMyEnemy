@@ -30,9 +30,9 @@ public class Moe : MonoBehaviour {
     #endregion
 
     #region States
-    private bool _actionAvailable;
-    private bool _canAttack;
-    private bool _canFollow;
+    public bool _actionAvailable;
+    
+    
     public bool _isFollowing;
     private bool _canCharge;
     private bool _scared;
@@ -289,11 +289,26 @@ public class Moe : MonoBehaviour {
             StopCoroutine("Shake");
             StartCoroutine("Shake");
         }
+
+       
     }
 
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Fear"))
             _scared = false;
+
+        if (other.gameObject.CompareTag("Shield"))
+            _isFollowing = true;
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.CompareTag("Shield"))
+        {
+            _actionAvailable = false;
+            _isFollowing = false;
+            print("hit shield");
+        }  
     }
 }

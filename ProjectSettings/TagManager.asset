@@ -11,6 +11,7 @@ TagManager:
   - Destructible
   - Damage
   - Bullet
+  - Shield
   layers:
   - Default
   - TransparentFX
