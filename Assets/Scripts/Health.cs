@@ -9,7 +9,10 @@ public class Health : MonoBehaviour {
     public Color hurtColor;
 
 
+    void Start()
+    {
 
+    }
   
 
     public void TakeDamage(int damageAmount)
@@ -29,8 +32,6 @@ public class Health : MonoBehaviour {
     void Die()
     {
         CameraController.Instance.ScreenShake(.1f);
-
-        
 
         Instantiate(deathParticles, transform.position, Quaternion.Euler(90f, 0f, 0f));
         Destroy(gameObject);
