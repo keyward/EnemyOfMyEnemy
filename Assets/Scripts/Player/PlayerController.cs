@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour {
     public Color damageColor;
     public AudioSource damagedSound;
     public AudioSource dashSound;
-  
+    
 
     public MeshRenderer playerFront;
 

@@ -14,7 +14,9 @@ public class AreaDamage : MonoBehaviour {
         if (other.CompareTag("Enemy"))
         {
             other.gameObject.GetComponent<Health>().TakeDamage(attackPower);
-            other.gameObject.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, explosionRadius);
+
+            if(other.gameObject.GetComponent<Rigidbody>())
+                other.gameObject.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, explosionRadius);
         }
         else if (other.CompareTag("Destructible"))
         {
