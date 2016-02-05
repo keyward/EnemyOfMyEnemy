@@ -8,6 +8,12 @@ public class EnemySpawner : MonoBehaviour {
     public GameObject enemyPrefab;
     public float spawnTimeFrequency = 2f;
 
+   
+
+	void Start ()
+    {
+        StartCoroutine(SpawnEnemy());
+	}
 	
     IEnumerator SpawnEnemy()
     {
@@ -20,12 +26,5 @@ public class EnemySpawner : MonoBehaviour {
         }
 
         Destroy(gameObject);
-    }
-
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-            StartCoroutine(SpawnEnemy());
     }
 }
