@@ -289,8 +289,6 @@ public class Moe : MonoBehaviour {
             StopCoroutine("Shake");
             StartCoroutine("Shake");
         }
-
-       
     }
 
     void OnTriggerExit(Collider other)
