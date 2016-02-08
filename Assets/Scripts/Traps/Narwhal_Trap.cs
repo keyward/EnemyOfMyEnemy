@@ -19,7 +19,7 @@ public class Narwhal_Trap : MonoBehaviour
 	{
 		if (col.gameObject.CompareTag ("Player")) {
 			col.gameObject.GetComponent<PlayerController> ().MoveSpeedModifier = 1f;
-			CancelInvoke();
+			CancelInvoke ();
 		}
 	}
 
@@ -31,9 +31,9 @@ public class Narwhal_Trap : MonoBehaviour
 	private void SpawnHorn ()
 	{
 		if (this.spawnPoint != Vector3.zero) {
-			spawnPoint.Set(spawnPoint.x,0,spawnPoint.z);
+			spawnPoint.Set (spawnPoint.x, 0, spawnPoint.z);
 			narwhal.transform.localPosition = spawnPoint;
-			Destroy (Instantiate (narwhal), 3);
+			Destroy (Instantiate (narwhal), 2);
 		}
 		this.spawnPoint = Vector3.zero;
 	}
