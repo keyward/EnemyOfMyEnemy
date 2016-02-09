@@ -2091,11 +2091,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11496898, guid: b3941317eaf81c54f95476834965c0e3, type: 2}
       propertyPath: cameraOffset.y
-      value: 11
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 11496898, guid: b3941317eaf81c54f95476834965c0e3, type: 2}
       propertyPath: cameraOffset.z
       value: -11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8259180, guid: b3941317eaf81c54f95476834965c0e3, type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b3941317eaf81c54f95476834965c0e3, type: 2}
@@ -2839,7 +2843,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 473860, guid: a80237656a9cb9540bf80ccfe700a6f8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.03238678
+      value: 3.36
       objectReference: {fileID: 0}
     - target: {fileID: 473860, guid: a80237656a9cb9540bf80ccfe700a6f8, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2873,6 +2877,14 @@ Prefab:
       propertyPath: playerFront
       value: 
       objectReference: {fileID: 1977303119}
+    - target: {fileID: 8229416, guid: a80237656a9cb9540bf80ccfe700a6f8, type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207612, guid: a80237656a9cb9540bf80ccfe700a6f8, type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a80237656a9cb9540bf80ccfe700a6f8, type: 2}
   m_IsPrefabParent: 0
