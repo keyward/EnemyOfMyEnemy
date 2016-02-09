@@ -8,41 +8,43 @@ public class RangedEnemy : AIBaseClass {
     public Rigidbody bulletPrefab;
     public Transform firePoint;
 
+   
+
 
 	protected override void Awake ()
     {
         base.Awake();
+        _canAttack = true;
 	}
 
-    void Start()
-    {
-        StartCoroutine(RangedAttack());
-    }
-
-    void Update()
+    public void ShootAtPlayer()
     {
         Vector3 direction = new Vector3(_playerTransform.position.x, transform.position.y, _playerTransform.position.z);
 
         transform.LookAt(direction);
 
-        firePoint.transform.LookAt(_playerTransform);
+        if(_canAttack)
+        {
+            Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            StartCoroutine(Reload());
+        }
+
     }
 
-    public IEnumerator RangedAttack()
+    IEnumerator Reload()
     {
-        while(true)
-        {
-            if (_canAttack)
-            {
-                yield return new WaitForSeconds(Random.Range(.1f, .75f));
+        _canAttack = false;
 
-                Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        yield return new WaitForSeconds(Random.Range(2.1f, 2.75f));
 
-                yield return new WaitForSeconds(2f);
-            }
-            else
-                yield return null;
-        }
-        
+        _canAttack = true;
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        //if (!other.CompareTag("Player"))
+          //  return;
+
+        //ShootAtPlayer();
     }
 }

@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour {
     public static CameraController Instance;
 
     //Follow Player
-    public Vector3 cameraOffset;
+    public Vector3 cameraOffset = new Vector3(0, 11, -11);
     public float smoothing;
     private Transform player;
 
@@ -26,8 +26,6 @@ public class CameraController : MonoBehaviour {
             Destroy(this);
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        cameraOffset = new Vector3(0, 9, -17);
-
     }
 
     void Update()

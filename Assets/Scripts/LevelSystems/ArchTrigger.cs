@@ -21,7 +21,10 @@ public class ArchTrigger : MonoBehaviour {
             _moeScript.StopCoroutine("FollowCheck");
             _moeScript._isFollowing = false;
             _moeNav.Stop();
-            _moeNav.SetDestination(moeDestination.position);
+
+            if(moeDestination)
+                _moeNav.SetDestination(moeDestination.position);
+
             _moeNav.Resume();
             print("player through arches");
             print(_moeNav.destination);
