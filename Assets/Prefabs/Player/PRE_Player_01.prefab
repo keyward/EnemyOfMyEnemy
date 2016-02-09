@@ -350,7 +350,7 @@ MonoBehaviour:
   damageColor: {r: 0, g: 0, b: 0, a: 0}
   damagedSound: {fileID: 8229416}
   dashSound: {fileID: 8207612}
-  playerFront: {fileID: 0}
+  playerFront: {fileID: 2325450}
   diveSpeed: 0
 --- !u!135 &13581768
 SphereCollider:
@@ -391,6 +391,10 @@ Prefab:
       propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: playerFront
+      value: 
+      objectReference: {fileID: 2325450}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 151036}
