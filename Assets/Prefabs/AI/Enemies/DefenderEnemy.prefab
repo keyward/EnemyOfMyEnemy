@@ -48,8 +48,8 @@ GameObject:
   - 33: {fileID: 3311492}
   - 136: {fileID: 13629746}
   - 23: {fileID: 2336686}
-  - 114: {fileID: 11459286}
   - 195: {fileID: 19543648}
+  - 114: {fileID: 11459286}
   - 114: {fileID: 11477808}
   m_Layer: 0
   m_Name: DefenderEnemy
