@@ -4,15 +4,23 @@ using System.Collections;
 public class DefenderEnemy : MonoBehaviour {
 
 
+    /*
+        Pursue Moe and bump into him
+        Nothing can hurt him with shield 
+        WeakSpot in the back that destroys the shield
+        after shield is gone, increase speed, target larry, and engage
 
 
-    [HideInInspector] public bool _shieldActive;
-    [HideInInspector] public Health _healthScript;
+    */
 
+    private bool _navigating;
+    public bool _shieldActive;
     private NavMeshAgent _pathFinder;
     private Transform _moeTransform;
     private Transform _playerTransform;
-  
+    public Health _healthScript;
+
+
 
     void Awake()
     {
@@ -20,6 +28,7 @@ public class DefenderEnemy : MonoBehaviour {
         _moeTransform = GameObject.FindGameObjectWithTag("Moe").transform;
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
+        _navigating = true;
         _shieldActive = true;
 
         _healthScript = GetComponent<Health>();
@@ -27,9 +36,10 @@ public class DefenderEnemy : MonoBehaviour {
     }
 
 	
+	
 	void Update ()
     {
-	    if(_pathFinder.isActiveAndEnabled)
+	    if(_navigating && _pathFinder.isActiveAndEnabled)
         {
             if (_shieldActive)
                 _pathFinder.SetDestination(_moeTransform.position);

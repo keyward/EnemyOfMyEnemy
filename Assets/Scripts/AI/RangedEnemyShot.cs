@@ -11,6 +11,7 @@ public class RangedEnemyShot : MonoBehaviour {
         _rangedEnemy = transform.parent.GetComponent<RangedEnemy>();
 	}
 	
+	
 	void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))

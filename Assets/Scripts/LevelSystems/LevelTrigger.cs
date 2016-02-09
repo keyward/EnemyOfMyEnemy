@@ -3,7 +3,7 @@ using System.Collections;
 
 public class LevelTrigger : MonoBehaviour {
 
-    [Header("Drag Spawn Points Here")]
+
     public GameObject[] enemySpawners;
     private bool triggerActivated;
 
@@ -13,7 +13,9 @@ public class LevelTrigger : MonoBehaviour {
         triggerActivated = false;
 
         foreach(GameObject spawner in enemySpawners)
+        {
             spawner.SetActive(false);
+        }
     }
 
 
@@ -27,7 +29,9 @@ public class LevelTrigger : MonoBehaviour {
             triggerActivated = true;
 
             foreach (GameObject spawner in enemySpawners)
+            {
                 spawner.SetActive(true);
+            }
         }  
     }
 }
