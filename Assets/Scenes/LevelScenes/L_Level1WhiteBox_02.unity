@@ -6846,7 +6846,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 462792, guid: b3941317eaf81c54f95476834965c0e3, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8259180, guid: b3941317eaf81c54f95476834965c0e3, type: 2}
       propertyPath: panLevelCustomCurve.m_RotationOrder
