@@ -13,9 +13,7 @@ public class LevelTrigger : MonoBehaviour {
         triggerActivated = false;
 
         foreach(GameObject spawner in enemySpawners)
-        {
             spawner.SetActive(false);
-        }
     }
 
 
@@ -29,9 +27,7 @@ public class LevelTrigger : MonoBehaviour {
             triggerActivated = true;
 
             foreach (GameObject spawner in enemySpawners)
-            {
                 spawner.SetActive(true);
-            }
         }  
     }
 }
