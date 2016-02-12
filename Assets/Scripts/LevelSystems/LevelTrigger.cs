@@ -10,10 +10,10 @@ public class LevelTrigger : MonoBehaviour {
     public Transform fightBarriers;
 
     public float raiseSpeed;
-    public int totalEnemyCount;
 
-
+    [SerializeField] private int _totalEnemyCount;
     private Transform _enemyManager;
+    private MeshRenderer _meshRender;
     private bool triggerActivated;
     private bool _playerCrossed;
     private bool _moeCrossed;
@@ -27,10 +27,14 @@ public class LevelTrigger : MonoBehaviour {
         foreach(GameObject spawner in enemySpawners)
         {
             spawner.SetActive(false);
-            totalEnemyCount += spawner.GetComponent<EnemySpawner>().enemiesToSpawn;
+            _totalEnemyCount += spawner.GetComponent<EnemySpawner>().enemiesToSpawn;
         }
 
         _enemyManager = transform.FindChild("EnemyManager");
+        _enemyManager.gameObject.SetActive(false);
+
+        _meshRender = GetComponent<MeshRenderer>();
+        _meshRender.enabled = false;
     }
 
     void OnTriggerEnter(Collider other)
@@ -53,17 +57,18 @@ public class LevelTrigger : MonoBehaviour {
                 spawner.SetActive(true);
 
             StartCoroutine(RaiseBarriers());
+            _enemyManager.gameObject.SetActive(true);
         }
     }
 
     public void MinusOneEnemy()
     {
-        totalEnemyCount--;
+        _totalEnemyCount--;
 
-        if (totalEnemyCount <= 0)
+        if (_totalEnemyCount <= 0)
             StartCoroutine(LowerBarriers());
 
-        print(totalEnemyCount);
+        print(_totalEnemyCount);
     }
 
     IEnumerator RaiseBarriers()
