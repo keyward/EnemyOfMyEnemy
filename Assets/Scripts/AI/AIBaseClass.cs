@@ -6,7 +6,6 @@ public class AIBaseClass : MonoBehaviour {
 
     #region Variables
     public Color stunColor;
-    
 
     protected Transform _playerTransform;
     protected NavMeshAgent _pathFinder;
