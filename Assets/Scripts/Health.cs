@@ -20,6 +20,7 @@ public class Health : MonoBehaviour {
         _invincible = false;
     }
 
+    // -- Remove health from object -- kill if necessary -- //
     public void TakeDamage(int damageAmount)
     {
         if (_invincible)
@@ -57,6 +58,7 @@ public class Health : MonoBehaviour {
         Destroy(gameObject);
     }
 
+    // -- Send player to alotted respawn point -- //
     void RespawnPlayer()
     {
         if(playerRespawnPoint)

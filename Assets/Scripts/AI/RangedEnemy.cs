@@ -9,13 +9,11 @@ public class RangedEnemy : AIBaseClass {
     public Transform firePoint;
     public float fireRate;
 
-   
-
 
 	protected override void Awake ()
     {
         base.Awake();
-        _canAttack = true;
+        _actionAvailable = true;
 	}
 
     public void ShootAtPlayer()
@@ -24,7 +22,7 @@ public class RangedEnemy : AIBaseClass {
 
         transform.LookAt(direction);
 
-        if(_canAttack)
+        if(_actionAvailable)
         {
             Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             StartCoroutine(Reload());
@@ -33,11 +31,11 @@ public class RangedEnemy : AIBaseClass {
 
     IEnumerator Reload()
     {
-        _canAttack = false;
+        _actionAvailable = false;
 
         yield return new WaitForSeconds(Random.Range(fireRate + .1f, fireRate + .75f));
 
-        _canAttack = true;
+        _actionAvailable = true;
     }
 
     void OnCollisionEnter(Collision col)

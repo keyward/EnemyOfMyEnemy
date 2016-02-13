@@ -4,10 +4,9 @@ using System.Collections;
 public class DefenderEnemy : AIBaseClass {
 
 
-
+    public float lungeDistance;
 
     private Transform _moeTransform;
-    private bool _navigating;
     [HideInInspector] public bool _shieldActive;
     [HideInInspector] public Health _healthScript;
 
@@ -24,17 +23,22 @@ public class DefenderEnemy : AIBaseClass {
         _healthScript.enabled = false;
     }
 
-	
-	
 	void Update ()
     {
+        // if nav mesh is active...
         if (!_pathFinder.isActiveAndEnabled)
-            return;
+        {
+            // ... and lunging distance -- lunge //
+            if (Vector3.Distance(transform.position, _playerTransform.position) <= lungeDistance)
+                StartCoroutine(Lunge());
 
+            // ... and Shield is attached -- attack Moe //
+            if (_shieldActive && _actionAvailable)
+                _pathFinder.SetDestination(_moeTransform.position);
 
-        if (_shieldActive)
-            _pathFinder.SetDestination(_moeTransform.position);
-        else
-            _pathFinder.SetDestination(_playerTransform.position);
+            // ... and Shield has been destroyed -- attack Player //
+            else if (!_shieldActive && _actionAvailable)
+                _pathFinder.SetDestination(_playerTransform.position);
+        }
 	}
 }
