@@ -6,12 +6,13 @@ public class AIBaseClass : MonoBehaviour {
 
     #region Variables
     public Color stunColor;
+    public int damageAmount;
 
     protected Transform _playerTransform;
     protected NavMeshAgent _pathFinder;
     protected Renderer _objectRender;
     protected Color _initialColor;
-    public bool _canAttack;
+    protected bool _canAttack;
     #endregion
 
     protected virtual void Awake ()
@@ -25,6 +26,8 @@ public class AIBaseClass : MonoBehaviour {
 	
     protected virtual IEnumerator Stun()
     {
+        print("stun " + gameObject.name);
+
         _canAttack = false;
 
         _initialColor = _objectRender.material.color;

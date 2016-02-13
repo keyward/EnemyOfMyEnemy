@@ -6,7 +6,6 @@ public class MeleeEnemy : AIBaseClass {
 
     public float smoothDamp;
     private bool _navigating;
-
     private EnemyManager _enemyManagerRef;
 
 
@@ -64,5 +63,8 @@ public class MeleeEnemy : AIBaseClass {
     {
         if (col.gameObject.CompareTag("Bullet"))
             StartCoroutine(Stun());
+
+        else if (col.gameObject.CompareTag("Player"))
+            col.gameObject.GetComponent<Health>().TakeDamage(damageAmount);
     }
 }

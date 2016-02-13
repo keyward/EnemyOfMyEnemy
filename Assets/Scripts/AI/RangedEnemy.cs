@@ -7,6 +7,7 @@ public class RangedEnemy : AIBaseClass {
 
     public Rigidbody bulletPrefab;
     public Transform firePoint;
+    public float fireRate;
 
    
 
@@ -34,7 +35,7 @@ public class RangedEnemy : AIBaseClass {
     {
         _canAttack = false;
 
-        yield return new WaitForSeconds(Random.Range(2.1f, 2.75f));
+        yield return new WaitForSeconds(Random.Range(fireRate + .1f, fireRate + .75f));
 
         _canAttack = true;
     }

@@ -131,7 +131,6 @@ public class Moe : MonoBehaviour {
             yield return new WaitForSeconds(.1f);
             areaDamage.SetActive(false);
         }
-        print("scared: " + _scared);
 
         // -- enable Moe navigation/abilities -- //
         pathFinder.enabled = true;

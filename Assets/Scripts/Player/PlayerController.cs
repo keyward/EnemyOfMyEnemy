@@ -12,25 +12,25 @@ public class PlayerController : MonoBehaviour {
     public AudioSource dashSound;
 
 
-
-
-    private Health _playerHealth;
     private Rigidbody _playerControls;
     private Moe _moeScript;
     private Renderer _render;
     private float moveSpeed;
     private float diveSpeed;
+    private float _damageCoolDownSpeed;
     private bool _canRoll;
     private bool _canShoot;
     private bool _invincible;
+    
 
 
     void Awake()
     {
         _moeScript = GameObject.FindGameObjectWithTag("Moe").GetComponent<Moe>();
-        _playerHealth = GetComponent<Health>();
         _playerControls = GetComponent<Rigidbody>();
         _render = GetComponent<Renderer>();
+        _damageCoolDownSpeed = GetComponent<Health>().damageCoolDown;
+
 
         moveSpeed = 6f;
         diveSpeed = 1300f;
@@ -133,9 +133,6 @@ public class PlayerController : MonoBehaviour {
 
 
         _invincible = true;
-
-
-        _playerHealth.TakeDamage(1);
         _render.material.color = damageColor;
 
         CameraController.Instance.ScreenShake(.1f);
@@ -143,7 +140,7 @@ public class PlayerController : MonoBehaviour {
         damagedSound.pitch = Random.Range(.8f, 1.6f);
         damagedSound.Play();
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(_damageCoolDownSpeed);
 
         _invincible = false;
         _render.material.color = Color.red;
