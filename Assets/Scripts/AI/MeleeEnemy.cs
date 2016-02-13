@@ -59,4 +59,10 @@ public class MeleeEnemy : AIBaseClass {
         _navigating = true;
         _canAttack = true;
     }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.CompareTag("Bullet"))
+            StartCoroutine(Stun());
+    }
 }

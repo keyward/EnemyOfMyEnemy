@@ -28,7 +28,6 @@ public class RangedEnemy : AIBaseClass {
             Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             StartCoroutine(Reload());
         }
-
     }
 
     IEnumerator Reload()
@@ -40,11 +39,9 @@ public class RangedEnemy : AIBaseClass {
         _canAttack = true;
     }
 
-    void OnTriggerStay(Collider other)
+    void OnCollisionEnter(Collision col)
     {
-        //if (!other.CompareTag("Player"))
-          //  return;
-
-        //ShootAtPlayer();
+        if (col.gameObject.CompareTag("Bullet"))
+            StartCoroutine(Stun());
     }
 }

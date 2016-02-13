@@ -4,35 +4,31 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
 
-
+    public MeshRenderer playerFront;
     public Rigidbody bulletPrefab;
     public Transform firePoint;
     public Color damageColor;
     public AudioSource damagedSound;
     public AudioSource dashSound;
-    
 
-    public MeshRenderer playerFront;
 
-    #region private
+
+
+    private Health _playerHealth;
     private Rigidbody _playerControls;
     private Moe _moeScript;
     private Renderer _render;
-
-  
-
     private float moveSpeed;
-    public float diveSpeed;
-   
+    private float diveSpeed;
     private bool _canRoll;
     private bool _canShoot;
-
     private bool _invincible;
-    #endregion
+
 
     void Awake()
     {
         _moeScript = GameObject.FindGameObjectWithTag("Moe").GetComponent<Moe>();
+        _playerHealth = GetComponent<Health>();
         _playerControls = GetComponent<Rigidbody>();
         _render = GetComponent<Renderer>();
 
@@ -138,6 +134,8 @@ public class PlayerController : MonoBehaviour {
 
         _invincible = true;
 
+
+        _playerHealth.TakeDamage(1);
         _render.material.color = damageColor;
 
         CameraController.Instance.ScreenShake(.1f);
