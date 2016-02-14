@@ -13,7 +13,7 @@ GameObject:
   - 23: {fileID: 2341398}
   - 208: {fileID: 20834516}
   m_Layer: 0
-  m_Name: FightBarrier
+  m_Name: PRE_FightBarrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

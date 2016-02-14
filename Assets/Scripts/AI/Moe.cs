@@ -5,18 +5,18 @@ public class Moe : MonoBehaviour {
 
 
 
-
     #region Components
     public GameObject areaDamage;
     public GameObject chargeDamage;
     public GameObject slamParticles;
     public Transform targetEnemy;
+    [HideInInspector] public NavMeshAgent pathFinder;
 
     [Header("Audio")]
     public AudioSource stompAttack;
     public AudioSource chargeAttack;
     private Transform playerPosition;
-    [HideInInspector] public NavMeshAgent pathFinder;
+    
     private Renderer _moeRender;
     private Color initialColor;
     private Vector3 startPos;
@@ -31,9 +31,8 @@ public class Moe : MonoBehaviour {
 
     #region States
     public bool _actionAvailable;
-    
-    
     public bool _isFollowing;
+
     private bool _canCharge;
     private bool _scared;
     private bool _attacking;
@@ -117,7 +116,6 @@ public class Moe : MonoBehaviour {
             yield return null;
         }
 
-        print("scared: " + _scared);
         // -- if Moe isn't Scared after coming down, activate damage and visualFX -- //
         if (!_scared)
         {
@@ -131,7 +129,6 @@ public class Moe : MonoBehaviour {
             yield return new WaitForSeconds(.1f);
             areaDamage.SetActive(false);
         }
-        print("scared: " + _scared);
 
         // -- enable Moe navigation/abilities -- //
         pathFinder.enabled = true;
@@ -226,33 +223,26 @@ public class Moe : MonoBehaviour {
         }  
     }    
 
-    IEnumerator Shake()
+    IEnumerator TurnToStone()
     {
+        if (_scared)
+            yield break;
+
         _scared = true;
         _actionAvailable = false;
         _isFollowing = false;
 
-        StopCoroutine("Attack");
-        if(_attacking)
+   
+        if (_attacking)
         {
+            StopCoroutine("Attack");
             transform.position = startPos;
             _attacking = false;
         }
-           
- 
 
-        float shakeLength = 10f;
-        float shakeDampen = .3f;
-
-        while(shakeLength >= 0f)
-        {
-            transform.localPosition += Random.insideUnitSphere * shakeDampen;
-            shakeLength -= .15f;
-
+        while (_scared)
             yield return null;
-        }
 
-        _scared = false;
         _actionAvailable = true;
     }
 
@@ -284,11 +274,7 @@ public class Moe : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Fear"))
-        {
-            _scared = true;
-            StopCoroutine("Shake");
-            StartCoroutine("Shake");
-        }
+            StartCoroutine(TurnToStone());
     }
 
     void OnTriggerExit(Collider other)
@@ -306,7 +292,6 @@ public class Moe : MonoBehaviour {
         {
             _actionAvailable = false;
             _isFollowing = false;
-            print("hit shield");
         }  
     }
 }

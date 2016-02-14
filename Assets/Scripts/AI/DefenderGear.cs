@@ -15,22 +15,22 @@ public class DefenderGear : MonoBehaviour {
         _moeScript = GameObject.FindGameObjectWithTag("Moe").GetComponent<Moe>();
     }
 
-
     void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.CompareTag("Bullet"))
-        {
             DestroyShield();
-        }
     }
 
     void DestroyShield()
     {
+        // make a target for Moe //
         defender.gameObject.tag = "Enemy";
 
+        // enable Moe's abilities
         _moeScript._actionAvailable = true;
         _moeScript._isFollowing = true;
 
+        // defender vulnerable //
         defender._shieldActive = false;
         defender._healthScript.enabled = true;
         Destroy(gameObject);

@@ -77,7 +77,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164588}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -34.27, y: 1.55, z: -66.95}
+  m_LocalPosition: {x: 9.992807, y: 1.6981575, z: -14.595646}
   m_LocalScale: {x: 1.8454651, y: 1.1981575, z: 1.8454646}
   m_Children:
   - {fileID: 496588}
@@ -230,6 +230,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3d41ff4b8561a459967580f3a83628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stunColor: {r: 0, g: 0, b: 0, a: 0}
+  damageAmount: 3
+  lungeDistance: 4
   _shieldActive: 0
   _healthScript: {fileID: 0}
 --- !u!114 &11477808
@@ -243,9 +246,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a3c2101ceb12e04cb8fea6b04d294f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
+  health: 4
+  damageCoolDown: 1
   deathParticles: {fileID: 130552, guid: 25a60522a2414d04da186729b0b4a521, type: 2}
   hurtColor: {r: 1, g: 0, b: 0, a: 1}
+  playerRespawnPoint: {fileID: 0}
 --- !u!135 &13571770
 SphereCollider:
   m_ObjectHideFlags: 1
