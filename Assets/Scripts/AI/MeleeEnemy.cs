@@ -7,14 +7,23 @@ public class MeleeEnemy : AIBaseClass {
     public float smoothDamp;
     private bool _navigating;
 
+    private EnemyManager _enemyManagerRef;
+
 
     protected override void Awake ()
     {
         base.Awake();
 
         _navigating = true;
+
+        _enemyManagerRef = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
 	}
 	
+    void OnDestroy()
+    {
+        _enemyManagerRef.RemoveEnemy();
+    }
+
 	void Update ()
     {
         if (Vector3.Distance(transform.position, _playerTransform.position) <= 2)
