@@ -7,14 +7,13 @@ public class RangedEnemy : AIBaseClass {
 
     public Rigidbody bulletPrefab;
     public Transform firePoint;
-
-   
+    public float fireRate;
 
 
 	protected override void Awake ()
     {
         base.Awake();
-        _canAttack = true;
+        _actionAvailable = true;
 	}
 
     public void ShootAtPlayer()
@@ -23,28 +22,25 @@ public class RangedEnemy : AIBaseClass {
 
         transform.LookAt(direction);
 
-        if(_canAttack)
+        if(_actionAvailable)
         {
             Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             StartCoroutine(Reload());
         }
-
     }
 
     IEnumerator Reload()
     {
-        _canAttack = false;
+        _actionAvailable = false;
 
-        yield return new WaitForSeconds(Random.Range(2.1f, 2.75f));
+        yield return new WaitForSeconds(Random.Range(fireRate + .1f, fireRate + .75f));
 
-        _canAttack = true;
+        _actionAvailable = true;
     }
 
-    void OnTriggerStay(Collider other)
+    void OnCollisionEnter(Collision col)
     {
-        //if (!other.CompareTag("Player"))
-          //  return;
-
-        //ShootAtPlayer();
+        if (col.gameObject.CompareTag("Bullet"))
+            StartCoroutine(Stun());
     }
 }

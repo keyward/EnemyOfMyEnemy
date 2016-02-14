@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 458012}
   - 114: {fileID: 11450820}
   m_Layer: 0
-  m_Name: GenericSpawner
+  m_Name: PRE_GenericSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

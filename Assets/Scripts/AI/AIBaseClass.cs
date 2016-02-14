@@ -4,15 +4,18 @@ using System.Collections;
 public class AIBaseClass : MonoBehaviour {
 
 
-    #region Variables
+  
     public Color stunColor;
+    public int damageAmount;
+
 
     protected Transform _playerTransform;
     protected NavMeshAgent _pathFinder;
     protected Renderer _objectRender;
     protected Color _initialColor;
-    public bool _canAttack;
-    #endregion
+    protected float _smoothDamp;
+    protected bool _actionAvailable;
+
 
     protected virtual void Awake ()
     {
@@ -20,35 +23,51 @@ public class AIBaseClass : MonoBehaviour {
         _pathFinder = GetComponent<NavMeshAgent>();
         _objectRender = GetComponent<Renderer>();
 
-        _canAttack = true;
+        _smoothDamp = 10f;// used for lunge speed //
+
+        _actionAvailable = true;
 	}
 	
-    private IEnumerator Stun()
+    // -- Temporarily disable enemy -- //
+    protected virtual IEnumerator Stun()
     {
-        _canAttack = false;
+        _actionAvailable = false;
 
-        // store the initial color, and change the current color to the stun color //
         _initialColor = _objectRender.material.color;
         _objectRender.material.color = stunColor;
-
-     
 
         if(_pathFinder)
             _pathFinder.Stop();
 
         yield return new WaitForSeconds(2f);
 
-        // restore initial color
-        _canAttack = true;
+        _actionAvailable = true;
         _objectRender.material.color = _initialColor;
 
         if(_pathFinder)
             _pathFinder.Resume();
     }
 
-    void OnCollisionEnter(Collision col)
+    // -- Melee attack -- //
+    protected virtual IEnumerator Lunge()
     {
-        if (col.gameObject.CompareTag("Bullet"))
-            StartCoroutine(Stun());
+        if (!_actionAvailable)
+            yield break;
+
+        Vector3 target = _playerTransform.position;
+
+        _actionAvailable = false;
+
+        // dash towards player -- attack
+        while (Vector3.Distance(transform.position, target) > 1f)
+        {
+            transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * _smoothDamp);
+
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        _actionAvailable = true;
     }
 }
