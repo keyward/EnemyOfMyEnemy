@@ -10,9 +10,9 @@ GameObject:
   - 4: {fileID: 458012}
   - 114: {fileID: 11450820}
   m_Layer: 0
-  m_Name: GenericSpawner
+  m_Name: PRE_GenericSpawner
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -23,8 +23,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 153716}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.3879414, y: -1.51117659, z: -2.33880734}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 9.950001, y: -0.50039357, z: 1.962704}
+  m_LocalScale: {x: 1, y: 0.19098991, z: 0.11234711}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -39,8 +39,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e578b4d2ecc731409c05e989b87f7a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delayBeforeSpawn: 0
   enemiesToSpawn: 0
   enemyPrefab: {fileID: 0}
+  spawnTimeFrequency: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

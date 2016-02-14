@@ -31,6 +31,7 @@ GameObject:
   - 65: {fileID: 6548530}
   - 54: {fileID: 5420930}
   - 114: {fileID: 11475080}
+  - 114: {fileID: 11427892}
   - 82: {fileID: 8229416}
   - 82: {fileID: 8207612}
   m_Layer: 0
@@ -86,7 +87,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -240.5, y: 0.41, z: 4.2}
+  m_LocalPosition: {x: -25.774548, y: 1, z: 3.4764423}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 420600}
@@ -248,7 +249,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -322,7 +323,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -334,6 +335,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &11427892
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a3c2101ceb12e04cb8fea6b04d294f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
+  damageCoolDown: 2
+  deathParticles: {fileID: 0}
+  hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  playerRespawnPoint: {fileID: 0}
 --- !u!114 &11475080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -345,13 +362,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4594e42f83a72244a1cd4654128686d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerFront: {fileID: 2325450}
   bulletPrefab: {fileID: 5438584, guid: e796d8759b8896b4695197ea9e94c9a6, type: 2}
   firePoint: {fileID: 420868}
   damageColor: {r: 0, g: 0, b: 0, a: 0}
   damagedSound: {fileID: 8229416}
   dashSound: {fileID: 8207612}
-  playerFront: {fileID: 0}
-  diveSpeed: 0
 --- !u!135 &13581768
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -391,6 +407,10 @@ Prefab:
       propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: playerFront
+      value: 
+      objectReference: {fileID: 2325450}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 151036}
