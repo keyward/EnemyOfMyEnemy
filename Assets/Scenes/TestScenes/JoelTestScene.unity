@@ -632,23 +632,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 431898, guid: 9e209c0ae62c196498ee700a3828d382, type: 2}
       propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11477808, guid: 9e209c0ae62c196498ee700a3828d382, type: 2}
-      propertyPath: health
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 11477808, guid: 9e209c0ae62c196498ee700a3828d382, type: 2}
-      propertyPath: damageCoolDown
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11459286, guid: 9e209c0ae62c196498ee700a3828d382, type: 2}
-      propertyPath: damageAmount
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 164588, guid: 9e209c0ae62c196498ee700a3828d382, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e209c0ae62c196498ee700a3828d382, type: 2}

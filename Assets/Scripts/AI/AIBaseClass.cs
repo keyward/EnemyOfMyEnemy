@@ -4,7 +4,7 @@ using System.Collections;
 public class AIBaseClass : MonoBehaviour {
 
 
-    #region Variables
+  
     public Color stunColor;
     public int damageAmount;
 
@@ -15,7 +15,7 @@ public class AIBaseClass : MonoBehaviour {
     protected Color _initialColor;
     protected float _smoothDamp;
     protected bool _actionAvailable;
-    #endregion
+
 
     protected virtual void Awake ()
     {

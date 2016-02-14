@@ -26,7 +26,7 @@ public class DefenderEnemy : AIBaseClass {
 	void Update ()
     {
         // if nav mesh is active...
-        if (!_pathFinder.isActiveAndEnabled)
+        if (_pathFinder.isActiveAndEnabled)
         {
             // ... and lunging distance -- lunge //
             if (Vector3.Distance(transform.position, _playerTransform.position) <= lungeDistance)
