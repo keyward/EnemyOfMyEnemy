@@ -12,6 +12,7 @@ TagManager:
   - Damage
   - Bullet
   - Shield
+  - EnemyManager
   layers:
   - Default
   - TransparentFX
