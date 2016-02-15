@@ -6,11 +6,14 @@ public class Spider : MonoBehaviour {
 
 
     public GameObject deathParticles;
-    private NavMeshAgent pathFinder;
 
-    void Start()
+    private NavMeshAgent pathFinder;
+    private EnemyManager _enemyManageRef;
+
+    void Awake()
     {
         pathFinder = GetComponent<NavMeshAgent>();
+        _enemyManageRef = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
 
         StartCoroutine(CrawlAround());
     }
@@ -22,6 +25,11 @@ public class Spider : MonoBehaviour {
             Instantiate(deathParticles, transform.position, Quaternion.Euler(90f, 0f, 0f));
             Destroy(gameObject);
         }
+    }
+
+    void OnDestroy()
+    {
+        _enemyManageRef.RemoveEnemy();
     }
 
     IEnumerator CrawlAround()

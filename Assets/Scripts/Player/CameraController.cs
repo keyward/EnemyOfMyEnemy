@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour {
 
     //Follow Player
     public Vector3 cameraOffset = new Vector3(0, 11, -11);
-    public float smoothing;
+    public float followSpeed;
     private Transform player;
 
     //Screen Shake
@@ -37,7 +37,7 @@ public class CameraController : MonoBehaviour {
     {
         Vector3 targetPosition = player.position + cameraOffset;
 
-        transform.position = Vector3.Lerp(transform.position, targetPosition, smoothing * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);
     }
 
     public void ScreenShake(float shakeLength)
