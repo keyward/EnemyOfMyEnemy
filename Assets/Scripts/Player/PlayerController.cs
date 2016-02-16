@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour {
   
 
     private float moveSpeed;
+	private float moveSpeedModifier;
     public float diveSpeed;
    
     private bool _canRoll;
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour {
         _render = GetComponent<Renderer>();
 
         moveSpeed = 6f;
+		moveSpeedModifier = 1f;
         diveSpeed = 1300f;
 
         _canRoll = true;
@@ -87,7 +89,7 @@ public class PlayerController : MonoBehaviour {
     void MovePlayer(float hAxis, float vAxis)
     {
         Vector3 movement = new Vector3(hAxis, 0f, vAxis);
-        movement = movement.normalized * moveSpeed * Time.deltaTime;
+		movement = movement.normalized * (moveSpeed * moveSpeedModifier) * Time.deltaTime;
 
         _playerControls.MovePosition(transform.position + movement);      
     }
@@ -177,4 +179,13 @@ public class PlayerController : MonoBehaviour {
         if (col.CompareTag("Damage"))
             StartCoroutine(TakeDamage());
     }
+
+	public float MoveSpeedModifier {
+		get {
+			return moveSpeedModifier;
+		}
+		set {
+			moveSpeedModifier = value;
+		}
+	}
 }

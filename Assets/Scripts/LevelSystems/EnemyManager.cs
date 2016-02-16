@@ -6,8 +6,6 @@ public class EnemyManager : MonoBehaviour {
 
     private LevelTrigger _levelTriggerRef;
 
-
-
 	void Awake ()
     {
         _levelTriggerRef = transform.parent.GetComponent<LevelTrigger>();

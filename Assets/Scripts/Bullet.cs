@@ -5,6 +5,7 @@ public class Bullet : MonoBehaviour {
 
 
     public float speed;
+    public int damageAmount;
     public GameObject deathParticles;
 
     private Rigidbody rb;
@@ -30,8 +31,8 @@ public class Bullet : MonoBehaviour {
     {
         Instantiate(deathParticles, transform.position, deathParticles.transform.rotation);
         
-        if (col.gameObject.CompareTag("Destructible"))
-            col.gameObject.GetComponent<Health>().TakeDamage(2);
+        if (col.gameObject.GetComponent<Health>())
+            col.gameObject.GetComponent<Health>().TakeDamage(damageAmount);
 
         Destroy(gameObject);
     }
