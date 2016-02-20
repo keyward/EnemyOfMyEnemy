@@ -7,14 +7,15 @@ public class Checkpoint : MonoBehaviour {
 
     [Header("Torch Stuff")]
     public GameObject torchParticles;
-    public Transform firePoint;
 
     private bool _activatedCheckpoint;
+    private MeshRenderer _boxVisibility;
 
 	void Awake ()
     {
         _activatedCheckpoint = false;
         torchParticles.SetActive(false);
+        _boxVisibility = GetComponent<MeshRenderer>();
 	}
 	
     
