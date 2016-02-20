@@ -9,6 +9,8 @@ public class LevelTrigger : MonoBehaviour {
     [Header("DRAG BARRIER OBJECTS HERE")]
     public Transform fightBarriers;
 
+    public Wall_ChargeDestroy breakableWall;
+
     public float raiseSpeed;
 
     [SerializeField] private int _totalEnemyCount;
@@ -35,6 +37,9 @@ public class LevelTrigger : MonoBehaviour {
 
         _meshRender = GetComponent<MeshRenderer>();
         _meshRender.enabled = false;
+
+        if (breakableWall)
+            breakableWall.canBeDestroyed = false;
     }
 
     void OnTriggerEnter(Collider other)
@@ -91,6 +96,10 @@ public class LevelTrigger : MonoBehaviour {
             fightBarriers.position = Vector3.Lerp(fightBarriers.position, fightBarriers.position + (Vector3.down * 3), Time.deltaTime * raiseSpeed);
             yield return null;
         }
+
+        if (breakableWall)
+            breakableWall.canBeDestroyed = true;
+
         Destroy(fightBarriers.gameObject);
         Destroy(gameObject);
     }

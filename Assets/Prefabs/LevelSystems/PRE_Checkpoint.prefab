@@ -11,7 +11,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -28,22 +28,7 @@ GameObject:
   m_Layer: 0
   m_Name: PRE_Checkpoint
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &156258
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 411836}
-  m_Layer: 0
-  m_Name: firePoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -58,7 +43,7 @@ GameObject:
   - 33: {fileID: 3365630}
   - 23: {fileID: 2395440}
   m_Layer: 0
-  m_Name: default
+  m_Name: TorchMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,31 +66,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &411836
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 156258}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.24, y: 2.62, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 420548}
-  m_RootOrder: 2
 --- !u!4 &420548
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106176}
-  m_LocalRotation: {x: -0.5000001, y: -0.5, z: 0.5, w: 0.49999994}
-  m_LocalPosition: {x: -16.36, y: -0.51, z: 0.56000006}
-  m_LocalScale: {x: 0.3261304, y: 0.3261304, z: 0.3261304}
+  m_LocalRotation: {x: 0.11344067, y: 0.11344087, z: 0.69794786, w: 0.69794786}
+  m_LocalPosition: {x: 1.1699982, y: -0.29999995, z: -28.16}
+  m_LocalScale: {x: 0.3261304, y: 0.32613036, z: 0.32613036}
   m_Children:
   - {fileID: 428372}
   - {fileID: 456874}
-  - {fileID: 411836}
   - {fileID: 486304}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -128,7 +100,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.7, y: 17, z: 35.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 420548}
@@ -144,7 +116,7 @@ Transform:
   m_LocalScale: {x: 3.0662582, y: 3.066258, z: 3.066258}
   m_Children: []
   m_Father: {fileID: 420548}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!23 &2395440
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -188,8 +160,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 11.920649, y: 27.61807, z: 1}
-  m_Center: {x: -1.7488685, y: 13.308981, z: 0.0000030688675}
+  m_Size: {x: 11.92065, y: 36.387215, z: 0.9999999}
+  m_Center: {x: -1.7488574, y: 18.154932, z: -0.0006616029}
 --- !u!114 &11498144
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -203,7 +175,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 456874}
   torchParticles: {fileID: 174740}
-  firePoint: {fileID: 411836}
 --- !u!198 &19899544
 ParticleSystem:
   m_ObjectHideFlags: 1
