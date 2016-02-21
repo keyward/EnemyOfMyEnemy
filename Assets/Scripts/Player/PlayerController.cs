@@ -4,35 +4,41 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
 
-    public MeshRenderer playerFront;
+
     public Rigidbody bulletPrefab;
     public Transform firePoint;
     public Color damageColor;
     public AudioSource damagedSound;
     public AudioSource dashSound;
+    
 
+    public MeshRenderer playerFront;
 
+    #region private
     private Rigidbody _playerControls;
     private Moe _moeScript;
     private Renderer _render;
+
+  
+
     private float moveSpeed;
-    private float diveSpeed;
-    private float _damageCoolDownSpeed;
+	private float moveSpeedModifier;
+    public float diveSpeed;
+   
     private bool _canRoll;
     private bool _canShoot;
-    private bool _invincible;
-    
 
+    private bool _invincible;
+    #endregion
 
     void Awake()
     {
         _moeScript = GameObject.FindGameObjectWithTag("Moe").GetComponent<Moe>();
         _playerControls = GetComponent<Rigidbody>();
         _render = GetComponent<Renderer>();
-        _damageCoolDownSpeed = GetComponent<Health>().damageCoolDown;
-
 
         moveSpeed = 6f;
+		moveSpeedModifier = 1f;
         diveSpeed = 1300f;
 
         _canRoll = true;
@@ -83,7 +89,7 @@ public class PlayerController : MonoBehaviour {
     void MovePlayer(float hAxis, float vAxis)
     {
         Vector3 movement = new Vector3(hAxis, 0f, vAxis);
-        movement = movement.normalized * moveSpeed * Time.deltaTime;
+		movement = movement.normalized * (moveSpeed * moveSpeedModifier) * Time.deltaTime;
 
         _playerControls.MovePosition(transform.position + movement);      
     }
@@ -133,6 +139,7 @@ public class PlayerController : MonoBehaviour {
 
 
         _invincible = true;
+
         _render.material.color = damageColor;
 
         CameraController.Instance.ScreenShake(.1f);
@@ -140,7 +147,7 @@ public class PlayerController : MonoBehaviour {
         damagedSound.pitch = Random.Range(.8f, 1.6f);
         damagedSound.Play();
 
-        yield return new WaitForSeconds(_damageCoolDownSpeed);
+        yield return new WaitForSeconds(2f);
 
         _invincible = false;
         _render.material.color = Color.red;
@@ -172,4 +179,13 @@ public class PlayerController : MonoBehaviour {
         if (col.CompareTag("Damage"))
             StartCoroutine(TakeDamage());
     }
+
+	public float MoveSpeedModifier {
+		get {
+			return moveSpeedModifier;
+		}
+		set {
+			moveSpeedModifier = value;
+		}
+	}
 }
