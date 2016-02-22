@@ -67,7 +67,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138458}
-  m_Mesh: {fileID: 4300000, guid: 719e6570967f7ef4b8890d66946ba600, type: 3}
+  m_Mesh: {fileID: 4300000, guid: c78b2f15e60c97941897961efc31dd83, type: 3}
 --- !u!54 &5451868
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -113,7 +113,6 @@ MonoBehaviour:
   stunColor: {r: 0.3996453, g: 0, b: 0.8161765, a: 0}
   damageAmount: 2
   lungeDistance: 2
-  smoothDamp: 10
 --- !u!135 &13576444
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -238,6 +237,10 @@ Prefab:
       propertyPath: m_Pitch
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: c78b2f15e60c97941897961efc31dd83, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 138458}
