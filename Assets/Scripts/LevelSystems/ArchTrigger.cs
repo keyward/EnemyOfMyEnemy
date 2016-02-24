@@ -4,6 +4,7 @@ using System.Collections;
 public class ArchTrigger : MonoBehaviour {
 
     public Transform moeDestination;
+    public Wall_ChargeDestroy breakableWall;
     private Moe _moeScript;
     private NavMeshAgent _moeNav;
 
@@ -11,10 +12,12 @@ public class ArchTrigger : MonoBehaviour {
     {
         _moeScript = GameObject.FindGameObjectWithTag("Moe").GetComponent<Moe>();
         _moeNav = GameObject.FindGameObjectWithTag("Moe").GetComponent<NavMeshAgent>();
-	}
-	
-	
-	void OnTriggerEnter(Collider other)
+
+        if (breakableWall)
+            breakableWall.canBeDestroyed = false;
+    }
+
+    void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
@@ -24,6 +27,9 @@ public class ArchTrigger : MonoBehaviour {
 
             if(moeDestination)
                 _moeNav.SetDestination(moeDestination.position);
+
+            if (breakableWall)
+                breakableWall.canBeDestroyed = true;
 
             _moeNav.Resume();
             print("player through arches");
