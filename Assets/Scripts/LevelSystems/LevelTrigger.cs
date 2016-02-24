@@ -8,9 +8,6 @@ public class LevelTrigger : MonoBehaviour {
 
     [Header("DRAG BARRIER OBJECTS HERE")]
     public Transform fightBarriers;
-
-    public Wall_ChargeDestroy breakableWall;
-
     public float raiseSpeed;
 
     [SerializeField] private int _totalEnemyCount;
@@ -21,7 +18,6 @@ public class LevelTrigger : MonoBehaviour {
     private bool _moeCrossed;
 
    
-    
     void Awake()
     {
         triggerActivated = false;
@@ -37,11 +33,9 @@ public class LevelTrigger : MonoBehaviour {
 
         _meshRender = GetComponent<MeshRenderer>();
         _meshRender.enabled = false;
-
-        if (breakableWall)
-            breakableWall.canBeDestroyed = false;
     }
 
+    
     void OnTriggerEnter(Collider other)
     {
         if(triggerActivated)
@@ -51,7 +45,6 @@ public class LevelTrigger : MonoBehaviour {
             _playerCrossed = true;
         else if(other.CompareTag("Moe"))
             _moeCrossed = true;
-
 
 
         if (_playerCrossed && _moeCrossed)
@@ -96,9 +89,6 @@ public class LevelTrigger : MonoBehaviour {
             fightBarriers.position = Vector3.Lerp(fightBarriers.position, fightBarriers.position + (Vector3.down * 3), Time.deltaTime * raiseSpeed);
             yield return null;
         }
-
-        if (breakableWall)
-            breakableWall.canBeDestroyed = true;
 
         Destroy(fightBarriers.gameObject);
         Destroy(gameObject);
