@@ -4,50 +4,50 @@ using System.Collections;
 public class Spider : MonoBehaviour {
 
 
-
+    public float moveSpeed;
     public GameObject deathParticles;
 
-    private NavMeshAgent pathFinder;
     private EnemyManager _enemyManageRef;
+    private Vector3 _spawnLocation;
 
     void Awake()
     {
-        pathFinder = GetComponent<NavMeshAgent>();
         _enemyManageRef = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
+        _spawnLocation = transform.position;
 
         StartCoroutine(CrawlAround());
     }
 
+
+    // -- pixie is destroyed -- //
     void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Bullet"))
         {
             Instantiate(deathParticles, transform.position, Quaternion.Euler(90f, 0f, 0f));
+            _enemyManageRef.RemoveEnemy();
             Destroy(gameObject);
         }
-    }
-
-    void OnDestroy()
-    {
-        _enemyManageRef.RemoveEnemy();
     }
 
     IEnumerator CrawlAround()
     {
         while (true)
         {
-            Vector3 nextPosition = new Vector3(Random.Range(transform.position.x - 10f, transform.position.x + 10f), //x
-                                               0f,                                                                   //y
-                                               Random.Range(transform.position.z - 10f, transform.position.z + 10f));//z
+            // get a random position to move to while staying within bounds //
+            Vector3 nextPosition = new Vector3(Random.Range(_spawnLocation.x - 10f, _spawnLocation.x + 10f), //x
+                                               Random.Range(_spawnLocation.y - 1f,  _spawnLocation.y + 1f),                                                           //y
+                                               Random.Range(_spawnLocation.z - 10f, _spawnLocation.z + 10f));//z
 
-            pathFinder.SetDestination(nextPosition);
-
-            while (pathFinder.remainingDistance > .05f)
+            // lerp to position //
+            while(Vector3.Distance(transform.position, nextPosition) > 2f)
             {
+                transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * moveSpeed);
                 yield return null;
             }
 
-            yield return new WaitForSeconds(Random.Range(.1f, .5f));
+            // brief pause before moving again -- toggled of for the time being //
+            //yield return new WaitForSeconds(Random.Range(.1f, .5f));
         }
     }
 }
