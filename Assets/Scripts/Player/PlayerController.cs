@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour {
 
     void Awake()
     {
-        _moeScript = GameObject.FindGameObjectWithTag("Moe").GetComponent<Moe>();
+        //_moeScript = GameObject.FindGameObjectWithTag("Moe").GetComponent<Moe>();
         _playerControls = GetComponent<Rigidbody>();
         _render = GetComponent<Renderer>();
 
