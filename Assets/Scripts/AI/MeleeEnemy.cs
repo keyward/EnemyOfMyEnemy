@@ -4,6 +4,12 @@ using System.Collections;
 public class MeleeEnemy : AIBaseClass {
 
 
+    /*
+        Periodically check for distance to player 
+        randomly dash left/right
+    */
+
+
     public float lungeDistance;
     private EnemyManager _enemyManagerRef;
 
@@ -25,6 +31,16 @@ public class MeleeEnemy : AIBaseClass {
         // If nav mesh active...
         if(_pathFinder.isActiveAndEnabled)
         {
+            // check distance to player 
+            /*
+                - if able to lunge -- lunge
+                - random chance to dash left or right
+                - if player target != player position - movetowards player
+            */
+
+
+
+
             // ... and within lunging distance -- lunge //
             if (Vector3.Distance(transform.position, _playerTransform.position) <= lungeDistance)
                 StartCoroutine(Lunge());
