@@ -7,6 +7,8 @@ public class MeleeEnemy : AIBaseClass {
     /*
         Periodically check for distance to player 
         randomly dash left/right
+
+        if within range of Moe, pick a point randomly left or right 10m from moe's spot and then start moving towards the player again
     */
 
 
