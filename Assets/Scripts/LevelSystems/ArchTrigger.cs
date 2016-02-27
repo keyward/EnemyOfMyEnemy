@@ -5,13 +5,19 @@ public class ArchTrigger : MonoBehaviour {
 
     public Transform moeDestination;
     public Wall_ChargeDestroy breakableWall;
-    private Moe _moeScript;
+
+    private PlayerController _playerScript;
+    private MoeAI _moeScript;
     private NavMeshAgent _moeNav;
+    private MeshRenderer _invisible;
 
 	void Start ()
     {
-        _moeScript = GameObject.FindGameObjectWithTag("Moe").GetComponent<Moe>();
+        _playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        _moeScript = GameObject.FindGameObjectWithTag("Moe").GetComponent<MoeAI>();
         _moeNav = GameObject.FindGameObjectWithTag("Moe").GetComponent<NavMeshAgent>();
+        _invisible = GetComponent<MeshRenderer>();
+        _invisible.enabled = false;
 
         if (breakableWall)
             breakableWall.canBeDestroyed = false;
@@ -21,19 +27,18 @@ public class ArchTrigger : MonoBehaviour {
     {
         if (other.CompareTag("Player"))
         {
-            _moeScript.StopCoroutine("FollowCheck");
-            _moeScript._isFollowing = false;
+            _playerScript.canTaunt = !_playerScript.canTaunt;
+
+            _moeScript.currentState = MoeAI.aiState.stopped;
             _moeNav.Stop();
 
             if(moeDestination)
                 _moeNav.SetDestination(moeDestination.position);
 
+            _moeNav.Resume();
+
             if (breakableWall)
                 breakableWall.canBeDestroyed = true;
-
-            _moeNav.Resume();
-            print("player through arches");
-            print(_moeNav.destination);
         }
     }
 }

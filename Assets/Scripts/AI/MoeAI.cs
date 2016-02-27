@@ -5,7 +5,7 @@ public class MoeAI : MonoBehaviour {
 
 
     // MoeAI States
-    public enum aiState { following, attacking, charging, stoned };
+    public enum aiState { following, attacking, charging, stoned, stopped };
     [HideInInspector] public aiState currentState;
     private bool _attacking;
     private bool _frozen;
@@ -25,6 +25,8 @@ public class MoeAI : MonoBehaviour {
     private Vector3 _lastPlayerLocation;
     private NavMeshAgent _navAgent;
 
+
+    private Renderer _render;
     
 
 	void Awake ()
@@ -46,18 +48,30 @@ public class MoeAI : MonoBehaviour {
 
         // sounds 
         _moeSoundPlayer = GetComponent<AudioSource>();
-        
-        // -- Drives the entire State Machine -- //
+
+        // ************************************* //
+        // ** Drives the entire State Machine ** //
+        // ************************************* //
         InvokeRepeating("StateLogic", 0f, .1f);
+
+
+        _render = GetComponent<Renderer>();
 	}
 	
 
     void StateLogic()
     {
+        if (currentState == aiState.stopped)
+            return;
+
         switch(currentState)
         {
             case aiState.following:
                 Follow();
+                break;
+
+            case aiState.stoned:
+                StartCoroutine(TurnToStone());
                 break;
 
             case aiState.attacking:
@@ -68,8 +82,7 @@ public class MoeAI : MonoBehaviour {
                 StartCoroutine(Charge());
                 break;
 
-            case aiState.stoned:
-                StartCoroutine(TurnToStone());
+            case aiState.stopped:
                 break;
 
             default:
@@ -100,17 +113,20 @@ public class MoeAI : MonoBehaviour {
 
         _attacking = true;
         _moeSoundPlayer.clip = moeSounds[0];
+        _render.material.color = Color.cyan;
 
         if (_navAgent.velocity != Vector3.zero)
             _navAgent.Stop();
 
         yield return new WaitForSeconds(.5f);
 
-
-        _moeSoundPlayer.Play();
-        Destroy(Instantiate(attackParticles, transform.position, Quaternion.identity), 1f);
-        _areaDamage.SetActive(true);
-
+        if(currentState != aiState.stoned)
+        {
+            _moeSoundPlayer.Play();
+            Destroy(Instantiate(attackParticles, transform.position, Quaternion.identity), 1f);
+            _areaDamage.SetActive(true);
+        }
+        
         yield return new WaitForSeconds(.1f);
 
         _areaDamage.SetActive(false);
@@ -119,6 +135,7 @@ public class MoeAI : MonoBehaviour {
 
         // reset state
         currentState = aiState.following;
+        _render.material.color = Color.green;
 
         // cooldown
         yield return new WaitForSeconds(1f);
@@ -149,8 +166,9 @@ public class MoeAI : MonoBehaviour {
         yield return new WaitForSeconds(.2f);
 
         _chargeDamage.SetActive(true);
+        _render.material.color = Color.red;
 
-        //set charge speed - Charge
+        // set charge speed - Charge
         _navAgent.speed = 50f;
         _navAgent.acceleration = 100f;
         _navAgent.angularSpeed = 360f;
@@ -182,6 +200,7 @@ public class MoeAI : MonoBehaviour {
 
         // reset ai state
         currentState = aiState.following;
+        _render.material.color = Color.green;
 
         // attack cool down
         yield return new WaitForSeconds(3.5f);
@@ -195,6 +214,7 @@ public class MoeAI : MonoBehaviour {
             yield break;
 
         _frozen = true;
+        _render.material.color = Color.grey;
 
         // swap texture to stone texture
         _navAgent.velocity = Vector3.zero;
@@ -205,14 +225,16 @@ public class MoeAI : MonoBehaviour {
         // swap texture to initial texture
         // continue following player
         currentState = aiState.following;
+        _render.material.color = Color.green;
         _frozen = false;
     }
 
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Enemy"))
-            currentState = aiState.attacking;
-        else if (other.CompareTag("Fear"))
+        if (other.CompareTag("Fear"))
             currentState = aiState.stoned;
+        
+        else if (other.CompareTag("Enemy") && currentState != aiState.stoned)
+            currentState = aiState.attacking;
     }
 }

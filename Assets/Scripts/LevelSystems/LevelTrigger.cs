@@ -17,10 +17,13 @@ public class LevelTrigger : MonoBehaviour {
     private bool _playerCrossed;
     private bool _moeCrossed;
 
+    private bool _roomCleared;
+
    
     void Awake()
     {
         triggerActivated = false;
+        _roomCleared = false;
 
         foreach(GameObject spawner in enemySpawners)
         {
@@ -64,10 +67,10 @@ public class LevelTrigger : MonoBehaviour {
     {
         _totalEnemyCount--;
 
-        if (_totalEnemyCount <= 0)
+        if (_totalEnemyCount <= 0 && !_roomCleared)
             StartCoroutine(LowerBarriers());
 
-        print(_totalEnemyCount);
+        Debug.LogWarning(_totalEnemyCount);
     }
 
     IEnumerator RaiseBarriers()
@@ -83,6 +86,7 @@ public class LevelTrigger : MonoBehaviour {
 
     IEnumerator LowerBarriers()
     {
+        _roomCleared = true;
         while (fightBarriers.position.y > -1)
         {
             fightBarriers.position = Vector3.Lerp(fightBarriers.position, fightBarriers.position + (Vector3.down * 3), Time.deltaTime * raiseSpeed);

@@ -17,7 +17,6 @@ public class Wall_ChargeDestroy : MonoBehaviour {
     {
         if (col.gameObject.CompareTag("Moe") && canBeDestroyed)
         {
-            col.gameObject.GetComponent<Moe>().StartCoroutine("FollowCheck");
             Instantiate(FinalParticles, transform.position, FinalParticles.transform.rotation);
             Destroy(gameObject);
         }
