@@ -20,8 +20,9 @@ public class MeleeEnemy : AIBaseClass {
     {
         base.Awake();
 
-        _enemyManagerRef = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
-	}
+        _enemyManagerRef = GameObject.FindGameObjectWithTag("EnemyMgr").GetComponent<EnemyManager>();
+        print(_enemyManagerRef);
+    }
 	
     void OnDestroy()
     {
@@ -30,6 +31,15 @@ public class MeleeEnemy : AIBaseClass {
 
 	void Update ()
     {
+        if (!_enemyManagerRef)
+        {
+            //_enemyManagerRef = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
+            print("searching for enemy manager");
+        }
+        else
+            print("found the manager");
+
+
         // If nav mesh active...
         if(_pathFinder.isActiveAndEnabled)
         {

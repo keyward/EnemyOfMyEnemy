@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour {
 
     #region private
     private Rigidbody _playerControls;
-    private Moe _moeScript;
+    private MoeAI _moeScript;
     private Renderer _render;
 
   
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour {
 
     void Awake()
     {
-        _moeScript = GameObject.FindGameObjectWithTag("Moe").GetComponent<Moe>();
+        _moeScript = GameObject.FindGameObjectWithTag("Moe").GetComponent<MoeAI>();
         _playerControls = GetComponent<Rigidbody>();
         _render = GetComponent<Renderer>();
 
@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour {
 
     void Taunt()
     {
-        StartCoroutine(_moeScript.BullCharge());
+        _moeScript.currentState = MoeAI.aiState.charging;
     }
 
     IEnumerator DiveRoll(float rHAxis, float rVAxis)

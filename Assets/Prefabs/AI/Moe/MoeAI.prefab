@@ -132,7 +132,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 104088}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -158,7 +158,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191456}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -385,6 +385,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88443914ea98f3f44847918829920616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: 0
+  attackParticles: {fileID: 162966, guid: b9fc63528a34d7946b6cb2d2c19b2074, type: 2}
 --- !u!114 &11470470
 MonoBehaviour:
   m_ObjectHideFlags: 1

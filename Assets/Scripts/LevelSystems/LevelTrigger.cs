@@ -51,11 +51,12 @@ public class LevelTrigger : MonoBehaviour {
         {
             triggerActivated = true;
 
+            _enemyManager.gameObject.SetActive(true);
+
             foreach (GameObject spawner in enemySpawners)
                 spawner.SetActive(true);
 
-            StartCoroutine(RaiseBarriers());
-            _enemyManager.gameObject.SetActive(true);
+            StartCoroutine(RaiseBarriers()); 
         }
     }
 
@@ -71,7 +72,6 @@ public class LevelTrigger : MonoBehaviour {
 
     IEnumerator RaiseBarriers()
     {
-        print("raising barriers");
         yield return new WaitForSeconds(.5f);
 
         for(float i = 0; i < 4; i += .2f)
@@ -83,13 +83,12 @@ public class LevelTrigger : MonoBehaviour {
 
     IEnumerator LowerBarriers()
     {
-        print("lower barriers");
         while (fightBarriers.position.y > -1)
         {
             fightBarriers.position = Vector3.Lerp(fightBarriers.position, fightBarriers.position + (Vector3.down * 3), Time.deltaTime * raiseSpeed);
             yield return null;
         }
-
+        
         Destroy(fightBarriers.gameObject);
         Destroy(gameObject);
     }
