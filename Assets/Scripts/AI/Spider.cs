@@ -12,7 +12,8 @@ public class Spider : MonoBehaviour {
 
     void Awake()
     {
-        _enemyManageRef = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
+        _enemyManageRef = GameObject.FindGameObjectWithTag("EnemyMgr").GetComponent<EnemyManager>();
+        print(_enemyManageRef);
         _spawnLocation = transform.position;
 
         StartCoroutine(CrawlAround());
@@ -24,6 +25,7 @@ public class Spider : MonoBehaviour {
     {
         if (col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Bullet"))
         {
+            print("die");
             Instantiate(deathParticles, transform.position, Quaternion.Euler(90f, 0f, 0f));
             _enemyManageRef.RemoveEnemy();
             Destroy(gameObject);
@@ -35,9 +37,9 @@ public class Spider : MonoBehaviour {
         while (true)
         {
             // get a random position to move to while staying within bounds //
-            Vector3 nextPosition = new Vector3(Random.Range(_spawnLocation.x - 10f, _spawnLocation.x + 10f), //x
-                                               Random.Range(_spawnLocation.y - 1f,  _spawnLocation.y + 1f),                                                           //y
-                                               Random.Range(_spawnLocation.z - 10f, _spawnLocation.z + 10f));//z
+            Vector3 nextPosition = new Vector3(Random.Range(_spawnLocation.x - 10f, _spawnLocation.x + 10f),   //x
+                                               Random.Range(_spawnLocation.y - .25f,  _spawnLocation.y + .25f),//y
+                                               Random.Range(_spawnLocation.z - 10f, _spawnLocation.z + 10f));  //z
 
             // lerp to position //
             while(Vector3.Distance(transform.position, nextPosition) > 2f)

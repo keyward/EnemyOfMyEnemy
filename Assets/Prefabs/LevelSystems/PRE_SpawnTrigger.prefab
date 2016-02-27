@@ -30,7 +30,7 @@ GameObject:
   - 114: {fileID: 11407196}
   m_Layer: 0
   m_Name: EnemyManager
-  m_TagString: EnemyManager
+  m_TagString: EnemyMgr
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,9 +53,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121302}
-  m_LocalRotation: {x: 0, y: 0.1282287, z: 0, w: 0.9917447}
-  m_LocalPosition: {x: 28.49, y: 1, z: -2.7}
-  m_LocalScale: {x: 1, y: 1, z: 13.353431}
+  m_LocalRotation: {x: 0, y: 0.008076505, z: 0, w: 0.9999674}
+  m_LocalPosition: {x: -14.83, y: 1.2012315, z: -17.6}
+  m_LocalScale: {x: 2.1686594, y: 2.6040547, z: 3.997166}
   m_Children:
   - {fileID: 452164}
   m_Father: {fileID: 0}
@@ -127,7 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6da4f45609ff2b447a8ac41edb1218aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawners: []
+  enemySpawners:
+  - {fileID: 0}
+  - {fileID: 0}
   fightBarriers: {fileID: 0}
   raiseSpeed: 2.5
   _totalEnemyCount: 0

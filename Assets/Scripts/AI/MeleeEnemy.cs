@@ -7,6 +7,8 @@ public class MeleeEnemy : AIBaseClass {
     /*
         Periodically check for distance to player 
         randomly dash left/right
+
+        if within range of Moe, pick a point randomly left or right 10m from moe's spot and then start moving towards the player again
     */
 
 
@@ -18,8 +20,9 @@ public class MeleeEnemy : AIBaseClass {
     {
         base.Awake();
 
-        _enemyManagerRef = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
-	}
+        _enemyManagerRef = GameObject.FindGameObjectWithTag("EnemyMgr").GetComponent<EnemyManager>();
+        print(_enemyManagerRef);
+    }
 	
     void OnDestroy()
     {
@@ -28,6 +31,15 @@ public class MeleeEnemy : AIBaseClass {
 
 	void Update ()
     {
+        if (!_enemyManagerRef)
+        {
+            //_enemyManagerRef = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
+            print("searching for enemy manager");
+        }
+        else
+            print("found the manager");
+
+
         // If nav mesh active...
         if(_pathFinder.isActiveAndEnabled)
         {
