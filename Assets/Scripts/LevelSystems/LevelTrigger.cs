@@ -3,12 +3,14 @@ using System.Collections;
 
 public class LevelTrigger : MonoBehaviour {
 
-    [Header("DRAG SPAWNERS HERE")]
+    [Header("EnemySpawn")]
     public GameObject[] enemySpawners;
 
-    [Header("DRAG BARRIER OBJECTS HERE")]
+    [Header("Spike Walls")]
     public Transform fightBarriers;
     public float raiseSpeed;
+
+    public ArchTrigger archTrigger;
 
     [SerializeField] private int _totalEnemyCount;
     private Transform _enemyManager;
@@ -68,7 +70,13 @@ public class LevelTrigger : MonoBehaviour {
         _totalEnemyCount--;
 
         if (_totalEnemyCount <= 0 && !_roomCleared)
+        {
             StartCoroutine(LowerBarriers());
+
+            if(archTrigger)
+                StartCoroutine(archTrigger.LowerBarriers());
+        }
+           
 
         Debug.LogWarning(_totalEnemyCount);
     }

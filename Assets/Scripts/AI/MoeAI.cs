@@ -25,7 +25,7 @@ public class MoeAI : MonoBehaviour {
     private Vector3 _lastPlayerLocation;
     private NavMeshAgent _navAgent;
 
-
+    // color conveyance
     private Renderer _render;
     
 
@@ -58,9 +58,10 @@ public class MoeAI : MonoBehaviour {
         _render = GetComponent<Renderer>();
 	}
 	
-
     void StateLogic()
     {
+        Debug.LogWarning(currentState);
+
         if (currentState == aiState.stopped)
             return;
 
@@ -112,6 +113,7 @@ public class MoeAI : MonoBehaviour {
             yield break;
 
         _attacking = true;
+
         _moeSoundPlayer.clip = moeSounds[0];
         _render.material.color = Color.cyan;
 
@@ -123,6 +125,7 @@ public class MoeAI : MonoBehaviour {
         if(currentState != aiState.stoned)
         {
             _moeSoundPlayer.Play();
+            // play animation "Attack"
             Destroy(Instantiate(attackParticles, transform.position, Quaternion.identity), 1f);
             _areaDamage.SetActive(true);
         }
@@ -130,8 +133,6 @@ public class MoeAI : MonoBehaviour {
         yield return new WaitForSeconds(.1f);
 
         _areaDamage.SetActive(false);
-        // play animation "Attack"
-        // Instantiate particles
 
         // reset state
         currentState = aiState.following;
@@ -234,7 +235,7 @@ public class MoeAI : MonoBehaviour {
         if (other.CompareTag("Fear"))
             currentState = aiState.stoned;
         
-        else if (other.CompareTag("Enemy") && currentState != aiState.stoned)
+        else if (other.CompareTag("Enemy") && currentState != aiState.stoned && currentState != aiState.charging)
             currentState = aiState.attacking;
     }
 }

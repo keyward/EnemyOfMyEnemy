@@ -5,6 +5,8 @@ public class ArchTrigger : MonoBehaviour {
 
     public Transform moeDestination;
     public Wall_ChargeDestroy breakableWall;
+    public Transform spikeWall;
+    public float raiseSpeed = 2.5f;
 
     private PlayerController _playerScript;
     private MoeAI _moeScript;
@@ -17,7 +19,7 @@ public class ArchTrigger : MonoBehaviour {
         _moeScript = GameObject.FindGameObjectWithTag("Moe").GetComponent<MoeAI>();
         _moeNav = GameObject.FindGameObjectWithTag("Moe").GetComponent<NavMeshAgent>();
         _invisible = GetComponent<MeshRenderer>();
-        _invisible.enabled = false;
+        //_invisible.enabled = false;
 
         if (breakableWall)
             breakableWall.canBeDestroyed = false;
@@ -33,12 +35,22 @@ public class ArchTrigger : MonoBehaviour {
             _moeNav.Stop();
 
             if(moeDestination)
+            {
                 _moeNav.SetDestination(moeDestination.position);
-
-            _moeNav.Resume();
+                _moeNav.Resume();
+            }
 
             if (breakableWall)
                 breakableWall.canBeDestroyed = true;
+        }
+    }
+
+    public IEnumerator LowerBarriers()
+    { 
+        while (spikeWall.position.y > -1)
+        {
+            spikeWall.position = Vector3.Lerp(spikeWall.position, spikeWall.position + (Vector3.down * 3), Time.deltaTime * raiseSpeed);
+            yield return null;
         }
     }
 }
