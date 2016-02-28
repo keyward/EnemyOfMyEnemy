@@ -95,7 +95,7 @@ public class MoeAI : MonoBehaviour {
     void Follow()
     {
         // stops 5 meters from player //
-        if (Vector3.Distance(transform.position, _playerTransform.position) > 8f)
+        if (Vector3.Distance(transform.position, _playerTransform.position) > 6f)
         {
             if(_navAgent.velocity == Vector3.zero)
                 _navAgent.Resume();
@@ -113,8 +113,6 @@ public class MoeAI : MonoBehaviour {
             yield break;
 
         _attacking = true;
-
-        _moeSoundPlayer.clip = moeSounds[0];
         _render.material.color = Color.cyan;
 
         if (_navAgent.velocity != Vector3.zero)
@@ -124,6 +122,7 @@ public class MoeAI : MonoBehaviour {
 
         if(currentState != aiState.stoned)
         {
+            _moeSoundPlayer.clip = moeSounds[0];
             _moeSoundPlayer.Play();
             // play animation "Attack"
             Destroy(Instantiate(attackParticles, transform.position, Quaternion.identity), 1f);
@@ -138,7 +137,7 @@ public class MoeAI : MonoBehaviour {
         currentState = aiState.following;
         _render.material.color = Color.green;
 
-        // cooldown
+        // attack cooldown
         yield return new WaitForSeconds(1f);
 
         _attacking = false;
@@ -151,8 +150,7 @@ public class MoeAI : MonoBehaviour {
             yield break;
 
         _attacking = true;
-        _moeSoundPlayer.clip = moeSounds[1];
-
+        
         // get initial values
         float normalSpeed = _navAgent.speed;
         float normalAcceleration = _navAgent.acceleration;
@@ -176,6 +174,8 @@ public class MoeAI : MonoBehaviour {
         _navAgent.stoppingDistance = 0f;
         _navAgent.Resume();
 
+        // audio 
+        _moeSoundPlayer.clip = moeSounds[1];
         _moeSoundPlayer.Play();
 
         // charge at players last position
@@ -201,10 +201,11 @@ public class MoeAI : MonoBehaviour {
 
         // reset ai state
         currentState = aiState.following;
-        _render.material.color = Color.green;
-
+        
         // attack cool down
         yield return new WaitForSeconds(3.5f);
+
+        _render.material.color = Color.green;
         _attacking = false;
     }
 
@@ -215,9 +216,10 @@ public class MoeAI : MonoBehaviour {
             yield break;
 
         _frozen = true;
+        // swap texture to stone texture
         _render.material.color = Color.grey;
 
-        // swap texture to stone texture
+        // stop moving
         _navAgent.velocity = Vector3.zero;
         _navAgent.Stop();
 
@@ -225,16 +227,23 @@ public class MoeAI : MonoBehaviour {
 
         // swap texture to initial texture
         // continue following player
+
+
+        if (currentState != aiState.stoned)
+            _render.material.color = Color.green;
+
+        // reset Moe
         currentState = aiState.following;
-        _render.material.color = Color.green;
         _frozen = false;
     }
 
     void OnTriggerStay(Collider other)
     {
+        // as long as Moe is touching a pixie he will remain as stone
         if (other.CompareTag("Fear"))
             currentState = aiState.stoned;
         
+        // if Moe has not been taunted or touched by a pixie -- he will attack
         else if (other.CompareTag("Enemy") && currentState != aiState.stoned && currentState != aiState.charging)
             currentState = aiState.attacking;
     }
