@@ -56,8 +56,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109374}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.08, y: 6.182, z: 11.91}
-  m_LocalScale: {x: 2.8102849, y: 1.8506361, z: 1}
+  m_LocalPosition: {x: -5.92, y: 6.182, z: 12.24}
+  m_LocalScale: {x: 4.426911, y: 1.8506361, z: 0.01021539}
   m_Children: []
   m_Father: {fileID: 453146}
   m_RootOrder: 0
@@ -67,8 +67,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184134}
-  m_LocalRotation: {x: 0, y: -0.012964091, z: 0, w: 0.99991596}
-  m_LocalPosition: {x: 52.92, y: -5, z: -21}
+  m_LocalRotation: {x: 0, y: -0.028492479, z: 0, w: 0.99959403}
+  m_LocalPosition: {x: 9.84, y: -8.5, z: -21.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 401162}
@@ -143,8 +143,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e5d2bb93155c34f89449ef2454a9b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moeDestination: {fileID: 497516}
+  moeDestination: {fileID: 0}
   breakableWall: {fileID: 0}
+  spikeWall: {fileID: 0}
+  raiseSpeed: 2.5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
