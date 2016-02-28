@@ -13,11 +13,10 @@ public class Wall_ChargeDestroy : MonoBehaviour {
         canBeDestroyed = true;
     }
 
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider other)
     {
-        if (col.gameObject.CompareTag("Moe") && canBeDestroyed)
+        if (other.gameObject.CompareTag("Damage") && canBeDestroyed)
         {
-            col.gameObject.GetComponent<Moe>().StartCoroutine("FollowCheck");
             Instantiate(FinalParticles, transform.position, FinalParticles.transform.rotation);
             Destroy(gameObject);
         }
