@@ -7,6 +7,7 @@ public class TauntDisable : MonoBehaviour {
     public Transform spikeWall;
     public float raiseSpeed;
 
+    private MeshRenderer _render;
     private Vector3 _wallUpPosition;
     private bool _spikesUp;
 
@@ -14,6 +15,9 @@ public class TauntDisable : MonoBehaviour {
     {
         _wallUpPosition = spikeWall.transform.localPosition;
         _spikesUp = false;
+
+        _render = GetComponent<MeshRenderer>();
+        _render.enabled = false;
 	}
 	
 	void OnTriggerEnter(Collider other)

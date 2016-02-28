@@ -19,7 +19,7 @@ public class ArchTrigger : MonoBehaviour {
         _moeScript = GameObject.FindGameObjectWithTag("Moe").GetComponent<MoeAI>();
         _moeNav = GameObject.FindGameObjectWithTag("Moe").GetComponent<NavMeshAgent>();
         _invisible = GetComponent<MeshRenderer>();
-        //_invisible.enabled = false;
+        _invisible.enabled = false;
 
         if (breakableWall)
             breakableWall.canBeDestroyed = false;
