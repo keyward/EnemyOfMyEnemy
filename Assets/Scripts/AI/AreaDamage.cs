@@ -11,16 +11,19 @@ public class AreaDamage : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.GetComponent<Health>())
         {
-            other.gameObject.GetComponent<Health>().TakeDamage(attackPower);
+            // if Moe hits the player -- only do 1 damage
+            if (other.CompareTag("Player"))
+                other.gameObject.GetComponent<Health>().TakeDamage(1);
+            
+            // if its anything else, deal selected amount
+            else
+                other.gameObject.GetComponent<Health>().TakeDamage(attackPower);
 
+            // push away whatever got hit
             if(other.gameObject.GetComponent<Rigidbody>())
                 other.gameObject.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, explosionRadius);
-        }
-        else if (other.CompareTag("Destructible"))
-        {
-            other.gameObject.GetComponent<Health>().TakeDamage(attackPower);
         }
     }
 }

@@ -94,7 +94,7 @@ QualitySettings:
     shadowDistance: 100
     shadowNearPlaneOffset: 2
     shadowCascade2Split: 0.33333334
-    shadowCascade4Split: {x: 0.06666667, y: 0.2, z: 0.46666667}
+    shadowCascade4Split: {x: 0.06666667, y: 0.19999999, z: 0.46666664}
     blendWeights: 2
     textureQuality: 0
     anisotropicTextures: 1
@@ -162,4 +162,6 @@ QualitySettings:
     asyncUploadTimeSlice: 2
     asyncUploadBufferSize: 4
     excludedTargetPlatforms: []
-  m_PerPlatformDefaultQuality: {}
+  m_PerPlatformDefaultQuality:
+    Standalone: 0
+    Web: 0

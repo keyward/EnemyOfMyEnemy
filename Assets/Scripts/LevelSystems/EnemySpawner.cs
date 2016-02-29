@@ -24,6 +24,8 @@ public class EnemySpawner : MonoBehaviour {
 	
     IEnumerator SpawnEnemy()
     {
+        yield return new WaitForSeconds(delayBeforeSpawn);
+
         for(int i = 0; i < enemiesToSpawn; i++)
         {
             Instantiate(enemyPrefab, transform.position, Quaternion.identity);
