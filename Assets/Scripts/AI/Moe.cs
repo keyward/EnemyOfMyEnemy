@@ -36,6 +36,9 @@ public class Moe : MonoBehaviour {
     private bool _canCharge;
     private bool _scared;
     private bool _attacking;
+
+
+
     #endregion
 
 
