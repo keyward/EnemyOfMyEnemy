@@ -42,7 +42,6 @@ public class DragonFlame : MonoBehaviour
 		}
 		yield return new WaitForSeconds (4);
 		this.runCoroutine = true;
-
 	}
 
 	void OnParticleCollision (GameObject other)
