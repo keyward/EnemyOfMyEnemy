@@ -4,36 +4,36 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
 
-
+    // Shooting
     public Rigidbody bulletPrefab;
     public Transform firePoint;
+    public MeshRenderer playerFront;
+
     public Color damageColor;
     public AudioSource damagedSound;
     public AudioSource dashSound;
     
-
-    public MeshRenderer playerFront;
-
-    #region private
+    // Components
     private Rigidbody _playerControls;
-    private Moe _moeScript;
+    private MoeAI _moeScript;
     private Renderer _render;
 
   
-
+    // Attributes
     private float moveSpeed;
 	private float moveSpeedModifier;
-    public float diveSpeed;
-   
+    private float diveSpeed;
+
+    // Abilities
+    public bool canTaunt;
     private bool _canRoll;
     private bool _canShoot;
-
     private bool _invincible;
-    #endregion
+
 
     void Awake()
     {
-        _moeScript = GameObject.FindGameObjectWithTag("Moe").GetComponent<Moe>();
+        _moeScript = GameObject.FindGameObjectWithTag("Moe").GetComponent<MoeAI>();
         _playerControls = GetComponent<Rigidbody>();
         _render = GetComponent<Renderer>();
 
@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour {
 
         _canRoll = true;
         _canShoot = true;
-
+        canTaunt = true;
         _invincible = false;
     }
 	
@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour {
             StartCoroutine(ShootPea());
 
 
-        if (Input.GetButtonDown("Fire3"))
+        if (Input.GetButtonDown("Fire3") && canTaunt)
             Taunt();
     }
 
@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour {
 
     void Taunt()
     {
-        StartCoroutine(_moeScript.BullCharge());
+        _moeScript.currentState = MoeAI.aiState.charging;
     }
 
     IEnumerator DiveRoll(float rHAxis, float rVAxis)

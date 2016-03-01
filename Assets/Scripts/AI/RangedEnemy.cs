@@ -8,6 +8,7 @@ public class RangedEnemy : AIBaseClass {
     public Rigidbody bulletPrefab;
     public Transform firePoint;
     public float fireRate;
+    public float accuracyOffset;
 
 
 	protected override void Awake ()
@@ -18,11 +19,11 @@ public class RangedEnemy : AIBaseClass {
 
     public void ShootAtPlayer()
     {
-        Vector3 direction = new Vector3(_playerTransform.position.x, transform.position.y, _playerTransform.position.z);
+        Vector3 direction = new Vector3(_playerTransform.position.x + Random.Range(-accuracyOffset, accuracyOffset), transform.position.y, _playerTransform.position.z + Random.Range(-accuracyOffset, accuracyOffset));
 
         transform.LookAt(direction);
 
-        if(_actionAvailable)
+        if (_actionAvailable)
         {
             Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             StartCoroutine(Reload());

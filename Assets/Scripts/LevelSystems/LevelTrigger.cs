@@ -3,12 +3,14 @@ using System.Collections;
 
 public class LevelTrigger : MonoBehaviour {
 
-    [Header("DRAG SPAWNERS HERE")]
+    [Header("EnemySpawn")]
     public GameObject[] enemySpawners;
 
-    [Header("DRAG BARRIER OBJECTS HERE")]
+    [Header("Spike Walls")]
     public Transform fightBarriers;
     public float raiseSpeed;
+
+    public ArchTrigger archTrigger;
 
     [SerializeField] private int _totalEnemyCount;
     private Transform _enemyManager;
@@ -17,10 +19,13 @@ public class LevelTrigger : MonoBehaviour {
     private bool _playerCrossed;
     private bool _moeCrossed;
 
+    private bool _roomCleared;
+
    
     void Awake()
     {
         triggerActivated = false;
+        _roomCleared = false;
 
         foreach(GameObject spawner in enemySpawners)
         {
@@ -51,11 +56,12 @@ public class LevelTrigger : MonoBehaviour {
         {
             triggerActivated = true;
 
+            _enemyManager.gameObject.SetActive(true);
+
             foreach (GameObject spawner in enemySpawners)
                 spawner.SetActive(true);
 
-            StartCoroutine(RaiseBarriers());
-            _enemyManager.gameObject.SetActive(true);
+            StartCoroutine(RaiseBarriers()); 
         }
     }
 
@@ -63,15 +69,20 @@ public class LevelTrigger : MonoBehaviour {
     {
         _totalEnemyCount--;
 
-        if (_totalEnemyCount <= 0)
+        if (_totalEnemyCount <= 0 && !_roomCleared)
+        {
             StartCoroutine(LowerBarriers());
 
-        print(_totalEnemyCount);
+            if(archTrigger)
+                StartCoroutine(archTrigger.LowerBarriers());
+        }
+           
+
+        Debug.LogWarning(_totalEnemyCount);
     }
 
     IEnumerator RaiseBarriers()
     {
-        print("raising barriers");
         yield return new WaitForSeconds(.5f);
 
         for(float i = 0; i < 4; i += .2f)
@@ -83,13 +94,13 @@ public class LevelTrigger : MonoBehaviour {
 
     IEnumerator LowerBarriers()
     {
-        print("lower barriers");
+        _roomCleared = true;
         while (fightBarriers.position.y > -1)
         {
             fightBarriers.position = Vector3.Lerp(fightBarriers.position, fightBarriers.position + (Vector3.down * 3), Time.deltaTime * raiseSpeed);
             yield return null;
         }
-
+        
         Destroy(fightBarriers.gameObject);
         Destroy(gameObject);
     }
