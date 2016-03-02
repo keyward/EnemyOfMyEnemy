@@ -5,36 +5,49 @@ using System.Collections;
 public class LevelPoster : MonoBehaviour {
 
 
-    // get canvas by tag
-    // Insert Img to display
-    public Image posterToDisplay;
+    public Sprite posterToDisplay;
 
     private GameObject _posterCanvas;
     private Image _canvasImage;
     private bool _posterTurnedOn;
+    private bool _inputEnabled;
     
 
     void Awake()
     {
         _posterCanvas = GameObject.FindGameObjectWithTag("PosterCanvas");
-        _canvasImage = _posterCanvas.transform.GetChild(2).GetComponent<Image>();
+        _canvasImage = _posterCanvas.transform.FindChild("PosterImage").GetComponent<Image>();
 
-        _posterCanvas.SetActive(false);
+        if(_posterCanvas.activeInHierarchy)
+            _posterCanvas.SetActive(false);
+
         _posterTurnedOn = false;
+        _inputEnabled = false;
     }
 
-    void OnTriggerStay(Collider other)
+    void Update()
     {
-        if (Input.GetButtonDown("Fire3"))
+        if(_inputEnabled && Input.GetButtonDown("Fire2"))
         {
             _posterTurnedOn = !_posterTurnedOn;
             _posterCanvas.SetActive(_posterTurnedOn);
-            _canvasImage = posterToDisplay;
+            _canvasImage.sprite = posterToDisplay;
         }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+            _inputEnabled = true;
     }
     
     void OnTriggerExit(Collider other)
     {
-        _posterCanvas.SetActive(false);
+        if(other.CompareTag("Player"))
+        {
+            _inputEnabled = false;
+            _posterCanvas.SetActive(false);
+            _posterTurnedOn = false;
+        } 
     }
 }
