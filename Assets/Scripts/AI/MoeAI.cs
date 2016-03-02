@@ -60,7 +60,7 @@ public class MoeAI : MonoBehaviour {
 	
     void StateLogic()
     {
-        Debug.LogWarning(currentState);
+        //Debug.LogWarning(currentState);
 
         if (currentState == aiState.stopped)
             return;

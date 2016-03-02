@@ -19,7 +19,6 @@ public class LevelPoster : MonoBehaviour {
     {
         _posterCanvas = GameObject.FindGameObjectWithTag("PosterCanvas");
         _canvasImage = _posterCanvas.transform.FindChild("PosterImage").GetComponent<Image>();
-        print(_posterCanvas);
 
         _posterTurnedOn = false;
         _inputEnabled = false;
