@@ -13,6 +13,7 @@ TagManager:
   - Bullet
   - Shield
   - EnemyMgr
+  - PosterCanvas
   layers:
   - Default
   - TransparentFX
