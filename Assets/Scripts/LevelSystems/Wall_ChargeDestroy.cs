@@ -5,7 +5,7 @@ public class Wall_ChargeDestroy : MonoBehaviour {
 
 
 
-    public GameObject FinalParticles;
+    public GameObject destroyParticles;
     public bool canBeDestroyed;
 
     void Awake()
@@ -17,7 +17,7 @@ public class Wall_ChargeDestroy : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Damage") && canBeDestroyed)
         {
-            Instantiate(FinalParticles, transform.position, FinalParticles.transform.rotation);
+            Instantiate(destroyParticles, transform.position, destroyParticles.transform.rotation);
             Destroy(gameObject);
         }
     }
