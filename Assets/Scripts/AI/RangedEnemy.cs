@@ -4,7 +4,7 @@ using System.Collections;
 public class RangedEnemy : AIBaseClass {
 
  
-
+    [Header("Ranged Enemy")]
     public Rigidbody bulletPrefab;
     public Transform firePoint;
     public float fireRate;

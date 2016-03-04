@@ -3,7 +3,7 @@ using System.Collections;
 
 public class AIBaseClass : MonoBehaviour {
     
-    
+    [Header("AI Base")]
     // Attack
     public int attackPower;
     protected float _lungeSmoothing;
