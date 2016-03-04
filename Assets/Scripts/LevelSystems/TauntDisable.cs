@@ -8,12 +8,10 @@ public class TauntDisable : MonoBehaviour {
     public float raiseSpeed;
 
     private MeshRenderer _render;
-    private Vector3 _wallUpPosition;
     private bool _spikesUp;
 
 	void Start ()
     {
-        _wallUpPosition = spikeWall.transform.localPosition;
         _spikesUp = false;
 
         _render = GetComponent<MeshRenderer>();

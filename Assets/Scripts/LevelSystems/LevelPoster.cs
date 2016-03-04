@@ -27,7 +27,7 @@ public class LevelPoster : MonoBehaviour {
     void Start()
     {
         if (_posterCanvas.activeInHierarchy)
-            _posterCanvas.SetActive(false);
+             _posterCanvas.SetActive(false);
     }
 
     void Update()
