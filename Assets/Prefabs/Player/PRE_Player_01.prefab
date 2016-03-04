@@ -293,7 +293,10 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5438584, guid: e796d8759b8896b4695197ea9e94c9a6, type: 2}
   firePoint: {fileID: 420868}
   playerFront: {fileID: 2325450}
-  playerSoundEffects: []
+  playerSoundEffects:
+  - {fileID: 8300000, guid: b6ea59d187831bc4ca6245e4226f40f1, type: 3}
+  - {fileID: 8300000, guid: 3d459a71d559e67489f93c4245e1d011, type: 3}
+  - {fileID: 8300000, guid: e2f51594be176224d8c1a496d8d63805, type: 3}
   canTaunt: 0
 --- !u!135 &13581768
 SphereCollider:
@@ -321,6 +324,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: damageSoundEffects.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: playerSoundEffects.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Drag
@@ -374,6 +381,18 @@ Prefab:
       propertyPath: damageSoundEffects.Array.data[1]
       value: 
       objectReference: {fileID: 8300000, guid: 0157007e3b1e91f4296993d3977216bf, type: 3}
+    - target: {fileID: 0}
+      propertyPath: playerSoundEffects.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: b6ea59d187831bc4ca6245e4226f40f1, type: 3}
+    - target: {fileID: 0}
+      propertyPath: playerSoundEffects.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3d459a71d559e67489f93c4245e1d011, type: 3}
+    - target: {fileID: 0}
+      propertyPath: playerSoundEffects.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: e2f51594be176224d8c1a496d8d63805, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 151036}
