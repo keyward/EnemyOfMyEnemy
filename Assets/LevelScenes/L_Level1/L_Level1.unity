@@ -10335,7 +10335,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 150702, guid: 635399d7275a85a4fab1010047b03240, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 635399d7275a85a4fab1010047b03240, type: 2}
@@ -12690,11 +12690,6 @@ MeshFilter:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 1d5ec161e6d989744b0347aa7f271856, type: 3}
   m_PrefabInternal: {fileID: 697472240}
---- !u!23 &825926450 stripped
-MeshRenderer:
-  m_PrefabParentObject: {fileID: 2325450, guid: a80237656a9cb9540bf80ccfe700a6f8,
-    type: 2}
-  m_PrefabInternal: {fileID: 1662304413}
 --- !u!1 &825941219
 GameObject:
   m_ObjectHideFlags: 0
@@ -24785,43 +24780,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 473860, guid: a80237656a9cb9540bf80ccfe700a6f8, type: 2}
       propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2325450, guid: a80237656a9cb9540bf80ccfe700a6f8, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11475080, guid: a80237656a9cb9540bf80ccfe700a6f8, type: 2}
-      propertyPath: playerFront
-      value: 
-      objectReference: {fileID: 825926450}
-    - target: {fileID: 11475080, guid: a80237656a9cb9540bf80ccfe700a6f8, type: 2}
-      propertyPath: dashParticles
-      value: 
-      objectReference: {fileID: 118620, guid: 5538b73f84f6b6b40ac31cddacaae4bc, type: 2}
-    - target: {fileID: 8229416, guid: a80237656a9cb9540bf80ccfe700a6f8, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8207612, guid: a80237656a9cb9540bf80ccfe700a6f8, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8229416, guid: a80237656a9cb9540bf80ccfe700a6f8, type: 2}
-      propertyPath: panLevelCustomCurve.m_RotationOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8229416, guid: a80237656a9cb9540bf80ccfe700a6f8, type: 2}
-      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8207612, guid: a80237656a9cb9540bf80ccfe700a6f8, type: 2}
-      propertyPath: panLevelCustomCurve.m_RotationOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8207612, guid: a80237656a9cb9540bf80ccfe700a6f8, type: 2}
-      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
-      value: 0
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a80237656a9cb9540bf80ccfe700a6f8, type: 2}

@@ -122,6 +122,7 @@ public class MoeAI : MonoBehaviour {
 
         if(currentState != aiState.stoned)
         {
+            // Play Sounds
             _moeSoundPlayer.clip = moeSounds[0];
             _moeSoundPlayer.Play();
             // play animation "Attack"

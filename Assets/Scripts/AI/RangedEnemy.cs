@@ -26,6 +26,10 @@ public class RangedEnemy : AIBaseClass {
         if (_actionAvailable)
         {
             Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+
+            _enemyAudio.clip = enemySounds[0];
+            _enemyAudio.Play();
+
             StartCoroutine(Reload());
         }
     }
