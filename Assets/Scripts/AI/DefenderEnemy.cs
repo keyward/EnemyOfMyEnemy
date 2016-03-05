@@ -3,7 +3,7 @@ using System.Collections;
 
 public class DefenderEnemy : AIBaseClass {
 
-
+    [Header("Defender Enemy")]
     public float lungeDistance;
 
     private Transform _moeTransform;

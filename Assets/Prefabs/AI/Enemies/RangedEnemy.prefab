@@ -32,6 +32,7 @@ GameObject:
   - 54: {fileID: 5451868}
   - 114: {fileID: 11462458}
   - 114: {fileID: 11499658}
+  - 82: {fileID: 8277814}
   m_Layer: 0
   m_Name: RangedEnemy
   m_TagString: Enemy
@@ -140,6 +141,80 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 14
   m_CollisionDetection: 0
+--- !u!82 &8277814
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138458}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &11426366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,8 +240,9 @@ MonoBehaviour:
   health: 2
   damageCoolDown: 0
   deathParticles: {fileID: 130552, guid: 25a60522a2414d04da186729b0b4a521, type: 2}
-  hurtColor: {r: 0.5724138, g: 1, b: 0, a: 0}
   playerRespawnPoint: {fileID: 0}
+  hurtColor: {r: 0.5724138, g: 1, b: 0, a: 0}
+  damageSoundEffects: []
 --- !u!114 &11499658
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -178,8 +254,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e74a0f0820bae24e8e84a3a2b90b164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackPower: 1
   stunColor: {r: 0.6965518, g: 1, b: 0, a: 0}
-  damageAmount: 0
+  enemySounds:
+  - {fileID: 8300000, guid: 2ebafb4a6edb8bc43b65fe9f4d942669, type: 3}
+  - {fileID: 8300000, guid: 9ba6c938550aca340852b66282431484, type: 3}
   bulletPrefab: {fileID: 5403394, guid: 1e03256e497e6f24fb08cba3582058d3, type: 2}
   firePoint: {fileID: 496254}
   fireRate: 2
@@ -228,6 +307,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: enemySounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Constraints
       value: 112
@@ -295,6 +378,26 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Mass
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: enemySounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2ebafb4a6edb8bc43b65fe9f4d942669, type: 3}
+    - target: {fileID: 0}
+      propertyPath: enemySounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9ba6c938550aca340852b66282431484, type: 3}
+    - target: {fileID: 0}
+      propertyPath: attackPower
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
