@@ -9,8 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 409062}
   - 33: {fileID: 3320808}
-  - 65: {fileID: 6506054}
   - 23: {fileID: 2321796}
+  - 135: {fileID: 13568322}
+  - 114: {fileID: 11422468}
   m_Layer: 0
   m_Name: PRE_PosterPlaceHolder_01
   m_TagString: Untagged
@@ -24,8 +25,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162272}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 54.79, y: 3.5, z: -8.98}
+  m_LocalRotation: {x: 0, y: 0.102974184, z: 0, w: 0.99468404}
+  m_LocalPosition: {x: 49.57, y: 3.5, z: -30.49}
   m_LocalScale: {x: 3, y: 4, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -63,18 +64,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162272}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &6506054
-BoxCollider:
+--- !u!114 &11422468
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cc8ec5200f106444ba2b2dc278abb1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posterToDisplay: {fileID: 0}
+--- !u!135 &13568322
+SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162272}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 1
+  m_Center: {x: 0, y: -0.73, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

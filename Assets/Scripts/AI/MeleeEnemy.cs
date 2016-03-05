@@ -4,14 +4,7 @@ using System.Collections;
 public class MeleeEnemy : AIBaseClass {
 
 
-    /*
-        Periodically check for distance to player 
-        randomly dash left/right
-
-        if within range of Moe, pick a point randomly left or right 10m from moe's spot and then start moving towards the player again
-    */
-
-
+    [Header("Melee Enemy")]
     public float lungeDistance;
     private EnemyManager _enemyManagerRef;
 
@@ -33,12 +26,6 @@ public class MeleeEnemy : AIBaseClass {
         // If nav mesh active...
         if(_pathFinder.isActiveAndEnabled)
         {
-            /*    check distance to player 
-                - if able to lunge -- lunge
-                - random chance to dash left or right
-                - if player target != player position - movetowards player
-            */
-
             // ... and within lunging distance -- lunge //
             if (Vector3.Distance(transform.position, _playerTransform.position) <= lungeDistance)
                 StartCoroutine(Lunge());
@@ -56,6 +43,6 @@ public class MeleeEnemy : AIBaseClass {
 
         // deal damage to the player //
         else if (col.gameObject.CompareTag("Player"))
-            col.gameObject.GetComponent<Health>().TakeDamage(damageAmount);
+            col.gameObject.GetComponent<Health>().TakeDamage(attackPower);
     }
 }
