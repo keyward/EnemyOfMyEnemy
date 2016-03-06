@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+
 public class MoeAI : MonoBehaviour {
 
 
@@ -11,6 +13,8 @@ public class MoeAI : MonoBehaviour {
     private bool _frozen;
 
     public GameObject attackParticles;
+    private Animator _moeAnimator;
+
 
     // MoeAI Sounds
     public AudioClip[] moeSounds;
@@ -46,16 +50,15 @@ public class MoeAI : MonoBehaviour {
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         _navAgent = GetComponent<NavMeshAgent>();
 
-        // sounds 
+        // etc Components
         _moeSoundPlayer = GetComponent<AudioSource>();
+        _render = GetComponent<Renderer>();
+        _moeAnimator = GetComponent<Animator>();
 
         // ************************************* //
         // ** Drives the entire State Machine ** //
         // ************************************* //
         InvokeRepeating("StateLogic", 0f, .1f);
-
-
-        _render = GetComponent<Renderer>();
 	}
 	
     void StateLogic()
@@ -113,7 +116,7 @@ public class MoeAI : MonoBehaviour {
             yield break;
 
         _attacking = true;
-        _render.material.color = Color.cyan;
+        //_render.material.color = Color.cyan;
 
         if (_navAgent.velocity != Vector3.zero)
             _navAgent.Stop();
@@ -136,7 +139,7 @@ public class MoeAI : MonoBehaviour {
 
         // reset state
         currentState = aiState.following;
-        _render.material.color = Color.green;
+        //_render.material.color = Color.green;
 
         // attack cooldown
         yield return new WaitForSeconds(1f);
@@ -151,6 +154,7 @@ public class MoeAI : MonoBehaviour {
             yield break;
 
         _attacking = true;
+        _moeAnimator.SetBool("Charging", true);
         
         // get initial values
         float normalSpeed = _navAgent.speed;
@@ -166,11 +170,11 @@ public class MoeAI : MonoBehaviour {
         yield return new WaitForSeconds(.2f);
 
         _chargeDamage.SetActive(true);
-        _render.material.color = Color.red;
+        //_render.material.color = Color.red;
 
         // set charge speed - Charge
-        _navAgent.speed = 50f;
-        _navAgent.acceleration = 100f;
+        _navAgent.speed = 10f;
+        _navAgent.acceleration = 16f;
         _navAgent.angularSpeed = 360f;
         _navAgent.stoppingDistance = 0f;
         _navAgent.Resume();
@@ -198,6 +202,8 @@ public class MoeAI : MonoBehaviour {
         _navAgent.angularSpeed = normalAngularSpeed;
         _navAgent.stoppingDistance = normalStoppingDistance;
 
+        _moeAnimator.SetBool("Charging", false);
+
         yield return new WaitForSeconds(.75f);
 
         // reset ai state
@@ -206,7 +212,7 @@ public class MoeAI : MonoBehaviour {
         // attack cool down
         yield return new WaitForSeconds(3.5f);
 
-        _render.material.color = Color.green;
+        //_render.material.color = Color.green;
         _attacking = false;
     }
 
@@ -231,7 +237,7 @@ public class MoeAI : MonoBehaviour {
 
 
         if (currentState != aiState.stoned)
-            _render.material.color = Color.green;
+            //_render.material.color = Color.green;
 
         // reset Moe
         currentState = aiState.following;

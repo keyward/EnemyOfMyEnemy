@@ -126,11 +126,11 @@ public class PlayerController : MonoBehaviour {
         _playerControls.AddForce(diveRoll, ForceMode.Impulse);
 
 
-        _render.material.color = Color.magenta;
+        ///_render.material.color = Color.magenta;
 
         yield return new WaitForSeconds(2f);
 
-        _render.material.color = Color.red;
+        //_render.material.color = Color.red;
         _canRoll = true;
     }
 
