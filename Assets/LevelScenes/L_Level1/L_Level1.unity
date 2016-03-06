@@ -3405,6 +3405,11 @@ Prefab:
       propertyPath: m_Name
       value: PosterPlaceHolder (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 11422468, guid: 8631b177d3dbcb44498183ef26567514, type: 2}
+      propertyPath: posterToDisplay
+      value: 
+      objectReference: {fileID: 21300000, guid: ff7efa9aee0a07e49a215100dbb663e6,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8631b177d3dbcb44498183ef26567514, type: 2}
   m_IsPrefabParent: 0
@@ -12820,7 +12825,7 @@ Transform:
   - {fileID: 1794268370}
   - {fileID: 179054868}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!1 &832448988 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 6c8755f5c24543b4fbdf11aa81042d04, type: 3}
@@ -28223,6 +28228,11 @@ Prefab:
       propertyPath: m_Name
       value: PosterPlaceHolder (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 11422468, guid: 8631b177d3dbcb44498183ef26567514, type: 2}
+      propertyPath: posterToDisplay
+      value: 
+      objectReference: {fileID: 21300000, guid: b3c73bbcd277f474fb48e9ffd7674845,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8631b177d3dbcb44498183ef26567514, type: 2}
   m_IsPrefabParent: 0

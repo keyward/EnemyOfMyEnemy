@@ -174,7 +174,9 @@ MonoBehaviour:
   deathParticles: {fileID: 130552, guid: 25a60522a2414d04da186729b0b4a521, type: 2}
   playerRespawnPoint: {fileID: 0}
   hurtColor: {r: 0.7379308, g: 0, b: 1, a: 0}
-  damageSoundEffects: []
+  damageSoundEffects:
+  - {fileID: 8300000, guid: 9ba6c938550aca340852b66282431484, type: 3}
+  - {fileID: 8300000, guid: 0d60c678be53f9748bdc248b827cd987, type: 3}
 --- !u!114 &11499208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -246,6 +248,10 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: enemySounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damageSoundEffects.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
@@ -352,6 +358,14 @@ Prefab:
       propertyPath: attackPower
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damageSoundEffects.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0d60c678be53f9748bdc248b827cd987, type: 3}
+    - target: {fileID: 0}
+      propertyPath: damageSoundEffects.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9ba6c938550aca340852b66282431484, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 138458}

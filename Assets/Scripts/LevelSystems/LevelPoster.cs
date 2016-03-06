@@ -32,7 +32,7 @@ public class LevelPoster : MonoBehaviour {
 
     void Update()
     {
-        if(_inputEnabled && Input.GetButtonDown("Fire2"))
+        if(_inputEnabled && Input.GetButtonDown("Interact"))
         {
             _posterTurnedOn = !_posterTurnedOn;
             _posterCanvas.SetActive(_posterTurnedOn); 
