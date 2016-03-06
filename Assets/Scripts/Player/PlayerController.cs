@@ -8,15 +8,10 @@ public class PlayerController : MonoBehaviour {
     public Rigidbody bulletPrefab;
     public Transform firePoint;
     public MeshRenderer playerFront;
-
+    
+    // Sounds
     public AudioClip[] playerSoundEffects;
     private AudioSource _playerSounds;
-    /*
-    0 - Dash
-    1 - Shoot
-    2 - Taunt
-    */
-
 
     // Components
     private Rigidbody _playerControls;
@@ -56,8 +51,8 @@ public class PlayerController : MonoBehaviour {
 	void FixedUpdate ()
     {
         // -- left thumbstick controls -- //
-        float horz = Input.GetAxisRaw("Horizontal");
-        float vert = Input.GetAxisRaw("Vertical");
+        float horz = Input.GetAxisRaw("LeftHorz");
+        float vert = Input.GetAxisRaw("LeftVert");
 
         // -- right thumbstick controls -- //
         float rightHorz = Input.GetAxis("RightHorz");
@@ -75,18 +70,18 @@ public class PlayerController : MonoBehaviour {
             RotatePlayer(rightHorz, rightVert);
 
         // dive roll
-        if (Input.GetAxis("Fire2") > 0)
+        if (Input.GetAxis("Dash") > 0)
             StartCoroutine(DiveRoll(horz, vert));
     }
 
     void Update()
     {
         // player shooting
-        if (Input.GetAxis("Fire1") > 0f)
+        if (Input.GetAxis("Shoot") > 0f)
             StartCoroutine(ShootPea());
 
 
-        if (Input.GetButtonDown("Fire3") && canTaunt)
+        if (Input.GetButtonDown("Taunt") && canTaunt)
             Taunt();
     }
 
