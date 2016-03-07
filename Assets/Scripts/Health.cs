@@ -15,7 +15,7 @@ public class Health : MonoBehaviour {
 
     // Colors
     public Color hurtColor;
-    private Color _initialColor;
+    //private Color _initialColor;
     private Renderer _objectColor;
 
     // Sounds
@@ -35,7 +35,7 @@ public class Health : MonoBehaviour {
         _objectColor = GetComponent<Renderer>();
 
         if(_objectColor)
-            _initialColor = GetComponent<Renderer>().material.color;
+            //_initialColor = GetComponent<Renderer>().material.color;
 
         _damageAudio = GetComponent<AudioSource>(); 
     }
