@@ -381,6 +381,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aae019772db4486438200e9235b55130, type: 2}
   m_IsPrefabParent: 0
+--- !u!137 &470264003 stripped
+SkinnedMeshRenderer:
+  m_PrefabParentObject: {fileID: 13726004, guid: 67e601321d16fc346b13ca1ebad87c05,
+    type: 2}
+  m_PrefabInternal: {fileID: 2041276335}
 --- !u!1001 &925504524
 Prefab:
   m_ObjectHideFlags: 0
@@ -646,6 +651,14 @@ Prefab:
     - target: {fileID: 410744, guid: 67e601321d16fc346b13ca1ebad87c05, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11447006, guid: 67e601321d16fc346b13ca1ebad87c05, type: 2}
+      propertyPath: _skinMesh
+      value: 
+      objectReference: {fileID: 470264003}
+    - target: {fileID: 145416, guid: 67e601321d16fc346b13ca1ebad87c05, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 67e601321d16fc346b13ca1ebad87c05, type: 2}

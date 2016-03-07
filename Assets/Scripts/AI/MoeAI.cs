@@ -12,10 +12,10 @@ public class MoeAI : MonoBehaviour {
     private bool _attacking;
     private bool _frozen;
 
+    // Animations - Particles
     public GameObject attackParticles;
     private Animator _moeAnimator;
     private int _moeAttack;
-
 
     // MoeAI Sounds
     public AudioClip[] moeSounds;
@@ -29,6 +29,10 @@ public class MoeAI : MonoBehaviour {
     private Transform _playerTransform;
     private Vector3 _lastPlayerLocation;
     private NavMeshAgent _navAgent;
+
+    // Moe "stoned" color change
+    public SkinnedMeshRenderer _skinMesh;
+    private Color32 _stoneColor;
     
 
 	void Awake ()
@@ -61,7 +65,7 @@ public class MoeAI : MonoBehaviour {
 	
     void StateLogic()
     {
-        Debug.LogWarning(currentState);
+        //Debug.LogWarning(currentState);
 
         if (currentState == aiState.stopped)
             return;
@@ -221,6 +225,7 @@ public class MoeAI : MonoBehaviour {
 
         _frozen = true;
         _moeAnimator.enabled = false;
+        StartCoroutine(StoneColorLerp());
 
         // stop moving
         _navAgent.velocity = Vector3.zero;
@@ -232,6 +237,25 @@ public class MoeAI : MonoBehaviour {
         currentState = aiState.following;
         _frozen = false;
         _moeAnimator.enabled = true;
+        StartCoroutine(StoneColorLerp());
+    }
+
+    IEnumerator StoneColorLerp()
+    {
+        // if hes frozen make his skin black
+        if(_frozen)
+            while(_skinMesh.material.color.r >= .49f)
+            {
+                _skinMesh.material.color -= new Color(.01f, .01f, .01f);
+                yield return null;
+            }
+        // if he's unfrozen change it back to standard
+        else
+            while(_skinMesh.material.color.r < 1.0f)
+            {
+                _skinMesh.material.color += new Color(.01f, .01f, .01f);
+                yield return null;
+            }
     }
 
     void OnTriggerStay(Collider other)
