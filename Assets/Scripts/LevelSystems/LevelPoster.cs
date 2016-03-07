@@ -27,12 +27,12 @@ public class LevelPoster : MonoBehaviour {
     void Start()
     {
         if (_posterCanvas.activeInHierarchy)
-            _posterCanvas.SetActive(false);
+             _posterCanvas.SetActive(false);
     }
 
     void Update()
     {
-        if(_inputEnabled && Input.GetButtonDown("Fire2"))
+        if(_inputEnabled && Input.GetButtonDown("Interact"))
         {
             _posterTurnedOn = !_posterTurnedOn;
             _posterCanvas.SetActive(_posterTurnedOn); 
