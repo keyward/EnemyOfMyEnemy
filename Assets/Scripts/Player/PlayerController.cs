@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour {
     // Shooting
     public Rigidbody bulletPrefab;
     public Transform firePoint;
-    public MeshRenderer playerFront;
+    //public MeshRenderer playerFront;
     
     // Sounds
     public AudioClip[] playerSoundEffects;
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour {
     {
         _moeScript = GameObject.FindGameObjectWithTag("Moe").GetComponent<MoeAI>();
         _playerControls = GetComponent<Rigidbody>();
-        _render = GetComponent<Renderer>();
+        //_render = GetComponent<Renderer>();
         _playerSounds = GetComponent<AudioSource>();
 
         // Player metrics
@@ -126,11 +126,11 @@ public class PlayerController : MonoBehaviour {
         _playerControls.AddForce(diveRoll, ForceMode.Impulse);
 
 
-        _render.material.color = Color.magenta;
+        ///_render.material.color = Color.magenta;
 
         yield return new WaitForSeconds(2f);
 
-        _render.material.color = Color.red;
+        //_render.material.color = Color.red;
         _canRoll = true;
     }
 
@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour {
         if (!_canShoot)
             yield break;
 
-        playerFront.enabled = false;
+        //playerFront.enabled = false;
         _canShoot = false;
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
@@ -149,7 +149,7 @@ public class PlayerController : MonoBehaviour {
 
         yield return new WaitForSeconds(1f);
 
-        playerFront.enabled = true;
+        //playerFront.enabled = true;
         _canShoot = true;
     }
 
