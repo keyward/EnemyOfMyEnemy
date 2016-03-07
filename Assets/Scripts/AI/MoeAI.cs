@@ -139,7 +139,6 @@ public class MoeAI : MonoBehaviour {
 
         // reset state
         currentState = aiState.following;
-        //_render.material.color = Color.green;
 
         // attack cooldown
         yield return new WaitForSeconds(1f);

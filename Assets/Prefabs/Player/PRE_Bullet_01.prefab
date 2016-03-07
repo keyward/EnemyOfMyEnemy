@@ -14,7 +14,7 @@ GameObject:
   - 54: {fileID: 5438584}
   - 114: {fileID: 11406246}
   - 82: {fileID: 8241022}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PRE_Bullet_01
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
+  damageAmount: 0
   deathParticles: {fileID: 130552, guid: 56c237b533e5fe94e8ac0ad32aeb9558, type: 2}
 --- !u!135 &13573230
 SphereCollider:
@@ -254,6 +255,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

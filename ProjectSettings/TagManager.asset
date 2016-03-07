@@ -14,6 +14,7 @@ TagManager:
   - Shield
   - EnemyMgr
   - PosterCanvas
+  - EnemyManager
   layers:
   - Default
   - TransparentFX
@@ -27,8 +28,8 @@ TagManager:
   - Shootable
   - LightMask
   - Invisible
-  - 
-  - 
+  - PlayerBullet
+  - PlayerCollider
   - 
   - 
   - 
