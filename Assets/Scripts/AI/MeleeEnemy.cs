@@ -6,6 +6,7 @@ public class MeleeEnemy : AIBaseClass {
 
     [Header("Melee Enemy")]
     public float lungeDistance;
+	public float circleDistance;
     private EnemyManager _enemyManagerRef;
 
 
@@ -26,13 +27,18 @@ public class MeleeEnemy : AIBaseClass {
         // If nav mesh active...
         if(_pathFinder.isActiveAndEnabled)
         {
-            // ... and within lunging distance -- lunge //
-            if (Vector3.Distance(transform.position, _playerTransform.position) <= lungeDistance)
-                StartCoroutine(Lunge());
+			// Descision Tree
+			if (_actionAvailable) {
 
+			}
+            // ... and within lunging distance -- lunge //
+			if (Vector3.Distance (transform.position, _playerTransform.position) <= lungeDistance) {
+				StartCoroutine (Lunge ());
+			}
             // ... and able to move -- go towards player //
-            else if (_actionAvailable)
-                _pathFinder.SetDestination(_playerTransform.position);
+			else if (_actionAvailable) {
+				this.Seek ();
+			}
         }
     }
 
@@ -45,4 +51,18 @@ public class MeleeEnemy : AIBaseClass {
         else if (col.gameObject.CompareTag("Player"))
             col.gameObject.GetComponent<Health>().TakeDamage(attackPower);
     }
+
+	protected override void Seek ()
+	{
+		_pathFinder.SetDestination (_playerTransform.position);
+		if (_pathFinder.remainingDistance > this.circleDistance) 
+		{
+			_pathFinder.Resume ();
+		} 
+		else if (_pathFinder.remainingDistance <= this.circleDistance) 
+		{
+			_pathFinder.Stop ();
+		}
+		base.Seek ();
+	}
 }

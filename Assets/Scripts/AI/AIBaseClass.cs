@@ -81,4 +81,25 @@ public class AIBaseClass : MonoBehaviour {
 
         _actionAvailable = true;
     }
+
+	protected virtual void Seek()
+	{
+
+	}
+
+	protected virtual void MaintainDistance()
+	{
+
+	}
+
+	protected virtual void Retreat()
+	{
+
+	}
+
+	protected virtual void Attack()
+	{
+
+	}
+
 }

@@ -192,6 +192,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: fd522532f29827a478fdb0f522021093, type: 3}
   - {fileID: 8300000, guid: 9ba6c938550aca340852b66282431484, type: 3}
   lungeDistance: 2
+  circleDistance: 4
 --- !u!135 &13576444
 SphereCollider:
   m_ObjectHideFlags: 1
