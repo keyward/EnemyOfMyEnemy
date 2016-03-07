@@ -222,8 +222,8 @@ public class MoeAI : MonoBehaviour {
             yield break;
 
         _frozen = true;
-        // swap texture to stone texture
-        _render.material.color = Color.grey;
+        _moeAnimator.enabled = false;
+        //_render.material.color = Color.grey;
 
         // stop moving
         _navAgent.velocity = Vector3.zero;
@@ -236,11 +236,12 @@ public class MoeAI : MonoBehaviour {
 
 
         if (currentState != aiState.stoned)
-            //_render.material.color = Color.green;
+            _moeAnimator.enabled = false;
 
         // reset Moe
         currentState = aiState.following;
         _frozen = false;
+        _moeAnimator.enabled = true;
     }
 
     void OnTriggerStay(Collider other)
