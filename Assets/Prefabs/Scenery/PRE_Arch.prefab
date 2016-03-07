@@ -43,7 +43,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 453146}
   m_Layer: 0
-  m_Name: PRE_Arch_01
+  m_Name: PRE_Arch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
