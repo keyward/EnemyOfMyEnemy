@@ -62,7 +62,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138458}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.84, y: 2.08, z: 8.2}
+  m_LocalPosition: {x: 153.6, y: 1.51, z: 64.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 496254}
@@ -242,7 +242,9 @@ MonoBehaviour:
   deathParticles: {fileID: 130552, guid: 25a60522a2414d04da186729b0b4a521, type: 2}
   playerRespawnPoint: {fileID: 0}
   hurtColor: {r: 0.5724138, g: 1, b: 0, a: 0}
-  damageSoundEffects: []
+  damageSoundEffects:
+  - {fileID: 8300000, guid: 9ba6c938550aca340852b66282431484, type: 3}
+  - {fileID: 8300000, guid: 0d60c678be53f9748bdc248b827cd987, type: 3}
 --- !u!114 &11499658
 MonoBehaviour:
   m_ObjectHideFlags: 1
