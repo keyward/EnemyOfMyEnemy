@@ -833,7 +833,7 @@ Transform:
   m_LocalScale: {x: 10.6, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 37
+  m_RootOrder: 38
 --- !u!1001 &39227891
 Prefab:
   m_ObjectHideFlags: 0
@@ -12193,7 +12193,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 458012, guid: 18d7d6b470386bb45b1cb8a4b5d727aa, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 458012, guid: 18d7d6b470386bb45b1cb8a4b5d727aa, type: 2}
       propertyPath: m_LocalPosition.z
@@ -12849,7 +12849,7 @@ Transform:
   - {fileID: 1794268370}
   - {fileID: 179054868}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 21
 --- !u!1 &832448988 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 6c8755f5c24543b4fbdf11aa81042d04, type: 3}
