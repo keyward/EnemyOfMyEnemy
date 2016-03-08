@@ -8,11 +8,13 @@ public class EnemyManager : MonoBehaviour {
 
 	void Awake ()
     {
-        _levelTriggerRef = transform.parent.GetComponent<LevelTrigger>();
+        if(_levelTriggerRef)
+            _levelTriggerRef = transform.parent.GetComponent<LevelTrigger>();
 	}
 	
 	public void RemoveEnemy()
     {
-        _levelTriggerRef.MinusOneEnemy();
+        if(_levelTriggerRef)
+            _levelTriggerRef.MinusOneEnemy();
     }
 }
