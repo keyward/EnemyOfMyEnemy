@@ -12,9 +12,10 @@ public class MoeAI : MonoBehaviour {
     private bool _attacking;
     private bool _frozen;
 
+    // Animations - Particles
     public GameObject attackParticles;
     private Animator _moeAnimator;
-
+    private int _moeAttack;
 
     // MoeAI Sounds
     public AudioClip[] moeSounds;
@@ -29,8 +30,9 @@ public class MoeAI : MonoBehaviour {
     private Vector3 _lastPlayerLocation;
     private NavMeshAgent _navAgent;
 
-    // color conveyance
-    private Renderer _render;
+    // Moe "stoned" color change
+    public SkinnedMeshRenderer _skinMesh;
+    private Color32 _stoneColor;
     
 
 	void Awake ()
@@ -52,8 +54,8 @@ public class MoeAI : MonoBehaviour {
 
         // etc Components
         _moeSoundPlayer = GetComponent<AudioSource>();
-        _render = GetComponent<Renderer>();
         _moeAnimator = GetComponent<Animator>();
+        _moeAttack = Animator.StringToHash("Attack");
 
         // ************************************* //
         // ** Drives the entire State Machine ** //
@@ -128,7 +130,7 @@ public class MoeAI : MonoBehaviour {
             // Play Sounds
             _moeSoundPlayer.clip = moeSounds[0];
             _moeSoundPlayer.Play();
-            // play animation "Attack"
+            //_moeAnimator.SetTrigger(_moeAttack);
             Destroy(Instantiate(attackParticles, transform.position, Quaternion.identity), 1f);
             _areaDamage.SetActive(true);
         }
@@ -169,7 +171,6 @@ public class MoeAI : MonoBehaviour {
         yield return new WaitForSeconds(.2f);
 
         _chargeDamage.SetActive(true);
-        //_render.material.color = Color.red;
 
         // set charge speed - Charge
         _navAgent.speed = 10f;
@@ -183,7 +184,7 @@ public class MoeAI : MonoBehaviour {
         _moeSoundPlayer.Play();
 
         // charge at players last position
-        while(_navAgent.remainingDistance > .01f)
+        while(_navAgent.remainingDistance > .5f)
         {
             // if stoned in the middle of a charge -- cancel the charge
             if (currentState == aiState.stoned)
@@ -192,18 +193,20 @@ public class MoeAI : MonoBehaviour {
             // perform charge
             yield return null;
         }
+        
 
         // reset navAgent values to inital
         _chargeDamage.SetActive(false);
         _navAgent.ResetPath();
+        _moeAnimator.SetBool("Charging", false);
         _navAgent.speed = normalSpeed;
         _navAgent.acceleration = normalAcceleration;
         _navAgent.angularSpeed = normalAngularSpeed;
         _navAgent.stoppingDistance = normalStoppingDistance;
 
-        _moeAnimator.SetBool("Charging", false);
-
-        yield return new WaitForSeconds(.75f);
+        
+        // until we have some sort of conveyance for Moe stopping - this needs to stay commented
+        //yield return new WaitForSeconds(.75f);
 
         // reset ai state
         currentState = aiState.following;
@@ -211,7 +214,6 @@ public class MoeAI : MonoBehaviour {
         // attack cool down
         yield return new WaitForSeconds(3.5f);
 
-        //_render.material.color = Color.green;
         _attacking = false;
     }
 
@@ -223,25 +225,37 @@ public class MoeAI : MonoBehaviour {
 
         _frozen = true;
         _moeAnimator.enabled = false;
-        //_render.material.color = Color.grey;
+        StartCoroutine(StoneColorLerp());
 
         // stop moving
         _navAgent.velocity = Vector3.zero;
         _navAgent.Stop();
 
-        yield return new WaitForSeconds(1f);
-
-        // swap texture to initial texture
-        // continue following player
-
-
-        if (currentState != aiState.stoned)
-            _moeAnimator.enabled = false;
+        yield return new WaitForSeconds(2f);
 
         // reset Moe
         currentState = aiState.following;
         _frozen = false;
         _moeAnimator.enabled = true;
+        StartCoroutine(StoneColorLerp());
+    }
+
+    IEnumerator StoneColorLerp()
+    {
+        // if hes frozen make his skin black
+        if(_frozen)
+            while(_skinMesh.material.color.r >= .49f)
+            {
+                _skinMesh.material.color -= new Color(.01f, .01f, .01f);
+                yield return null;
+            }
+        // if he's unfrozen change it back to standard
+        else
+            while(_skinMesh.material.color.r < 1.0f)
+            {
+                _skinMesh.material.color += new Color(.01f, .01f, .01f);
+                yield return null;
+            }
     }
 
     void OnTriggerStay(Collider other)
