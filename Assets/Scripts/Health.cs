@@ -13,11 +13,6 @@ public class Health : MonoBehaviour {
     public GameObject deathParticles;
     [HideInInspector] public Transform playerRespawnPoint;
 
-    // Colors
-    public Color hurtColor;
-    //private Color _initialColor;
-    private Renderer _objectColor;
-
     // Sounds
     public AudioClip[] damageSoundEffects;
     /*
@@ -31,8 +26,6 @@ public class Health : MonoBehaviour {
     {
         _initialHealth = health;
         _invincible = false;
-
-        _objectColor = GetComponent<Renderer>();
 
         _damageAudio = GetComponent<AudioSource>(); 
     }
