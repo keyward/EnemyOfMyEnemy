@@ -34,9 +34,6 @@ public class Health : MonoBehaviour {
 
         _objectColor = GetComponent<Renderer>();
 
-        if(_objectColor)
-            //_initialColor = GetComponent<Renderer>().material.color;
-
         _damageAudio = GetComponent<AudioSource>(); 
     }
 
