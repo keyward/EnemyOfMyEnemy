@@ -22,6 +22,10 @@ public class AIBaseClass : MonoBehaviour {
     protected AudioSource _enemyAudio;
     public AudioClip[] enemySounds;
 
+    // Animation
+    private Animator _aiAnimator;
+    private int _attackAnimation;
+
    
     protected virtual void Awake ()
     {
@@ -31,7 +35,11 @@ public class AIBaseClass : MonoBehaviour {
 
         _enemyAudio = GetComponent<AudioSource>();
 
-        _lungeSmoothing = 10f;
+        _aiAnimator = GetComponent<Animator>();
+        _attackAnimation = Animator.StringToHash("Attack");
+
+
+        _lungeSmoothing = 5f;
         _actionAvailable = true;
 	}
 	
@@ -64,6 +72,7 @@ public class AIBaseClass : MonoBehaviour {
         if (!_actionAvailable)
             yield break;
 
+        _aiAnimator.SetTrigger(_attackAnimation);
         _actionAvailable = false;
 
         Vector3 target = _playerTransform.position;
@@ -71,7 +80,7 @@ public class AIBaseClass : MonoBehaviour {
         _enemyAudio.Play();
         
         // dash towards player -- attack
-        while (Vector3.Distance(transform.position, target) > 1f)
+        while (Vector3.Distance(transform.position, target) > .2f)
         {
             transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * _lungeSmoothing);
             yield return null;

@@ -531,7 +531,7 @@ GameObject:
   - 82: {fileID: 8230638}
   m_Layer: 0
   m_Name: PRE_Melee_Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1620,7 +1620,6 @@ MonoBehaviour:
   damageCoolDown: 0
   deathParticles: {fileID: 130552, guid: 25a60522a2414d04da186729b0b4a521, type: 2}
   playerRespawnPoint: {fileID: 0}
-  hurtColor: {r: 0.7379308, g: 0, b: 1, a: 0}
   damageSoundEffects:
   - {fileID: 8300000, guid: 9ba6c938550aca340852b66282431484, type: 3}
   - {fileID: 8300000, guid: 0d60c678be53f9748bdc248b827cd987, type: 3}
@@ -1640,7 +1639,7 @@ MonoBehaviour:
   enemySounds:
   - {fileID: 8300000, guid: fd522532f29827a478fdb0f522021093, type: 3}
   - {fileID: 8300000, guid: 9ba6c938550aca340852b66282431484, type: 3}
-  lungeDistance: 2
+  lungeDistance: 4
 --- !u!135 &13515326
 SphereCollider:
   m_ObjectHideFlags: 1
