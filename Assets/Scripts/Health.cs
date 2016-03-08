@@ -20,10 +20,6 @@ public class Health : MonoBehaviour {
 
     // Sounds
     public AudioClip[] damageSoundEffects;
-    /*
-        0 - damage sound
-        1 - death sound --- for player: Respawn Sound
-    */
     private AudioSource _damageAudio;
 
 
@@ -34,7 +30,7 @@ public class Health : MonoBehaviour {
 
         _objectColor = GetComponent<Renderer>();
 
-        if(_objectColor)
+        //if(_objectColor)
             //_initialColor = GetComponent<Renderer>().material.color;
 
         _damageAudio = GetComponent<AudioSource>(); 
