@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour {
 
 
         if (Input.GetButtonDown("Taunt") && canTaunt)
-            Taunt();
+            StartCoroutine(Taunt());
     }
 
     void MovePlayer(float hAxis, float vAxis)
@@ -99,12 +99,18 @@ public class PlayerController : MonoBehaviour {
         transform.rotation = Quaternion.Euler(0f, angle, 0f);
     }
 
-    void Taunt()
+    IEnumerator Taunt()
     {
+        canTaunt = false;
+
         _playerSounds.clip = playerSoundEffects[2];
         _playerSounds.Play();
 
         _moeScript.currentState = MoeAI.aiState.charging;
+
+        yield return new WaitForSeconds(1f);
+
+        canTaunt = true;
     }
 
     IEnumerator DiveRoll(float rHAxis, float rVAxis)

@@ -55,11 +55,7 @@ public class LevelTrigger : MonoBehaviour {
         if (_playerCrossed && _moeCrossed)
         {
             triggerActivated = true;
-
             _enemyManager.gameObject.SetActive(true);
-
-            foreach (GameObject spawner in enemySpawners)
-                spawner.SetActive(true);
 
             StartCoroutine(RaiseBarriers()); 
         }
@@ -85,7 +81,10 @@ public class LevelTrigger : MonoBehaviour {
     {
         yield return new WaitForSeconds(.5f);
 
-        for(float i = 0; i < 4; i += .2f)
+        foreach (GameObject spawner in enemySpawners)
+            spawner.SetActive(true);
+
+        for (float i = 0; i < 4; i += .2f)
         {
             fightBarriers.position = Vector3.Lerp(fightBarriers.position, fightBarriers.position + (Vector3.up * 3), Time.deltaTime * raiseSpeed);
             yield return null;
