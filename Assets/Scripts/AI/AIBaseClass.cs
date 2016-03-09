@@ -4,6 +4,7 @@ using System.Collections;
 public class AIBaseClass : MonoBehaviour {
     
     [Header("AI Base")]
+
     // Attack
     public int attackPower;
     protected float _lungeSmoothing;
@@ -18,7 +19,7 @@ public class AIBaseClass : MonoBehaviour {
     public AudioClip[] enemySounds;
 
     // Animation
-    private Animator _aiAnimator;
+    protected Animator _aiAnimator;
     private int _attackAnimation;
 
    
@@ -40,6 +41,7 @@ public class AIBaseClass : MonoBehaviour {
     // -- Temporarily disable enemy -- //
     protected virtual IEnumerator Stun()
     {
+        print("stun");
         _actionAvailable = false;
 
         _enemyAudio.clip = enemySounds[1];
