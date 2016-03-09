@@ -55,7 +55,7 @@ public class MeleeEnemy : AIBaseClass {
 	protected override void Seek ()
 	{
 		_pathFinder.SetDestination (_playerTransform.position);
-		if (_pathFinder.remainingDistance > this.circleDistance) 
+		if (_pathFinder.remainingDistance > this.circleDistance + 1) 
 		{
 			_pathFinder.Resume ();
 		} 
