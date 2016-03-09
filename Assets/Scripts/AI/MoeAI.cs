@@ -16,6 +16,8 @@ public class MoeAI : MonoBehaviour {
     public GameObject attackParticles;
     private Animator _moeAnimator;
     private int _moeAttack;
+    private int _moeCharge; 
+
 
     // MoeAI Sounds
     public AudioClip[] moeSounds;
@@ -29,6 +31,7 @@ public class MoeAI : MonoBehaviour {
     private Transform _playerTransform;
     private Vector3 _lastPlayerLocation;
     private NavMeshAgent _navAgent;
+    private Transform _enemyTarget;
 
     // Moe "stoned" color change
     public SkinnedMeshRenderer _skinMesh;
@@ -56,6 +59,7 @@ public class MoeAI : MonoBehaviour {
         _moeSoundPlayer = GetComponent<AudioSource>();
         _moeAnimator = GetComponent<Animator>();
         _moeAttack = Animator.StringToHash("Attack");
+        _moeCharge = Animator.StringToHash("Charging");
 
         // ************************************* //
         // ** Drives the entire State Machine ** //
@@ -118,7 +122,6 @@ public class MoeAI : MonoBehaviour {
             yield break;
 
         _attacking = true;
-        //_render.material.color = Color.cyan;
 
         if (_navAgent.velocity != Vector3.zero)
             _navAgent.Stop();
@@ -127,11 +130,23 @@ public class MoeAI : MonoBehaviour {
 
         if(currentState != aiState.stoned)
         {
-            // Play Sounds
+            // Play "GargoyleSmash" animation
+
+            if (_enemyTarget)
+                StartCoroutine(LookAtTarget());
+
+            _moeAnimator.SetTrigger(_moeAttack);
+
+            
+            // syncing damage/particles to animation time
+            yield return new WaitForSeconds(.8f);
+
+            // Attack Effects
+            Destroy(Instantiate(attackParticles, transform.position, Quaternion.identity), 1f);
             _moeSoundPlayer.clip = moeSounds[0];
             _moeSoundPlayer.Play();
-            //_moeAnimator.SetTrigger(_moeAttack);
-            Destroy(Instantiate(attackParticles, transform.position, Quaternion.identity), 1f);
+
+            // Deal damage
             _areaDamage.SetActive(true);
         }
         
@@ -155,7 +170,7 @@ public class MoeAI : MonoBehaviour {
             yield break;
 
         _attacking = true;
-        _moeAnimator.SetBool("Charging", true);
+        _moeAnimator.SetBool(_moeCharge, true);
         
         // get initial values
         float normalSpeed = _navAgent.speed;
@@ -198,7 +213,7 @@ public class MoeAI : MonoBehaviour {
         // reset navAgent values to inital
         _chargeDamage.SetActive(false);
         _navAgent.ResetPath();
-        _moeAnimator.SetBool("Charging", false);
+        _moeAnimator.SetBool(_moeCharge, false);
         _navAgent.speed = normalSpeed;
         _navAgent.acceleration = normalAcceleration;
         _navAgent.angularSpeed = normalAngularSpeed;
@@ -258,6 +273,15 @@ public class MoeAI : MonoBehaviour {
             }
     }
 
+    IEnumerator LookAtTarget()
+    {
+        while(currentState == aiState.attacking)
+        {
+            transform.LookAt(_enemyTarget);
+            yield return null;
+        }
+    }
+
     void OnTriggerStay(Collider other)
     {
         // as long as Moe is touching a pixie he will remain as stone
@@ -266,6 +290,11 @@ public class MoeAI : MonoBehaviour {
         
         // if Moe has not been taunted or touched by a pixie -- he will attack
         else if (other.CompareTag("Enemy") && currentState != aiState.stoned && currentState != aiState.charging)
+        {
+            if (!_enemyTarget)
+                _enemyTarget = other.transform;
+
             currentState = aiState.attacking;
+        }
     }
 }
