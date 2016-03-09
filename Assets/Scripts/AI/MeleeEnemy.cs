@@ -13,7 +13,10 @@ public class MeleeEnemy : AIBaseClass {
     protected override void Awake ()
     {
         base.Awake();
+    }
 
+    void OnEnable()
+    {
         _enemyManagerRef = GameObject.FindGameObjectWithTag("EnemyMgr").GetComponent<EnemyManager>();
     }
 	

@@ -4,15 +4,11 @@ using System.Collections;
 public class AIBaseClass : MonoBehaviour {
     
     [Header("AI Base")]
+
     // Attack
     public int attackPower;
     protected float _lungeSmoothing;
     protected bool _actionAvailable;
-
-    // Colors 
-    public Color stunColor;
-    protected Renderer _objectRender;
-    protected Color _initialColor;
 
     // Navigation
     protected Transform _playerTransform;
@@ -22,26 +18,31 @@ public class AIBaseClass : MonoBehaviour {
     protected AudioSource _enemyAudio;
     public AudioClip[] enemySounds;
 
+    // Animation
+    protected Animator _aiAnimator;
+    private int _attackAnimation;
+
    
     protected virtual void Awake ()
     {
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         _pathFinder = GetComponent<NavMeshAgent>();
-        _objectRender = GetComponent<Renderer>();
 
         _enemyAudio = GetComponent<AudioSource>();
 
-        _lungeSmoothing = 10f;
+        _aiAnimator = GetComponent<Animator>();
+        _attackAnimation = Animator.StringToHash("Attack");
+
+
+        _lungeSmoothing = 5f;
         _actionAvailable = true;
 	}
 	
     // -- Temporarily disable enemy -- //
     protected virtual IEnumerator Stun()
     {
+        print("stun");
         _actionAvailable = false;
-
-        _initialColor = _objectRender.material.color;
-        _objectRender.material.color = stunColor;
 
         _enemyAudio.clip = enemySounds[1];
         _enemyAudio.Play();
@@ -52,7 +53,6 @@ public class AIBaseClass : MonoBehaviour {
         yield return new WaitForSeconds(2f);
 
         _actionAvailable = true;
-        _objectRender.material.color = _initialColor;
 
         if(_pathFinder)
             _pathFinder.Resume();
@@ -64,6 +64,7 @@ public class AIBaseClass : MonoBehaviour {
         if (!_actionAvailable)
             yield break;
 
+        _aiAnimator.SetTrigger(_attackAnimation);
         _actionAvailable = false;
 
         Vector3 target = _playerTransform.position;
@@ -71,7 +72,7 @@ public class AIBaseClass : MonoBehaviour {
         _enemyAudio.Play();
         
         // dash towards player -- attack
-        while (Vector3.Distance(transform.position, target) > 1f)
+        while (Vector3.Distance(transform.position, target) > .2f)
         {
             transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * _lungeSmoothing);
             yield return null;
