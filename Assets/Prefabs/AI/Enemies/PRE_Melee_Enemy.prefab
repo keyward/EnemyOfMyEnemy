@@ -798,7 +798,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160354}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.04, y: 1.33, z: 8.365}
+  m_LocalPosition: {x: 42.128937, y: 0.5, z: 3.579712}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 403208}
@@ -1635,7 +1635,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPower: 2
-  stunColor: {r: 0.3996453, g: 0, b: 0.8161765, a: 0}
   enemySounds:
   - {fileID: 8300000, guid: fd522532f29827a478fdb0f522021093, type: 3}
   - {fileID: 8300000, guid: 9ba6c938550aca340852b66282431484, type: 3}
@@ -1758,7 +1757,7 @@ NavMeshAgent:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160354}
   m_Enabled: 1
-  m_Radius: 1
+  m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -1768,7 +1767,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.88
-  m_BaseOffset: 0
+  m_BaseOffset: 0.1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1001 &100100000

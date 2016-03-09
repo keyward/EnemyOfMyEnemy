@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: e56f89f15180c7c45a09c1a1739077be
-timeCreated: 1457464886
+guid: 928f2ef6658186f4babc1626e0aad303
+timeCreated: 1457489645
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -139,7 +139,7 @@ ModelImporter:
     400128: Wing_r
     400130: Wing_r2
     400132: Wing_r3
-    7400000: GargoyleSmash
+    7400000: GargoyleIdle
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -163,17 +163,17 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: GargoyleSmash
+      name: GargoyleIdle
       takeName: Take 001
       firstFrame: 1
-      lastFrame: 110
+      lastFrame: 120
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

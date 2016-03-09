@@ -9,11 +9,6 @@ public class AIBaseClass : MonoBehaviour {
     protected float _lungeSmoothing;
     protected bool _actionAvailable;
 
-    // Colors 
-    public Color stunColor;
-    protected Renderer _objectRender;
-    protected Color _initialColor;
-
     // Navigation
     protected Transform _playerTransform;
     protected NavMeshAgent _pathFinder;
@@ -31,7 +26,6 @@ public class AIBaseClass : MonoBehaviour {
     {
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         _pathFinder = GetComponent<NavMeshAgent>();
-        _objectRender = GetComponent<Renderer>();
 
         _enemyAudio = GetComponent<AudioSource>();
 
@@ -48,9 +42,6 @@ public class AIBaseClass : MonoBehaviour {
     {
         _actionAvailable = false;
 
-        _initialColor = _objectRender.material.color;
-        _objectRender.material.color = stunColor;
-
         _enemyAudio.clip = enemySounds[1];
         _enemyAudio.Play();
 
@@ -60,7 +51,6 @@ public class AIBaseClass : MonoBehaviour {
         yield return new WaitForSeconds(2f);
 
         _actionAvailable = true;
-        _objectRender.material.color = _initialColor;
 
         if(_pathFinder)
             _pathFinder.Resume();
