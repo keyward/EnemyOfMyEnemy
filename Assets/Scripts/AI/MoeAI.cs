@@ -11,13 +11,14 @@ public class MoeAI : MonoBehaviour {
     [HideInInspector] public aiState currentState;
     private bool _attacking;
     private bool _frozen;
+    private bool _idle;
 
     // Animations - Particles
     public GameObject attackParticles;
     private Animator _moeAnimator;
     private int _moeAttack;
-    private int _moeCharge; 
-
+    private int _moeCharge;
+    private int _moeIdle;
 
     // MoeAI Sounds
     public AudioClip[] moeSounds;
@@ -44,6 +45,7 @@ public class MoeAI : MonoBehaviour {
         currentState = aiState.following;
         _attacking = false;
         _frozen = false;
+        _idle = true;
 
         // Moe attack
         _areaDamage = transform.GetChild(0).gameObject;
@@ -60,6 +62,7 @@ public class MoeAI : MonoBehaviour {
         _moeAnimator = GetComponent<Animator>();
         _moeAttack = Animator.StringToHash("Attack");
         _moeCharge = Animator.StringToHash("Charging");
+        _moeIdle = Animator.StringToHash("Idling");
 
         // ************************************* //
         // ** Drives the entire State Machine ** //
@@ -67,6 +70,12 @@ public class MoeAI : MonoBehaviour {
         InvokeRepeating("StateLogic", 0f, .1f);
 	}
 	
+    void Update()
+    {
+        if (_idle)
+            transform.LookAt(_playerTransform);
+    }
+
     void StateLogic()
     {
         //Debug.LogWarning(currentState);
@@ -103,6 +112,19 @@ public class MoeAI : MonoBehaviour {
 
     void Follow()
     {
+        // if moe is following the player and isn't moving - idle
+        if (_navAgent.velocity == Vector3.zero && !_idle)
+        {
+            _idle = true;
+            _moeAnimator.SetBool(_moeIdle, true);
+        }
+        // if moe is following and is moving - run
+        else if (_navAgent.velocity != Vector3.zero && _idle)
+        {
+            _idle = false;
+            _moeAnimator.SetBool(_moeIdle, false);
+        }
+
         // stops 5 meters from player //
         if (Vector3.Distance(transform.position, _playerTransform.position) > 6f)
         {
@@ -130,28 +152,24 @@ public class MoeAI : MonoBehaviour {
 
         if(currentState != aiState.stoned)
         {
-            // Play "GargoyleSmash" animation
-
             if (_enemyTarget)
                 StartCoroutine(LookAtTarget());
 
             _moeAnimator.SetTrigger(_moeAttack);
-
-            
-            // syncing damage/particles to animation time
-            yield return new WaitForSeconds(.8f);
-
-            // Attack Effects
-            Destroy(Instantiate(attackParticles, transform.position, Quaternion.identity), 1f);
-            _moeSoundPlayer.clip = moeSounds[0];
-            _moeSoundPlayer.Play();
-
-            // Deal damage
-            _areaDamage.SetActive(true);
+           // ** MoeAttack() is timed to frame 55 of Smash Animation ** //
         }
-        
-        yield return new WaitForSeconds(.1f);
+    }
 
+    public IEnumerator MoeAttack()
+    {
+        // Attack Effects
+        Destroy(Instantiate(attackParticles, transform.position, Quaternion.identity), 1f);
+        _moeSoundPlayer.clip = moeSounds[0];
+        _moeSoundPlayer.Play();
+
+        // Deal damage
+        _areaDamage.SetActive(true);
+        yield return new WaitForSeconds(.1f);
         _areaDamage.SetActive(false);
 
         // reset state
@@ -261,6 +279,7 @@ public class MoeAI : MonoBehaviour {
         if(_frozen)
             while(_skinMesh.material.color.r >= .49f)
             {
+                // Texture Lerp to stone texture
                 _skinMesh.material.color -= new Color(.01f, .01f, .01f);
                 yield return null;
             }
@@ -268,6 +287,7 @@ public class MoeAI : MonoBehaviour {
         else
             while(_skinMesh.material.color.r < 1.0f)
             {
+                // Texture Lerp back to regular texture
                 _skinMesh.material.color += new Color(.01f, .01f, .01f);
                 yield return null;
             }
@@ -277,7 +297,9 @@ public class MoeAI : MonoBehaviour {
     {
         while(currentState == aiState.attacking)
         {
-            transform.LookAt(_enemyTarget);
+            if(!_frozen)
+                transform.LookAt(_enemyTarget);
+
             yield return null;
         }
     }

@@ -13016,7 +13016,7 @@ Prefab:
       objectReference: {fileID: 104684, guid: 0c2eadb60e93a714a860b6eeca49a88c, type: 2}
     - target: {fileID: 11450820, guid: 18d7d6b470386bb45b1cb8a4b5d727aa, type: 2}
       propertyPath: enemiesToSpawn
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11450820, guid: 18d7d6b470386bb45b1cb8a4b5d727aa, type: 2}
       propertyPath: delayBeforeSpawn
@@ -14377,7 +14377,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 410744, guid: 67e601321d16fc346b13ca1ebad87c05, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 36
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 67e601321d16fc346b13ca1ebad87c05, type: 2}
