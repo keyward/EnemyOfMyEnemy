@@ -12,10 +12,14 @@ public class Spider : MonoBehaviour {
 
     void Awake()
     {
-        _enemyManageRef = GameObject.FindGameObjectWithTag("EnemyMgr").GetComponent<EnemyManager>();
         _spawnLocation = transform.position;
 
         StartCoroutine(CrawlAround());
+    }
+
+    void OnEnable()
+    {
+        _enemyManageRef = GameObject.FindGameObjectWithTag("EnemyMgr").GetComponent<EnemyManager>();
     }
 
 
@@ -34,7 +38,7 @@ public class Spider : MonoBehaviour {
     {
         while (true)
         {
-            // get a random position to move to while staying within bounds //
+            // get a random position while staying within bounds //
             Vector3 nextPosition = new Vector3(Random.Range(_spawnLocation.x - 10f, _spawnLocation.x + 10f),   //x
                                                transform.position.y,                                           //y
                                                Random.Range(_spawnLocation.z - 10f, _spawnLocation.z + 10f));  //z
