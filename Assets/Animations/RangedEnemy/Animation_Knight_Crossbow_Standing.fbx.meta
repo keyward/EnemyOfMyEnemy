@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 7da0537771f90d040bc9546461ab185f
-timeCreated: 1457537524
+guid: a889e57d48639cd4d9ac2c7e8d088bf5
+timeCreated: 1457552514
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -181,7 +181,7 @@ ModelImporter:
     400170: RightFoot_IK_BakingLOC
     400172: RightForeArm_IK_BakingLOC
     400174: RightLeg_IK_BakingLOC
-    7400000: RangedShot
+    7400000: Standing
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -205,17 +205,17 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: RangedShot
+      name: Standing
       takeName: Take 001
       firstFrame: 0
-      lastFrame: 38
+      lastFrame: 9
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -227,15 +227,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0.39933443
-        functionName: Shoot
-        data: 
-        objectReferenceParameter: {fileID: 100162, guid: 90872a1d1e807a54f84077de3d91c3bd,
-          type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask:
       - path: 
         weight: 1
