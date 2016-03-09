@@ -78,7 +78,7 @@ public class RangedEnemy : AIBaseClass {
     {
         print("stunned");
         _stunned = true;
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
         _stunned = false;
     }
 }

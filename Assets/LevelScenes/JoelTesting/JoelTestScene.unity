@@ -815,9 +815,9 @@ Prefab:
       propertyPath: m_Name
       value: PRE_MoeAI (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 110188, guid: 67e601321d16fc346b13ca1ebad87c05, type: 2}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 13672944, guid: 67e601321d16fc346b13ca1ebad87c05, type: 2}
+      propertyPath: m_Center.y
+      value: 1.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 67e601321d16fc346b13ca1ebad87c05, type: 2}
