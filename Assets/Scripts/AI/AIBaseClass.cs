@@ -9,6 +9,7 @@ public class AIBaseClass : MonoBehaviour {
     public int attackPower;
     protected float _lungeSmoothing;
     protected bool _actionAvailable;
+	protected bool _attackReady = false;
 
     // Navigation
     protected Transform _playerTransform;

@@ -8,6 +8,7 @@ public class MeleeEnemy : AIBaseClass {
     public float lungeDistance;
 	public float circleDistance;
     private EnemyManager _enemyManagerRef;
+	private Transform retreatPoint;
 
 
     protected override void Awake ()
@@ -30,17 +31,17 @@ public class MeleeEnemy : AIBaseClass {
         // If nav mesh active...
         if(_pathFinder.isActiveAndEnabled)
         {
-			// Descision Tree
-			if (_actionAvailable) {
-
-			}
             // ... and within lunging distance -- lunge //
-			if (Vector3.Distance (transform.position, _playerTransform.position) <= lungeDistance) {
-				StartCoroutine (Lunge ());
-			}
-            // ... and able to move -- go towards player //
-			else if (_actionAvailable) {
+			if (_actionAvailable) {
+				
+				if (_attackReady) {
+					StartCoroutine (Lunge ());
+					print ("lunge");
+				}
+				// ... and able to move -- go towards player //
+
 				this.Seek ();
+
 			}
         }
     }
@@ -61,11 +62,18 @@ public class MeleeEnemy : AIBaseClass {
 		if (_pathFinder.remainingDistance > this.circleDistance + 1) 
 		{
 			_pathFinder.Resume ();
+			this._attackReady = false;
 		} 
 		else if (_pathFinder.remainingDistance <= this.circleDistance) 
 		{
 			_pathFinder.Stop ();
+			this._attackReady = true;
 		}
 		base.Seek ();
+	}
+
+	protected override void Retreat ()
+	{
+		base.Retreat ();
 	}
 }
