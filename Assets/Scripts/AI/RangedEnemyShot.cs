@@ -15,6 +15,6 @@ public class RangedEnemyShot : MonoBehaviour {
 	void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
-            _rangedEnemy.ShootAtPlayer();
+            _rangedEnemy.LookAtPlayer();
     }
 }

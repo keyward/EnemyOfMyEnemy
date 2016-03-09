@@ -73,7 +73,15 @@ public class MoeAI : MonoBehaviour {
     void Update()
     {
         if (_idle)
-            transform.LookAt(_playerTransform);
+        {
+            // slowly rotate Moe towards player if he is standing still and can move
+            if (_idle && !_frozen)
+            {
+                Vector3 targetDirection = _playerTransform.position - transform.position;
+                Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, Time.deltaTime * 2f, 0f);
+                transform.rotation = Quaternion.LookRotation(newDirection);
+            }
+        }
     }
 
     void StateLogic()
