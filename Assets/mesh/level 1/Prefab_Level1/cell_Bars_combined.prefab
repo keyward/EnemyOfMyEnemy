@@ -10,6 +10,8 @@ GameObject:
   - 4: {fileID: 441406}
   - 33: {fileID: 3360238}
   - 23: {fileID: 2352884}
+  - 208: {fileID: 20873806}
+  - 136: {fileID: 13615486}
   m_Layer: 0
   m_Name: cell_Bars_combined
   m_TagString: Untagged
@@ -23,8 +25,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147530}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.05, y: 0, z: 0.21}
+  m_LocalRotation: {x: 0, y: -0.8434097, z: 0, w: 0.537271}
+  m_LocalPosition: {x: -0.11343384, y: -0.38761878, z: 0.000022888184}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -63,6 +65,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147530}
   m_Mesh: {fileID: 4300000, guid: 0809413fd27d1ac41812886e989a9fba, type: 3}
+--- !u!136 &13615486
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147530}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 3.2668831
+  m_Height: 15
+  m_Direction: 1
+  m_Center: {x: -0.047966372, y: 0.38761872, z: -0.10279109}
+--- !u!208 &20873806
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147530}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 3, y: 2.108, z: 3}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.048, y: 0.388, z: -0.10300001}
+  m_TimeToStationary: 0.5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

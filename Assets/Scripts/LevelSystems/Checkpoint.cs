@@ -13,7 +13,7 @@ public class Checkpoint : MonoBehaviour {
     {
         _activatedCheckpoint = false;
         torchParticles.SetActive(false);
-	}
+    }
 	
     
     void OnTriggerEnter(Collider other)
