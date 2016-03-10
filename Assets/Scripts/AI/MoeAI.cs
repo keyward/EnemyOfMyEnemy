@@ -89,7 +89,15 @@ public class MoeAI : MonoBehaviour {
         //Debug.LogWarning(currentState);
 
         if (currentState == aiState.stopped)
+        {
+            if(_navAgent.velocity == Vector3.zero && !_idle)
+            {
+                _idle = true;
+                _moeAnimator.SetBool(_moeIdle, true);
+            }
             return;
+        }
+            
 
         switch(currentState)
         {
