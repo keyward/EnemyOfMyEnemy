@@ -4,6 +4,7 @@ using System.Collections;
 public class Destroy : MonoBehaviour {
 
     public AudioSource deathSound;
+    public float timeUntilDestroyed;
 
 	
 	void Start ()
@@ -17,6 +18,6 @@ public class Destroy : MonoBehaviour {
         }
         
 
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, timeUntilDestroyed);
 	}
 }
