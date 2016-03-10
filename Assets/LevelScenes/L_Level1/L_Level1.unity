@@ -2922,35 +2922,39 @@ Prefab:
     m_Modifications:
     - target: {fileID: 420548, guid: 9b48bfb913a229d4f986ac60ff86b482, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.1699982
+      value: 2.896
       objectReference: {fileID: 0}
     - target: {fileID: 420548, guid: 9b48bfb913a229d4f986ac60ff86b482, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.29999995
+      value: -0.30000067
       objectReference: {fileID: 0}
     - target: {fileID: 420548, guid: 9b48bfb913a229d4f986ac60ff86b482, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -28.16
+      value: -17.811
       objectReference: {fileID: 0}
     - target: {fileID: 420548, guid: 9b48bfb913a229d4f986ac60ff86b482, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.11344067
+      value: 0.19751088
       objectReference: {fileID: 0}
     - target: {fileID: 420548, guid: 9b48bfb913a229d4f986ac60ff86b482, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.11344087
+      value: 0.19751109
       objectReference: {fileID: 0}
     - target: {fileID: 420548, guid: 9b48bfb913a229d4f986ac60ff86b482, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.69794786
+      value: 0.678962
       objectReference: {fileID: 0}
     - target: {fileID: 420548, guid: 9b48bfb913a229d4f986ac60ff86b482, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.69794786
+      value: 0.678962
       objectReference: {fileID: 0}
     - target: {fileID: 420548, guid: 9b48bfb913a229d4f986ac60ff86b482, type: 2}
       propertyPath: m_RootOrder
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6547168, guid: 9b48bfb913a229d4f986ac60ff86b482, type: 2}
+      propertyPath: m_Size.y
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b48bfb913a229d4f986ac60ff86b482, type: 2}
@@ -12143,7 +12147,7 @@ Transform:
   m_Children:
   - {fileID: 40589814}
   m_Father: {fileID: 0}
-  m_RootOrder: 94
+  m_RootOrder: 95
 --- !u!1001 &542217851
 Prefab:
   m_ObjectHideFlags: 0
