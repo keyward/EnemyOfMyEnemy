@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RangedEnemy : AIBaseClass {
+public class RangedEnemy : MonoBehaviour {
 
  
     [Header("Ranged Enemy")]
@@ -13,13 +13,23 @@ public class RangedEnemy : AIBaseClass {
 
 
     private bool _stunned;
+    private bool _actionAvailable;
     private int _shootAnimation;
     public ParticleSystem _stunParticles;
 
+    private Transform _playerTransform;
+    private Animator _aiAnimator;
 
-	protected override void Awake ()
+    private AudioSource _enemyAudio;
+    public AudioClip[] enemySounds;
+
+
+	void Awake ()
     {
-        base.Awake();
+        _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        _aiAnimator = GetComponent<Animator>();
+        _enemyAudio = GetComponent<AudioSource>();
+
         _actionAvailable = true;
         _stunned = false;
 
@@ -32,7 +42,6 @@ public class RangedEnemy : AIBaseClass {
         if (_stunned)
             return;
 
-        print("looking");
         // increase / decrease accuracy offset based on distance to the player
 
         // Make the archer shoot with some inaccuracy
@@ -76,7 +85,6 @@ public class RangedEnemy : AIBaseClass {
 
     IEnumerator Stunned()
     {
-        print("stunned");
         _stunned = true;
         _stunParticles.Play();
         yield return new WaitForSeconds(2f);

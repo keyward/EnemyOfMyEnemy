@@ -240,23 +240,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &116348
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 467436}
-  - 198: {fileID: 19847438}
-  - 199: {fileID: 19999818}
-  m_Layer: 0
-  m_Name: P_StunStarEffect_01
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &116730
 GameObject:
   m_ObjectHideFlags: 1
@@ -627,6 +610,23 @@ GameObject:
   - 4: {fileID: 427968}
   m_Layer: 0
   m_Name: Bind_Spine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &141386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 417742}
+  - 198: {fileID: 19845886}
+  - 199: {fileID: 19932450}
+  m_Layer: 0
+  m_Name: P_StunStarEffect_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1641,9 +1641,21 @@ Transform:
   - {fileID: 471690}
   - {fileID: 426404}
   - {fileID: 439482}
-  - {fileID: 467436}
+  - {fileID: 417742}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!4 &417742
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141386}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 2.18, z: 0}
+  m_LocalScale: {x: 0.6666667, y: 0.6666666, z: 0.6666666}
+  m_Children: []
+  m_Father: {fileID: 416034}
+  m_RootOrder: 4
 --- !u!4 &419408
 Transform:
   m_ObjectHideFlags: 1
@@ -2247,18 +2259,6 @@ Transform:
   - {fileID: 462320}
   m_Father: {fileID: 442128}
   m_RootOrder: 0
---- !u!4 &467436
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 116348}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 2.18, z: 0}
-  m_LocalScale: {x: 0.6666667, y: 0.6666666, z: 0.6666666}
-  m_Children: []
-  m_Father: {fileID: 416034}
-  m_RootOrder: 4
 --- !u!4 &468110
 Transform:
   m_ObjectHideFlags: 1
@@ -2767,15 +2767,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e74a0f0820bae24e8e84a3a2b90b164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 1
-  enemySounds:
-  - {fileID: 8300000, guid: 2ebafb4a6edb8bc43b65fe9f4d942669, type: 3}
-  - {fileID: 8300000, guid: 9ba6c938550aca340852b66282431484, type: 3}
   bulletPrefab: {fileID: 5403394, guid: 1e03256e497e6f24fb08cba3582058d3, type: 2}
   firePoint: {fileID: 471690}
   fireDelay: 3
   accuracyOffset: 3
-  _stunParticles: {fileID: 19847438}
+  _stunParticles: {fileID: 19845886}
+  enemySounds:
+  - {fileID: 8300000, guid: 2ebafb4a6edb8bc43b65fe9f4d942669, type: 3}
+  - {fileID: 8300000, guid: 9ba6c938550aca340852b66282431484, type: 3}
 --- !u!114 &11440244
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2919,12 +2918,12 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000004261732, y: -0.04800141, z: -0.018936902}
     m_Extent: {x: 0.7837192, y: 1.0551054, z: 0.33087155}
   m_DirtyAABB: 0
---- !u!198 &19847438
+--- !u!198 &19845886
 ParticleSystem:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 116348}
+  m_GameObject: {fileID: 141386}
   serializedVersion: 2
   lengthInSec: 5
   startDelay:
@@ -4388,12 +4387,12 @@ ParticleSystem:
     subEmitterCollision1: {fileID: 0}
     subEmitterDeath: {fileID: 0}
     subEmitterDeath1: {fileID: 0}
---- !u!199 &19999818
+--- !u!199 &19932450
 ParticleSystemRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 116348}
+  m_GameObject: {fileID: 141386}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1

@@ -6,7 +6,6 @@ public class AIBaseClass : MonoBehaviour {
     [Header("AI Base")]
 
     // Attack
-    public int attackPower;
     protected float _lungeSmoothing;
     protected bool _actionAvailable;
 
