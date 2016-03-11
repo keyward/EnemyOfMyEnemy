@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathSound: {fileID: 8293522}
+  timeUntilDestroyed: 2
 --- !u!198 &19844322
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -89,7 +89,18 @@ public class MoeAI : MonoBehaviour {
         //Debug.LogWarning(currentState);
 
         if (currentState == aiState.stopped)
+        {
+            // if moe has reached his destination - stop walking
+            if(_navAgent.velocity == Vector3.zero && !_idle)
+            {
+                _idle = true;
+                _moeAnimator.SetBool(_moeIdle, true);
+            }
+
+            // if moe is stopped don't do anything
             return;
+        }
+            
 
         switch(currentState)
         {
@@ -168,10 +179,11 @@ public class MoeAI : MonoBehaviour {
         }
     }
 
+    // -- Called inside an animation event -- //
     public IEnumerator MoeAttack()
     {
         // Attack Effects
-        Destroy(Instantiate(attackParticles, transform.position, Quaternion.identity), 1f);
+        Destroy(Instantiate(attackParticles, transform.position, Quaternion.Euler(90f, transform.rotation.y, transform.rotation.z)), 1f);
         _moeSoundPlayer.clip = moeSounds[0];
         _moeSoundPlayer.Play();
 
