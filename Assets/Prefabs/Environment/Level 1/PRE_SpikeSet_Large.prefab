@@ -77,7 +77,7 @@ GameObject:
   - 65: {fileID: 6548338}
   - 208: {fileID: 20831948}
   m_Layer: 0
-  m_Name: PRE_LevelEntrySpikes
+  m_Name: PRE_SpikeSet_Large
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
