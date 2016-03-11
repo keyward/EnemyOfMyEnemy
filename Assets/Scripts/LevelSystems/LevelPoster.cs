@@ -5,11 +5,9 @@ using System.Collections;
 public class LevelPoster : MonoBehaviour {
 
 
-    // get canvas by tag
-    // Insert Img to display
     public Sprite posterToDisplay;
 
-    private GameObject _posterCanvas;
+    private GameObject _posterPanel;
     private Image _canvasImage;
     private bool _posterTurnedOn;
     private bool _inputEnabled;
@@ -17,12 +15,12 @@ public class LevelPoster : MonoBehaviour {
 
     void Awake()
     {
-        _posterCanvas = GameObject.FindGameObjectWithTag("PosterCanvas");
+        _posterPanel = GameObject.FindGameObjectWithTag("PosterCanvas").transform.FindChild("PosterPanel").gameObject;
 
-        if (!_posterCanvas)
+        if (!_posterPanel)
             print("TURN THE CANVAS BACK ON");
         else
-            _canvasImage = _posterCanvas.transform.FindChild("PosterImage").GetComponent<Image>();
+            _canvasImage = _posterPanel.transform.FindChild("PosterImage").GetComponent<Image>();
 
         _posterTurnedOn = false;
         _inputEnabled = false;
@@ -30,8 +28,8 @@ public class LevelPoster : MonoBehaviour {
 
     void Start()
     {
-        if (_posterCanvas.activeInHierarchy)
-             _posterCanvas.SetActive(false);
+        if (_posterPanel.activeInHierarchy)
+             _posterPanel.SetActive(false);
     }
 
     void Update()
@@ -39,7 +37,7 @@ public class LevelPoster : MonoBehaviour {
         if(_inputEnabled && Input.GetButtonDown("Interact"))
         {
             _posterTurnedOn = !_posterTurnedOn;
-            _posterCanvas.SetActive(_posterTurnedOn); 
+            _posterPanel.SetActive(_posterTurnedOn); 
         }
     }
 
@@ -59,7 +57,7 @@ public class LevelPoster : MonoBehaviour {
         if(other.CompareTag("Player"))
         {
             _inputEnabled = false;
-            _posterCanvas.SetActive(false);
+            _posterPanel.SetActive(false);
         }
     }
 }
