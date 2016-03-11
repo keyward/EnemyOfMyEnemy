@@ -13,9 +13,8 @@ public class RangedEnemy : AIBaseClass {
 
 
     private bool _stunned;
-
-    
     private int _shootAnimation;
+    public ParticleSystem _stunParticles;
 
 
 	protected override void Awake ()
@@ -25,6 +24,7 @@ public class RangedEnemy : AIBaseClass {
         _stunned = false;
 
         _shootAnimation = Animator.StringToHash("Shooting");
+        _stunParticles.Stop();
 	}
 
     public void LookAtPlayer()
@@ -78,7 +78,9 @@ public class RangedEnemy : AIBaseClass {
     {
         print("stunned");
         _stunned = true;
+        _stunParticles.Play();
         yield return new WaitForSeconds(2f);
         _stunned = false;
+        _stunParticles.Stop();
     }
 }
