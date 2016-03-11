@@ -6,6 +6,14 @@ public class Narwhal_Trap : MonoBehaviour
 
 	public GameObject narwhal;
 	private Vector3 spawnPoint = Vector3.zero;
+    private MeshRenderer _meshVolume;
+
+
+    void Awake()
+    {
+        _meshVolume = GetComponent<MeshRenderer>();
+        _meshVolume.enabled = false;
+    }
 
 	void OnCollisionEnter (Collision col)
 	{
