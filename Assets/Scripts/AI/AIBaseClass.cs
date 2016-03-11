@@ -62,8 +62,6 @@ public class AIBaseClass : MonoBehaviour {
         if (!_actionAvailable)
             yield break;
 
-        print(gameObject.name + "  start lunge");
-
         _aiAnimator.SetTrigger(_attackAnimation);
         _actionAvailable = false;
 
@@ -102,6 +100,5 @@ public class AIBaseClass : MonoBehaviour {
 
         _actionAvailable = true;
         _aiAnimator.enabled = true;
-        print(gameObject.name+"   end lunge");
     }
 }

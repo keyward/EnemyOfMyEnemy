@@ -43,7 +43,7 @@ GameObject:
   - 65: {fileID: 6591912}
   - 208: {fileID: 20832174}
   m_Layer: 0
-  m_Name: PRE_SmallSpikeSet
+  m_Name: PRE_SpikeSet_Small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

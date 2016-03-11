@@ -120,7 +120,6 @@ public class Health : MonoBehaviour {
     void ChangeChainGraphic()
     {
         // (5 - minus health) * .2f;
-        print("damage taken");
         switch(health)
         {
             case 5:
