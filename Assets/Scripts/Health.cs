@@ -15,11 +15,11 @@ public class Health : MonoBehaviour {
     public GameObject deathParticles;
     [HideInInspector] public Transform playerRespawnPoint;
 
-    // Sounds
-    // 0 - damage sound
-    // 1 - death sound
+    // Audio
     public AudioClip[] damageSoundEffects;
     private AudioSource _damageAudio;
+    // 0 damage sound
+    // 1 death  sound
 
     [SerializeField] private Image _playerHealthImage;
 
