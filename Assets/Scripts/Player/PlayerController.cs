@@ -8,9 +8,12 @@ public class PlayerController : MonoBehaviour {
     public Rigidbody bulletPrefab;
     public Transform firePoint;
 
-    // Sounds
+    // Audio
     public AudioClip[] playerSoundEffects;
     private AudioSource _playerSounds;
+    // 0 Dash 
+    // 1 Shoot
+    // 2 Taunt
 
     // Components
     private Rigidbody _playerControls;

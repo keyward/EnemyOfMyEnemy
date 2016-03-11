@@ -23,6 +23,8 @@ public class MoeAI : MonoBehaviour {
     // MoeAI Sounds
     public AudioClip[] moeSounds;
     private AudioSource _moeSoundPlayer;
+    // 0 stomp
+    // 1 dash
 
     // MoeAI attacks
     private GameObject _areaDamage;
