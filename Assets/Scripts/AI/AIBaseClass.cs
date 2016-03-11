@@ -62,22 +62,46 @@ public class AIBaseClass : MonoBehaviour {
         if (!_actionAvailable)
             yield break;
 
+        print(gameObject.name + "  start lunge");
+
         _aiAnimator.SetTrigger(_attackAnimation);
         _actionAvailable = false;
 
-        Vector3 target = _playerTransform.position;
         _enemyAudio.clip = enemySounds[0];
         _enemyAudio.Play();
+
+        Vector3 target = _playerTransform.position;
+        _pathFinder.SetDestination(target);
         
+
+        float initialSpeed = _pathFinder.speed;
+        float initialAccel = _pathFinder.acceleration;
+
+        _pathFinder.speed = 7f;
+        _pathFinder.acceleration = 16f;
+
+        float timeCheck = 0f;
+
         // dash towards player -- attack
-        while (Vector3.Distance(transform.position, target) > .2f)
+        while (Vector3.Distance(transform.position, target) > .5f)
         {
-            transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * _lungeSmoothing);
+            if (timeCheck >= 2f)
+                break;
+
+            timeCheck += Time.deltaTime;
+            //transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * _lungeSmoothing);
             yield return null;
         }
+
+        _pathFinder.speed = initialSpeed;
+        _pathFinder.acceleration = initialAccel;
+
+        _aiAnimator.enabled = false;
 
         yield return new WaitForSeconds(1f);
 
         _actionAvailable = true;
+        _aiAnimator.enabled = true;
+        print(gameObject.name+"   end lunge");
     }
 }
