@@ -147,7 +147,7 @@ ModelImporter:
     400136: Tail_2
     400138: Tail_3
     400140: Tail_Base
-    7400000: Take 001
+    7400000: PlayerShoot
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -169,7 +169,184 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: PlayerShoot
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 79
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.22385621
+        functionName: ShootAnimEvent
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/Hips
+        weight: 1
+      - path: Root/Hips/LeftUpLeg
+        weight: 1
+      - path: Root/Hips/LeftUpLeg/LeftLeg
+        weight: 1
+      - path: Root/Hips/LeftUpLeg/LeftLeg/LeftFoot
+        weight: 1
+      - path: Root/Hips/LeftUpLeg/LeftLeg/LeftFoot/Left_Foot
+        weight: 1
+      - path: Root/Hips/LeftUpLeg/LeftLeg/LeftFoot/Left_Foot/body:LeftToeBase
+        weight: 1
+      - path: Root/Hips/LeftUpLeg/LeftLeg/LeftFoot/Left_Foot/body:LeftToeBase/body:LeftToe_End
+        weight: 1
+      - path: Root/Hips/LeftUpLeg/LeftLeg/LeftFoot/Left_Foot/LeftToe_SmallBase
+        weight: 1
+      - path: Root/Hips/LeftUpLeg/LeftLeg/LeftFoot/Left_Foot/LeftToe_SmallBase/LeftToe_SmallEnd
+        weight: 1
+      - path: Root/Hips/RightUpLeg
+        weight: 1
+      - path: Root/Hips/RightUpLeg/RightLeg
+        weight: 1
+      - path: Root/Hips/RightUpLeg/RightLeg/RightFoot
+        weight: 1
+      - path: Root/Hips/RightUpLeg/RightLeg/RightFoot/Right_Foot
+        weight: 1
+      - path: Root/Hips/RightUpLeg/RightLeg/RightFoot/Right_Foot/RightToe_SmallBase
+        weight: 1
+      - path: Root/Hips/RightUpLeg/RightLeg/RightFoot/Right_Foot/RightToe_SmallBase/RightToe_SmallEnd
+        weight: 1
+      - path: Root/Hips/RightUpLeg/RightLeg/RightFoot/Right_Foot/RightToeBase
+        weight: 1
+      - path: Root/Hips/RightUpLeg/RightLeg/RightFoot/Right_Foot/RightToeBase/RightToe_End
+        weight: 1
+      - path: Root/Hips/Spine
+        weight: 1
+      - path: Root/Hips/Spine/Spine1
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/body:RightShoulder
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/body:RightShoulder/RightArm
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/body:RightShoulder/RightArm/RightForeArm
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/body:RightShoulder/RightArm/RightForeArm/RightHand
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/body:RightShoulder/RightArm/RightForeArm/RightHand/RightHandIndex1
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/body:RightShoulder/RightArm/RightForeArm/RightHand/RightHandIndex1/RightHandIndex2
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/body:RightShoulder/RightArm/RightForeArm/RightHand/RightHandIndex1/RightHandIndex2/RightHandIndex3
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/body:RightShoulder/RightArm/RightForeArm/RightHand/RightHandIndex1/RightHandIndex2/RightHandIndex3/RightHandIndex4
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/body:RightShoulder/RightArm/RightForeArm/RightHand/RightHandMiddle1
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/body:RightShoulder/RightArm/RightForeArm/RightHand/RightHandMiddle1/RightHandMiddle2
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/body:RightShoulder/RightArm/RightForeArm/RightHand/RightHandMiddle1/RightHandMiddle2/RightHandMiddle3
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/body:RightShoulder/RightArm/RightForeArm/RightHand/RightHandMiddle1/RightHandMiddle2/RightHandMiddle3/RightHandMiddle4
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/body:RightShoulder/RightArm/RightForeArm/RightHand/RightHandThumb1
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/body:RightShoulder/RightArm/RightForeArm/RightHand/RightHandThumb1/RightHandThumb2
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/body:RightShoulder/RightArm/RightForeArm/RightHand/RightHandThumb1/RightHandThumb2/RightHandThumb3
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/body:RightShoulder/RightArm/RightForeArm/RightHand/RightHandThumb1/RightHandThumb2/RightHandThumb3/RightHandThumb4
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/Left_Wing_Base
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/Left_Wing_Base/Left_Wing_Mid
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/Left_Wing_Base/Left_Wing_Mid/Left_Wing_Tip
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/LeftShoulder
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/LeftShoulder/LeftArm
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/LeftShoulder/LeftArm/LeftForeArm
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/LeftShoulder/LeftArm/LeftForeArm/LeftHand
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandIndex1
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandIndex1/LeftHandIndex2
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandIndex1/LeftHandIndex2/LeftHandIndex3
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandIndex1/LeftHandIndex2/LeftHandIndex3/LeftHandIndex4
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandMiddle1
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandMiddle1/LeftHandMiddle2
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandMiddle1/LeftHandMiddle2/LeftHandMiddle3
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandMiddle1/LeftHandMiddle2/LeftHandMiddle3/LeftHandMiddle4
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandThumb1
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandThumb1/LeftHandThumb2
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandThumb1/LeftHandThumb2/LeftHandThumb3
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandThumb1/LeftHandThumb2/LeftHandThumb3/LeftHandThumb4
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/Neck
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/Neck/Head
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/Neck/Head/HeadTop_End
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/Neck/Head/HeadTop_End/Left_Ear
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/Neck/Head/HeadTop_End/Left_Eyebrow
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/Neck/Head/HeadTop_End/Right_Ear
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/Neck/Head/HeadTop_End/Right_Eyebrow
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/Right_Wing_Base
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/Right_Wing_Base/Right_Wing_Mid
+        weight: 1
+      - path: Root/Hips/Spine/Spine1/Spine2/Right_Wing_Base/Right_Wing_Mid/Right_Wing_Tip
+        weight: 1
+      - path: Root/Hips/Tail_Base
+        weight: 1
+      - path: Root/Hips/Tail_Base/Tail_1
+        weight: 1
+      - path: Root/Hips/Tail_Base/Tail_1/Tail_2
+        weight: 1
+      - path: Root/Hips/Tail_Base/Tail_1/Tail_2/Tail_3
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

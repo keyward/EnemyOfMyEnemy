@@ -39,15 +39,6 @@ public class Health : MonoBehaviour {
             
     }
 
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.G) && gameObject.CompareTag("Player"))
-        {
-            TakeDamage(5);
-        }
-
-    }
-
     // -- Remove health from object -- kill if necessary -- //
     public void TakeDamage(int damageAmount)
     {
