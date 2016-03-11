@@ -236,13 +236,17 @@ public class MoeAI : MonoBehaviour {
         _moeSoundPlayer.clip = moeSounds[1];
         _moeSoundPlayer.Play();
 
+        float bugCheck = 0f;
+
         // charge at players last position
         while(_navAgent.remainingDistance > .5f)
         {
             // if stoned in the middle of a charge -- cancel the charge
-            if (currentState == aiState.stoned)
+            if (currentState == aiState.stoned || bugCheck >= 3f)
                 break;
- 
+
+            bugCheck += Time.deltaTime;
+
             // perform charge
             yield return null;
         }
