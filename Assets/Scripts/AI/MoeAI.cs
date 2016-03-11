@@ -86,10 +86,13 @@ public class MoeAI : MonoBehaviour {
 
     void StateLogic()
     {
-        //Debug.LogWarning(currentState);
+        Debug.LogWarning(currentState);
 
         if (currentState == aiState.stopped)
         {
+            ///if (_navAgent.hasPath)
+              //  return;
+
             // if moe has reached his destination - stop walking
             if(_navAgent.velocity == Vector3.zero && !_idle)
             {
@@ -236,13 +239,17 @@ public class MoeAI : MonoBehaviour {
         _moeSoundPlayer.clip = moeSounds[1];
         _moeSoundPlayer.Play();
 
+        float bugCheck = 0f;
+
         // charge at players last position
         while(_navAgent.remainingDistance > .5f)
         {
             // if stoned in the middle of a charge -- cancel the charge
-            if (currentState == aiState.stoned)
+            if (currentState == aiState.stoned || currentState == aiState.stopped || bugCheck >= 3f)
                 break;
- 
+
+            bugCheck += Time.deltaTime;
+
             // perform charge
             yield return null;
         }
@@ -262,7 +269,8 @@ public class MoeAI : MonoBehaviour {
         //yield return new WaitForSeconds(.75f);
 
         // reset ai state
-        currentState = aiState.following;
+        if(currentState != aiState.stopped)
+            currentState = aiState.following;
         
         // attack cool down
         yield return new WaitForSeconds(3.5f);

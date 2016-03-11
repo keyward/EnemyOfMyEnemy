@@ -39,6 +39,15 @@ public class Health : MonoBehaviour {
             
     }
 
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.G) && gameObject.CompareTag("Player"))
+        {
+            TakeDamage(5);
+        }
+
+    }
+
     // -- Remove health from object -- kill if necessary -- //
     public void TakeDamage(int damageAmount)
     {
@@ -111,7 +120,6 @@ public class Health : MonoBehaviour {
     void ChangeChainGraphic()
     {
         // (5 - minus health) * .2f;
-        print("damage taken");
         switch(health)
         {
             case 5:
