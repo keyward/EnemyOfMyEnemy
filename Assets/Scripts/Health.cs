@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Health : MonoBehaviour {
@@ -10,16 +11,17 @@ public class Health : MonoBehaviour {
     private int _initialHealth;
     private bool _invincible;
 
+    // Death
     public GameObject deathParticles;
     [HideInInspector] public Transform playerRespawnPoint;
 
     // Sounds
+    // 0 - damage sound
+    // 1 - death sound
     public AudioClip[] damageSoundEffects;
-    /*
-        0 - damage sound
-        1 - death sound --- for player: Respawn Sound
-    */
     private AudioSource _damageAudio;
+
+    [SerializeField] private Image _playerHealthImage;
 
 
     void Awake()
@@ -27,7 +29,14 @@ public class Health : MonoBehaviour {
         _initialHealth = health;
         _invincible = false;
 
-        _damageAudio = GetComponent<AudioSource>(); 
+        _damageAudio = GetComponent<AudioSource>();
+
+        if (gameObject.CompareTag("Player"))
+        {
+            _playerHealthImage = GameObject.FindGameObjectWithTag("PosterCanvas").transform.FindChild("PlayerHealth").GetComponent<Image>();
+            ChangeChainGraphic();
+        }
+            
     }
 
     // -- Remove health from object -- kill if necessary -- //
@@ -38,7 +47,7 @@ public class Health : MonoBehaviour {
 
         if (gameObject.CompareTag("Player"))
         {
-            // room for more specific player functionality here
+            ChangeChainGraphic();
             CameraController.Instance.ScreenShake(.1f);
         }
 
@@ -96,5 +105,33 @@ public class Health : MonoBehaviour {
             transform.position = playerRespawnPoint.position;
 
         health = _initialHealth;
+    }
+
+    // *** ill come up with a better solution for this, im really tired right now *** //
+    void ChangeChainGraphic()
+    {
+        switch(health)
+        {
+            case 5:
+                _playerHealthImage.color = new Color(_playerHealthImage.color.r, _playerHealthImage.color.g, _playerHealthImage.color.b, 0.0f);
+                break;
+            case 4:
+                _playerHealthImage.color = new Color(_playerHealthImage.color.r, _playerHealthImage.color.g, _playerHealthImage.color.b, 0.2f);
+                break;
+            case 3:
+                _playerHealthImage.color = new Color(_playerHealthImage.color.r, _playerHealthImage.color.g, _playerHealthImage.color.b, 0.4f);
+                break;
+            case 2:
+                _playerHealthImage.color = new Color(_playerHealthImage.color.r, _playerHealthImage.color.g, _playerHealthImage.color.b, 0.6f);
+                break;
+            case 1:
+                _playerHealthImage.color = new Color(_playerHealthImage.color.r, _playerHealthImage.color.g, _playerHealthImage.color.b, 0.8f);
+                break;
+            case 0:
+                _playerHealthImage.color = new Color(_playerHealthImage.color.r, _playerHealthImage.color.g, _playerHealthImage.color.b, 1.0f);
+                break;
+            default: 
+                break;
+        }
     }
 }

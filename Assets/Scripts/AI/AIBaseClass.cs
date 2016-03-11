@@ -40,7 +40,6 @@ public class AIBaseClass : MonoBehaviour {
     // -- Temporarily disable enemy -- //
     protected virtual IEnumerator Stun()
     {
-        print("stun");
         _actionAvailable = false;
 
         _enemyAudio.clip = enemySounds[1];
