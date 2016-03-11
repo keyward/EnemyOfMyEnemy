@@ -55,6 +55,7 @@ public class MoeAI : MonoBehaviour {
 
         // navigation
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        print(_playerTransform.name);
         _navAgent = GetComponent<NavMeshAgent>();
 
         // etc Components
@@ -86,7 +87,7 @@ public class MoeAI : MonoBehaviour {
 
     void StateLogic()
     {
-        Debug.LogWarning(currentState);
+        //Debug.LogWarning(currentState);
 
         if (currentState == aiState.stopped)
         {
