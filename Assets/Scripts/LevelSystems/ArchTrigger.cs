@@ -31,15 +31,11 @@ public class ArchTrigger : MonoBehaviour {
         {
             _playerScript.canTaunt = !_playerScript.canTaunt;
 
-            _moeScript.currentState = MoeAI.aiState.stopped;
-            //_moeNav.Stop();
-            //_moeNav.velocity = Vector3.zero;
+            _moeScript.ChangeState(MoeAI.aiState.stopped);
 
             if(moeDestination)
-            {
                 _moeNav.SetDestination(moeDestination.position);
-                //_moeNav.Resume();
-            }
+            
 
             if (breakableWall)
                 breakableWall.canBeDestroyed = true;
