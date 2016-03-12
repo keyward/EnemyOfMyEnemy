@@ -24,6 +24,12 @@ public class Health : MonoBehaviour {
     [SerializeField] private Image _playerHealthImage;
 
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+            RespawnPlayer();
+    }
+
     void Awake()
     {
         _initialHealth = health;
