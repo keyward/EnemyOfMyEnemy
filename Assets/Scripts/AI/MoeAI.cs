@@ -23,6 +23,8 @@ public class MoeAI : MonoBehaviour {
     // MoeAI Sounds
     public AudioClip[] moeSounds;
     private AudioSource _moeSoundPlayer;
+    // 0 stomp
+    // 1 dash
 
     // MoeAI attacks
     private GameObject _areaDamage;
@@ -55,6 +57,7 @@ public class MoeAI : MonoBehaviour {
 
         // navigation
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        print(_playerTransform.name);
         _navAgent = GetComponent<NavMeshAgent>();
 
         // etc Components
@@ -86,7 +89,7 @@ public class MoeAI : MonoBehaviour {
 
     void StateLogic()
     {
-        Debug.LogWarning(currentState);
+        //Debug.LogWarning(currentState);
 
         if (currentState == aiState.stopped)
         {

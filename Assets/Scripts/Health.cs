@@ -15,11 +15,11 @@ public class Health : MonoBehaviour {
     public GameObject deathParticles;
     [HideInInspector] public Transform playerRespawnPoint;
 
-    // Sounds
-    // 0 - damage sound
-    // 1 - death sound
+    // Audio
     public AudioClip[] damageSoundEffects;
     private AudioSource _damageAudio;
+    // 0 damage sound
+    // 1 death  sound
 
     [SerializeField] private Image _playerHealthImage;
 
@@ -37,15 +37,6 @@ public class Health : MonoBehaviour {
             ChangeChainGraphic();
         }
             
-    }
-
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.G) && gameObject.CompareTag("Player"))
-        {
-            TakeDamage(5);
-        }
-
     }
 
     // -- Remove health from object -- kill if necessary -- //
