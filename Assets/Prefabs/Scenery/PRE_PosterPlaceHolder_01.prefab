@@ -12,6 +12,7 @@ GameObject:
   - 23: {fileID: 2321796}
   - 135: {fileID: 13568322}
   - 114: {fileID: 11422468}
+  - 65: {fileID: 6516092}
   m_Layer: 0
   m_Name: PRE_PosterPlaceHolder_01
   m_TagString: Untagged
@@ -56,7 +57,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162272}
   m_LocalRotation: {x: 0, y: 0.11899094, z: 0, w: 0.99289536}
-  m_LocalPosition: {x: 49.75, y: 3.48, z: -29.71}
+  m_LocalPosition: {x: 18.37, y: 3.49, z: 4.09}
   m_LocalScale: {x: 2.9017515, y: 3.7809985, z: 2.004393}
   m_Children:
   - {fileID: 402064}
@@ -128,6 +129,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171630}
   m_Mesh: {fileID: 4300000, guid: 1d1e17ac6cff024499f6ac107d5dcbab, type: 3}
+--- !u!65 &6516092
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162272}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0.00000047683716, y: 0, z: 0.00000047683716}
 --- !u!95 &9527434
 Animator:
   serializedVersion: 3
@@ -156,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc8ec5200f106444ba2b2dc278abb1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posterToDisplay: {fileID: 21300000, guid: 5d7354b88f21fa64e827296f0b8c9438, type: 3}
+  posterToDisplay: {fileID: 21300000, guid: f0514b03f1dc1154bbba22cb3fc54543, type: 3}
 --- !u!135 &13568322
 SphereCollider:
   m_ObjectHideFlags: 1
