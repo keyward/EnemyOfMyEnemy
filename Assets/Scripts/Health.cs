@@ -140,6 +140,5 @@ public class Health : MonoBehaviour {
             default: 
                 break;
         }
-        print(health);
     }
 }
