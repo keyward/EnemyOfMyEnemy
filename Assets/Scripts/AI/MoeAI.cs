@@ -57,7 +57,6 @@ public class MoeAI : MonoBehaviour {
 
         // navigation
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        print(_playerTransform.name);
         _navAgent = GetComponent<NavMeshAgent>();
 
         // etc Components
@@ -73,17 +72,14 @@ public class MoeAI : MonoBehaviour {
         InvokeRepeating("StateLogic", 0f, .1f);
 	}
 	
-    void Update()
+    void FixedUpdate()
     {
-        if (_idle)
+        // slowly rotate Moe towards player if he is standing still and can move
+        if (_idle && !_frozen)
         {
-            // slowly rotate Moe towards player if he is standing still and can move
-            if (_idle && !_frozen)
-            {
-                Vector3 targetDirection = _playerTransform.position - transform.position;
-                Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, Time.deltaTime * 2f, 0f);
-                transform.rotation = Quaternion.LookRotation(newDirection);
-            }
+            Vector3 targetDirection = _playerTransform.position - transform.position;
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, Time.deltaTime * 2f, 0f);
+            transform.rotation = Quaternion.LookRotation(newDirection);
         }
     }
 
@@ -93,9 +89,6 @@ public class MoeAI : MonoBehaviour {
 
         if (currentState == aiState.stopped)
         {
-            ///if (_navAgent.hasPath)
-              //  return;
-
             // if moe has reached his destination - stop walking
             if(_navAgent.velocity == Vector3.zero && !_idle)
             {
@@ -181,11 +174,10 @@ public class MoeAI : MonoBehaviour {
                 StartCoroutine(LookAtTarget());
 
             _moeAnimator.SetTrigger(_moeAttack);
-           // ** MoeAttack() is timed to frame 55 of Smash Animation ** //
         }
     }
 
-    // -- Called inside an animation event -- //
+    // -- Called inside _moeAttack animation event -- //
     public IEnumerator MoeAttack()
     {
         // Attack Effects
@@ -328,8 +320,13 @@ public class MoeAI : MonoBehaviour {
     {
         while(currentState == aiState.attacking)
         {
-            if(!_frozen)
-                transform.LookAt(_enemyTarget);
+            // if moe isn't frozen rotate towards enemy
+            if(!_frozen && _enemyTarget)
+            {
+                Vector3 targetDirection = _enemyTarget.position - transform.position;
+                Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, Time.deltaTime * 2f, 0f);
+                transform.rotation = Quaternion.LookRotation(newDirection);
+            }
 
             yield return null;
         }
@@ -349,5 +346,14 @@ public class MoeAI : MonoBehaviour {
 
             currentState = aiState.attacking;
         }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Fear"))
+            print("unfreeze");
+
+        if (other.CompareTag("Enemy"))
+            print("stop attacking");
     }
 }
