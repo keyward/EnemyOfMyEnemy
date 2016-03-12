@@ -418,15 +418,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 444756, guid: e796d8759b8896b4695197ea9e94c9a6, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 12.071992
+      value: 12.072
       objectReference: {fileID: 0}
     - target: {fileID: 444756, guid: e796d8759b8896b4695197ea9e94c9a6, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.6320715
+      value: 1.6321
       objectReference: {fileID: 0}
     - target: {fileID: 444756, guid: e796d8759b8896b4695197ea9e94c9a6, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -7.351034
+      value: -7.351
       objectReference: {fileID: 0}
     - target: {fileID: 444756, guid: e796d8759b8896b4695197ea9e94c9a6, type: 2}
       propertyPath: m_LocalRotation.x
@@ -446,12 +446,8 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 444756, guid: e796d8759b8896b4695197ea9e94c9a6, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 11406246, guid: e796d8759b8896b4695197ea9e94c9a6, type: 2}
-      propertyPath: deathParticles
-      value: 
-      objectReference: {fileID: 130552, guid: b0bbb2c797b3e6146a82ec755609369b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e796d8759b8896b4695197ea9e94c9a6, type: 2}
   m_IsPrefabParent: 0
