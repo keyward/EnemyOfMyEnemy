@@ -1611,7 +1611,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121942}
   m_LocalRotation: {x: 0, y: -0.7300901, z: 0, w: 0.6833509}
-  m_LocalPosition: {x: 0.6, y: -1.69, z: -1.9}
+  m_LocalPosition: {x: 4.88, y: -0.8, z: -2.76}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 467528}
@@ -2556,6 +2556,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3d459a71d559e67489f93c4245e1d011, type: 3}
   - {fileID: 8300000, guid: e2f51594be176224d8c1a496d8d63805, type: 3}
   canTaunt: 0
+  tauntDisabled: 0
 --- !u!114 &11457992
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2584,8 +2585,8 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: a04f9af95525dba40813c7cd5d00fbf7, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.3
-  m_Height: 1
+  m_Radius: 0.4
+  m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: 1.33, z: -0.1}
 --- !u!137 &13722896
