@@ -197,8 +197,6 @@ public class MoeAI : MonoBehaviour {
             bugTime += Time.deltaTime;
             yield return null;
         }
-
-        print("Moe was stoned for too long");
         // if Moe fails to attack -- make him Follow()
         ChangeState(aiState.following);
     }
@@ -232,6 +230,7 @@ public class MoeAI : MonoBehaviour {
 
         _attacking = true;
         _moeAnimator.SetBool(_moeCharge, true);
+        print("start Charge");
         
         // get initial values
         float normalSpeed = _navAgent.speed;
@@ -269,28 +268,26 @@ public class MoeAI : MonoBehaviour {
                 break;
 
             bugCheck += Time.deltaTime;
-            print("charging");
-            // perform charge
+
             yield return null;
         }
-        
+        print("stop charge animation");
+        _moeAnimator.SetBool(_moeCharge, false);
 
         // reset navAgent values to inital
         _chargeDamage.SetActive(false);
         _navAgent.ResetPath();
-        _moeAnimator.SetBool(_moeCharge, false);
+        
         _navAgent.speed = normalSpeed;
         _navAgent.acceleration = normalAcceleration;
         _navAgent.angularSpeed = normalAngularSpeed;
         _navAgent.stoppingDistance = normalStoppingDistance;
 
 
-        // until we have some sort of conveyance for Moe stopping - this needs to stay commented
-        //yield return new WaitForSeconds(.75f);
-
         // reset ai state
+        yield return new WaitForSeconds(.25f);
         CheckForEnemies();
-        
+
         // attack cool down
         yield return new WaitForSeconds(3.5f);
 
@@ -308,8 +305,7 @@ public class MoeAI : MonoBehaviour {
         StartCoroutine(StoneColorLerp());
 
         // stop moving
-        _navAgent.velocity = Vector3.zero;
-        _navAgent.Stop();
+        _navAgent.SetDestination(transform.position);
 
         yield return new WaitForSeconds(2f);
 
@@ -341,6 +337,7 @@ public class MoeAI : MonoBehaviour {
             }
     }
 
+    // -- if Moe is attacking and has an enemy target, rotate towards them -- //
     IEnumerator LookAtTarget()
     {
         while(currentState == aiState.attacking)
@@ -348,7 +345,6 @@ public class MoeAI : MonoBehaviour {
             if (currentState == aiState.stoned)
                 break;
 
-            // if moe isn't frozen rotate towards enemy
             if (_enemyTarget)
             {
                 Vector3 targetDirection = _enemyTarget.position - transform.position;
@@ -362,52 +358,45 @@ public class MoeAI : MonoBehaviour {
         }
     }
 
+    // Cast a bubble around Moe to see whats there
     void CheckForEnemies()
     {
         Ray ray = new Ray(transform.position, Vector3.up);
         RaycastHit[] allHits;
-
-
         allHits = Physics.SphereCastAll(ray, 4.5f);
 
-        // check around Moe if there's anything to react to and change his state 
+        // if there's anything to react to -- change his state 
         if (allHits.Length > 0)
         {
             foreach (RaycastHit hit in allHits)
             {
                 if (hit.collider.CompareTag("Fear"))
                 {
-                    print("stoned");
-                    currentState = aiState.stoned;
+                    ChangeState(aiState.stoned);
                     return;
                 }
                 else if (hit.collider.CompareTag("Enemy"))
                 {
-                    print("attack");
-                    currentState = aiState.attacking;
+                    ChangeState(aiState.attacking);
                     return;
                 }
                 else
-                {
-                    print("follow");
-                    currentState = aiState.following;
-                }
-                   
+                    ChangeState(aiState.following);
             }
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        // as long as Moe is touching a pixie he will remain as stone
+        // Touch a pixie to turn him to stone
         if (other.CompareTag("Fear"))
             ChangeState(aiState.stoned);
 
         // if Moe has not been taunted or touched by a pixie -- he will attack
         else if (other.CompareTag("Enemy") && currentState != aiState.stoned && currentState != aiState.charging)
         {
-            if (!_enemyTarget)
-                _enemyTarget = other.transform;
+            //if (!_enemyTarget)
+            _enemyTarget = other.transform;
 
             ChangeState(aiState.attacking);
         }
