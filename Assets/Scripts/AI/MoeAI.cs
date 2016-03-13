@@ -5,7 +5,7 @@ public class MoeAI : MonoBehaviour {
 
 
     // MoeAI States
-    public enum aiState { following, attacking, charging, stoned, stopped };
+    public enum aiState { following, attacking, charging, stoned, stopped, newDestination };
     //[HideInInspector]
     public aiState currentState;
     [SerializeField]
@@ -53,8 +53,8 @@ public class MoeAI : MonoBehaviour {
         _idle = true;
 
         // Moe attack
-        _areaDamage = transform.GetChild(0).gameObject;
-        _chargeDamage = transform.GetChild(1).gameObject;
+        _areaDamage = transform.FindChild("AreaAttack").gameObject;
+        _chargeDamage = transform.FindChild("FrontAttack").gameObject;
         _areaDamage.SetActive(false);
         _chargeDamage.SetActive(false);
 
@@ -111,10 +111,6 @@ public class MoeAI : MonoBehaviour {
             
         switch(currentState)
         {
-            case aiState.stopped:
-                _idle = false;
-                break;
-
             case aiState.following:
                 Follow();
                 break;
@@ -129,6 +125,10 @@ public class MoeAI : MonoBehaviour {
 
             case aiState.charging:
                 StartCoroutine(Charge());
+                break;
+
+            case aiState.stopped:
+                StopMoe();
                 break;
 
             default:
@@ -177,13 +177,13 @@ public class MoeAI : MonoBehaviour {
 
         yield return new WaitForSeconds(.5f);
 
-        if (currentState != aiState.stoned)
-        {
+        //if (currentState != aiState.stoned)
+        //{
             if (_enemyTarget)
                 StartCoroutine(LookAtTarget());
 
             _moeAnimator.SetTrigger(_moeAttack);
-        }
+        //}
 
         
         // -- Moe attack anim check -- //
@@ -230,7 +230,6 @@ public class MoeAI : MonoBehaviour {
 
         _attacking = true;
         _moeAnimator.SetBool(_moeCharge, true);
-        print("start Charge");
         
         // get initial values
         float normalSpeed = _navAgent.speed;
@@ -268,10 +267,8 @@ public class MoeAI : MonoBehaviour {
                 break;
 
             bugCheck += Time.deltaTime;
-
             yield return null;
         }
-        print("stop charge animation");
         _moeAnimator.SetBool(_moeCharge, false);
 
         // reset navAgent values to inital
@@ -286,10 +283,12 @@ public class MoeAI : MonoBehaviour {
 
         // reset ai state
         yield return new WaitForSeconds(.25f);
-        CheckForEnemies();
+
+        if (currentState != aiState.stopped)
+            CheckForEnemies();
 
         // attack cool down
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(1.75f);
 
         _attacking = false;
     }
@@ -302,6 +301,11 @@ public class MoeAI : MonoBehaviour {
 
         _frozen = true;
         _moeAnimator.enabled = false;
+
+        float initialAngularSpeed = _navAgent.angularSpeed;
+        _navAgent.angularSpeed = 0;
+
+
         StartCoroutine(StoneColorLerp());
 
         // stop moving
@@ -314,6 +318,8 @@ public class MoeAI : MonoBehaviour {
         _moeAnimator.enabled = true;
         StartCoroutine(StoneColorLerp());
 
+        _navAgent.angularSpeed = initialAngularSpeed;
+
         CheckForEnemies();
     }
 
@@ -324,7 +330,7 @@ public class MoeAI : MonoBehaviour {
             while(_skinMesh.material.color.r >= .49f)
             {
                 // Texture Lerp to stone texture
-                _skinMesh.material.color -= new Color(.01f, .01f, .01f);
+                _skinMesh.material.color -= new Color(.01f, .01f, .01f, 0f);
                 yield return null;
             }
         // if he's unfrozen change it back to standard
@@ -332,7 +338,7 @@ public class MoeAI : MonoBehaviour {
             while(_skinMesh.material.color.r < 1.0f)
             {
                 // Texture Lerp back to regular texture
-                _skinMesh.material.color += new Color(.01f, .01f, .01f);
+                _skinMesh.material.color += new Color(.01f, .01f, .01f, 0f);
                 yield return null;
             }
     }
@@ -384,6 +390,12 @@ public class MoeAI : MonoBehaviour {
                     ChangeState(aiState.following);
             }
         }
+    }
+
+    public void StopMoe()
+    {
+        _moeAnimator.SetBool(_moeCharge, false);
+        _moeAnimator.SetBool(_moeIdle, false);
     }
 
     void OnTriggerEnter(Collider other)

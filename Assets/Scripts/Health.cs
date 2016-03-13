@@ -111,6 +111,7 @@ public class Health : MonoBehaviour {
             transform.position = playerRespawnPoint.position;
 
         health = _initialHealth;
+        ChangeChainGraphic();
     }
 
     // *** ill come up with a better solution for this, im really tired right now *** //
