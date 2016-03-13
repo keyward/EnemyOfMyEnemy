@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour {
 
     // Components
     private Rigidbody _playerControls;
-    private Transform _playerTransform;
     private MoeAI _moeScript;
     private Renderer _render;
 
@@ -43,7 +42,6 @@ public class PlayerController : MonoBehaviour {
     {
         _moeScript = GameObject.FindGameObjectWithTag("Moe").GetComponent<MoeAI>();
         _playerControls = GetComponent<Rigidbody>();
-        _playerTransform = GetComponent<Transform>();
         _playerSounds = GetComponent<AudioSource>();
 
         _playerAnimator = GetComponent<Animator>();
@@ -122,7 +120,7 @@ public class PlayerController : MonoBehaviour {
         _playerSounds.clip = playerSoundEffects[2];
         _playerSounds.Play();
 
-        _moeScript.currentState = MoeAI.aiState.charging;
+        _moeScript.ChangeState(MoeAI.aiState.charging);
 
         yield return new WaitForSeconds(1f);
 
