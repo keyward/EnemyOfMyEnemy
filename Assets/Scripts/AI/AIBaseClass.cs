@@ -48,7 +48,7 @@ public class AIBaseClass : MonoBehaviour {
         if(_pathFinder)
             _pathFinder.Stop();
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
 
         _actionAvailable = true;
 

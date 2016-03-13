@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour {
 
     // Abilities
     [HideInInspector] public bool canTaunt;
+    [HideInInspector] public bool tauntDisabled;
     private bool _canRoll;
     private bool _canShoot;
 
@@ -56,6 +57,7 @@ public class PlayerController : MonoBehaviour {
         _canRoll = true;
         _canShoot = true;
         canTaunt = true;
+        tauntDisabled = false;
     }
 
     void FixedUpdate()
@@ -91,7 +93,7 @@ public class PlayerController : MonoBehaviour {
             StartCoroutine(ShootPea());
 
 
-        if (Input.GetButtonDown("Taunt") && canTaunt)
+        if (Input.GetButtonDown("Taunt") && canTaunt && !tauntDisabled)
             StartCoroutine(Taunt());
     }
 
@@ -149,11 +151,6 @@ public class PlayerController : MonoBehaviour {
         diveRoll = diveRoll.normalized * diveSpeed * Time.deltaTime;
 
         _playerControls.AddForce(diveRoll, ForceMode.Impulse);
-    }
-
-    void EndDashAnimEvent()
-    {
-        //_playerControls.isKinematic = true;
     }
 
     IEnumerator ShootPea()

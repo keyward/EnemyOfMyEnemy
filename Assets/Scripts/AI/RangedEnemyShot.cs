@@ -17,4 +17,10 @@ public class RangedEnemyShot : MonoBehaviour {
         if (other.CompareTag("Player"))
             _rangedEnemy.LookAtPlayer();
     }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+            _rangedEnemy.looking = false;
+    }
 }
