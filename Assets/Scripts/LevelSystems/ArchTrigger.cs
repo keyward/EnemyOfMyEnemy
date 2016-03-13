@@ -34,9 +34,12 @@ public class ArchTrigger : MonoBehaviour {
             _moeScript.ChangeState(MoeAI.aiState.stopped);
 
             if(moeDestination)
+            {
+                _moeNav.Stop();
                 _moeNav.SetDestination(moeDestination.position);
-            
-
+                _moeNav.Resume();
+            }
+                
             if (breakableWall)
                 breakableWall.canBeDestroyed = true;
         }
