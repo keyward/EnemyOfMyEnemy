@@ -11,9 +11,9 @@ GameObject:
   - 198: {fileID: 19844322}
   - 199: {fileID: 19917458}
   - 114: {fileID: 11481676}
-  - 82: {fileID: 8221192}
+  - 82: {fileID: 8272932}
   m_Layer: 0
-  m_Name: P_ArrowDeath
+  m_Name: P_ArcherDeath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130552}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1.1815325, y: 0.9077686, z: 3.9219956}
+  m_LocalPosition: {x: 4.265808, y: 1.12, z: -2.4356995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 495514}
@@ -59,7 +59,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 469816}
   m_RootOrder: 0
---- !u!82 &8221192
+--- !u!82 &8272932
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -68,8 +68,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: db0d1b314978ffb459793b1f45d0039a, type: 3}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: 0d60c678be53f9748bdc248b827cd987, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0203e765b72a4af40aa15a0ae6a1a789, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathSound: {fileID: 8221192}
+  deathSound: {fileID: 8272932}
   timeUntilDestroyed: 2
 --- !u!198 &19844322
 ParticleSystem:
@@ -200,7 +200,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 1.02
+      scalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -235,7 +235,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 12
+      scalar: 40
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -361,10 +361,10 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4279762688
+        rgba: 4293716992
       minMaxState: 0
     startSize:
-      scalar: 0.1
+      scalar: 1.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -380,7 +380,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 0.5
+          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -546,11 +546,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    cnt0: 15
+    cnt0: 6
     cnt1: 30
     cnt2: 30
     cnt3: 30
-    cntmax0: 15
+    cntmax0: 6
     cntmax1: 30
     cntmax2: 30
     cntmax3: 30
@@ -705,7 +705,7 @@ ParticleSystem:
       minMaxState: 0
     separateAxes: 0
   ColorModule:
-    enabled: 0
+    enabled: 1
     gradient:
       maxGradient:
         key0:
@@ -741,15 +741,15 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 65535
-        atime2: 0
+        atime1: 52428
+        atime2: 65535
         atime3: 0
         atime4: 0
         atime5: 0
         atime6: 0
         atime7: 0
         m_NumColorKeys: 6
-        m_NumAlphaKeys: 2
+        m_NumAlphaKeys: 3
       minGradient:
         key0:
           serializedVersion: 2
@@ -1635,7 +1635,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: b73a0288b4d9cba478ed9e11bd4c5fb3, type: 2}
+  - {fileID: 2100000, guid: abe2d70c9c1296b4d8f34a54c7c7f4a6, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1662,10 +1662,10 @@ ParticleSystemRenderer:
   m_NormalDirection: 1
   m_RenderAlignment: 0
   m_Pivot: {x: 0, y: 0, z: 0}
-  m_Mesh: {fileID: 4300000, guid: f96ed50a24636e946b7803c6fed18a13, type: 3}
-  m_Mesh1: {fileID: 0}
-  m_Mesh2: {fileID: 0}
-  m_Mesh3: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: 32bc0d34040de3c4daef3c197dc366e5, type: 3}
+  m_Mesh1: {fileID: 4300000, guid: c79804e59ba478d4aabfabcfe7c604b2, type: 3}
+  m_Mesh2: {fileID: 4300000, guid: 9ff517520f994184794979dd3ca2660d, type: 3}
+  m_Mesh3: {fileID: 4300000, guid: 9a3121e62fc06364399fcab6ad11a095, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -1690,33 +1690,17 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: InitialModule.startColor.maxColor.rgba
-      value: 4279762688
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: EmissionModule.cnt0
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b73a0288b4d9cba478ed9e11bd4c5fb3, type: 2}
+      objectReference: {fileID: 2100000, guid: abe2d70c9c1296b4d8f34a54c7c7f4a6, type: 2}
     - target: {fileID: 0}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: db0d1b314978ffb459793b1f45d0039a, type: 3}
+      objectReference: {fileID: 8300000, guid: 0d60c678be53f9748bdc248b827cd987, type: 3}
     - target: {fileID: 0}
       propertyPath: deathSound
       value: 
-      objectReference: {fileID: 8221192}
-    - target: {fileID: 0}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8272932}
     - target: {fileID: 0}
       propertyPath: panLevelCustomCurve.m_RotationOrder
       value: 0
@@ -1728,30 +1712,54 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 4300000, guid: f96ed50a24636e946b7803c6fed18a13, type: 3}
+      objectReference: {fileID: 4300000, guid: 32bc0d34040de3c4daef3c197dc366e5, type: 3}
+    - target: {fileID: 0}
+      propertyPath: EmissionModule.cnt0
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: EmissionModule.cntmax0
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: InitialModule.startSize.maxCurve.m_Curve.Array.data[0].value
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: InitialModule.startSize.maxCurve.m_RotationOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: InitialModule.startSize.minCurve.m_RotationOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
       propertyPath: InitialModule.startSize.minCurve.m_Curve.Array.data[0].value
-      value: 0.5
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ColorModule.enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ColorModule.gradient.maxGradient.key1.rgba
+      value: 4278234879
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ColorModule.gradient.maxGradient.atime1
+      value: 52428
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ColorModule.gradient.maxGradient.atime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ColorModule.gradient.maxGradient.m_NumAlphaKeys
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
