@@ -53,9 +53,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103540}
-  m_LocalRotation: {x: 0.34630492, y: 0.34630495, z: 0.6165006, w: 0.6165005}
-  m_LocalPosition: {x: 75.34, y: 3.97, z: -33.33}
-  m_LocalScale: {x: 0.85, y: 0.85, z: 0.85}
+  m_LocalRotation: {x: 0.56692904, y: 0.56692904, z: 0.4226009, w: 0.42260087}
+  m_LocalPosition: {x: 62.54, y: 4.24, z: -26.16}
+  m_LocalScale: {x: 0.5, y: 0.85, z: 0.5}
   m_Children:
   - {fileID: 435292}
   m_Father: {fileID: 0}
@@ -301,15 +301,15 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4294967295
+        rgba: 4281232018
       minMaxState: 0
     startSize:
-      scalar: 0.05
+      scalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 0.39999998
+          value: 0.5
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -425,7 +425,7 @@ ParticleSystem:
       minMaxState: 3
     randomizeRotationDirection: 0.5
     gravityModifier: 3
-    maxNumParticles: 2000
+    maxNumParticles: 3000
     rotation3D: 0
   ShapeModule:
     serializedVersion: 2
@@ -434,8 +434,8 @@ ParticleSystem:
     radius: 1
     angle: 25
     length: 5
-    boxX: 0.5
-    boxY: 0.4271506
+    boxX: 0.2
+    boxY: 0.4
     boxZ: 1
     arc: 360
     placementMode: 0
@@ -452,7 +452,7 @@ ParticleSystem:
     serializedVersion: 2
     m_Type: 0
     rate:
-      scalar: 500
+      scalar: 600
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1575,7 +1575,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9b605cdef3af26b4e9e74bf1771526d0, type: 2}
+  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1591,7 +1591,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_RenderMode: 4
+  m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
   m_MaxParticleSize: 1
