@@ -302,8 +302,8 @@ public class MoeAI : MonoBehaviour {
         _frozen = true;
         _moeAnimator.enabled = false;
 
-        float initialStopDistance = _navAgent.stoppingDistance;
-        _navAgent.stoppingDistance = 0;
+        float initialAngularSpeed = _navAgent.angularSpeed;
+        _navAgent.angularSpeed = 0;
 
 
         StartCoroutine(StoneColorLerp());
@@ -318,7 +318,7 @@ public class MoeAI : MonoBehaviour {
         _moeAnimator.enabled = true;
         StartCoroutine(StoneColorLerp());
 
-        _navAgent.stoppingDistance = initialStopDistance;
+        _navAgent.angularSpeed = initialAngularSpeed;
 
         CheckForEnemies();
     }
@@ -394,11 +394,8 @@ public class MoeAI : MonoBehaviour {
 
     public void StopMoe()
     {
-        //_attacking = false;
-        //_frozen = false;
-       // _idle = false;
-
         _moeAnimator.SetBool(_moeCharge, false);
+        _moeAnimator.SetBool(_moeIdle, false);
     }
 
     void OnTriggerEnter(Collider other)
