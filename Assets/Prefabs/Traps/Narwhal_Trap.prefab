@@ -87,7 +87,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc32dad2fc8c954b941c4229b9ce7a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  narwhal: {fileID: 176814, guid: 6ad0281756adc40d0a7357c586b77655, type: 2}
+  narwhal: {fileID: 151420, guid: bbc409ee7cd433f45bb23f068c04d73a, type: 2}
+  invokeSpeed: 0
+  stabFrequency: 0.25
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
