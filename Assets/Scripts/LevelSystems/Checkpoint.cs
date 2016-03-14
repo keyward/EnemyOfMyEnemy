@@ -23,9 +23,7 @@ public class Checkpoint : MonoBehaviour {
             _activatedCheckpoint = true;
 
             // give player back their health - change the spawn point
-            Health playerHealth = other.GetComponent<Health>();
-            playerHealth.playerRespawnPoint = spawnPoint;
-            playerHealth.health = 5;
+            other.GetComponent<Health>().PlayerCheckPoint(spawnPoint);
 
             torchParticles.SetActive(true);
         }
