@@ -23,13 +23,6 @@ public class Health : MonoBehaviour {
 
     [SerializeField] private Image _playerHealthImage;
 
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.G))
-            RespawnPlayer();
-    }
-
     void Awake()
     {
         _initialHealth = health;
@@ -51,12 +44,6 @@ public class Health : MonoBehaviour {
         if (_invincible)
             return;
 
-        if (gameObject.CompareTag("Player"))
-        {
-            ChangeChainGraphic();
-            CameraController.Instance.ScreenShake(.1f);
-        }
-
         // play sound
         _damageAudio.clip = damageSoundEffects[0];
         _damageAudio.Play();
@@ -64,9 +51,14 @@ public class Health : MonoBehaviour {
         // subtract object health
         health -= damageAmount;
 
+        if (gameObject.CompareTag("Player"))
+        {
+            ChangeChainGraphic();
+            CameraController.Instance.ScreenShake(.1f);
+        }
+
         // make object invincible briefly
         StartCoroutine(DamageCooldown());
-
 
         // -- Death -- //
         if (health > 0)
