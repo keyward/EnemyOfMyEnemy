@@ -21,8 +21,6 @@ public class AIBaseClass : MonoBehaviour {
     protected Animator _aiAnimator;
     private int _attackAnimation;
 
-    public ParticleSystem stunParticles;
-
    
     protected virtual void Awake ()
     {
@@ -37,15 +35,12 @@ public class AIBaseClass : MonoBehaviour {
 
         _lungeSmoothing = 5f;
         _actionAvailable = true;
-
-        stunParticles.Stop();
 	}
 	
     // -- Temporarily disable enemy -- //
     protected virtual IEnumerator Stun()
     {
         _actionAvailable = false;
-        stunParticles.Play();
 
         _enemyAudio.clip = enemySounds[1];
         _enemyAudio.Play();
@@ -59,8 +54,6 @@ public class AIBaseClass : MonoBehaviour {
 
         if(_pathFinder)
             _pathFinder.Resume();
-
-        stunParticles.Stop();
     }
 
     // -- Melee attack -- //
