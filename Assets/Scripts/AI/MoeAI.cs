@@ -28,6 +28,7 @@ public class MoeAI : MonoBehaviour {
     private AudioSource _moeSoundPlayer;
     // 0 stomp
     // 1 dash
+    // 2 stone
 
     // MoeAI attacks
     private GameObject _areaDamage;
@@ -304,7 +305,8 @@ public class MoeAI : MonoBehaviour {
 
         float initialAngularSpeed = _navAgent.angularSpeed;
         _navAgent.angularSpeed = 0;
-
+        _moeSoundPlayer.clip = moeSounds[2];
+        _moeSoundPlayer.Play();
 
         StartCoroutine(StoneColorLerp());
 
