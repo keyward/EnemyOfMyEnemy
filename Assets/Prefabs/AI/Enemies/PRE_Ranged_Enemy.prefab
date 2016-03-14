@@ -2771,6 +2771,7 @@ MonoBehaviour:
   firePoint: {fileID: 471690}
   fireDelay: 3
   accuracyOffset: 3
+  looking: 0
   _stunParticles: {fileID: 19845886}
   enemySounds:
   - {fileID: 8300000, guid: 2ebafb4a6edb8bc43b65fe9f4d942669, type: 3}
@@ -2799,11 +2800,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 2
   damageCoolDown: 0
-  deathParticles: {fileID: 130552, guid: 25a60522a2414d04da186729b0b4a521, type: 2}
+  deathParticles: {fileID: 130552, guid: 813bffa362f9d8f4a8f00cb6e5977706, type: 2}
   playerRespawnPoint: {fileID: 0}
   damageSoundEffects:
   - {fileID: 8300000, guid: 9ba6c938550aca340852b66282431484, type: 3}
   - {fileID: 8300000, guid: 0d60c678be53f9748bdc248b827cd987, type: 3}
+  _playerHealthImage: {fileID: 0}
 --- !u!135 &13501652
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -4434,7 +4436,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: deathParticles
+      value: 
+      objectReference: {fileID: 130552, guid: 813bffa362f9d8f4a8f00cb6e5977706, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 157460}
