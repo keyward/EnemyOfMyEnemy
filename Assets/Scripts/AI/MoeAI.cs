@@ -28,6 +28,7 @@ public class MoeAI : MonoBehaviour {
     private AudioSource _moeSoundPlayer;
     // 0 stomp
     // 1 dash
+    // 2 stone
 
     // MoeAI attacks
     private GameObject _areaDamage;
@@ -41,7 +42,7 @@ public class MoeAI : MonoBehaviour {
 
     // Moe "stoned" color change
     public SkinnedMeshRenderer _skinMesh;
-    private Color32 _stoneColor;
+    private Material stoneSkin;
     
 
 	void Awake ()
@@ -69,8 +70,9 @@ public class MoeAI : MonoBehaviour {
         _moeAttack = Animator.StringToHash("Attack");
         _moeCharge = Animator.StringToHash("Charging");
         _moeIdle = Animator.StringToHash("Idling");
-        
 
+        stoneSkin = transform.FindChild("body").GetComponent<SkinnedMeshRenderer>().materials[1];
+        stoneSkin.color = new Color(1, 1, 1, 0);
 
         ChangeState(aiState.following);
 	}
@@ -86,6 +88,10 @@ public class MoeAI : MonoBehaviour {
             _idle = true;
             _moeAnimator.SetBool(_moeIdle, true);
         }
+
+
+        if (Input.GetKeyDown(KeyCode.G))
+            StartCoroutine(StoneColorLerp());
     }
 	
     // -- Look at player when idle -- //
@@ -304,7 +310,8 @@ public class MoeAI : MonoBehaviour {
 
         float initialAngularSpeed = _navAgent.angularSpeed;
         _navAgent.angularSpeed = 0;
-
+        _moeSoundPlayer.clip = moeSounds[2];
+        _moeSoundPlayer.Play();
 
         StartCoroutine(StoneColorLerp());
 
@@ -325,20 +332,20 @@ public class MoeAI : MonoBehaviour {
 
     IEnumerator StoneColorLerp()
     {
-        // if hes frozen make his skin black
+        // if hes frozen make his skin stone
         if(_frozen)
-            while(_skinMesh.material.color.r >= .49f)
+            while(stoneSkin.color.a <= 1.0f)
             {
                 // Texture Lerp to stone texture
-                _skinMesh.material.color -= new Color(.01f, .01f, .01f, 0f);
+                stoneSkin.color += new Color(0f, 0f, 0f, .01f);
                 yield return null;
             }
         // if he's unfrozen change it back to standard
         else
-            while(_skinMesh.material.color.r < 1.0f)
+            while(stoneSkin.color.a >= 0.0f)
             {
                 // Texture Lerp back to regular texture
-                _skinMesh.material.color += new Color(.01f, .01f, .01f, 0f);
+                stoneSkin.color -= new Color(0f, 0f, 0f, .01f);
                 yield return null;
             }
     }

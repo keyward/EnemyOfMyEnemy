@@ -2626,9 +2626,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  _attacking: 0
+  _frozen: 0
+  _idle: 0
   attackParticles: {fileID: 155034, guid: c6e11673fa7a2c14bba3fbdf037bfe15, type: 2}
   moeSounds:
   - {fileID: 8300000, guid: f8951b5892876d94d8a9fa54c8cd0dc3, type: 3}
+  - {fileID: 8300000, guid: 13f8074568d607240a70b30276921d9f, type: 3}
   - {fileID: 8300000, guid: 13f8074568d607240a70b30276921d9f, type: 3}
   _skinMesh: {fileID: 13726004}
 --- !u!135 &13541684
@@ -2678,7 +2682,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.95
-  m_Height: 4.12
+  m_Height: 3.46
   m_Direction: 1
   m_Center: {x: 0, y: 1.75, z: 0}
 --- !u!137 &13703420
@@ -2692,6 +2696,7 @@ SkinnedMeshRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: cf585a0ef7c612e449c7c8bdd2d591b7, type: 2}
+  - {fileID: 2100000, guid: c12b2314ed7a3a3478dbc5e04bc89ec2, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -2735,6 +2740,7 @@ SkinnedMeshRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: cf585a0ef7c612e449c7c8bdd2d591b7, type: 2}
+  - {fileID: 2100000, guid: c12b2314ed7a3a3478dbc5e04bc89ec2, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -2778,6 +2784,7 @@ SkinnedMeshRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: cf585a0ef7c612e449c7c8bdd2d591b7, type: 2}
+  - {fileID: 2100000, guid: c12b2314ed7a3a3478dbc5e04bc89ec2, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -2822,6 +2829,7 @@ SkinnedMeshRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: cf585a0ef7c612e449c7c8bdd2d591b7, type: 2}
+  - {fileID: 2100000, guid: c12b2314ed7a3a3478dbc5e04bc89ec2, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -2911,6 +2919,7 @@ SkinnedMeshRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: cf585a0ef7c612e449c7c8bdd2d591b7, type: 2}
+  - {fileID: 2100000, guid: c12b2314ed7a3a3478dbc5e04bc89ec2, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3010,6 +3019,7 @@ SkinnedMeshRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: cf585a0ef7c612e449c7c8bdd2d591b7, type: 2}
+  - {fileID: 2100000, guid: c12b2314ed7a3a3478dbc5e04bc89ec2, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3053,6 +3063,7 @@ SkinnedMeshRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: cf585a0ef7c612e449c7c8bdd2d591b7, type: 2}
+  - {fileID: 2100000, guid: c12b2314ed7a3a3478dbc5e04bc89ec2, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3096,6 +3107,7 @@ SkinnedMeshRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: cf585a0ef7c612e449c7c8bdd2d591b7, type: 2}
+  - {fileID: 2100000, guid: c12b2314ed7a3a3478dbc5e04bc89ec2, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3139,6 +3151,7 @@ SkinnedMeshRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: cf585a0ef7c612e449c7c8bdd2d591b7, type: 2}
+  - {fileID: 2100000, guid: c12b2314ed7a3a3478dbc5e04bc89ec2, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3182,6 +3195,7 @@ SkinnedMeshRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: cf585a0ef7c612e449c7c8bdd2d591b7, type: 2}
+  - {fileID: 2100000, guid: c12b2314ed7a3a3478dbc5e04bc89ec2, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3225,6 +3239,7 @@ SkinnedMeshRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: cf585a0ef7c612e449c7c8bdd2d591b7, type: 2}
+  - {fileID: 2100000, guid: c12b2314ed7a3a3478dbc5e04bc89ec2, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3268,6 +3283,7 @@ SkinnedMeshRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: cf585a0ef7c612e449c7c8bdd2d591b7, type: 2}
+  - {fileID: 2100000, guid: c12b2314ed7a3a3478dbc5e04bc89ec2, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3354,6 +3370,7 @@ SkinnedMeshRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: cf585a0ef7c612e449c7c8bdd2d591b7, type: 2}
+  - {fileID: 2100000, guid: c12b2314ed7a3a3478dbc5e04bc89ec2, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3397,6 +3414,7 @@ SkinnedMeshRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: cf585a0ef7c612e449c7c8bdd2d591b7, type: 2}
+  - {fileID: 2100000, guid: c12b2314ed7a3a3478dbc5e04bc89ec2, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3440,6 +3458,7 @@ SkinnedMeshRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: cf585a0ef7c612e449c7c8bdd2d591b7, type: 2}
+  - {fileID: 2100000, guid: c12b2314ed7a3a3478dbc5e04bc89ec2, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1

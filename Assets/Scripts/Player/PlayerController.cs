@@ -148,9 +148,9 @@ public class PlayerController : MonoBehaviour {
         _playerSounds.Play();
 
         Vector3 diveRoll = new Vector3(horz, 0f, vert);
-        diveRoll = diveRoll.normalized * diveSpeed * Time.deltaTime;
+        diveRoll = diveRoll.normalized * diveSpeed;
 
-        _playerControls.AddForce(diveRoll, ForceMode.Impulse);
+        _playerControls.AddForce(diveRoll * Time.deltaTime, ForceMode.Impulse);
     }
 
     IEnumerator ShootPea()
