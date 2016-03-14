@@ -13,6 +13,7 @@ GameObject:
   - 95: {fileID: 9550348}
   - 65: {fileID: 6590328}
   - 54: {fileID: 5447326}
+  - 114: {fileID: 11479970}
   m_Layer: 0
   m_Name: M_Horn
   m_TagString: Untagged
@@ -54,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151420}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 60.419395, y: 0, z: -40.59211}
+  m_LocalPosition: {x: 57.33068, y: 0, z: -45.139023}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 462658}
@@ -106,7 +107,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!65 &6590328
 BoxCollider:
@@ -137,6 +138,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11479970
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 121268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc000e8e9f758d544b7044a914a3930b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
