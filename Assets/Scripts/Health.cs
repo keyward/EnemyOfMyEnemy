@@ -13,7 +13,7 @@ public class Health : MonoBehaviour {
 
     // Death
     public GameObject deathParticles;
-    [HideInInspector] public Transform playerRespawnPoint;
+    private Transform playerRespawnPoint;
 
     // Audio
     public AudioClip[] damageSoundEffects;
@@ -21,7 +21,7 @@ public class Health : MonoBehaviour {
     // 0 damage sound
     // 1 death  sound
 
-    [SerializeField] private Image _playerHealthImage;
+    private Image _playerHealthImage;
 
     void Awake()
     {
@@ -35,7 +35,7 @@ public class Health : MonoBehaviour {
             _playerHealthImage = GameObject.FindGameObjectWithTag("PosterCanvas").transform.FindChild("PlayerHealth").GetComponent<Image>();
             ChangeChainGraphic();
         }
-            
+
     }
 
     // -- Remove health from object -- kill if necessary -- //
@@ -103,6 +103,13 @@ public class Health : MonoBehaviour {
             transform.position = playerRespawnPoint.position;
 
         health = _initialHealth;
+        ChangeChainGraphic();
+    }
+
+    public void PlayerCheckPoint(Transform newSpawnPoint)
+    {
+        playerRespawnPoint = newSpawnPoint;
+        health = 5;
         ChangeChainGraphic();
     }
 
