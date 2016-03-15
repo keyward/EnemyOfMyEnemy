@@ -45,7 +45,7 @@ public class Narwhal_Trap : MonoBehaviour
 	private void SpawnHorn ()
 	{
 		if (this.spawnPoint != Vector3.zero) {
-			spawnPoint.Set (spawnPoint.x, 0, spawnPoint.z);
+			spawnPoint.Set (spawnPoint.x, -2, spawnPoint.z);
 			narwhal.transform.localPosition = spawnPoint;
 			Destroy (Instantiate (narwhal), 2);
             _narwhalSound.pitch = Random.Range(.8f, 1.2f);
