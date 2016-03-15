@@ -54,7 +54,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &402064
 Transform:
   m_ObjectHideFlags: 1
@@ -200,6 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   posterToDisplay: {fileID: 21300000, guid: f0514b03f1dc1154bbba22cb3fc54543, type: 3}
+  _yParticle: {fileID: 178916}
 --- !u!135 &13568322
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -258,7 +259,7 @@ ParticleSystem:
   speed: 1
   randomSeed: 0
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   moveWithTransform: 1
   scalingMode: 1
