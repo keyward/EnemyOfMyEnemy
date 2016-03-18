@@ -1555,7 +1555,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.588
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1649,11 +1649,9 @@ MonoBehaviour:
   health: 2
   damageCoolDown: 0
   deathParticles: {fileID: 130552, guid: 25a60522a2414d04da186729b0b4a521, type: 2}
-  playerRespawnPoint: {fileID: 0}
   damageSoundEffects:
   - {fileID: 8300000, guid: 9ba6c938550aca340852b66282431484, type: 3}
   - {fileID: 8300000, guid: 0d60c678be53f9748bdc248b827cd987, type: 3}
-  _playerHealthImage: {fileID: 0}
 --- !u!114 &11431650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1666,7 +1664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySounds:
-  - {fileID: 8300000, guid: fd522532f29827a478fdb0f522021093, type: 3}
+  - {fileID: 8300000, guid: e661a7a8cc055eb4495c1f75b09040db, type: 3}
   - {fileID: 8300000, guid: 9ba6c938550aca340852b66282431484, type: 3}
   stunParticles: {fileID: 19899020}
   attackPower: 1
@@ -3318,7 +3316,19 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: enemySounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: e661a7a8cc055eb4495c1f75b09040db, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Volume
+      value: 0.588
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: enemySounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9ba6c938550aca340852b66282431484, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 160354}
