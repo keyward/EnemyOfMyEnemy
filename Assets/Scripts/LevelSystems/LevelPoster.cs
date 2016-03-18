@@ -7,6 +7,7 @@ public class LevelPoster : MonoBehaviour {
 
     public Sprite posterToDisplay;
     public GameObject _yParticle;
+    public AudioSource _soundClip;
 
     private GameObject _posterPanel;
     private Image _canvasImage;
@@ -38,6 +39,7 @@ public class LevelPoster : MonoBehaviour {
         if(_inputEnabled && Input.GetButtonDown("Interact"))
         {
             _posterTurnedOn = !_posterTurnedOn;
+            _soundClip.Play();
             _posterPanel.SetActive(_posterTurnedOn); 
         }
     }
