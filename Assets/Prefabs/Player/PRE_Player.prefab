@@ -1611,7 +1611,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121942}
   m_LocalRotation: {x: 0, y: -0.7300901, z: 0, w: 0.6833509}
-  m_LocalPosition: {x: 46.76, y: -0.8, z: -32.7}
+  m_LocalPosition: {x: -5.78, y: -0.8, z: -3.41}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 467528}
@@ -1970,7 +1970,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100284}
-  m_LocalRotation: {x: -0.70489067, y: 0.70875823, z: 0.019940179, w: 0.019831369}
+  m_LocalRotation: {x: -0.7048907, y: 0.7087583, z: 0.01994018, w: 0.01983137}
   m_LocalPosition: {x: -0.02937142, y: 1.1279293e-16, z: 1.4413856e-16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2458,7 +2458,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.24
+  m_Volume: 0.486
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2552,9 +2552,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5438584, guid: e796d8759b8896b4695197ea9e94c9a6, type: 2}
   firePoint: {fileID: 467528}
   playerSoundEffects:
-  - {fileID: 8300000, guid: b6ea59d187831bc4ca6245e4226f40f1, type: 3}
+  - {fileID: 8300000, guid: aee3b9ea5c4a719419c3978e0820022e, type: 3}
   - {fileID: 8300000, guid: 3d459a71d559e67489f93c4245e1d011, type: 3}
-  - {fileID: 8300000, guid: e2f51594be176224d8c1a496d8d63805, type: 3}
+  - {fileID: 8300000, guid: 696d1f44a02b5c84f986d9ff802519c2, type: 3}
   canTaunt: 0
   tauntDisabled: 0
 --- !u!114 &11457992
@@ -2571,11 +2571,9 @@ MonoBehaviour:
   health: 5
   damageCoolDown: 2
   deathParticles: {fileID: 0}
-  playerRespawnPoint: {fileID: 0}
   damageSoundEffects:
   - {fileID: 8300000, guid: 41d347b27ef377a4d9a3776740695bee, type: 3}
   - {fileID: 8300000, guid: 0157007e3b1e91f4296993d3977216bf, type: 3}
-  _playerHealthImage: {fileID: 0}
 --- !u!136 &13618680
 CapsuleCollider:
   m_ObjectHideFlags: 1
