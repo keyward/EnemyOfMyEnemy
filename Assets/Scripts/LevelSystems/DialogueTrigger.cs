@@ -7,6 +7,7 @@ public class DialogueTrigger : MonoBehaviour {
 
 
     public AudioSource _dialogueClip;
+    public GameObject _particle;
     private bool _triggerActivated;
 
     void Start()
@@ -23,12 +24,13 @@ public class DialogueTrigger : MonoBehaviour {
     IEnumerator PlayDialogue()
     {
         _triggerActivated = true;
+        _particle.SetActive(true);
 
         _dialogueClip.Play();
 
         while (_dialogueClip.isPlaying)
             yield return null;
-
+        _particle.SetActive(false);
         Destroy(gameObject);
     }
 }
