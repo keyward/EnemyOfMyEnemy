@@ -1634,7 +1634,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157460}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.6, y: 1.2012315, z: 12.7}
+  m_LocalPosition: {x: 7.930786, y: 0.5040436, z: -5.6190796}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 499614}
@@ -2774,8 +2774,8 @@ MonoBehaviour:
   looking: 0
   _stunParticles: {fileID: 19845886}
   enemySounds:
-  - {fileID: 8300000, guid: 2ebafb4a6edb8bc43b65fe9f4d942669, type: 3}
-  - {fileID: 8300000, guid: 9ba6c938550aca340852b66282431484, type: 3}
+  - {fileID: 8300000, guid: ab941feff923ab24a9db92dbeedfae60, type: 3}
+  - {fileID: 8300000, guid: 6131cdcda7474ce49bc47cfb8e928d74, type: 3}
 --- !u!114 &11440244
 MonoBehaviour:
   m_ObjectHideFlags: 1
