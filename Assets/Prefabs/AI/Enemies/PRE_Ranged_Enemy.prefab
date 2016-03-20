@@ -2676,7 +2676,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.499
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4447,6 +4447,10 @@ Prefab:
       propertyPath: damageSoundEffects.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 6131cdcda7474ce49bc47cfb8e928d74, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Volume
+      value: 0.499
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 157460}
