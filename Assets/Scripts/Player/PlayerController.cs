@@ -95,6 +95,14 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetButtonDown("Taunt") && canTaunt && !tauntDisabled)
             StartCoroutine(Taunt());
+
+        //Restart Level
+        if (Input.GetKeyDown(KeyCode.Q))
+            Application.LoadLevel(0);
+
+        //Exit Game
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
     }
 
     void MovePlayer(float hAxis, float vAxis)

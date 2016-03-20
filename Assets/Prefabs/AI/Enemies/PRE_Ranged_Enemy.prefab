@@ -1634,7 +1634,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157460}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.6, y: 1.2012315, z: 12.7}
+  m_LocalPosition: {x: 7.930786, y: 0.5040436, z: -5.6190796}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 499614}
@@ -2676,7 +2676,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.499
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2774,8 +2774,8 @@ MonoBehaviour:
   looking: 0
   _stunParticles: {fileID: 19845886}
   enemySounds:
-  - {fileID: 8300000, guid: 2ebafb4a6edb8bc43b65fe9f4d942669, type: 3}
-  - {fileID: 8300000, guid: 9ba6c938550aca340852b66282431484, type: 3}
+  - {fileID: 8300000, guid: ab941feff923ab24a9db92dbeedfae60, type: 3}
+  - {fileID: 8300000, guid: 6131cdcda7474ce49bc47cfb8e928d74, type: 3}
 --- !u!114 &11440244
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2801,11 +2801,9 @@ MonoBehaviour:
   health: 2
   damageCoolDown: 0
   deathParticles: {fileID: 130552, guid: 813bffa362f9d8f4a8f00cb6e5977706, type: 2}
-  playerRespawnPoint: {fileID: 0}
   damageSoundEffects:
-  - {fileID: 8300000, guid: 9ba6c938550aca340852b66282431484, type: 3}
-  - {fileID: 8300000, guid: 0d60c678be53f9748bdc248b827cd987, type: 3}
-  _playerHealthImage: {fileID: 0}
+  - {fileID: 8300000, guid: 6131cdcda7474ce49bc47cfb8e928d74, type: 3}
+  - {fileID: 8300000, guid: ffd24c0bc953f6a4ebf88fd2a23c4d96, type: 3}
 --- !u!135 &13501652
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -4441,6 +4439,18 @@ Prefab:
       propertyPath: deathParticles
       value: 
       objectReference: {fileID: 130552, guid: 813bffa362f9d8f4a8f00cb6e5977706, type: 2}
+    - target: {fileID: 0}
+      propertyPath: damageSoundEffects.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: ffd24c0bc953f6a4ebf88fd2a23c4d96, type: 3}
+    - target: {fileID: 0}
+      propertyPath: damageSoundEffects.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6131cdcda7474ce49bc47cfb8e928d74, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Volume
+      value: 0.499
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 157460}

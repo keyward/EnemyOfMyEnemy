@@ -6,6 +6,7 @@ public class Checkpoint : MonoBehaviour {
 
     public Transform spawnPoint;
     public GameObject torchParticles;
+    public AudioSource checkpointSound;
 
     private bool _activatedCheckpoint;
 
@@ -21,6 +22,7 @@ public class Checkpoint : MonoBehaviour {
         if (other.CompareTag("Player") && !_activatedCheckpoint)
         {
             _activatedCheckpoint = true;
+            checkpointSound.Play();
 
             // give player back their health - change the spawn point
             other.GetComponent<Health>().PlayerCheckPoint(spawnPoint);

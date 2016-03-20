@@ -6,6 +6,8 @@ public class LevelPoster : MonoBehaviour {
 
 
     public Sprite posterToDisplay;
+    public GameObject _yParticle;
+    public AudioSource _soundClip;
 
     private GameObject _posterPanel;
     private Image _canvasImage;
@@ -37,6 +39,7 @@ public class LevelPoster : MonoBehaviour {
         if(_inputEnabled && Input.GetButtonDown("Interact"))
         {
             _posterTurnedOn = !_posterTurnedOn;
+            _soundClip.Play();
             _posterPanel.SetActive(_posterTurnedOn); 
         }
     }
@@ -47,6 +50,7 @@ public class LevelPoster : MonoBehaviour {
         if (other.CompareTag("Player"))
         {
             _canvasImage.sprite = posterToDisplay;
+            _yParticle.SetActive(true);
             _inputEnabled = true;
         }  
     }
@@ -58,6 +62,7 @@ public class LevelPoster : MonoBehaviour {
         {
             _inputEnabled = false;
             _posterPanel.SetActive(false);
+            _yParticle.SetActive(false);
         }
     }
 }
