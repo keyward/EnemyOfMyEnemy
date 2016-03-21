@@ -41,8 +41,8 @@ public class MoeAI : MonoBehaviour {
     private Transform _enemyTarget;
 
     // Moe "stoned" color change
-    public SkinnedMeshRenderer _skinMesh;
-    private Material stoneSkin;
+    public SkinnedMeshRenderer[] moeSkin;
+    private Material[] _partsToTurnToStone;
     
 
 	void Awake ()
@@ -71,9 +71,16 @@ public class MoeAI : MonoBehaviour {
         _moeCharge = Animator.StringToHash("Charging");
         _moeIdle = Animator.StringToHash("Idling");
 
-        stoneSkin = transform.FindChild("body").GetComponent<SkinnedMeshRenderer>().materials[1];
-        stoneSkin.color = new Color(1, 1, 1, 0);
 
+        // Getting the materials on Moe's body that can change to stone, and making them invisible
+        _partsToTurnToStone = new Material[moeSkin.Length];
+
+        for(int i = 0; i < moeSkin.Length; i++)
+        {
+            _partsToTurnToStone[i] = moeSkin[i].materials[1];
+            _partsToTurnToStone[i].color = new Color(1f, 1f, 1f, 0f);
+        }
+            
         ChangeState(aiState.following);
 	}
 
@@ -90,8 +97,12 @@ public class MoeAI : MonoBehaviour {
         }
 
 
-        if (Input.GetKeyDown(KeyCode.G))
-            StartCoroutine(StoneColorLerp());
+        //if (Input.GetKeyDown(KeyCode.G))
+        //{
+         //  _frozen = !_frozen;
+        //    StartCoroutine(StoneColorLerp());
+       // }
+            
     }
 	
     // -- Look at player when idle -- //
@@ -183,13 +194,10 @@ public class MoeAI : MonoBehaviour {
 
         yield return new WaitForSeconds(.5f);
 
-        //if (currentState != aiState.stoned)
-        //{
             if (_enemyTarget)
                 StartCoroutine(LookAtTarget());
 
             _moeAnimator.SetTrigger(_moeAttack);
-        //}
 
         
         // -- Moe attack anim check -- //
@@ -334,18 +342,20 @@ public class MoeAI : MonoBehaviour {
     {
         // if hes frozen make his skin stone
         if(_frozen)
-            while(stoneSkin.color.a <= 1.0f)
+            while(_partsToTurnToStone[_partsToTurnToStone.Length - 1].color.a <= 1.0f)
             {
-                // Texture Lerp to stone texture
-                stoneSkin.color += new Color(0f, 0f, 0f, .01f);
+                foreach(Material part in _partsToTurnToStone)
+                    part.color += new Color(0f, 0f, 0f, .02f);
+                    
                 yield return null;
             }
         // if he's unfrozen change it back to standard
         else
-            while(stoneSkin.color.a >= 0.0f)
+            while(_partsToTurnToStone[_partsToTurnToStone.Length - 1].color.a > 0.0)
             {
-                // Texture Lerp back to regular texture
-                stoneSkin.color -= new Color(0f, 0f, 0f, .01f);
+                foreach (Material part in _partsToTurnToStone)
+                    part.color -= new Color(0f, 0f, 0f, .02f);
+
                 yield return null;
             }
     }
@@ -361,7 +371,7 @@ public class MoeAI : MonoBehaviour {
             if (_enemyTarget)
             {
                 Vector3 targetDirection = _enemyTarget.position - transform.position;
-                Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, Time.deltaTime * 2f, 0f);
+                Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, Time.deltaTime * 3f, 0f);
                 transform.rotation = Quaternion.LookRotation(newDirection);
             }
             else
@@ -394,7 +404,12 @@ public class MoeAI : MonoBehaviour {
                     return;
                 }
                 else
+                {
                     ChangeState(aiState.following);
+                    _frozen = false;
+                    StartCoroutine(StoneColorLerp());
+                }
+                    
             }
         }
     }
