@@ -194,13 +194,10 @@ public class MoeAI : MonoBehaviour {
 
         yield return new WaitForSeconds(.5f);
 
-        //if (currentState != aiState.stoned)
-        //{
             if (_enemyTarget)
                 StartCoroutine(LookAtTarget());
 
             _moeAnimator.SetTrigger(_moeAttack);
-        //}
 
         
         // -- Moe attack anim check -- //
@@ -374,7 +371,7 @@ public class MoeAI : MonoBehaviour {
             if (_enemyTarget)
             {
                 Vector3 targetDirection = _enemyTarget.position - transform.position;
-                Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, Time.deltaTime * 2f, 0f);
+                Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, Time.deltaTime * 3f, 0f);
                 transform.rotation = Quaternion.LookRotation(newDirection);
             }
             else
@@ -407,7 +404,12 @@ public class MoeAI : MonoBehaviour {
                     return;
                 }
                 else
+                {
                     ChangeState(aiState.following);
+                    _frozen = false;
+                    StartCoroutine(StoneColorLerp());
+                }
+                    
             }
         }
     }
