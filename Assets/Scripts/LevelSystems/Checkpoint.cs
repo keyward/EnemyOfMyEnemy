@@ -6,6 +6,7 @@ public class Checkpoint : MonoBehaviour {
 
     public Transform spawnPoint;
     public GameObject torchParticles;
+    public AudioSource checkpointSound;
 
     private bool _activatedCheckpoint;
 
@@ -13,7 +14,7 @@ public class Checkpoint : MonoBehaviour {
     {
         _activatedCheckpoint = false;
         torchParticles.SetActive(false);
-	}
+    }
 	
     
     void OnTriggerEnter(Collider other)
@@ -21,7 +22,11 @@ public class Checkpoint : MonoBehaviour {
         if (other.CompareTag("Player") && !_activatedCheckpoint)
         {
             _activatedCheckpoint = true;
-            other.GetComponent<Health>().playerRespawnPoint = spawnPoint;
+            checkpointSound.Play();
+
+            // give player back their health - change the spawn point
+            other.GetComponent<Health>().PlayerCheckPoint(spawnPoint);
+
             torchParticles.SetActive(true);
         }
     }

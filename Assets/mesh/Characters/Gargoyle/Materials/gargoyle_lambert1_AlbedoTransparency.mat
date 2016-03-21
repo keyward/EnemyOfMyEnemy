@@ -7,11 +7,12 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: gargoyle_lambert1_AlbedoTransparency
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _NORMALMAP
+  m_Shader: {fileID: 45, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _ALPHATEST_ON _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2450
+  stringTagMap:
+    RenderType: TransparentCutout
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -47,7 +48,7 @@ Material:
         first:
           name: _OcclusionMap
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: e26ceb38e8813584abf3d8815beab7f3, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -75,6 +76,13 @@ Material:
         first:
           name: _MetallicGlossMap
         second:
+          m_Texture: {fileID: 2800000, guid: 60e06accdb0840e44bd185a7cd12428a, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SpecGlossMap
+        second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
@@ -90,7 +98,7 @@ Material:
       data:
         first:
           name: _Cutoff
-        second: 0.5
+        second: 1
       data:
         first:
           name: _Parallax
@@ -122,7 +130,7 @@ Material:
       data:
         first:
           name: _Mode
-        second: 0
+        second: 1
       data:
         first:
           name: _Metallic
@@ -136,3 +144,7 @@ Material:
         first:
           name: _Color
         second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

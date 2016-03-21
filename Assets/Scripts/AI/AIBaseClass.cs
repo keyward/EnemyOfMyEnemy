@@ -6,7 +6,6 @@ public class AIBaseClass : MonoBehaviour {
     [Header("AI Base")]
 
     // Attack
-    public int attackPower;
     protected float _lungeSmoothing;
     protected bool _actionAvailable;
 	protected bool _attackReady = false;
@@ -23,6 +22,8 @@ public class AIBaseClass : MonoBehaviour {
     protected Animator _aiAnimator;
     private int _attackAnimation;
 
+    public ParticleSystem stunParticles;
+
    
     protected virtual void Awake ()
     {
@@ -37,13 +38,15 @@ public class AIBaseClass : MonoBehaviour {
 
         _lungeSmoothing = 5f;
         _actionAvailable = true;
+
+        stunParticles.Stop();
 	}
 	
     // -- Temporarily disable enemy -- //
     protected virtual IEnumerator Stun()
     {
-        print("stun");
         _actionAvailable = false;
+        stunParticles.Play();
 
         _enemyAudio.clip = enemySounds[1];
         _enemyAudio.Play();
@@ -51,12 +54,14 @@ public class AIBaseClass : MonoBehaviour {
         if(_pathFinder)
             _pathFinder.Stop();
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
 
         _actionAvailable = true;
 
         if(_pathFinder)
             _pathFinder.Resume();
+
+        stunParticles.Stop();
     }
 
     // -- Melee attack -- //
@@ -68,20 +73,41 @@ public class AIBaseClass : MonoBehaviour {
         _aiAnimator.SetTrigger(_attackAnimation);
         _actionAvailable = false;
 
-        Vector3 target = _playerTransform.position;
         _enemyAudio.clip = enemySounds[0];
         _enemyAudio.Play();
+
+        Vector3 target = _playerTransform.position;
+        _pathFinder.SetDestination(target);
         
+
+        float initialSpeed = _pathFinder.speed;
+        float initialAccel = _pathFinder.acceleration;
+
+        _pathFinder.speed = 7f;
+        _pathFinder.acceleration = 16f;
+
+        float timeCheck = 0f;
+
         // dash towards player -- attack
-        while (Vector3.Distance(transform.position, target) > .2f)
+        while (Vector3.Distance(transform.position, target) > .5f)
         {
-            transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * _lungeSmoothing);
+            if (timeCheck >= 2f)
+                break;
+
+            timeCheck += Time.deltaTime;
+            //transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * _lungeSmoothing);
             yield return null;
         }
+
+        _pathFinder.speed = initialSpeed;
+        _pathFinder.acceleration = initialAccel;
+
+        _aiAnimator.enabled = false;
 
         yield return new WaitForSeconds(1f);
 
         _actionAvailable = true;
+        _aiAnimator.enabled = true;
     }
 
 	protected virtual void Seek()

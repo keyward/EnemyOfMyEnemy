@@ -5,6 +5,7 @@ public class MeleeEnemy : AIBaseClass {
 
 
     [Header("Melee Enemy")]
+    public int attackPower;
     public float lungeDistance;
 	public float circleDistance;
     private EnemyManager _enemyManagerRef;

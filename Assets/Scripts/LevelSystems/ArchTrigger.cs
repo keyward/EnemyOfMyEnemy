@@ -7,6 +7,7 @@ public class ArchTrigger : MonoBehaviour {
     public Wall_ChargeDestroy breakableWall;
     public Transform spikeWall;
     public float raiseSpeed = 2.5f;
+    public bool disableTaunt;
 
     private PlayerController _playerScript;
     private MoeAI _moeScript;
@@ -29,17 +30,16 @@ public class ArchTrigger : MonoBehaviour {
     {
         if (other.CompareTag("Player"))
         {
-            _playerScript.canTaunt = !_playerScript.canTaunt;
+            _playerScript.tauntDisabled = disableTaunt;
+            print("disable " + _playerScript.tauntDisabled);
+            print("taunt ability " +_playerScript.canTaunt);
 
-            _moeScript.currentState = MoeAI.aiState.stopped;
-            _moeNav.Stop();
+            _moeScript.ChangeState(MoeAI.aiState.stopped);
 
             if(moeDestination)
-            {
                 _moeNav.SetDestination(moeDestination.position);
-                _moeNav.Resume();
-            }
-
+            
+                
             if (breakableWall)
                 breakableWall.canBeDestroyed = true;
         }

@@ -1,32 +1,15 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &103216
+--- !u!1 &121870
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 467212}
+  - 4: {fileID: 476890}
   m_Layer: 0
   m_Name: M_CaveBarricadeWooden_01
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &125610
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 441182}
-  - 33: {fileID: 3379520}
-  - 23: {fileID: 2376338}
-  m_Layer: 0
-  m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,6 +40,23 @@ GameObject:
   - 4: {fileID: 493676}
   - 33: {fileID: 3334494}
   - 23: {fileID: 2327356}
+  m_Layer: 0
+  m_Name: default
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &172436
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 430716}
+  - 33: {fileID: 3362798}
+  - 23: {fileID: 2352754}
   m_Layer: 0
   m_Name: default
   m_TagString: Untagged
@@ -125,30 +125,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 467514}
   m_RootOrder: 0
---- !u!4 &441182
+--- !u!4 &430716
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 125610}
+  m_GameObject: {fileID: 172436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 467212}
-  m_RootOrder: 0
---- !u!4 &467212
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103216}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: -0.34000015, y: 0, z: 3.74}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 441182}
-  m_Father: {fileID: 469492}
+  m_Father: {fileID: 476890}
   m_RootOrder: 0
 --- !u!4 &467514
 Transform:
@@ -173,10 +160,23 @@ Transform:
   m_LocalPosition: {x: 16.86, y: -0.5206051, z: 1.9300001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 467212}
+  - {fileID: 476890}
   - {fileID: 467514}
   - {fileID: 493864}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &476890
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 121870}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: -0.34000015, y: 0, z: 3.74}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 430716}
+  m_Father: {fileID: 469492}
   m_RootOrder: 0
 --- !u!4 &493676
 Transform:
@@ -229,12 +229,12 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!23 &2376338
+--- !u!23 &2352754
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 125610}
+  m_GameObject: {fileID: 172436}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -295,12 +295,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187638}
   m_Mesh: {fileID: 4300000, guid: 97ab336594b11b54284a95b2ee64dd25, type: 3}
---- !u!33 &3379520
+--- !u!33 &3362798
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 125610}
+  m_GameObject: {fileID: 172436}
   m_Mesh: {fileID: 4300000, guid: 97ab336594b11b54284a95b2ee64dd25, type: 3}
 --- !u!65 &6526226
 BoxCollider:
@@ -326,6 +326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyParticles: {fileID: 119462, guid: 629cf78e1ee531e49ba80b32ad81b25b, type: 2}
+  destroyParticles2: {fileID: 119462, guid: 0de863f5a275eaa4ca721af1067179a4, type: 2}
   canBeDestroyed: 0
 --- !u!1001 &100100000
 Prefab:

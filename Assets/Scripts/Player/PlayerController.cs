@@ -7,23 +7,34 @@ public class PlayerController : MonoBehaviour {
     // Shooting
     public Rigidbody bulletPrefab;
     public Transform firePoint;
-    
-    // Sounds
+
+    // Audio
     public AudioClip[] playerSoundEffects;
     private AudioSource _playerSounds;
+    // 0 Dash 
+    // 1 Shoot
+    // 2 Taunt
 
     // Components
     private Rigidbody _playerControls;
     private MoeAI _moeScript;
     private Renderer _render;
-  
+
+    // Animations
+    private Animator _playerAnimator;
+    private int _dashAnim;
+    private int _shootAnim;
+
     // Attributes
     private float moveSpeed;
-	private float moveSpeedModifier;
+    private float moveSpeedModifier;
     private float diveSpeed;
+    private float horz;
+    private float vert;
 
     // Abilities
     [HideInInspector] public bool canTaunt;
+    [HideInInspector] public bool tauntDisabled;
     private bool _canRoll;
     private bool _canShoot;
 
@@ -34,21 +45,26 @@ public class PlayerController : MonoBehaviour {
         _playerControls = GetComponent<Rigidbody>();
         _playerSounds = GetComponent<AudioSource>();
 
+        _playerAnimator = GetComponent<Animator>();
+        _dashAnim = Animator.StringToHash("Dash");
+        _shootAnim = Animator.StringToHash("Shoot");
+
         // Player metrics
         moveSpeed = 6f;
-		moveSpeedModifier = 1f;
+        moveSpeedModifier = 1f;
         diveSpeed = 1300f;
 
         _canRoll = true;
         _canShoot = true;
         canTaunt = true;
+        tauntDisabled = false;
     }
-	
-	void FixedUpdate ()
+
+    void FixedUpdate()
     {
         // -- left thumbstick controls -- //
-        float horz = Input.GetAxisRaw("LeftHorz");
-        float vert = Input.GetAxisRaw("LeftVert");
+        horz = Input.GetAxisRaw("LeftHorz");
+        vert = Input.GetAxisRaw("LeftVert");
 
         // -- right thumbstick controls -- //
         float rightHorz = Input.GetAxis("RightHorz");
@@ -77,16 +93,24 @@ public class PlayerController : MonoBehaviour {
             StartCoroutine(ShootPea());
 
 
-        if (Input.GetButtonDown("Taunt") && canTaunt)
+        if (Input.GetButtonDown("Taunt") && canTaunt && !tauntDisabled)
             StartCoroutine(Taunt());
+
+        //Restart Level
+        if (Input.GetKeyDown(KeyCode.Q))
+            Application.LoadLevel(0);
+
+        //Exit Game
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
     }
 
     void MovePlayer(float hAxis, float vAxis)
     {
         Vector3 movement = new Vector3(hAxis, 0f, vAxis);
-		movement = movement.normalized * (moveSpeed * moveSpeedModifier) * Time.deltaTime;
+        movement = movement.normalized * (moveSpeed * moveSpeedModifier) * Time.deltaTime;
 
-        _playerControls.MovePosition(transform.position + movement);      
+        _playerControls.MovePosition(transform.position + movement);
     }
 
     void RotatePlayer(float hAxis, float vAxis)
@@ -106,7 +130,7 @@ public class PlayerController : MonoBehaviour {
         _playerSounds.clip = playerSoundEffects[2];
         _playerSounds.Play();
 
-        _moeScript.currentState = MoeAI.aiState.charging;
+        _moeScript.ChangeState(MoeAI.aiState.charging);
 
         yield return new WaitForSeconds(1f);
 
@@ -120,16 +144,21 @@ public class PlayerController : MonoBehaviour {
 
         _canRoll = false;
 
-        _playerSounds.clip = playerSoundEffects[0];
-        _playerSounds.Play();
-        
-        Vector3 diveRoll = new Vector3(rHAxis, 0f, rVAxis);
-        diveRoll = diveRoll.normalized * diveSpeed * Time.deltaTime;
-        _playerControls.AddForce(diveRoll, ForceMode.Impulse);
-
+        _playerAnimator.SetTrigger(_dashAnim);
         yield return new WaitForSeconds(2f);
 
         _canRoll = true;
+    }
+
+    void DashAnimEvent()
+    {
+        _playerSounds.clip = playerSoundEffects[0];
+        _playerSounds.Play();
+
+        Vector3 diveRoll = new Vector3(horz, 0f, vert);
+        diveRoll = diveRoll.normalized * diveSpeed;
+
+        _playerControls.AddForce(diveRoll * Time.deltaTime, ForceMode.Impulse);
     }
 
     IEnumerator ShootPea()
@@ -138,15 +167,20 @@ public class PlayerController : MonoBehaviour {
             yield break;
 
         _canShoot = false;
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
-        // play shoot sound
-        _playerSounds.clip = playerSoundEffects[1];
-        _playerSounds.Play();
+        _playerAnimator.SetTrigger(_shootAnim);
 
         yield return new WaitForSeconds(1f);
 
         _canShoot = true;
+    }
+
+    void ShootAnimEvent()
+    {
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+
+        _playerSounds.clip = playerSoundEffects[1];
+        _playerSounds.Play();
     }
 
 	public float MoveSpeedModifier {
