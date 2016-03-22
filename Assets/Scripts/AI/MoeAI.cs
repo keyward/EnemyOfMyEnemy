@@ -13,6 +13,7 @@ public class MoeAI : MonoBehaviour {
     [SerializeField]
     private bool _frozen;
     [SerializeField] private bool _idle;
+    private bool _charging;
 
     public GameObject attackParticles;
 
@@ -184,7 +185,7 @@ public class MoeAI : MonoBehaviour {
     // -- Area Attack -- //
     IEnumerator Attack()
     {
-        if (_attacking || _frozen)
+        if (_attacking || _frozen || _charging)
             yield break;
         
         _attacking = true;
@@ -239,19 +240,21 @@ public class MoeAI : MonoBehaviour {
     // -- Charge at player -- //
     IEnumerator Charge()
     {
-        if (_attacking || _frozen)
+        if (_frozen || _charging)
             yield break;
 
-        _attacking = true;
+        _charging = true;
         _moeAnimator.SetBool(_moeCharge, true);
-        
+
+        // animation event # 1
         // get initial values
         float normalSpeed = _navAgent.speed;
         float normalAcceleration = _navAgent.acceleration;
         float normalAngularSpeed = _navAgent.angularSpeed;
         float normalStoppingDistance = _navAgent.stoppingDistance;
 
-        // get players last position
+        // Animation Event
+        /* get players last position
         Vector3 target = _playerTransform.position;
         _navAgent.Stop();
         _navAgent.SetDestination(target);
@@ -266,6 +269,7 @@ public class MoeAI : MonoBehaviour {
         _navAgent.angularSpeed = 360f;
         _navAgent.stoppingDistance = 0f;
         _navAgent.Resume();
+        */
 
         // audio 
         _moeSoundPlayer.clip = moeSounds[1];
@@ -274,7 +278,7 @@ public class MoeAI : MonoBehaviour {
         float bugCheck = 0f;
 
         // charge at players last position
-        while(_navAgent.remainingDistance > 1f)
+        while (_navAgent.remainingDistance > 1f)
         {
             // if stoned in the middle of a charge, told to stop, or taking too long -- cancel the charge
             if (currentState == aiState.stoned || currentState == aiState.stopped || bugCheck >= 4.5f)
@@ -284,6 +288,8 @@ public class MoeAI : MonoBehaviour {
             yield return null;
         }
         _moeAnimator.SetBool(_moeCharge, false);
+
+
 
         // reset navAgent values to inital
         _chargeDamage.SetActive(false);
@@ -304,7 +310,26 @@ public class MoeAI : MonoBehaviour {
         // attack cool down
         yield return new WaitForSeconds(1.75f);
 
-        _attacking = false;
+        _charging = false;
+    }
+
+    // Plays During Moe's Charge animation //
+    IEnumerator MoeChargeAnimEvent()
+    {
+        Vector3 target = _playerTransform.position;
+        _navAgent.Stop();
+        _navAgent.SetDestination(target);
+
+        yield return new WaitForSeconds(.2f);
+
+        _chargeDamage.SetActive(true);
+
+        // set charge speed - Charge
+        _navAgent.speed = 10f;
+        _navAgent.acceleration = 16f;
+        _navAgent.angularSpeed = 360f;
+        _navAgent.stoppingDistance = 0f;
+        _navAgent.Resume();
     }
 
     // -- Halts Moe's position, and resets attack -- //
@@ -331,7 +356,6 @@ public class MoeAI : MonoBehaviour {
         // reset Moe
         _frozen = false;
         _moeAnimator.enabled = true;
-        StartCoroutine(StoneColorLerp());
 
         _navAgent.angularSpeed = initialAngularSpeed;
 
