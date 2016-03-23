@@ -6,14 +6,12 @@ public class MoeAI : MonoBehaviour {
 
     // MoeAI States
     public enum aiState { following, attacking, charging, stoned, stopped, newDestination };
-    //[HideInInspector]
+    
     public aiState currentState;
-    [SerializeField]
-    private bool _attacking;
-    [SerializeField]
-    private bool _frozen;
+    [SerializeField] private bool _attacking;
+    [SerializeField] private bool _frozen;
     [SerializeField] private bool _idle;
-    private bool _charging;
+    [SerializeField] private bool _charging;
 
     public GameObject attackParticles;
 
@@ -95,15 +93,7 @@ public class MoeAI : MonoBehaviour {
         {
             _idle = true;
             _moeAnimator.SetBool(_moeIdle, true);
-        }
-
-
-        //if (Input.GetKeyDown(KeyCode.G))
-        //{
-         //  _frozen = !_frozen;
-        //    StartCoroutine(StoneColorLerp());
-       // }
-            
+        }    
     }
 	
     // -- Look at player when idle -- //
@@ -172,14 +162,7 @@ public class MoeAI : MonoBehaviour {
 
         // stops 5 meters from player //
         if (Vector3.Distance(transform.position, _playerTransform.position) > 6f)
-        {
-            if(_navAgent.velocity == Vector3.zero)
-                _navAgent.Resume();
-
             _navAgent.SetDestination(_playerTransform.position);
-        }  
-        else
-            _navAgent.Stop();
     }
 
     // -- Area Attack -- //
@@ -254,7 +237,7 @@ public class MoeAI : MonoBehaviour {
         float normalStoppingDistance = _navAgent.stoppingDistance;
 
         // Animation Event
-        /* get players last position
+        // get players last position
         Vector3 target = _playerTransform.position;
         _navAgent.Stop();
         _navAgent.SetDestination(target);
@@ -269,7 +252,7 @@ public class MoeAI : MonoBehaviour {
         _navAgent.angularSpeed = 360f;
         _navAgent.stoppingDistance = 0f;
         _navAgent.Resume();
-        */
+        
 
         // audio 
         _moeSoundPlayer.clip = moeSounds[1];
