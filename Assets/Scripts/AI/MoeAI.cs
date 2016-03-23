@@ -51,6 +51,7 @@ public class MoeAI : MonoBehaviour {
         _attacking = false;
         _frozen = false;
         _idle = true;
+        _charging = false;
 
         // Moe attack
         _areaDamage = transform.FindChild("AreaAttack").gameObject;
@@ -199,8 +200,6 @@ public class MoeAI : MonoBehaviour {
             bugTime += Time.deltaTime;
             yield return null;
         }
-        // if Moe fails to attack -- make him Follow()
-        //ChangeState(aiState.following);
     }
 
     // -- Called inside _moeAttack animation event -- //
@@ -227,10 +226,11 @@ public class MoeAI : MonoBehaviour {
     // -- Charge at player -- //
     IEnumerator Charge()
     {
-        if (_frozen || _attacking)
+        if (_frozen || _charging)
             yield break;
 
         _attacking = true;
+        _charging = true;
         _moeAnimator.SetBool(_moeCharge, true);
 
         // animation event # 1
@@ -276,8 +276,6 @@ public class MoeAI : MonoBehaviour {
         }
         _moeAnimator.SetBool(_moeCharge, false);
 
-
-
         // reset navAgent values to inital
         _chargeDamage.SetActive(false);
         _navAgent.ResetPath();
@@ -298,28 +296,8 @@ public class MoeAI : MonoBehaviour {
         yield return new WaitForSeconds(1.75f);
 
         _attacking = false;
+        _charging = false;
     }
-
-    // DEPRECATED //
-    /*
-    IEnumerator MoeChargeAnimEvent()
-    {
-        Vector3 target = _playerTransform.position;
-        _navAgent.Stop();
-        _navAgent.SetDestination(target);
-
-        yield return new WaitForSeconds(.2f);
-
-        _chargeDamage.SetActive(true);
-
-        // set charge speed - Charge
-        _navAgent.speed = 10f;
-        _navAgent.acceleration = 16f;
-        _navAgent.angularSpeed = 360f;
-        _navAgent.stoppingDistance = 0f;
-        _navAgent.Resume();
-    }
-    */
 
     // -- Halts Moe's position, and resets attack -- //
     IEnumerator TurnToStone()
@@ -353,22 +331,22 @@ public class MoeAI : MonoBehaviour {
 
     IEnumerator StoneColorLerp()
     {
-        // if hes frozen make his skin stone
+        // if hes frozen and still purple turn his skin to stone
         if(_frozen && _partsToTurnToStone[_partsToTurnToStone.Length -1].color.a < 1.0f)
             while(_partsToTurnToStone[_partsToTurnToStone.Length - 1].color.a <= 1.0f)
             {
                 foreach(Material part in _partsToTurnToStone)
-                    part.color += new Color(0f, 0f, 0f, .02f);
+                    part.color += new Color(0f, 0f, 0f, .01f);
                     
                 yield return null;
             }
 
-        // if he's unfrozen change it back to standard
+        // if he's unfrozen and not purple then turn his skin purple
         else if(!_frozen && _partsToTurnToStone[_partsToTurnToStone.Length - 1].color.a > 0.0f)
             while(_partsToTurnToStone[_partsToTurnToStone.Length - 1].color.a > 0.0)
             {
                 foreach (Material part in _partsToTurnToStone)
-                    part.color -= new Color(0f, 0f, 0f, .02f);
+                    part.color -= new Color(0f, 0f, 0f, .01f);
 
                 yield return null;
             }
