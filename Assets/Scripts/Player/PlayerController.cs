@@ -22,15 +22,12 @@ public class PlayerController : MonoBehaviour {
 
     // Animations
     private Animator _playerAnimator;
-    private AnimatorStateInfo _stateInfo;
     private int _dashAnim;
     private int _shootAnim;
-    private int _dashNameHash;
 
     // Attributes
     private float moveSpeed;
     private float moveSpeedModifier;
-    private float diveSpeed;
     private float horz;
     private float vert;
 
@@ -51,12 +48,10 @@ public class PlayerController : MonoBehaviour {
         _playerAnimator = GetComponent<Animator>();
         _dashAnim = Animator.StringToHash("Dash");
         _shootAnim = Animator.StringToHash("Shoot");
-        _dashNameHash = Animator.StringToHash("Base Layer.PlayerDash");
 
         // Player metrics
-        moveSpeed = 6f;
+        moveSpeed = 5f;
         moveSpeedModifier = 1f;
-        diveSpeed = 1300f;
 
         _canRoll = true;
         _canShoot = true;
@@ -69,7 +64,6 @@ public class PlayerController : MonoBehaviour {
         // -- left thumbstick controls -- //
         horz = Input.GetAxisRaw("LeftHorz");
         vert = Input.GetAxisRaw("LeftVert");
-
         // -- right thumbstick controls -- //
         float rightHorz = Input.GetAxis("RightHorz");
         float rightVert = Input.GetAxis("RightVert");
@@ -92,6 +86,8 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
+
+
         // player shooting
         if (Input.GetAxis("Shoot") > 0f)
             StartCoroutine(ShootPea());
@@ -112,9 +108,8 @@ public class PlayerController : MonoBehaviour {
     void MovePlayer(float hAxis, float vAxis)
     {
         Vector3 movement = new Vector3(hAxis, 0f, vAxis);
-        movement = movement.normalized * (moveSpeed * moveSpeedModifier) * Time.deltaTime;
 
-        _playerControls.MovePosition(transform.position + movement);
+        _playerControls.MovePosition(transform.position + movement * moveSpeed * Time.deltaTime);
     }
 
     void RotatePlayer(float hAxis, float vAxis)
@@ -166,15 +161,19 @@ public class PlayerController : MonoBehaviour {
         _rotationDisabled = false;
     }
 
-    void DashAnimEvent()
+    IEnumerator DashAnimEvent()
     {
         _playerSounds.clip = playerSoundEffects[0];
         _playerSounds.Play();
+       
 
-        Vector3 diveRoll = new Vector3(horz, 0f, vert);
-        diveRoll = diveRoll.normalized * diveSpeed;
+        Vector3 dashTarget = transform.position + new Vector3(transform.forward.x * 6.5f, transform.position.y, transform.forward.z * 6.5f);
 
-        _playerControls.AddForce(diveRoll * Time.deltaTime, ForceMode.Impulse);
+        while(Vector3.Distance(transform.position, dashTarget) > 2f)
+        {
+            transform.position = Vector3.Lerp(transform.position, dashTarget,  Time.deltaTime * 3f);
+            yield return null;
+        }
     }
 
     IEnumerator ShootPea()
