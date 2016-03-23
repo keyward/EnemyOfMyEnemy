@@ -89,7 +89,7 @@ public class MoeAI : MonoBehaviour {
             Follow(_playerTransform);
 
         // if moe is told to stop and comes to a complete stop - Idle anim
-        else if(currentState == aiState.stopped  &&  !_idle  &&  _navAgent.velocity == Vector3.zero)
+        else if(!_idle  &&  _navAgent.velocity == Vector3.zero)
         {
             _idle = true;
             _moeAnimator.SetBool(_moeIdle, true);
@@ -182,10 +182,10 @@ public class MoeAI : MonoBehaviour {
 
         yield return new WaitForSeconds(.5f);
 
-            if (_enemyTarget)
-                StartCoroutine(LookAtTarget());
+        if (_enemyTarget)
+            StartCoroutine(LookAtTarget());
 
-            _moeAnimator.SetTrigger(_moeAttack);
+        _moeAnimator.SetTrigger(_moeAttack);
 
         
         // -- Moe attack anim check -- //
@@ -200,7 +200,7 @@ public class MoeAI : MonoBehaviour {
             yield return null;
         }
         // if Moe fails to attack -- make him Follow()
-        ChangeState(aiState.following);
+        //ChangeState(aiState.following);
     }
 
     // -- Called inside _moeAttack animation event -- //
@@ -442,8 +442,8 @@ public class MoeAI : MonoBehaviour {
         // if Moe has not been taunted or touched by a pixie -- he will attack
         else if (other.CompareTag("Enemy") && currentState != aiState.stoned && currentState != aiState.charging)
         {
-            //if (!_enemyTarget)
-            _enemyTarget = other.transform;
+            if (!_enemyTarget)
+                _enemyTarget = other.transform;
 
             ChangeState(aiState.attacking);
         }
