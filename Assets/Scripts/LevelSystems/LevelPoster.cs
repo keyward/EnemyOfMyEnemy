@@ -9,6 +9,7 @@ public class LevelPoster : MonoBehaviour {
     public GameObject _yParticle;
     public AudioSource _soundClip;
 
+    private PlayerController _playerAbilities;
     private GameObject _posterPanel;
     private Image _canvasImage;
     private bool _posterTurnedOn;
@@ -18,6 +19,7 @@ public class LevelPoster : MonoBehaviour {
     void Awake()
     {
         _posterPanel = GameObject.FindGameObjectWithTag("PosterCanvas").transform.FindChild("PosterPanel").gameObject;
+        _playerAbilities = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
         if (!_posterPanel)
             print("TURN THE CANVAS BACK ON");
@@ -38,6 +40,11 @@ public class LevelPoster : MonoBehaviour {
     {
         if(_inputEnabled && Input.GetButtonDown("Interact"))
         {
+            if (Time.timeScale == 1)
+                Time.timeScale = 0f;
+            else
+                Time.timeScale = 1f;
+
             _posterTurnedOn = !_posterTurnedOn;
             _soundClip.Play();
             _posterPanel.SetActive(_posterTurnedOn); 
@@ -49,6 +56,7 @@ public class LevelPoster : MonoBehaviour {
     {
         if (other.CompareTag("Player"))
         {
+            _playerAbilities.tauntDisabled = true;
             _canvasImage.sprite = posterToDisplay;
             _yParticle.SetActive(true);
             _inputEnabled = true;
@@ -60,6 +68,10 @@ public class LevelPoster : MonoBehaviour {
     {
         if(other.CompareTag("Player"))
         {
+            if (Time.timeScale != 1)
+                Time.timeScale = 1f;
+
+            _playerAbilities.tauntDisabled = false;
             _inputEnabled = false;
             _posterPanel.SetActive(false);
             _yParticle.SetActive(false);

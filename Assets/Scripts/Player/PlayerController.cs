@@ -33,8 +33,8 @@ public class PlayerController : MonoBehaviour {
     private float vert;
 
     // Abilities
-    [HideInInspector] public bool canTaunt;
     [HideInInspector] public bool tauntDisabled;
+    private bool canTaunt;
     private bool _canRoll;
     private bool _canShoot;
 
