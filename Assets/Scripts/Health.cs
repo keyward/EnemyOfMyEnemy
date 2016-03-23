@@ -35,7 +35,6 @@ public class Health : MonoBehaviour {
             _playerHealthImage = GameObject.FindGameObjectWithTag("PosterCanvas").transform.FindChild("PlayerHealth").GetComponent<Image>();
             ChangeChainGraphic();
         }
-
     }
 
     // -- Remove health from object -- kill if necessary -- //
@@ -93,7 +92,24 @@ public class Health : MonoBehaviour {
         Destroy(gameObject);
     }
 
+
     // -- Send player to alotted respawn point -- //
+    IEnumerator PlayerRespawn()
+    {
+        _damageAudio.clip = damageSoundEffects[1];
+        _damageAudio.Play();
+
+        if (playerRespawnPoint)
+        {
+            yield return new WaitForSeconds(1.5f);
+            transform.position = playerRespawnPoint.position;
+        }
+            
+        health = _initialHealth;
+        ChangeChainGraphic();
+    }
+
+
     void RespawnPlayer()
     {
         _damageAudio.clip = damageSoundEffects[1];
