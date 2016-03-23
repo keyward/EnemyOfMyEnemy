@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
@@ -18,7 +19,6 @@ public class PlayerController : MonoBehaviour {
     // Components
     private Rigidbody _playerControls;
     private MoeAI _moeScript;
-    private Renderer _render;
 
     // Animations
     private Animator _playerAnimator;
@@ -28,15 +28,15 @@ public class PlayerController : MonoBehaviour {
     // Attributes
     private float moveSpeed;
     private float moveSpeedModifier;
-    private float diveSpeed;
     private float horz;
     private float vert;
 
     // Abilities
-    [HideInInspector] public bool canTaunt;
     [HideInInspector] public bool tauntDisabled;
+    private bool canTaunt;
     private bool _canRoll;
     private bool _canShoot;
+    private bool _rotationDisabled;
 
 
     void Awake()
@@ -50,9 +50,8 @@ public class PlayerController : MonoBehaviour {
         _shootAnim = Animator.StringToHash("Shoot");
 
         // Player metrics
-        moveSpeed = 6f;
+        moveSpeed = 5f;
         moveSpeedModifier = 1f;
-        diveSpeed = 1300f;
 
         _canRoll = true;
         _canShoot = true;
@@ -65,7 +64,6 @@ public class PlayerController : MonoBehaviour {
         // -- left thumbstick controls -- //
         horz = Input.GetAxisRaw("LeftHorz");
         vert = Input.GetAxisRaw("LeftVert");
-
         // -- right thumbstick controls -- //
         float rightHorz = Input.GetAxis("RightHorz");
         float rightVert = Input.GetAxis("RightVert");
@@ -88,6 +86,8 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
+
+
         // player shooting
         if (Input.GetAxis("Shoot") > 0f)
             StartCoroutine(ShootPea());
@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour {
 
         //Restart Level
         if (Input.GetKeyDown(KeyCode.Q))
-            Application.LoadLevel(0);
+            SceneManager.LoadScene(0);
 
         //Exit Game
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -108,13 +108,15 @@ public class PlayerController : MonoBehaviour {
     void MovePlayer(float hAxis, float vAxis)
     {
         Vector3 movement = new Vector3(hAxis, 0f, vAxis);
-        movement = movement.normalized * (moveSpeed * moveSpeedModifier) * Time.deltaTime;
 
-        _playerControls.MovePosition(transform.position + movement);
+        _playerControls.MovePosition(transform.position + movement * moveSpeed * Time.deltaTime);
     }
 
     void RotatePlayer(float hAxis, float vAxis)
     {
+        if (_rotationDisabled)
+            return;
+
         float angle = Mathf.Atan2(hAxis, vAxis) * Mathf.Rad2Deg;
 
         if (angle == 0f)
@@ -143,22 +145,35 @@ public class PlayerController : MonoBehaviour {
             yield break;
 
         _canRoll = false;
+        StartCoroutine(DisableRotation());
 
         _playerAnimator.SetTrigger(_dashAnim);
+        
         yield return new WaitForSeconds(2f);
 
         _canRoll = true;
     }
 
-    void DashAnimEvent()
+    IEnumerator DisableRotation()
+    {
+        _rotationDisabled = true;
+        yield return new WaitForSeconds(.8f);
+        _rotationDisabled = false;
+    }
+
+    IEnumerator DashAnimEvent()
     {
         _playerSounds.clip = playerSoundEffects[0];
         _playerSounds.Play();
+       
 
-        Vector3 diveRoll = new Vector3(horz, 0f, vert);
-        diveRoll = diveRoll.normalized * diveSpeed;
+        Vector3 dashTarget = transform.position + new Vector3(transform.forward.x * 6.5f, transform.position.y, transform.forward.z * 6.5f);
 
-        _playerControls.AddForce(diveRoll * Time.deltaTime, ForceMode.Impulse);
+        while(Vector3.Distance(transform.position, dashTarget) > 2f)
+        {
+            transform.position = Vector3.Lerp(transform.position, dashTarget,  Time.deltaTime * 3f);
+            yield return null;
+        }
     }
 
     IEnumerator ShootPea()

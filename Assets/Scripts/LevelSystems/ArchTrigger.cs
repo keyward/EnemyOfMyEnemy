@@ -31,8 +31,6 @@ public class ArchTrigger : MonoBehaviour {
         if (other.CompareTag("Player"))
         {
             _playerScript.tauntDisabled = disableTaunt;
-            print("disable " + _playerScript.tauntDisabled);
-            print("taunt ability " +_playerScript.canTaunt);
 
             _moeScript.ChangeState(MoeAI.aiState.stopped);
 

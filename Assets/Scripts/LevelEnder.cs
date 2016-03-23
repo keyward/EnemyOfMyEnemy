@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class LevelEnder : MonoBehaviour
@@ -10,7 +11,7 @@ public class LevelEnder : MonoBehaviour
 
         float fadeTime = GameObject.Find("PRE_Fader").GetComponent<Fading>().BeginFade(1);
         yield return new WaitForSeconds(5);
-        Application.LoadLevel(newLevel);
+        SceneManager.LoadScene(newLevel);
 
     }
 

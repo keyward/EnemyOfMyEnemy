@@ -6,14 +6,12 @@ public class MoeAI : MonoBehaviour {
 
     // MoeAI States
     public enum aiState { following, attacking, charging, stoned, stopped, newDestination };
-    //[HideInInspector]
+    
     public aiState currentState;
-    [SerializeField]
-    private bool _attacking;
-    [SerializeField]
-    private bool _frozen;
+    [SerializeField] private bool _attacking;
+    [SerializeField] private bool _frozen;
     [SerializeField] private bool _idle;
-    private bool _charging;
+    [SerializeField] private bool _charging;
 
     public GameObject attackParticles;
 
@@ -36,8 +34,8 @@ public class MoeAI : MonoBehaviour {
     private GameObject _chargeDamage;
 
     // MoeAI pathfinding
+    private Transform _followTarget;
     private Transform _playerTransform;
-    private Vector3 _lastPlayerLocation;
     private NavMeshAgent _navAgent;
     private Transform _enemyTarget;
 
@@ -88,25 +86,17 @@ public class MoeAI : MonoBehaviour {
     void Update()
     {
         if(currentState == aiState.following)
-            Follow();
+            Follow(_playerTransform);
 
         // if moe is told to stop and comes to a complete stop - Idle anim
-        else if(currentState == aiState.stopped  &&  !_idle  &&  _navAgent.velocity == Vector3.zero)
+        else if(!_idle  &&  _navAgent.velocity == Vector3.zero)
         {
             _idle = true;
             _moeAnimator.SetBool(_moeIdle, true);
-        }
-
-
-        //if (Input.GetKeyDown(KeyCode.G))
-        //{
-         //  _frozen = !_frozen;
-        //    StartCoroutine(StoneColorLerp());
-       // }
-            
+        }    
     }
 	
-    // -- Look at player when idle -- //
+    // -- Look at player when idle -- // THIS ONE COULD BE TROUBLE
     void FixedUpdate()
     {
         // if moe is standing still and not doing anything -- look at the player
@@ -130,7 +120,6 @@ public class MoeAI : MonoBehaviour {
         switch(currentState)
         {
             case aiState.following:
-                Follow();
                 break;
 
             case aiState.stoned:
@@ -150,12 +139,12 @@ public class MoeAI : MonoBehaviour {
                 break;
 
             default:
-                Follow();
+                ChangeState(aiState.following);
                 break;
         }
     }
 
-    void Follow()
+    void Follow(Transform followTarget)
     {
         // if moe is following the player and isn't moving - idle
         if (_navAgent.velocity == Vector3.zero && !_idle)
@@ -173,13 +162,11 @@ public class MoeAI : MonoBehaviour {
         // stops 5 meters from player //
         if (Vector3.Distance(transform.position, _playerTransform.position) > 6f)
         {
-            if(_navAgent.velocity == Vector3.zero)
-                _navAgent.Resume();
-
             _navAgent.SetDestination(_playerTransform.position);
+
+            if (_navAgent.velocity == Vector3.zero)
+                _navAgent.Resume();
         }  
-        else
-            _navAgent.Stop();
     }
 
     // -- Area Attack -- //
@@ -195,10 +182,10 @@ public class MoeAI : MonoBehaviour {
 
         yield return new WaitForSeconds(.5f);
 
-            if (_enemyTarget)
-                StartCoroutine(LookAtTarget());
+        if (_enemyTarget)
+            StartCoroutine(LookAtTarget());
 
-            _moeAnimator.SetTrigger(_moeAttack);
+        _moeAnimator.SetTrigger(_moeAttack);
 
         
         // -- Moe attack anim check -- //
@@ -213,7 +200,7 @@ public class MoeAI : MonoBehaviour {
             yield return null;
         }
         // if Moe fails to attack -- make him Follow()
-        ChangeState(aiState.following);
+        //ChangeState(aiState.following);
     }
 
     // -- Called inside _moeAttack animation event -- //
@@ -240,10 +227,10 @@ public class MoeAI : MonoBehaviour {
     // -- Charge at player -- //
     IEnumerator Charge()
     {
-        if (_frozen || _charging)
+        if (_frozen || _attacking)
             yield break;
 
-        _charging = true;
+        _attacking = true;
         _moeAnimator.SetBool(_moeCharge, true);
 
         // animation event # 1
@@ -254,7 +241,7 @@ public class MoeAI : MonoBehaviour {
         float normalStoppingDistance = _navAgent.stoppingDistance;
 
         // Animation Event
-        /* get players last position
+        // get players last position
         Vector3 target = _playerTransform.position;
         _navAgent.Stop();
         _navAgent.SetDestination(target);
@@ -269,7 +256,7 @@ public class MoeAI : MonoBehaviour {
         _navAgent.angularSpeed = 360f;
         _navAgent.stoppingDistance = 0f;
         _navAgent.Resume();
-        */
+        
 
         // audio 
         _moeSoundPlayer.clip = moeSounds[1];
@@ -310,10 +297,11 @@ public class MoeAI : MonoBehaviour {
         // attack cool down
         yield return new WaitForSeconds(1.75f);
 
-        _charging = false;
+        _attacking = false;
     }
 
-    // Plays During Moe's Charge animation //
+    // DEPRECATED //
+    /*
     IEnumerator MoeChargeAnimEvent()
     {
         Vector3 target = _playerTransform.position;
@@ -331,6 +319,7 @@ public class MoeAI : MonoBehaviour {
         _navAgent.stoppingDistance = 0f;
         _navAgent.Resume();
     }
+    */
 
     // -- Halts Moe's position, and resets attack -- //
     IEnumerator TurnToStone()
@@ -365,7 +354,7 @@ public class MoeAI : MonoBehaviour {
     IEnumerator StoneColorLerp()
     {
         // if hes frozen make his skin stone
-        if(_frozen)
+        if(_frozen && _partsToTurnToStone[_partsToTurnToStone.Length -1].color.a < 1.0f)
             while(_partsToTurnToStone[_partsToTurnToStone.Length - 1].color.a <= 1.0f)
             {
                 foreach(Material part in _partsToTurnToStone)
@@ -373,8 +362,9 @@ public class MoeAI : MonoBehaviour {
                     
                 yield return null;
             }
+
         // if he's unfrozen change it back to standard
-        else
+        else if(!_frozen && _partsToTurnToStone[_partsToTurnToStone.Length - 1].color.a > 0.0f)
             while(_partsToTurnToStone[_partsToTurnToStone.Length - 1].color.a > 0.0)
             {
                 foreach (Material part in _partsToTurnToStone)
@@ -420,12 +410,12 @@ public class MoeAI : MonoBehaviour {
                 if (hit.collider.CompareTag("Fear"))
                 {
                     ChangeState(aiState.stoned);
-                    return;
+                    break;
                 }
                 else if (hit.collider.CompareTag("Enemy"))
                 {
                     ChangeState(aiState.attacking);
-                    return;
+                    break;
                 }
                 else
                 {
@@ -433,7 +423,6 @@ public class MoeAI : MonoBehaviour {
                     _frozen = false;
                     StartCoroutine(StoneColorLerp());
                 }
-                    
             }
         }
     }
@@ -453,8 +442,8 @@ public class MoeAI : MonoBehaviour {
         // if Moe has not been taunted or touched by a pixie -- he will attack
         else if (other.CompareTag("Enemy") && currentState != aiState.stoned && currentState != aiState.charging)
         {
-            //if (!_enemyTarget)
-            _enemyTarget = other.transform;
+            if (!_enemyTarget)
+                _enemyTarget = other.transform;
 
             ChangeState(aiState.attacking);
         }
