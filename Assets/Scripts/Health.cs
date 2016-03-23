@@ -35,7 +35,6 @@ public class Health : MonoBehaviour {
             _playerHealthImage = GameObject.FindGameObjectWithTag("PosterCanvas").transform.FindChild("PlayerHealth").GetComponent<Image>();
             ChangeChainGraphic();
         }
-
     }
 
     // -- Remove health from object -- kill if necessary -- //

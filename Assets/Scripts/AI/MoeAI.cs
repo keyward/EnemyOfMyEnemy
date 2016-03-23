@@ -230,7 +230,7 @@ public class MoeAI : MonoBehaviour {
         if (_frozen || _attacking)
             yield break;
 
-        _charging = true;
+        _attacking = true;
         _moeAnimator.SetBool(_moeCharge, true);
 
         // animation event # 1
@@ -297,7 +297,7 @@ public class MoeAI : MonoBehaviour {
         // attack cool down
         yield return new WaitForSeconds(1.75f);
 
-        _charging = false;
+        _attacking = false;
     }
 
     // DEPRECATED //

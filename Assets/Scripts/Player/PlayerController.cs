@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
@@ -18,12 +19,13 @@ public class PlayerController : MonoBehaviour {
     // Components
     private Rigidbody _playerControls;
     private MoeAI _moeScript;
-    private Renderer _render;
 
     // Animations
     private Animator _playerAnimator;
+    private AnimatorStateInfo _stateInfo;
     private int _dashAnim;
     private int _shootAnim;
+    private int _dashNameHash;
 
     // Attributes
     private float moveSpeed;
@@ -37,6 +39,7 @@ public class PlayerController : MonoBehaviour {
     private bool canTaunt;
     private bool _canRoll;
     private bool _canShoot;
+    private bool _rotationDisabled;
 
 
     void Awake()
@@ -48,6 +51,7 @@ public class PlayerController : MonoBehaviour {
         _playerAnimator = GetComponent<Animator>();
         _dashAnim = Animator.StringToHash("Dash");
         _shootAnim = Animator.StringToHash("Shoot");
+        _dashNameHash = Animator.StringToHash("Base Layer.PlayerDash");
 
         // Player metrics
         moveSpeed = 6f;
@@ -98,7 +102,7 @@ public class PlayerController : MonoBehaviour {
 
         //Restart Level
         if (Input.GetKeyDown(KeyCode.Q))
-            Application.LoadLevel(0);
+            SceneManager.LoadScene(0);
 
         //Exit Game
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -115,6 +119,9 @@ public class PlayerController : MonoBehaviour {
 
     void RotatePlayer(float hAxis, float vAxis)
     {
+        if (_rotationDisabled)
+            return;
+
         float angle = Mathf.Atan2(hAxis, vAxis) * Mathf.Rad2Deg;
 
         if (angle == 0f)
@@ -143,11 +150,20 @@ public class PlayerController : MonoBehaviour {
             yield break;
 
         _canRoll = false;
+        StartCoroutine(DisableRotation());
 
         _playerAnimator.SetTrigger(_dashAnim);
+        
         yield return new WaitForSeconds(2f);
 
         _canRoll = true;
+    }
+
+    IEnumerator DisableRotation()
+    {
+        _rotationDisabled = true;
+        yield return new WaitForSeconds(.8f);
+        _rotationDisabled = false;
     }
 
     void DashAnimEvent()
