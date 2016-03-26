@@ -1663,12 +1663,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9877b6709e20a9d4fa876f669f1dcff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySounds:
-  - {fileID: 8300000, guid: e661a7a8cc055eb4495c1f75b09040db, type: 3}
-  - {fileID: 8300000, guid: 6131cdcda7474ce49bc47cfb8e928d74, type: 3}
-  stunParticles: {fileID: 19899020}
   attackPower: 1
   lungeDistance: 4
+  meleeSounds:
+  - {fileID: 8300000, guid: fd522532f29827a478fdb0f522021093, type: 3}
+  - {fileID: 8300000, guid: 9ba6c938550aca340852b66282431484, type: 3}
+  stunParticles: {fileID: 19899020}
 --- !u!135 &13515326
 SphereCollider:
   m_ObjectHideFlags: 1

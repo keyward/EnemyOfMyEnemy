@@ -9,6 +9,7 @@ public class LevelTrigger : MonoBehaviour {
     [Header("Spike Walls")]
     public Transform fightBarriers;
     public float raiseSpeed;
+    public bool needsToRaiseBarriers;
 
     public ArchTrigger archTrigger;
 
@@ -57,7 +58,10 @@ public class LevelTrigger : MonoBehaviour {
             triggerActivated = true;
             _enemyManager.gameObject.SetActive(true);
 
-            StartCoroutine(RaiseBarriers()); 
+            Invoke("SpawnEnemies", .5f);
+
+            if (needsToRaiseBarriers)
+                StartCoroutine(RaiseBarriers()); 
         }
     }
 
@@ -81,14 +85,17 @@ public class LevelTrigger : MonoBehaviour {
     {
         yield return new WaitForSeconds(.5f);
 
-        foreach (GameObject spawner in enemySpawners)
-            spawner.SetActive(true);
-
         for (float i = 0; i < 4; i += .2f)
         {
             fightBarriers.position = Vector3.Lerp(fightBarriers.position, fightBarriers.position + (Vector3.up * 3), Time.deltaTime * raiseSpeed);
             yield return null;
         }
+    }
+
+    void SpawnEnemies()
+    {
+        foreach (GameObject spawner in enemySpawners)
+            spawner.SetActive(true);
     }
 
     IEnumerator LowerBarriers()
