@@ -26,9 +26,19 @@ public class DefenderEnemy : MonoBehaviour {
 
     void Awake()
     {
-
         _moeTransform = GameObject.FindGameObjectWithTag("Moe").transform;
         _healthScript = GetComponent<Health>();
+
+        _pathFinder = GetComponent<NavMeshAgent>();
+        _playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+
+        _actionAvailable = true;
+        _lunging = false;
+
+        _defenderAnimator = GetComponent<Animator>();
+        _attackAnimation = Animator.StringToHash("Attack");
+
+        _defenderAudio = GetComponent<AudioSource>();
 
         _shieldActive = true;
         _healthScript.enabled = false;
