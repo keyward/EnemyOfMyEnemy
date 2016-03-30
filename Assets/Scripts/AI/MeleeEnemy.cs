@@ -42,6 +42,8 @@ public class MeleeEnemy : MonoBehaviour {
 
         _lunging = false;
         _stunned = false;
+
+		_pathFinder.stoppingDistance = 5.0f;
     }
 
     // _enemyManagerRef lets the stage know when the enemy is dead so the player can move on //
@@ -62,12 +64,14 @@ public class MeleeEnemy : MonoBehaviour {
         if(!_stunned)
         {
             // ... and within lunging distance -- lunge //
-            if (Vector3.Distance(transform.position, _playerTransform.position) <= lungeDistance)
-                StartCoroutine(Lunge());
+			if (Vector3.Distance(transform.position, _playerTransform.position) <= lungeDistance)
+				StartCoroutine(Lunge());
 
             // ... and able to move -- go towards player //
             else if (!_lunging)
-                _pathFinder.SetDestination(_playerTransform.position);
+			{
+				_pathFinder.SetDestination(_playerTransform.position);
+			}
         }
         else
         {
@@ -158,4 +162,5 @@ public class MeleeEnemy : MonoBehaviour {
 
         _lunging = false;
     }
+		
 }
