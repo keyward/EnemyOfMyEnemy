@@ -58,6 +58,8 @@ public class PlayerController : MonoBehaviour {
         _canShoot = true;
         canTaunt = true;
         tauntDisabled = false;
+
+        Application.targetFrameRate = 60;
     }
 
     void FixedUpdate()
