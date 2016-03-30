@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour {
     private bool _rotationDisabled;
 
 
+
     void Awake()
     {
         _moeScript = GameObject.FindGameObjectWithTag("Moe").GetComponent<MoeAI>();
@@ -57,6 +58,8 @@ public class PlayerController : MonoBehaviour {
         _canShoot = true;
         canTaunt = true;
         tauntDisabled = false;
+
+        Application.targetFrameRate = 60;
     }
 
     void FixedUpdate()
@@ -85,7 +88,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update()
-    {
+    {      
         // player shooting
         if (Input.GetAxis("Shoot") > 0f)
             StartCoroutine(ShootPea());
