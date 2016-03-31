@@ -1665,6 +1665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackPower: 1
   lungeDistance: 4
+  stoppingDistance: 8
   meleeSounds:
   - {fileID: 8300000, guid: fd522532f29827a478fdb0f522021093, type: 3}
   - {fileID: 8300000, guid: 9ba6c938550aca340852b66282431484, type: 3}
