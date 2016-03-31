@@ -220,7 +220,7 @@ public class MoeAI : MonoBehaviour {
     public IEnumerator MoeAttack()
     {
         // Attack Effects
-        Destroy(Instantiate(attackParticles, transform.position, Quaternion.Euler(90f, transform.rotation.y, transform.rotation.z)), 1f);
+        Destroy(Instantiate(attackParticles, transform.position + Vector3.up/1.5f, Quaternion.Euler(90f, transform.rotation.y, transform.rotation.z)), 1f);
         _moeSoundPlayer.clip = moeSounds[0];
         _moeSoundPlayer.Play();
 
