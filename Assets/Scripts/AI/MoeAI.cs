@@ -43,7 +43,7 @@ public class MoeAI : MonoBehaviour {
     // Moe "stoned" color change
     public SkinnedMeshRenderer[] moeSkin;
     private Material[] _partsToTurnToStone;
-    
+
 
 	void Awake ()
     {
@@ -226,7 +226,9 @@ public class MoeAI : MonoBehaviour {
 
         // Deal damage
         _areaDamage.SetActive(true);
+        Time.timeScale = .5f;
         yield return new WaitForSeconds(.1f);
+        Time.timeScale = 1.0f;
         _areaDamage.SetActive(false);
 
         // attack cooldown
