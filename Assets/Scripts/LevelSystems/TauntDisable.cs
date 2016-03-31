@@ -34,9 +34,11 @@ public class TauntDisable : MonoBehaviour {
 
         _spikesUp = true;
 
-        for (float i = 0; i < 4; i += .2f)
+        Vector3 targetHeight = new Vector3(spikeWall.transform.position.x, spikeWall.transform.position.y + 2.7f, spikeWall.transform.position.z);
+
+        while (Vector3.Distance(spikeWall.position, targetHeight) > .25f)
         {
-            spikeWall.position = Vector3.Lerp(spikeWall.position, spikeWall.position + (Vector3.up * 3), Time.deltaTime * raiseSpeed);
+            spikeWall.position = Vector3.Lerp(spikeWall.position, targetHeight, Time.deltaTime * raiseSpeed);
             yield return null;
         }
     }

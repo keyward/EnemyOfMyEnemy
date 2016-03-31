@@ -83,11 +83,12 @@ public class LevelTrigger : MonoBehaviour {
 
     IEnumerator RaiseBarriers()
     {
+        Vector3 targetHeight = new Vector3(fightBarriers.transform.position.x, fightBarriers.transform.position.y + 2.7f, fightBarriers.transform.position.z);
         yield return new WaitForSeconds(.5f);
 
-        for (float i = 0; i < 4; i += .2f)
+        while (Vector3.Distance(fightBarriers.position, targetHeight) > .25f)
         {
-            fightBarriers.position = Vector3.Lerp(fightBarriers.position, fightBarriers.position + (Vector3.up * 3), Time.deltaTime * raiseSpeed);
+            fightBarriers.position = Vector3.Lerp(fightBarriers.position, targetHeight, Time.deltaTime * raiseSpeed);
             yield return null;
         }
     }

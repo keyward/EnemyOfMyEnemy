@@ -5,13 +5,14 @@ public class MoeAI : MonoBehaviour {
 
 
     // MoeAI States
-    public enum aiState { following, attacking, charging, stoned, stopped, newDestination };
+    public enum aiState { following, attacking, charging, stoned, stopped };
     
     public aiState currentState;
     [SerializeField] private bool _attacking;
     [SerializeField] private bool _frozen;
     [SerializeField] private bool _idle;
     [SerializeField] private bool _charging;
+    private bool _hasAttacked;
 
     public GameObject attackParticles;
 
@@ -52,6 +53,7 @@ public class MoeAI : MonoBehaviour {
         _frozen = false;
         _idle = true;
         _charging = false;
+        _hasAttacked = false;
 
         // Moe attack
         _areaDamage = transform.FindChild("AreaAttack").gameObject;
@@ -87,14 +89,18 @@ public class MoeAI : MonoBehaviour {
     void Update()
     {
         if(currentState == aiState.following)
-            Follow(_playerTransform);
+            Follow();
 
         // if moe is told to stop and comes to a complete stop - Idle anim
         else if(!_idle  &&  _navAgent.velocity == Vector3.zero)
         {
             _idle = true;
             _moeAnimator.SetBool(_moeIdle, true);
-        }    
+        }
+
+        if (_charging && _frozen)
+            if(currentState != aiState.stoned)
+                ChangeState(aiState.stoned);
     }
 	
     // -- Look at player when idle -- // THIS ONE COULD BE TROUBLE
@@ -128,6 +134,13 @@ public class MoeAI : MonoBehaviour {
                 break;
 
             case aiState.attacking:
+                if (_frozen)
+                {
+                    ChangeState(aiState.stoned);
+                    return;
+                }
+                   
+
                 StartCoroutine(Attack());
                 break;
 
@@ -145,7 +158,7 @@ public class MoeAI : MonoBehaviour {
         }
     }
 
-    void Follow(Transform followTarget)
+    void Follow()
     {
         // if moe is following the player and isn't moving - idle
         if (_navAgent.velocity == Vector3.zero && !_idle)
@@ -188,18 +201,19 @@ public class MoeAI : MonoBehaviour {
 
         _moeAnimator.SetTrigger(_moeAttack);
 
+        float attackCheck = 2f;
         
-        // -- Moe attack anim check -- //
-        float bugTime = 0f;
-        while (bugTime < 2f)
-        {
-            // if Moe does attack -- continue as planned
-            if (_stateInfo.IsName("Attack"))
-                break;
 
-            bugTime += Time.deltaTime;
+        while(attackCheck > 0)
+        {
+            if (_hasAttacked)
+                yield break;
+
+            attackCheck -= Time.deltaTime;
             yield return null;
         }
+
+        CheckForEnemies();
     }
 
     // -- Called inside _moeAttack animation event -- //
@@ -219,8 +233,9 @@ public class MoeAI : MonoBehaviour {
         yield return new WaitForSeconds(1f);
 
         // reset state
-        CheckForEnemies();
         _attacking = false;
+        _hasAttacked = true;
+        CheckForEnemies();
     }
 
     // -- Charge at player -- //
@@ -229,7 +244,6 @@ public class MoeAI : MonoBehaviour {
         if (_frozen || _charging)
             yield break;
 
-        _attacking = true;
         _charging = true;
         _moeAnimator.SetBool(_moeCharge, true);
 
@@ -295,7 +309,6 @@ public class MoeAI : MonoBehaviour {
         // attack cool down
         yield return new WaitForSeconds(1.75f);
 
-        _attacking = false;
         _charging = false;
     }
 
@@ -345,6 +358,9 @@ public class MoeAI : MonoBehaviour {
         else if(!_frozen && _partsToTurnToStone[_partsToTurnToStone.Length - 1].color.a > 0.0f)
             while(_partsToTurnToStone[_partsToTurnToStone.Length - 1].color.a > 0.0)
             {
+                if (_frozen)
+                    break;
+
                 foreach (Material part in _partsToTurnToStone)
                     part.color -= new Color(0f, 0f, 0f, .01f);
 
@@ -413,13 +429,26 @@ public class MoeAI : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
+        if (_frozen)
+            return;
+
         // Touch a pixie to turn him to stone
         if (other.CompareTag("Fear"))
             ChangeState(aiState.stoned);
 
         // if Moe has not been taunted or touched by a pixie -- he will attack
-        else if (other.CompareTag("Enemy") && currentState != aiState.stoned && currentState != aiState.charging)
+        else if (other.CompareTag("Enemy"))
         {
+            if (_frozen)
+                return;
+            else
+                print("not frozen");
+
+            if (currentState == aiState.charging)
+                return;
+            else if (currentState == aiState.stoned)
+                return;
+
             if (!_enemyTarget)
                 _enemyTarget = other.transform;
 
