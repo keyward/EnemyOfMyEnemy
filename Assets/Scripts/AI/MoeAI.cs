@@ -43,7 +43,7 @@ public class MoeAI : MonoBehaviour {
     // Moe "stoned" color change
     public SkinnedMeshRenderer[] moeSkin;
     private Material[] _partsToTurnToStone;
-    
+
 
 	void Awake ()
     {
@@ -220,13 +220,15 @@ public class MoeAI : MonoBehaviour {
     public IEnumerator MoeAttack()
     {
         // Attack Effects
-        Destroy(Instantiate(attackParticles, transform.position, Quaternion.Euler(90f, transform.rotation.y, transform.rotation.z)), 1f);
+        Destroy(Instantiate(attackParticles, transform.position + Vector3.up/1.5f, Quaternion.Euler(90f, transform.rotation.y, transform.rotation.z)), 1f);
         _moeSoundPlayer.clip = moeSounds[0];
         _moeSoundPlayer.Play();
 
         // Deal damage
         _areaDamage.SetActive(true);
+        Time.timeScale = .5f;
         yield return new WaitForSeconds(.1f);
+        Time.timeScale = 1.0f;
         _areaDamage.SetActive(false);
 
         // attack cooldown
