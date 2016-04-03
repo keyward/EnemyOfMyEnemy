@@ -7,9 +7,11 @@ public class Bullet : MonoBehaviour {
     public float speed;
     public int damageAmount;
     public GameObject deathParticles;
+    public bool isBone;
 
     private Rigidbody rb;
     private AudioSource bulletSound;
+
     
     void Awake()
     {
@@ -25,6 +27,12 @@ public class Bullet : MonoBehaviour {
         rb.AddForce(transform.forward * speed, ForceMode.Impulse);
 
         Destroy(gameObject, 3f);
+    }
+
+    void Update()
+    {
+        if (isBone)
+            rb.transform.Rotate(Vector3.up * Time.deltaTime * 1000);
     }
 
     void OnCollisionEnter( Collision col )
