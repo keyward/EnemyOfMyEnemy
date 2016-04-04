@@ -2555,8 +2555,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aee3b9ea5c4a719419c3978e0820022e, type: 3}
   - {fileID: 8300000, guid: 1d615ee0126f46d41bb8130aff90d4a3, type: 3}
   - {fileID: 8300000, guid: 696d1f44a02b5c84f986d9ff802519c2, type: 3}
-  canTaunt: 0
   tauntDisabled: 0
+  offset: 0
 --- !u!114 &11457992
 MonoBehaviour:
   m_ObjectHideFlags: 1
