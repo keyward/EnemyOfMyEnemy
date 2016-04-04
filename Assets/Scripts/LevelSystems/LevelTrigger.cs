@@ -10,6 +10,7 @@ public class LevelTrigger : MonoBehaviour {
     public Transform fightBarriers;
     public float raiseSpeed;
     public bool needsToRaiseBarriers;
+    public bool onlyNeedLarry;
 
     public ArchTrigger archTrigger;
 
@@ -53,7 +54,7 @@ public class LevelTrigger : MonoBehaviour {
             _moeCrossed = true;
 
 
-        if (_playerCrossed && _moeCrossed)
+        if (_playerCrossed && _moeCrossed || _playerCrossed && onlyNeedLarry)
         {
             triggerActivated = true;
             _enemyManager.gameObject.SetActive(true);
