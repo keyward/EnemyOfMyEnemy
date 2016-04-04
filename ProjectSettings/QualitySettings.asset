@@ -163,5 +163,5 @@ QualitySettings:
     asyncUploadBufferSize: 4
     excludedTargetPlatforms: []
   m_PerPlatformDefaultQuality:
-    Standalone: 0
-    Web: 0
+    Standalone: 5
+    Web: 5
