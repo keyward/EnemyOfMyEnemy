@@ -25,6 +25,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 490020}
+  - 65: {fileID: 6581300}
   m_Layer: 0
   m_Name: M_WallRecessArch_01
   m_TagString: Untagged
@@ -43,6 +44,7 @@ GameObject:
   - 33: {fileID: 3318676}
   - 23: {fileID: 2323094}
   - 95: {fileID: 9572998}
+  - 65: {fileID: 6510082}
   m_Layer: 0
   m_Name: M_WallRecess_Dungeon (1)
   m_TagString: Untagged
@@ -156,6 +158,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 146222}
   m_Mesh: {fileID: 4300000, guid: a1fce6cc271a0034da77f85fd52ce4c6, type: 3}
+--- !u!65 &6510082
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 167212}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 842.84143, y: 632.81287, z: 130.17867}
+  m_Center: {x: 4.6613007, y: 15.996231, z: 11.656632}
+--- !u!65 &6581300
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152908}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &9572998
 Animator:
   serializedVersion: 3
