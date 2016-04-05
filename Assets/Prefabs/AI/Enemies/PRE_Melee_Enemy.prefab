@@ -1667,8 +1667,8 @@ MonoBehaviour:
   lungeDistance: 4
   stoppingDistance: 8
   meleeSounds:
-  - {fileID: 8300000, guid: fd522532f29827a478fdb0f522021093, type: 3}
-  - {fileID: 8300000, guid: 9ba6c938550aca340852b66282431484, type: 3}
+  - {fileID: 8300000, guid: e661a7a8cc055eb4495c1f75b09040db, type: 3}
+  - {fileID: 8300000, guid: 6131cdcda7474ce49bc47cfb8e928d74, type: 3}
   stunParticles: {fileID: 19899020}
 --- !u!135 &13515326
 SphereCollider:
@@ -3336,6 +3336,14 @@ Prefab:
       objectReference: {fileID: 8300000, guid: ffd24c0bc953f6a4ebf88fd2a23c4d96, type: 3}
     - target: {fileID: 0}
       propertyPath: damageSoundEffects.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6131cdcda7474ce49bc47cfb8e928d74, type: 3}
+    - target: {fileID: 0}
+      propertyPath: meleeSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: e661a7a8cc055eb4495c1f75b09040db, type: 3}
+    - target: {fileID: 0}
+      propertyPath: meleeSounds.Array.data[1]
       value: 
       objectReference: {fileID: 8300000, guid: 6131cdcda7474ce49bc47cfb8e928d74, type: 3}
     m_RemovedComponents: []

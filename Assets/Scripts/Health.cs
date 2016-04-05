@@ -23,6 +23,9 @@ public class Health : MonoBehaviour {
 
     private Image _playerHealthImage;
 
+    private PlayerController _playerDashDisable;
+
+
     void Awake()
     {
         _initialHealth = health;
@@ -32,6 +35,7 @@ public class Health : MonoBehaviour {
 
         if (gameObject.CompareTag("Player"))
         {
+            _playerDashDisable = GetComponent<PlayerController>();
             _playerHealthImage = GameObject.FindGameObjectWithTag("PosterCanvas").transform.FindChild("PlayerHealth").GetComponent<Image>();
             ChangeChainGraphic();
         }
@@ -94,26 +98,12 @@ public class Health : MonoBehaviour {
 
 
     // -- Send player to alotted respawn point -- //
-    IEnumerator PlayerRespawn()
-    {
-        _damageAudio.clip = damageSoundEffects[1];
-        _damageAudio.Play();
-
-        if (playerRespawnPoint)
-        {
-            yield return new WaitForSeconds(1.5f);
-            transform.position = playerRespawnPoint.position;
-        }
-            
-        health = _initialHealth;
-        ChangeChainGraphic();
-    }
-
-
     void RespawnPlayer()
     {
         _damageAudio.clip = damageSoundEffects[1];
         _damageAudio.Play();
+
+        _playerDashDisable.StopCoroutine("DashAnimEvent");
 
         if (playerRespawnPoint)
             transform.position = playerRespawnPoint.position;

@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour {
     private bool _canShoot;
     private bool _rotationDisabled;
 
-
+    public float offset;
 
     void Awake()
     {
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update()
-    {      
+    {
         // player shooting
         if (Input.GetAxis("Shoot") > 0f)
             StartCoroutine(ShootPea());
@@ -166,11 +166,19 @@ public class PlayerController : MonoBehaviour {
     {
         _playerSounds.clip = playerSoundEffects[0];
         _playerSounds.Play();
-       
-        Vector3 dashTarget = transform.position + new Vector3(transform.forward.x * 6.5f, transform.position.y, transform.forward.z * 6.5f);
-        float dashUnstick = 1.0f;
 
-        while(Vector3.Distance(transform.position, dashTarget) > 2f)
+        Vector3 dashTarget;
+        RaycastHit rayInfo;
+
+        if (Physics.Raycast(transform.position + new Vector3(0f, 3f, 0f), transform.forward, out rayInfo, 6))
+            dashTarget = rayInfo.point;
+        
+        else
+            dashTarget = transform.position + new Vector3(transform.forward.x * 6.5f, transform.position.y, transform.forward.z * 6.5f);
+
+
+        float dashUnstick = 1.0f;
+        while (Vector3.Distance(transform.position, dashTarget) > 2f)
         {
             if (dashUnstick <= 0f)
                 break;

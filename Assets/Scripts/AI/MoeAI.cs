@@ -18,7 +18,6 @@ public class MoeAI : MonoBehaviour {
 
     // Animations
     private Animator _moeAnimator;
-    private AnimatorStateInfo _stateInfo;
     private int _moeAttack;
     private int _moeCharge;
     private int _moeIdle;
@@ -43,7 +42,7 @@ public class MoeAI : MonoBehaviour {
     // Moe "stoned" color change
     public SkinnedMeshRenderer[] moeSkin;
     private Material[] _partsToTurnToStone;
-    
+
 
 	void Awake ()
     {
@@ -68,7 +67,6 @@ public class MoeAI : MonoBehaviour {
         // etc Components
         _moeSoundPlayer = GetComponent<AudioSource>();
         _moeAnimator = GetComponent<Animator>();
-        _stateInfo = _moeAnimator.GetCurrentAnimatorStateInfo(0);
         _moeAttack = Animator.StringToHash("Attack");
         _moeCharge = Animator.StringToHash("Charging");
         _moeIdle = Animator.StringToHash("Idling");
@@ -88,6 +86,8 @@ public class MoeAI : MonoBehaviour {
 
     void Update()
     {
+        //print(_partsToTurnToStone[0].color.a);
+
         if(currentState == aiState.following)
             Follow();
 
@@ -220,13 +220,15 @@ public class MoeAI : MonoBehaviour {
     public IEnumerator MoeAttack()
     {
         // Attack Effects
-        Destroy(Instantiate(attackParticles, transform.position, Quaternion.Euler(90f, transform.rotation.y, transform.rotation.z)), 1f);
+        Destroy(Instantiate(attackParticles, transform.position + Vector3.up/1.5f, Quaternion.Euler(90f, transform.rotation.y, transform.rotation.z)), 1f);
         _moeSoundPlayer.clip = moeSounds[0];
         _moeSoundPlayer.Play();
 
         // Deal damage
         _areaDamage.SetActive(true);
+        Time.timeScale = .5f;
         yield return new WaitForSeconds(.1f);
+        Time.timeScale = 1.0f;
         _areaDamage.SetActive(false);
 
         // attack cooldown
@@ -323,8 +325,6 @@ public class MoeAI : MonoBehaviour {
 
         float initialAngularSpeed = _navAgent.angularSpeed;
         _navAgent.angularSpeed = 0;
-        _moeSoundPlayer.clip = moeSounds[2];
-        _moeSoundPlayer.Play();
 
         StartCoroutine(StoneColorLerp());
 
@@ -344,19 +344,28 @@ public class MoeAI : MonoBehaviour {
 
     IEnumerator StoneColorLerp()
     {
-        // if hes frozen and still purple turn his skin to stone
-        if(_frozen && _partsToTurnToStone[_partsToTurnToStone.Length -1].color.a < 1.0f)
-            while(_partsToTurnToStone[_partsToTurnToStone.Length - 1].color.a <= 1.0f)
+        if (_frozen)
+        {
+            // reducing redundant sound effects
+            if (_partsToTurnToStone[_partsToTurnToStone.Length - 1].color.a < .25f)
             {
-                foreach(Material part in _partsToTurnToStone)
-                    part.color += new Color(0f, 0f, 0f, .01f);
-                    
-                yield return null;
+                _moeSoundPlayer.clip = moeSounds[2];
+                _moeSoundPlayer.Play();
             }
 
-        // if he's unfrozen and not purple then turn his skin purple
-        else if(!_frozen && _partsToTurnToStone[_partsToTurnToStone.Length - 1].color.a > 0.0f)
-            while(_partsToTurnToStone[_partsToTurnToStone.Length - 1].color.a > 0.0)
+            // if hes frozen turn him to stone
+            while (_partsToTurnToStone[_partsToTurnToStone.Length - 1].color.a <= 1.0f)
+            {   
+                foreach (Material part in _partsToTurnToStone)
+                    part.color += new Color(0f, 0f, 0f, .01f);
+
+                yield return null;
+            }
+        }
+        else
+        {
+            // if hes not frozen turn him purple again
+            while (_partsToTurnToStone[_partsToTurnToStone.Length - 1].color.a > 0.0)
             {
                 if (_frozen)
                     break;
@@ -366,6 +375,7 @@ public class MoeAI : MonoBehaviour {
 
                 yield return null;
             }
+        }
     }
 
     // -- if Moe is attacking and has an enemy target, rotate towards them -- //

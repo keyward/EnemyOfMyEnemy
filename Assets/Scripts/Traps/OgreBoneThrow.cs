@@ -4,14 +4,16 @@ using System.Collections;
 public class OgreBoneThrow : MonoBehaviour {
 
 
-
-    public Transform firePoint;
+   
     public GameObject bonePrefab;
-    public GameObject player;
+    public float lookSpeed;
+    private Transform playerTransform;
+    private Transform firePoint;
 
     void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        firePoint = transform.GetChild(0);
     }
 
 	void Start ()
@@ -21,9 +23,9 @@ public class OgreBoneThrow : MonoBehaviour {
 	
     void Update()
     {
-        transform.LookAt(player.transform);
+        LookAtPlayer();
 
-        firePoint.transform.LookAt(player.transform);
+        firePoint.transform.LookAt(playerTransform);
     }
 
     IEnumerator ThrowBone()
@@ -36,5 +38,13 @@ public class OgreBoneThrow : MonoBehaviour {
 
             yield return new WaitForSeconds(2f);
         }
+    }
+
+    void LookAtPlayer()
+    {
+        Vector3 lookDirection = playerTransform.position - transform.position;
+        lookDirection.y = 0;
+        Quaternion rotation = Quaternion.LookRotation(lookDirection);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * lookSpeed);
     }
 }
