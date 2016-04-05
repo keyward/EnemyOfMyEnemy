@@ -13,13 +13,11 @@ public class MoeAI : MonoBehaviour {
     [SerializeField] private bool _idle;
     [SerializeField] private bool _charging;
     private bool _hasAttacked;
-    private bool _isStillFrozen;
 
     public GameObject attackParticles;
 
     // Animations
     private Animator _moeAnimator;
-    private AnimatorStateInfo _stateInfo;
     private int _moeAttack;
     private int _moeCharge;
     private int _moeIdle;
@@ -55,7 +53,6 @@ public class MoeAI : MonoBehaviour {
         _idle = true;
         _charging = false;
         _hasAttacked = false;
-        _isStillFrozen = false;
 
         // Moe attack
         _areaDamage = transform.FindChild("AreaAttack").gameObject;
@@ -70,7 +67,6 @@ public class MoeAI : MonoBehaviour {
         // etc Components
         _moeSoundPlayer = GetComponent<AudioSource>();
         _moeAnimator = GetComponent<Animator>();
-        _stateInfo = _moeAnimator.GetCurrentAnimatorStateInfo(0);
         _moeAttack = Animator.StringToHash("Attack");
         _moeCharge = Animator.StringToHash("Charging");
         _moeIdle = Animator.StringToHash("Idling");
