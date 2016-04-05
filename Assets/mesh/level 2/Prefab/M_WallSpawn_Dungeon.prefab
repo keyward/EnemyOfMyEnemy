@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 402654}
   - 33: {fileID: 3366360}
   - 23: {fileID: 2318456}
+  - 65: {fileID: 6510094}
   m_Layer: 0
   m_Name: M_WallSpawn_Dungeon1
   m_TagString: Untagged
@@ -93,6 +94,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132888}
   m_Mesh: {fileID: 4300000, guid: 3be1b237e5a62b14f896da79949fc034, type: 3}
+--- !u!65 &6510094
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132888}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.316319, y: 6.324027, z: 1.0686489}
+  m_Center: {x: -0.020938396, y: 0.16201341, z: 0.0000019073486}
 --- !u!95 &9599002
 Animator:
   serializedVersion: 3

@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 422752}
   - 33: {fileID: 3353904}
   - 23: {fileID: 2369234}
+  - 64: {fileID: 6491866}
   m_Layer: 0
   m_Name: M_WallRoundCorner_Dungeon1
   m_TagString: Untagged
@@ -26,6 +27,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 473828}
   - 95: {fileID: 9586490}
+  - 64: {fileID: 6423128}
   m_Layer: 0
   m_Name: M_WallRoundCorner_Dungeon
   m_TagString: Untagged
@@ -93,6 +95,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108256}
   m_Mesh: {fileID: 4300000, guid: bea7e71197a5c2147a793a593d2467ba, type: 3}
+--- !u!64 &6423128
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124882}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 0}
+--- !u!64 &6491866
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108256}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_Mesh: {fileID: 4300000, guid: bea7e71197a5c2147a793a593d2467ba, type: 3}
 --- !u!95 &9586490
 Animator:
   serializedVersion: 3
@@ -116,7 +142,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 124882}

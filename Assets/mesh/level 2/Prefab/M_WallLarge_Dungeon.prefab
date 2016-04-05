@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 454376}
   - 33: {fileID: 3318936}
   - 23: {fileID: 2395466}
+  - 65: {fileID: 6539890}
   m_Layer: 0
   m_Name: M_WallLarge_Dungeon1
   m_TagString: Untagged
@@ -93,6 +94,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130632}
   m_Mesh: {fileID: 4300000, guid: 255cb7a4c41ec2c4b844ce3d149d61dd, type: 3}
+--- !u!65 &6539890
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130632}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.327819, y: 6.324027, z: 1.0686489}
+  m_Center: {x: -0.00063610077, y: 0.16201341, z: 0}
 --- !u!95 &9516204
 Animator:
   serializedVersion: 3
