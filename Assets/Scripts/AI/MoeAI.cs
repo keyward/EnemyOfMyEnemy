@@ -451,8 +451,7 @@ public class MoeAI : MonoBehaviour {
         {
             if (_frozen)
                 return;
-            else
-                print("not frozen");
+
 
             if (currentState == aiState.charging)
                 return;
