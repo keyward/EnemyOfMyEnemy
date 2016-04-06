@@ -44,7 +44,7 @@ public class Spider : MonoBehaviour {
         {
             // get a random position while staying within bounds //
             Vector3 nextPosition = new Vector3(Random.Range(_spawnLocation.x - 10f, _spawnLocation.x + 10f),   //x
-                                               _spawnLocation.y,                                               //y
+                                               2f,                                                             //y
                                                Random.Range(_spawnLocation.z - 10f, _spawnLocation.z + 10f));  //z
 
             // lerp to position //
