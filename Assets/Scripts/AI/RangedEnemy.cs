@@ -63,7 +63,10 @@ public class RangedEnemy : MonoBehaviour {
 
 
         // Make the archer shoot with some inaccuracy
-        Vector3 offSetDirection = new Vector3(_playerTransform.position.x + Random.Range(-accuracyOffset, accuracyOffset), transform.position.y, _playerTransform.position.z + Random.Range(-accuracyOffset, accuracyOffset));
+        Vector3 offSetDirection = new Vector3(_playerTransform.position.x + Random.Range(-accuracyOffset, accuracyOffset), 
+                                              _playerTransform.position.y, 
+                                              _playerTransform.position.z + Random.Range(-accuracyOffset, accuracyOffset));
+
         firePoint.transform.LookAt(offSetDirection);
 
        

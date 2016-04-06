@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyManager : MonoBehaviour {
 
 
-    [SerializeField] private LevelTrigger _levelTriggerRef;
+    private LevelTrigger _levelTriggerRef;
 
 	void Awake ()
     {

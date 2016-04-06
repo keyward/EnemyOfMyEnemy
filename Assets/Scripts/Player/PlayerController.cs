@@ -58,8 +58,6 @@ public class PlayerController : MonoBehaviour {
         _canShoot = true;
         canTaunt = true;
         tauntDisabled = false;
-
-        Application.targetFrameRate = 60;
     }
 
     void FixedUpdate()
@@ -89,6 +87,8 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
+        //Debug.DrawRay(transform.position + Vector3.up * 3, transform.forward * 6, Color.red);
+
         // player shooting
         if (Input.GetAxis("Shoot") > 0f)
             StartCoroutine(ShootPea());
@@ -172,9 +172,8 @@ public class PlayerController : MonoBehaviour {
 
         if (Physics.Raycast(transform.position + new Vector3(0f, 3f, 0f), transform.forward, out rayInfo, 6))
             dashTarget = rayInfo.point;
-        
         else
-            dashTarget = transform.position + new Vector3(transform.forward.x * 6.5f, transform.position.y, transform.forward.z * 6.5f);
+            dashTarget = transform.position + transform.forward * 6.5f;
 
 
         float dashUnstick = 1.0f;
