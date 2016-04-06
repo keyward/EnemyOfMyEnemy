@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
-        Debug.DrawRay(transform.position + Vector3.up * 3, transform.forward * 6, Color.red);
+        //Debug.DrawRay(transform.position + Vector3.up * 3, transform.forward * 6, Color.red);
 
         // player shooting
         if (Input.GetAxis("Shoot") > 0f)
@@ -171,12 +171,7 @@ public class PlayerController : MonoBehaviour {
         RaycastHit rayInfo;
 
         if (Physics.Raycast(transform.position + new Vector3(0f, 3f, 0f), transform.forward, out rayInfo, 6))
-        {
             dashTarget = rayInfo.point;
-            print(dashTarget);
-        }
-
-
         else
             dashTarget = transform.position + transform.forward * 6.5f;
 

@@ -19,7 +19,8 @@ public class Spider : MonoBehaviour {
 
     void OnEnable()
     {
-        _enemyManageRef = GameObject.FindGameObjectWithTag("EnemyMgr").GetComponent<EnemyManager>();
+        if(gameObject.name != "StaticPixie(Clone)")
+            _enemyManageRef = GameObject.FindGameObjectWithTag("EnemyMgr").GetComponent<EnemyManager>();
     }
 
 
@@ -29,7 +30,10 @@ public class Spider : MonoBehaviour {
         if (col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Bullet"))
         {
             Instantiate(deathParticles, transform.position, Quaternion.Euler(90f, 0f, 0f));
-            _enemyManageRef.RemoveEnemy();
+
+            if (gameObject.name != "StaticPixie(Clone)")
+                _enemyManageRef.RemoveEnemy();
+
             Destroy(gameObject);
         }
     }
