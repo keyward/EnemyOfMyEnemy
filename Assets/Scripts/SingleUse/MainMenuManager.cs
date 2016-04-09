@@ -66,7 +66,7 @@ public class MainMenuManager : MonoBehaviour {
         startScreen.SetActive(true);
         controlScreen.SetActive(false);
 
-        EventSystem.current.SetSelectedGameObject(levelSelectFirstButton);
+        EventSystem.current.SetSelectedGameObject(startGameButton);
     }
 
     public void BackFromCredits()
@@ -74,7 +74,7 @@ public class MainMenuManager : MonoBehaviour {
         startScreen.SetActive(true);
         creditScreen.SetActive(false);
 
-        EventSystem.current.SetSelectedGameObject(levelSelectFirstButton);
+        EventSystem.current.SetSelectedGameObject(startGameButton);
     }
 
     public void BackFromLevelSelect()
@@ -82,6 +82,6 @@ public class MainMenuManager : MonoBehaviour {
         startScreen.SetActive(true);
         levelSelectScreen.SetActive(false);
 
-        EventSystem.current.SetSelectedGameObject(levelSelectFirstButton);
+        EventSystem.current.SetSelectedGameObject(startGameButton);
     }
 }
