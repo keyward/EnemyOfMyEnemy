@@ -84,4 +84,9 @@ public class MainMenuManager : MonoBehaviour {
 
         EventSystem.current.SetSelectedGameObject(startGameButton);
     }
+
+    public void LevelSelect(int levelNumber)
+    {
+        SceneManager.LoadScene(levelNumber);
+    }
 }
