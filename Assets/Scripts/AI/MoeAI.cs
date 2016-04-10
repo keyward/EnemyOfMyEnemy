@@ -97,6 +97,11 @@ public class MoeAI : MonoBehaviour {
             _idle = true;
             _moeAnimator.SetBool(_moeIdle, true);
         }
+        else if (_idle && _navAgent.velocity != Vector3.zero)
+        {
+            _idle = false;
+            _moeAnimator.SetBool(_moeIdle, false);
+        }
 
         if (_charging && _frozen)
             if(currentState != aiState.stoned)
@@ -140,7 +145,6 @@ public class MoeAI : MonoBehaviour {
                     return;
                 }
                    
-
                 StartCoroutine(Attack());
                 break;
 
