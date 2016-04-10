@@ -145,7 +145,6 @@ public class MoeAI : MonoBehaviour {
                     return;
                 }
                    
-
                 StartCoroutine(Attack());
                 break;
 
