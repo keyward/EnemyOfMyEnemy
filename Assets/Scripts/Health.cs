@@ -6,7 +6,7 @@ public class Health : MonoBehaviour {
 
 
     // Health Stats
-    public int health;
+    [SerializeField] protected int health;
     public float damageCoolDown;
     private int _initialHealth;
     private bool _invincible;
