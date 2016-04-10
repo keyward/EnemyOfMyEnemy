@@ -2734,6 +2734,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 6.2381916
       objectReference: {fileID: 0}
+    - target: {fileID: 11441894, guid: 3c2e46b02699a8d47989e15eca3bc65a, type: 2}
+      propertyPath: breakableWall
+      value: 
+      objectReference: {fileID: 266173923}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3c2e46b02699a8d47989e15eca3bc65a, type: 2}
   m_IsPrefabParent: 0
@@ -4002,6 +4006,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f7e3e866160252e45be58d5e4a60be5d, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &266173923 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11421214, guid: f932be290a9d6df49b67b9ab3b1eaafb,
+    type: 2}
+  m_PrefabInternal: {fileID: 971477210}
+  m_Script: {fileID: 11500000, guid: 4d348fecb44e4f64ebc6bb91b75579ff, type: 3}
 --- !u!1 &266516909 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 177496, guid: e780c6c959fdad2469055e9c2332133f, type: 2}
@@ -14958,6 +14968,10 @@ Prefab:
     - target: {fileID: 469492, guid: f932be290a9d6df49b67b9ab3b1eaafb, type: 2}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11421214, guid: f932be290a9d6df49b67b9ab3b1eaafb, type: 2}
+      propertyPath: canBeDestroyed
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f932be290a9d6df49b67b9ab3b1eaafb, type: 2}
