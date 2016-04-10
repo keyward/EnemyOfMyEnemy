@@ -52,7 +52,7 @@ public class Spider : MonoBehaviour {
             // lerp to position //
             while(Vector3.Distance(transform.position, nextPosition) > 2f)
             {
-                if (stickTimer > 2f)
+                if (stickTimer > 1f)
                     break;
 
                 stickTimer += Time.deltaTime;

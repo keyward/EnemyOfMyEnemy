@@ -6,13 +6,13 @@ public class DefenderGear : MonoBehaviour {
 
     public GameObject shield;
     private DefenderEnemy defender;
-    private Moe _moeScript;
+    private MoeAI _moeScript;
 
 
     void Awake()
     {
         defender = transform.parent.gameObject.GetComponent<DefenderEnemy>();
-        _moeScript = GameObject.FindGameObjectWithTag("Moe").GetComponent<Moe>();
+        _moeScript = GameObject.FindGameObjectWithTag("Moe").GetComponent<MoeAI>();
     }
 
     void OnCollisionEnter(Collision col)
@@ -27,8 +27,8 @@ public class DefenderGear : MonoBehaviour {
         defender.gameObject.tag = "Enemy";
 
         // enable Moe's abilities
-        _moeScript._actionAvailable = true;
-        _moeScript._isFollowing = true;
+        //_moeScript._actionAvailable = true;
+       // _moeScript._isFollowing = true;
 
         // defender vulnerable //
         defender._shieldActive = false;
