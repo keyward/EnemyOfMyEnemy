@@ -86,22 +86,24 @@ public class MoeAI : MonoBehaviour {
 
     void Update()
     {
-        //print(_partsToTurnToStone[0].color.a);
 
         if(currentState == aiState.following)
             Follow();
 
-        // if moe is told to stop and comes to a complete stop - Idle anim
-        else if(!_idle  &&  _navAgent.velocity == Vector3.zero)
+        if(currentState == aiState.following || currentState == aiState.stopped)
         {
-            _idle = true;
-            _moeAnimator.SetBool(_moeIdle, true);
+            if (!_idle && _navAgent.velocity == Vector3.zero)
+            {
+                _idle = true;
+                _moeAnimator.SetBool(_moeIdle, true);
+            }
+            else if (_navAgent.velocity != Vector3.zero)
+            {
+                _idle = false;
+                _moeAnimator.SetBool(_moeIdle, false);
+            }
         }
-        else if (_idle && _navAgent.velocity != Vector3.zero)
-        {
-            _idle = false;
-            _moeAnimator.SetBool(_moeIdle, false);
-        }
+        
 
         if (_charging && _frozen)
             if(currentState != aiState.stoned)
@@ -122,6 +124,7 @@ public class MoeAI : MonoBehaviour {
             }
         }
     }
+    
 
     public void ChangeState(aiState moeState)
     {
@@ -164,19 +167,6 @@ public class MoeAI : MonoBehaviour {
 
     void Follow()
     {
-        // if moe is following the player and isn't moving - idle
-        if (_navAgent.velocity == Vector3.zero && !_idle)
-        {
-            _idle = true;
-            _moeAnimator.SetBool(_moeIdle, true);
-        }
-        // if moe is following and is moving - run
-        else if (_navAgent.velocity != Vector3.zero && _idle)
-        {
-            _idle = false;
-            _moeAnimator.SetBool(_moeIdle, false);
-        }
-
         // stops 5 meters from player //
         if (Vector3.Distance(transform.position, _playerTransform.position) > 6f)
         {
@@ -217,6 +207,7 @@ public class MoeAI : MonoBehaviour {
             yield return null;
         }
 
+        print("**********MOE WAS STUCK************");
         CheckForEnemies();
     }
 
@@ -438,7 +429,7 @@ public class MoeAI : MonoBehaviour {
     public void StopMoe()
     {
         _moeAnimator.SetBool(_moeCharge, false);
-        _moeAnimator.SetBool(_moeIdle, false);
+        //_moeAnimator.SetBool(_moeIdle, false);
     }
 
     void OnTriggerEnter(Collider other)

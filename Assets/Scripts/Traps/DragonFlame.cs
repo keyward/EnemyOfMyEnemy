@@ -42,7 +42,7 @@ public class DragonFlame : MonoBehaviour
 
 		this.runCoroutine = false;
 		if (this.instantiatedFireParticles != null) {
-			//Destroy (this.instantiatedFireParticles);
+			Destroy (this.instantiatedFireParticles);
 		} else {
 			instantiatedFireParticles = Instantiate (fireParticles, transform.position, Quaternion.Euler (0f, this.transform.rotation.eulerAngles.y, 0f)) as GameObject;
 		}
