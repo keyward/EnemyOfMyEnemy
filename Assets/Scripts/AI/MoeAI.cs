@@ -90,14 +90,14 @@ public class MoeAI : MonoBehaviour {
         if(currentState == aiState.following)
             Follow();
 
-        if(currentState == aiState.following)
+        if(currentState == aiState.following || currentState == aiState.stopped)
         {
             if (!_idle && _navAgent.velocity == Vector3.zero)
             {
                 _idle = true;
                 _moeAnimator.SetBool(_moeIdle, true);
             }
-            else if (_idle && _navAgent.velocity != Vector3.zero)
+            else if (_navAgent.velocity != Vector3.zero)
             {
                 _idle = false;
                 _moeAnimator.SetBool(_moeIdle, false);
@@ -429,7 +429,7 @@ public class MoeAI : MonoBehaviour {
     public void StopMoe()
     {
         _moeAnimator.SetBool(_moeCharge, false);
-        _moeAnimator.SetBool(_moeIdle, false);
+        //_moeAnimator.SetBool(_moeIdle, false);
     }
 
     void OnTriggerEnter(Collider other)
