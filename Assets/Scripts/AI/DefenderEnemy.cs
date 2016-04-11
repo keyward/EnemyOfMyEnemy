@@ -22,21 +22,20 @@ public class DefenderEnemy : MonoBehaviour {
     public AudioClip[] defenderSounds;
     private AudioSource _defenderAudio;
 
-
+    public float distance;
 
     void Awake()
     {
-        _moeTransform = GameObject.FindGameObjectWithTag("Moe").transform;
+        _moeTransform = GameObject.FindGameObjectWithTag("Moe").GetComponent<Transform>();
         _healthScript = GetComponent<Health>();
 
         _pathFinder = GetComponent<NavMeshAgent>();
         _playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
-        _actionAvailable = true;
         _lunging = false;
 
-        _defenderAnimator = GetComponent<Animator>();
-        _attackAnimation = Animator.StringToHash("Attack");
+        //_defenderAnimator = GetComponent<Animator>();
+        //_attackAnimation = Animator.StringToHash("Attack");
 
         _defenderAudio = GetComponent<AudioSource>();
 
@@ -46,22 +45,20 @@ public class DefenderEnemy : MonoBehaviour {
 
 	void Update ()
     {
-        // if nav mesh is active...
-        if (_pathFinder.isActiveAndEnabled)
+        // ... and Shield is attached -- attack Moe //
+        if (_shieldActive && Vector3.Distance(transform.position, _playerTransform.position) > 8f)
+            _pathFinder.SetDestination(_moeTransform.position);
+
+        // ... and Shield has been destroyed -- attack Player //
+        if(!_shieldActive)
         {
-            // ... and lunging distance -- lunge //
             if (Vector3.Distance(transform.position, _playerTransform.position) <= lungeDistance)
                 StartCoroutine(Lunge());
 
-            // ... and Shield is attached -- attack Moe //
-            if (_shieldActive && _actionAvailable)
-                _pathFinder.SetDestination(_moeTransform.position);
-
-            // ... and Shield has been destroyed -- attack Player //
-            else if (!_shieldActive && _actionAvailable)
+            if (!_lunging)
                 _pathFinder.SetDestination(_playerTransform.position);
         }
-	}
+    }
 
     IEnumerator Lunge()
     {
@@ -69,7 +66,7 @@ public class DefenderEnemy : MonoBehaviour {
             yield break;
 
         // begin attack animation
-        _defenderAnimator.SetTrigger(_attackAnimation);
+        //_defenderAnimator.SetTrigger(_attackAnimation);
         _lunging = true;
 
         _defenderAudio.clip = defenderSounds[0];

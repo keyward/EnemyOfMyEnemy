@@ -334,6 +334,7 @@ public class MoeAI : MonoBehaviour {
 
         _navAgent.angularSpeed = initialAngularSpeed;
 
+
         CheckForEnemies();
     }
 
@@ -439,14 +440,16 @@ public class MoeAI : MonoBehaviour {
 
         // Touch a pixie to turn him to stone
         if (other.CompareTag("Fear"))
+        {
             ChangeState(aiState.stoned);
+            return;
+        }
 
         // if Moe has not been taunted or touched by a pixie -- he will attack
         else if (other.CompareTag("Enemy"))
         {
             if (_frozen)
                 return;
-
 
             if (currentState == aiState.charging)
                 return;

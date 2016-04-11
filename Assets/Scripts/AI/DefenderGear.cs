@@ -6,13 +6,11 @@ public class DefenderGear : MonoBehaviour {
 
     public GameObject shield;
     private DefenderEnemy defender;
-    private MoeAI _moeScript;
 
 
     void Awake()
     {
         defender = transform.parent.gameObject.GetComponent<DefenderEnemy>();
-        _moeScript = GameObject.FindGameObjectWithTag("Moe").GetComponent<MoeAI>();
     }
 
     void OnCollisionEnter(Collision col)
