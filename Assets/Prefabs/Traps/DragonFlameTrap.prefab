@@ -25,9 +25,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108124}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
-  m_LocalPosition: {x: -288.399994, y: .699999988, z: 5.5}
-  m_LocalScale: {x: 9.18672371, y: 4.92860794, z: .38193047}
+  m_LocalRotation: {x: -0.0000000010091159, y: -0.99998313, z: -2.3514376e-12, w: 0.0058171777}
+  m_LocalPosition: {x: 181.6, y: 8.65, z: 126.41}
+  m_LocalScale: {x: 2.5460374, y: 1.3659298, z: 0.105849415}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -52,7 +52,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -87,10 +87,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50edfe75ce1d0463588a5a187e6d8bc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireDamage: {fileID: 0}
   fireParticles: {fileID: 106296, guid: f2a971d5e9fd04147af3556043d32c9b, type: 2}
   _Angle: 30
-  _Period: .5
+  turnSpeed: 1
+  timeBeforeActivation: 0
+  fireCooldown: 4
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

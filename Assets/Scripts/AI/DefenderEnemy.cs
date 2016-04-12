@@ -15,28 +15,38 @@ public class DefenderEnemy : MonoBehaviour {
 
     private bool _actionAvailable;
     private bool _lunging;
+    private bool _paused;
 
-    private Animator _defenderAnimator;
+    public Animator defenderAnimator;
+    private AnimatorStateInfo currentBaseState;
     private int _attackAnimation;
+    private int _movingAnimationState;
+    public int shieldBreakTrigger;
+    public int _shieldActiveBool;
 
     public AudioClip[] defenderSounds;
     private AudioSource _defenderAudio;
 
-
+    public float distance;
 
     void Awake()
     {
-        _moeTransform = GameObject.FindGameObjectWithTag("Moe").transform;
+        _moeTransform = GameObject.FindGameObjectWithTag("Moe").GetComponent<Transform>();
         _healthScript = GetComponent<Health>();
 
         _pathFinder = GetComponent<NavMeshAgent>();
         _playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
-        _actionAvailable = true;
         _lunging = false;
+        _paused = false;
 
-        _defenderAnimator = GetComponent<Animator>();
+        defenderAnimator = GetComponent<Animator>();
         _attackAnimation = Animator.StringToHash("Attack");
+        _movingAnimationState = Animator.StringToHash("Moving");
+        shieldBreakTrigger = Animator.StringToHash("ShieldBreak");
+        _shieldActiveBool = Animator.StringToHash("ShieldActive");
+
+        defenderAnimator.SetBool(_shieldActiveBool, true);
 
         _defenderAudio = GetComponent<AudioSource>();
 
@@ -45,32 +55,74 @@ public class DefenderEnemy : MonoBehaviour {
     }
 
 	void Update ()
-    {
-        // if nav mesh is active...
-        if (_pathFinder.isActiveAndEnabled)
+    { 
+        if (_pathFinder.velocity == Vector3.zero)
+            defenderAnimator.SetBool(_movingAnimationState, false);
+        
+        else if(_pathFinder.velocity != Vector3.zero)
+            defenderAnimator.SetBool(_movingAnimationState, true);
+        
+
+        if (_paused)
+            return;
+        
+        if(_pathFinder.isActiveAndEnabled)
         {
-            // ... and lunging distance -- lunge //
-            if (Vector3.Distance(transform.position, _playerTransform.position) <= lungeDistance)
-                StartCoroutine(Lunge());
-
             // ... and Shield is attached -- attack Moe //
-            if (_shieldActive && _actionAvailable)
-                _pathFinder.SetDestination(_moeTransform.position);
+            if (_shieldActive)
+            {
+                if (Vector3.Distance(transform.position, _playerTransform.position) > 5f)
+                    _pathFinder.SetDestination(_moeTransform.position);
+                else
+                    _pathFinder.SetDestination(transform.position);
+            }
+            else if (!_shieldActive)
+            {
+                if (Vector3.Distance(transform.position, _playerTransform.position) <= lungeDistance && !_lunging)
+                    StartCoroutine(Lunge());
 
-            // ... and Shield has been destroyed -- attack Player //
-            else if (!_shieldActive && _actionAvailable)
-                _pathFinder.SetDestination(_playerTransform.position);
+                else if(!_lunging)
+                    _pathFinder.SetDestination(_playerTransform.position);
+            }
         }
-	}
+    }
+
+    public void ShieldBreak()
+    {
+        StartCoroutine(BrokenShieldReaction());
+
+        gameObject.tag = "Enemy";
+
+        _paused = true;
+
+        _shieldActive = false;
+        _healthScript.enabled = true;
+        defenderAnimator.SetTrigger(shieldBreakTrigger);
+        defenderAnimator.SetBool(_shieldActiveBool, false);
+
+
+        _paused = false;
+    }
+
+    IEnumerator BrokenShieldReaction()
+    {
+        _pathFinder.enabled = false;
+
+        yield return new WaitForSeconds(1f);
+
+        _pathFinder.enabled = true;
+    }
 
     IEnumerator Lunge()
     {
-        if (_lunging)
-            yield break;
+       // if (_lunging)
+           // yield break;
+
+        _lunging = true;
 
         // begin attack animation
-        _defenderAnimator.SetTrigger(_attackAnimation);
-        _lunging = true;
+        defenderAnimator.SetTrigger(_attackAnimation);
+        
 
         _defenderAudio.clip = defenderSounds[0];
         _defenderAudio.Play();
@@ -98,15 +150,14 @@ public class DefenderEnemy : MonoBehaviour {
             timeCheck += Time.deltaTime;
             yield return null;
         }
+        _pathFinder.enabled = false;
 
         // set chsing speed
         _pathFinder.speed = initialSpeed;
         _pathFinder.acceleration = initialAccel;
 
-        // pause movement for cooldown
-        _defenderAnimator.enabled = false;
-        yield return new WaitForSeconds(1f);
-        _defenderAnimator.enabled = true;
+        yield return new WaitForSeconds(.5f);
+        _pathFinder.enabled = true;
 
         _lunging = false;
     }

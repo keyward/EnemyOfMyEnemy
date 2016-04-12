@@ -8,8 +8,11 @@ public class DragonFlame : MonoBehaviour
 	public GameObject fireParticles;
     [Range(0, 45)]
     public float _Angle;
-	public float _Period;
+	public float turnSpeed;
 	private float _Time;
+
+    public float timeBeforeActivation;
+    public float fireCooldown = 4f;
 
 	private GameObject instantiatedFireParticles;
 	private bool runCoroutine = true;
@@ -28,20 +31,22 @@ public class DragonFlame : MonoBehaviour
 
 		if (this.instantiatedFireParticles != null) {
 			_Time = _Time + Time.deltaTime;
-			float phase = Mathf.Sin (_Time / _Period);
+			float phase = Mathf.Sin (_Time / turnSpeed);
 			instantiatedFireParticles.transform.rotation = Quaternion.Euler (new Vector3 (0, this.transform.rotation.eulerAngles.y + phase * _Angle, 0));
 		}
 	}
 
 	private IEnumerator InstantiateParticle ()
 	{
+        yield return new WaitForSeconds(timeBeforeActivation);
+
 		this.runCoroutine = false;
 		if (this.instantiatedFireParticles != null) {
-			//Destroy (this.instantiatedFireParticles);
+			Destroy (this.instantiatedFireParticles);
 		} else {
 			instantiatedFireParticles = Instantiate (fireParticles, transform.position, Quaternion.Euler (0f, this.transform.rotation.eulerAngles.y, 0f)) as GameObject;
 		}
-		yield return new WaitForSeconds (4);
+		yield return new WaitForSeconds (fireCooldown);
 		this.runCoroutine = true;
 	}
 }
