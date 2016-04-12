@@ -21,17 +21,11 @@ public class DefenderGear : MonoBehaviour {
 
     void DestroyShield()
     {
-        // make a target for Moe //
-        defender.gameObject.tag = "Enemy";
+        defender.ShieldBreak();       
 
-        // enable Moe's abilities
-        //_moeScript._actionAvailable = true;
-       // _moeScript._isFollowing = true;
-
-        // defender vulnerable //
-        defender._shieldActive = false;
-        defender._healthScript.enabled = true;
         Destroy(gameObject);
+
+        //instantiate particles at the shields location
         Destroy(shield);
     }
 }
