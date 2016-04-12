@@ -86,7 +86,6 @@ public class MoeAI : MonoBehaviour {
 
     void Update()
     {
-
         if(currentState == aiState.following)
             Follow();
 
@@ -147,6 +146,8 @@ public class MoeAI : MonoBehaviour {
                     ChangeState(aiState.stoned);
                     return;
                 }
+                else if (_charging)
+                    StartCoroutine(Charge());
                    
                 StartCoroutine(Attack());
                 break;
@@ -182,7 +183,8 @@ public class MoeAI : MonoBehaviour {
     {
         if (_attacking || _frozen || _charging)
             yield break;
-        
+
+        print("attack");
         _attacking = true;
 
         _navAgent.Stop();
@@ -195,7 +197,7 @@ public class MoeAI : MonoBehaviour {
 
         _moeAnimator.SetTrigger(_moeAttack);
 
-        float attackCheck = 2f;
+        float attackCheck = 1f;
         
 
         while(attackCheck > 0)

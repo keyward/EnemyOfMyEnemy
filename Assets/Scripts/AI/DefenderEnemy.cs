@@ -15,7 +15,6 @@ public class DefenderEnemy : MonoBehaviour {
 
     private bool _actionAvailable;
     private bool _lunging;
-    private bool _moving;
     private bool _paused;
 
     public Animator defenderAnimator;
@@ -39,7 +38,6 @@ public class DefenderEnemy : MonoBehaviour {
         _playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
         _lunging = false;
-        _moving = false;
         _paused = false;
 
         defenderAnimator = GetComponent<Animator>();
