@@ -104,7 +104,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.316319, y: 6.324027, z: 1.0686489}
+  m_Size: {x: 8.316319, y: 12, z: 1.0686489}
   m_Center: {x: -0.020938396, y: 0.16201341, z: 0.0000019073486}
 --- !u!95 &9521174
 Animator:
@@ -133,6 +133,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Name
       value: M_WallSpawn_Dungeon_lvl3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.y
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
