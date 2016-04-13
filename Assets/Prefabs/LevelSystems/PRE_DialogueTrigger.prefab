@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae60422fdce279e428afb73f0087330d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 24100000, guid: 21a54bccd5cad674aba5098af8aa7542, type: 2}
   _dialogueClip: {fileID: 8284382}
   _particle: {fileID: 0}
 --- !u!1001 &100100000
