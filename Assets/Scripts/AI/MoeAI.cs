@@ -86,17 +86,23 @@ public class MoeAI : MonoBehaviour {
 
     void Update()
     {
-        //print(_partsToTurnToStone[0].color.a);
-
         if(currentState == aiState.following)
             Follow();
 
-        // if moe is told to stop and comes to a complete stop - Idle anim
-        else if(!_idle  &&  _navAgent.velocity == Vector3.zero)
+        if(currentState == aiState.following || currentState == aiState.stopped)
         {
-            _idle = true;
-            _moeAnimator.SetBool(_moeIdle, true);
+            if (!_idle && _navAgent.velocity == Vector3.zero)
+            {
+                _idle = true;
+                _moeAnimator.SetBool(_moeIdle, true);
+            }
+            else if (_navAgent.velocity != Vector3.zero)
+            {
+                _idle = false;
+                _moeAnimator.SetBool(_moeIdle, false);
+            }
         }
+        
 
         if (_charging && _frozen)
             if(currentState != aiState.stoned)
@@ -109,7 +115,7 @@ public class MoeAI : MonoBehaviour {
         // if moe is standing still and not doing anything -- look at the player
         if (currentState == aiState.following || currentState == aiState.stopped)
         {
-            if(_idle && !_frozen)
+            if(!_frozen)
             {
                 Vector3 targetDirection = _playerTransform.position - transform.position;
                 Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, Time.deltaTime * 2f, 0f);
@@ -117,11 +123,10 @@ public class MoeAI : MonoBehaviour {
             }
         }
     }
+    
 
     public void ChangeState(aiState moeState)
     {
-        //Debug.LogWarning(currentState);
-
         currentState = moeState;
             
         switch(currentState)
@@ -140,7 +145,6 @@ public class MoeAI : MonoBehaviour {
                     return;
                 }
                    
-
                 StartCoroutine(Attack());
                 break;
 
@@ -160,19 +164,6 @@ public class MoeAI : MonoBehaviour {
 
     void Follow()
     {
-        // if moe is following the player and isn't moving - idle
-        if (_navAgent.velocity == Vector3.zero && !_idle)
-        {
-            _idle = true;
-            _moeAnimator.SetBool(_moeIdle, true);
-        }
-        // if moe is following and is moving - run
-        else if (_navAgent.velocity != Vector3.zero && _idle)
-        {
-            _idle = false;
-            _moeAnimator.SetBool(_moeIdle, false);
-        }
-
         // stops 5 meters from player //
         if (Vector3.Distance(transform.position, _playerTransform.position) > 6f)
         {
@@ -188,7 +179,8 @@ public class MoeAI : MonoBehaviour {
     {
         if (_attacking || _frozen || _charging)
             yield break;
-        
+
+        print("attack");
         _attacking = true;
 
         _navAgent.Stop();
@@ -201,7 +193,7 @@ public class MoeAI : MonoBehaviour {
 
         _moeAnimator.SetTrigger(_moeAttack);
 
-        float attackCheck = 2f;
+        float attackCheck = 1f;
         
 
         while(attackCheck > 0)
@@ -213,6 +205,7 @@ public class MoeAI : MonoBehaviour {
             yield return null;
         }
 
+        print("**********MOE WAS STUCK************");
         CheckForEnemies();
     }
 
@@ -339,6 +332,7 @@ public class MoeAI : MonoBehaviour {
 
         _navAgent.angularSpeed = initialAngularSpeed;
 
+
         CheckForEnemies();
     }
 
@@ -434,7 +428,7 @@ public class MoeAI : MonoBehaviour {
     public void StopMoe()
     {
         _moeAnimator.SetBool(_moeCharge, false);
-        _moeAnimator.SetBool(_moeIdle, false);
+        //_moeAnimator.SetBool(_moeIdle, false);
     }
 
     void OnTriggerEnter(Collider other)
@@ -444,15 +438,16 @@ public class MoeAI : MonoBehaviour {
 
         // Touch a pixie to turn him to stone
         if (other.CompareTag("Fear"))
+        {
             ChangeState(aiState.stoned);
+            return;
+        }
 
         // if Moe has not been taunted or touched by a pixie -- he will attack
         else if (other.CompareTag("Enemy"))
         {
             if (_frozen)
                 return;
-            else
-                print("not frozen");
 
             if (currentState == aiState.charging)
                 return;

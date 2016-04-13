@@ -30,12 +30,14 @@ public class LevelTrigger : MonoBehaviour {
         triggerActivated = false;
         _roomCleared = false;
 
+        // turn off the spawners attached and get the enemy amount to kill
         foreach(GameObject spawner in enemySpawners)
         {
             spawner.SetActive(false);
             _totalEnemyCount += spawner.GetComponent<EnemySpawner>().enemiesToSpawn;
         }
 
+        // enemy manager tracks the amount of enemies to kill
         _enemyManager = transform.FindChild("EnemyManager");
         _enemyManager.gameObject.SetActive(false);
 
@@ -85,6 +87,9 @@ public class LevelTrigger : MonoBehaviour {
 
     IEnumerator RaiseBarriers()
     {
+        if (!fightBarriers)
+            yield break;
+
         Vector3 targetHeight = new Vector3(fightBarriers.transform.position.x, fightBarriers.transform.position.y + 2.7f, fightBarriers.transform.position.z);
         yield return new WaitForSeconds(.5f);
 
@@ -103,6 +108,9 @@ public class LevelTrigger : MonoBehaviour {
 
     IEnumerator LowerBarriers()
     {
+        if (!fightBarriers)
+            yield break;
+
         _roomCleared = true;
         while (fightBarriers.position.y > -1)
         {

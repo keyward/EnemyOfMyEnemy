@@ -329,10 +329,10 @@ GameObject:
   - 4: {fileID: 427198}
   - 95: {fileID: 9585608}
   - 114: {fileID: 11415856}
-  - 114: {fileID: 11457992}
   - 54: {fileID: 5438670}
   - 136: {fileID: 13618680}
   - 82: {fileID: 8278494}
+  - 114: {fileID: 11456104}
   m_Layer: 13
   m_Name: PRE_Player
   m_TagString: Player
@@ -1610,8 +1610,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121942}
-  m_LocalRotation: {x: 0, y: -0.7300901, z: 0, w: 0.6833509}
-  m_LocalPosition: {x: -1.6, y: -0.8, z: 0.11}
+  m_LocalRotation: {x: -7.351391e-10, y: -0.72610295, z: -6.91297e-10, w: 0.687586}
+  m_LocalPosition: {x: 44.43, y: 0.3, z: 3.13}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 467528}
@@ -2455,7 +2455,8 @@ AudioSource:
   m_GameObject: {fileID: 121942}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24306112, guid: 21a54bccd5cad674aba5098af8aa7542,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.22
@@ -2557,7 +2558,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 696d1f44a02b5c84f986d9ff802519c2, type: 3}
   tauntDisabled: 0
   offset: 0
---- !u!114 &11457992
+--- !u!114 &11456104
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2565,14 +2566,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 121942}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a3c2101ceb12e04cb8fea6b04d294f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 478148d33ba1d8a4f8699e0018bc04a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
   damageCoolDown: 2
-  deathParticles: {fileID: 0}
+  deathParticles: {fileID: 130552, guid: 25a60522a2414d04da186729b0b4a521, type: 2}
   damageSoundEffects:
-  - {fileID: 8300000, guid: 8ca3d8fca688fec4fac7d67cd375efe8, type: 3}
+  - {fileID: 8300000, guid: 41d347b27ef377a4d9a3776740695bee, type: 3}
   - {fileID: 8300000, guid: 0157007e3b1e91f4296993d3977216bf, type: 3}
 --- !u!136 &13618680
 CapsuleCollider:

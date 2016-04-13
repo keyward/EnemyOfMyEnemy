@@ -19,7 +19,8 @@ public class Spider : MonoBehaviour {
 
     void OnEnable()
     {
-        _enemyManageRef = GameObject.FindGameObjectWithTag("EnemyMgr").GetComponent<EnemyManager>();
+        if(gameObject.name != "StaticPixie(Clone)")
+            _enemyManageRef = GameObject.FindGameObjectWithTag("EnemyMgr").GetComponent<EnemyManager>();
     }
 
 
@@ -29,7 +30,10 @@ public class Spider : MonoBehaviour {
         if (col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Bullet"))
         {
             Instantiate(deathParticles, transform.position, Quaternion.Euler(90f, 0f, 0f));
-            _enemyManageRef.RemoveEnemy();
+
+            if (gameObject.name != "StaticPixie(Clone)")
+                _enemyManageRef.RemoveEnemy();
+
             Destroy(gameObject);
         }
     }
@@ -40,12 +44,18 @@ public class Spider : MonoBehaviour {
         {
             // get a random position while staying within bounds //
             Vector3 nextPosition = new Vector3(Random.Range(_spawnLocation.x - 10f, _spawnLocation.x + 10f),   //x
-                                               2f,                                                             //y
+                                               _spawnLocation.y,                                                             //y
                                                Random.Range(_spawnLocation.z - 10f, _spawnLocation.z + 10f));  //z
+
+            float stickTimer = 0;
 
             // lerp to position //
             while(Vector3.Distance(transform.position, nextPosition) > 2f)
             {
+                if (stickTimer > 1f)
+                    break;
+
+                stickTimer += Time.deltaTime;
                 transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * moveSpeed);
                 yield return null;
             }

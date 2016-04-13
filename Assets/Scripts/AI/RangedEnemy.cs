@@ -50,6 +50,11 @@ public class RangedEnemy : MonoBehaviour {
         {
             transform.LookAt(_playerTransform);
             transform.rotation = new Quaternion(0f, transform.rotation.y, 0f, transform.rotation.w);
+
+            if (Vector3.Distance(transform.position, _playerTransform.position) > 3)
+                accuracyOffset = 3;
+            else
+                accuracyOffset = 1;
         }
     }
 
@@ -63,7 +68,10 @@ public class RangedEnemy : MonoBehaviour {
 
 
         // Make the archer shoot with some inaccuracy
-        Vector3 offSetDirection = new Vector3(_playerTransform.position.x + Random.Range(-accuracyOffset, accuracyOffset), transform.position.y, _playerTransform.position.z + Random.Range(-accuracyOffset, accuracyOffset));
+        Vector3 offSetDirection = new Vector3(_playerTransform.position.x + Random.Range(-accuracyOffset, accuracyOffset), 
+                                              _playerTransform.position.y + 3, 
+                                              _playerTransform.position.z + Random.Range(-accuracyOffset, accuracyOffset));
+
         firePoint.transform.LookAt(offSetDirection);
 
        
