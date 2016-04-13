@@ -12148,6 +12148,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 11458166, guid: f825dd5319e3a6a4f9ecddf040f23542, type: 2}
+      propertyPath: archerOnTower
+      value: 
+      objectReference: {fileID: 1358915321}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f825dd5319e3a6a4f9ecddf040f23542, type: 2}
   m_IsPrefabParent: 0
@@ -22995,6 +22999,10 @@ Prefab:
       propertyPath: m_Name
       value: M_ArcherStand_01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 11458166, guid: f825dd5319e3a6a4f9ecddf040f23542, type: 2}
+      propertyPath: archerOnTower
+      value: 
+      objectReference: {fileID: 1534379050}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f825dd5319e3a6a4f9ecddf040f23542, type: 2}
   m_IsPrefabParent: 0
@@ -23682,6 +23690,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a3127cbbe95988944b6e3108dad36ddf, type: 2}
   m_IsPrefabParent: 0
+--- !u!54 &705512793 stripped
+Rigidbody:
+  m_PrefabParentObject: {fileID: 5461862, guid: a3127cbbe95988944b6e3108dad36ddf,
+    type: 2}
+  m_PrefabInternal: {fileID: 705512792}
 --- !u!1001 &706537611
 Prefab:
   m_ObjectHideFlags: 0
@@ -34191,6 +34204,10 @@ Prefab:
       propertyPath: m_Name
       value: M_ArcherStand_01 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 11458166, guid: f825dd5319e3a6a4f9ecddf040f23542, type: 2}
+      propertyPath: archerOnTower
+      value: 
+      objectReference: {fileID: 705512793}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f825dd5319e3a6a4f9ecddf040f23542, type: 2}
   m_IsPrefabParent: 0
@@ -48311,6 +48328,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a3127cbbe95988944b6e3108dad36ddf, type: 2}
   m_IsPrefabParent: 0
+--- !u!54 &1358915321 stripped
+Rigidbody:
+  m_PrefabParentObject: {fileID: 5461862, guid: a3127cbbe95988944b6e3108dad36ddf,
+    type: 2}
+  m_PrefabInternal: {fileID: 1358915320}
 --- !u!1001 &1359305596
 Prefab:
   m_ObjectHideFlags: 0
@@ -55425,6 +55447,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a3127cbbe95988944b6e3108dad36ddf, type: 2}
   m_IsPrefabParent: 0
+--- !u!54 &1534379050 stripped
+Rigidbody:
+  m_PrefabParentObject: {fileID: 5461862, guid: a3127cbbe95988944b6e3108dad36ddf,
+    type: 2}
+  m_PrefabInternal: {fileID: 1534379049}
 --- !u!1001 &1534940297
 Prefab:
   m_ObjectHideFlags: 0
@@ -59198,6 +59225,10 @@ Prefab:
       propertyPath: m_Name
       value: M_ArcherStand_01 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 11458166, guid: f825dd5319e3a6a4f9ecddf040f23542, type: 2}
+      propertyPath: archerOnTower
+      value: 
+      objectReference: {fileID: 1730328704}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f825dd5319e3a6a4f9ecddf040f23542, type: 2}
   m_IsPrefabParent: 0
@@ -63319,6 +63350,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a3127cbbe95988944b6e3108dad36ddf, type: 2}
   m_IsPrefabParent: 0
+--- !u!54 &1730328704 stripped
+Rigidbody:
+  m_PrefabParentObject: {fileID: 5461862, guid: a3127cbbe95988944b6e3108dad36ddf,
+    type: 2}
+  m_PrefabInternal: {fileID: 1730328703}
 --- !u!1001 &1730405996
 Prefab:
   m_ObjectHideFlags: 0
