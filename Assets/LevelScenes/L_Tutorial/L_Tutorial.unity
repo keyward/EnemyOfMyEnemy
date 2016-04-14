@@ -31044,7 +31044,7 @@ Prefab:
     - target: {fileID: 11422468, guid: 8631b177d3dbcb44498183ef26567514, type: 2}
       propertyPath: posterToDisplay
       value: 
-      objectReference: {fileID: 21300000, guid: a62295e2e1000d74d8779d0f21da5e17,
+      objectReference: {fileID: 21300000, guid: 9d6e1e5590907c64c93d27c19f494dbc,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8631b177d3dbcb44498183ef26567514, type: 2}

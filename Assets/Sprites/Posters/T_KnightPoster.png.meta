@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a62295e2e1000d74d8779d0f21da5e17
-timeCreated: 1460651298
+guid: 9d6e1e5590907c64c93d27c19f494dbc
+timeCreated: 1460652543
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: T_KnightPoster 1_0
+    21300000: T_KnightPoster_0
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -51,7 +51,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: T_KnightPoster 1_0
+    - name: T_KnightPoster_0
       rect:
         serializedVersion: 2
         x: 460
