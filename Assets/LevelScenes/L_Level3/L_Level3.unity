@@ -15807,6 +15807,10 @@ Prefab:
       propertyPath: enemySpawners.Array.data[4]
       value: 
       objectReference: {fileID: 1173422848}
+    - target: {fileID: 11495188, guid: aae019772db4486438200e9235b55130, type: 2}
+      propertyPath: needsToRaiseBarriers
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aae019772db4486438200e9235b55130, type: 2}
   m_IsPrefabParent: 0
