@@ -1915,7 +1915,7 @@ Prefab:
     - target: {fileID: 11450820, guid: 18d7d6b470386bb45b1cb8a4b5d727aa, type: 2}
       propertyPath: enemyPrefab
       value: 
-      objectReference: {fileID: 160354, guid: 66b88d775effc804496d71f0483b0b9f, type: 2}
+      objectReference: {fileID: 143558, guid: 2c2ba26f72679f144b8a8b8d150007b4, type: 2}
     - target: {fileID: 153716, guid: 18d7d6b470386bb45b1cb8a4b5d727aa, type: 2}
       propertyPath: m_Name
       value: PRE_GenericSpawner (5)
