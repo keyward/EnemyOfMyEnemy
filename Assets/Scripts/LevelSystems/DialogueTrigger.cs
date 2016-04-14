@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Audio;
 using System.Collections;
 
 [RequireComponent(typeof (AudioSource))]
@@ -6,6 +7,7 @@ using System.Collections;
 public class DialogueTrigger : MonoBehaviour {
 
 
+    public AudioMixer audioManager;
     public AudioSource _dialogueClip;
     public GameObject _particle;
     private bool _triggerActivated;
@@ -27,9 +29,12 @@ public class DialogueTrigger : MonoBehaviour {
         _particle.SetActive(true);
 
         _dialogueClip.Play();
+        audioManager.SetFloat("GameVolume", -15f);
 
         while (_dialogueClip.isPlaying)
             yield return null;
+
+        audioManager.SetFloat("GameVolume", 0f);
         _particle.SetActive(false);
         Destroy(gameObject);
     }

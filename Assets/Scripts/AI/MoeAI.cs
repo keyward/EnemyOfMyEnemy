@@ -86,7 +86,6 @@ public class MoeAI : MonoBehaviour {
 
     void Update()
     {
-
         if(currentState == aiState.following)
             Follow();
 
@@ -116,7 +115,7 @@ public class MoeAI : MonoBehaviour {
         // if moe is standing still and not doing anything -- look at the player
         if (currentState == aiState.following || currentState == aiState.stopped)
         {
-            if(_idle && !_frozen)
+            if(!_frozen)
             {
                 Vector3 targetDirection = _playerTransform.position - transform.position;
                 Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, Time.deltaTime * 2f, 0f);
@@ -128,8 +127,6 @@ public class MoeAI : MonoBehaviour {
 
     public void ChangeState(aiState moeState)
     {
-        //Debug.LogWarning(currentState);
-
         currentState = moeState;
             
         switch(currentState)
@@ -182,7 +179,8 @@ public class MoeAI : MonoBehaviour {
     {
         if (_attacking || _frozen || _charging)
             yield break;
-        
+
+        print("attack");
         _attacking = true;
 
         _navAgent.Stop();
@@ -195,7 +193,7 @@ public class MoeAI : MonoBehaviour {
 
         _moeAnimator.SetTrigger(_moeAttack);
 
-        float attackCheck = 2f;
+        float attackCheck = 1f;
         
 
         while(attackCheck > 0)
@@ -334,6 +332,7 @@ public class MoeAI : MonoBehaviour {
 
         _navAgent.angularSpeed = initialAngularSpeed;
 
+
         CheckForEnemies();
     }
 
@@ -439,14 +438,16 @@ public class MoeAI : MonoBehaviour {
 
         // Touch a pixie to turn him to stone
         if (other.CompareTag("Fear"))
+        {
             ChangeState(aiState.stoned);
+            return;
+        }
 
         // if Moe has not been taunted or touched by a pixie -- he will attack
         else if (other.CompareTag("Enemy"))
         {
             if (_frozen)
                 return;
-
 
             if (currentState == aiState.charging)
                 return;
