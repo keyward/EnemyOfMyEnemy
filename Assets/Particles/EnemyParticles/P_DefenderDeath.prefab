@@ -13,7 +13,7 @@ GameObject:
   - 114: {fileID: 11481676}
   - 82: {fileID: 8272932}
   m_Layer: 0
-  m_Name: P_MeleeDeath
+  m_Name: P_DefenderDeath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -364,7 +364,7 @@ ParticleSystem:
         rgba: 4293716992
       minMaxState: 0
     startSize:
-      scalar: 1.5
+      scalar: 3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1635,7 +1635,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9acbaf83c475e744a8d3d03ecafeebd1, type: 2}
+  - {fileID: 2100000, guid: 51fd4b12bfdc2104b9b8e71b6a26c7a3, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1692,7 +1692,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9acbaf83c475e744a8d3d03ecafeebd1, type: 2}
+      objectReference: {fileID: 2100000, guid: 51fd4b12bfdc2104b9b8e71b6a26c7a3, type: 2}
     - target: {fileID: 0}
       propertyPath: m_audioClip
       value: 
@@ -1727,7 +1727,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: InitialModule.startSize.scalar
-      value: 1.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: InitialModule.startSize.maxCurve.m_Curve.Array.data[0].value
