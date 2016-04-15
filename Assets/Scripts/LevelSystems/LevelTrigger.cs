@@ -69,6 +69,14 @@ public class LevelTrigger : MonoBehaviour {
         }
     }
 
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+            _playerCrossed = false;
+        else if (other.CompareTag("Moe"))
+            _moeCrossed = false;
+    }
+
     public void MinusOneEnemy()
     {
         _totalEnemyCount--;
