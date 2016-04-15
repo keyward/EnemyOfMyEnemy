@@ -3299,7 +3299,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 0.7
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -3414,8 +3414,8 @@ MonoBehaviour:
   damageCoolDown: 1
   deathParticles: {fileID: 130552, guid: 25a60522a2414d04da186729b0b4a521, type: 2}
   damageSoundEffects:
-  - {fileID: 8300000, guid: 9ba6c938550aca340852b66282431484, type: 3}
-  - {fileID: 8300000, guid: 0d60c678be53f9748bdc248b827cd987, type: 3}
+  - {fileID: 8300000, guid: 6131cdcda7474ce49bc47cfb8e928d74, type: 3}
+  - {fileID: 8300000, guid: ffd24c0bc953f6a4ebf88fd2a23c4d96, type: 3}
 --- !u!114 &11473616
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3429,10 +3429,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   damageCoolDown: 1
-  deathParticles: {fileID: 130552, guid: 25a60522a2414d04da186729b0b4a521, type: 2}
+  deathParticles: {fileID: 130552, guid: 6bb7745524ef0484198070637fadf60b, type: 2}
   damageSoundEffects:
-  - {fileID: 8300000, guid: 9ba6c938550aca340852b66282431484, type: 3}
-  - {fileID: 8300000, guid: 0d60c678be53f9748bdc248b827cd987, type: 3}
+  - {fileID: 8300000, guid: 6131cdcda7474ce49bc47cfb8e928d74, type: 3}
+  - {fileID: 8300000, guid: ffd24c0bc953f6a4ebf88fd2a23c4d96, type: 3}
 --- !u!114 &11478560
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9618,6 +9618,22 @@ Prefab:
       propertyPath: spreadCustomCurve.m_RotationOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: deathParticles
+      value: 
+      objectReference: {fileID: 130552, guid: 6bb7745524ef0484198070637fadf60b, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Pitch
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damageSoundEffects.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6131cdcda7474ce49bc47cfb8e928d74, type: 3}
+    - target: {fileID: 0}
+      propertyPath: damageSoundEffects.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: ffd24c0bc953f6a4ebf88fd2a23c4d96, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 143558}
