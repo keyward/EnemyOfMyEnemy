@@ -13,6 +13,7 @@ public class DragonFlame : MonoBehaviour
 
     public float timeBeforeActivation;
     public float fireCooldown = 4f;
+	public bool alwaysOn;
 
 	private GameObject instantiatedFireParticles;
 	private bool runCoroutine = true;
@@ -38,15 +39,20 @@ public class DragonFlame : MonoBehaviour
 
 	private IEnumerator InstantiateParticle ()
 	{
-        yield return new WaitForSeconds(timeBeforeActivation);
 
 		this.runCoroutine = false;
+        yield return new WaitForSeconds(timeBeforeActivation);
+
 		if (this.instantiatedFireParticles != null) {
 			Destroy (this.instantiatedFireParticles);
 		} else {
 			instantiatedFireParticles = Instantiate (fireParticles, transform.position, Quaternion.Euler (0f, this.transform.rotation.eulerAngles.y, 0f)) as GameObject;
 		}
 		yield return new WaitForSeconds (fireCooldown);
-		this.runCoroutine = true;
+		if (!this.alwaysOn)
+		{
+			this.runCoroutine = true;
+		}
 	}
+
 }
