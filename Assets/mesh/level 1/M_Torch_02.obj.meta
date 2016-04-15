@@ -11,32 +11,27 @@ ModelImporter:
     100006: pCylinder1
     100008: pCylinder2
     100010: //RootNode
-    100012: Elaborate_Torch_forpainting:Mesh
     400000: pCube1
     400002: pCube2
     400004: pCube21
     400006: pCylinder1
     400008: pCylinder2
     400010: //RootNode
-    400012: Elaborate_Torch_forpainting:Mesh
     2300000: pCube1
     2300002: pCube2
     2300004: pCube21
     2300006: pCylinder1
     2300008: pCylinder2
-    2300010: Elaborate_Torch_forpainting:Mesh
     3300000: pCube1
     3300002: pCube2
     3300004: pCube21
     3300006: pCylinder1
     3300008: pCylinder2
-    3300010: Elaborate_Torch_forpainting:Mesh
     4300000: pCube1
     4300002: pCube2
     4300004: pCube21
     4300006: pCylinder1
     4300008: pCylinder2
-    4300010: Elaborate_Torch_forpainting:Mesh
   materials:
     importMaterials: 1
     materialName: 0
