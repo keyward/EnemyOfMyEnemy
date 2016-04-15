@@ -88,7 +88,6 @@ public class MoeAI : MonoBehaviour {
     {
         if(currentState == aiState.following)
             Follow();
-        else if(currentState == aiState.attacking)
 
 
         if(currentState == aiState.following || currentState == aiState.stopped)
