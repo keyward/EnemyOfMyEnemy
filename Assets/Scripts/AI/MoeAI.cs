@@ -115,7 +115,7 @@ public class MoeAI : MonoBehaviour {
         // if moe is standing still and not doing anything -- look at the player
         if (currentState == aiState.following || currentState == aiState.stopped)
         {
-            if(_idle && !_frozen)
+            if(!_frozen)
             {
                 Vector3 targetDirection = _playerTransform.position - transform.position;
                 Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, Time.deltaTime * 2f, 0f);
@@ -127,8 +127,6 @@ public class MoeAI : MonoBehaviour {
 
     public void ChangeState(aiState moeState)
     {
-        //Debug.LogWarning(currentState);
-
         currentState = moeState;
             
         switch(currentState)
@@ -146,8 +144,6 @@ public class MoeAI : MonoBehaviour {
                     ChangeState(aiState.stoned);
                     return;
                 }
-                else if (_charging)
-                    StartCoroutine(Charge());
                    
                 StartCoroutine(Attack());
                 break;
