@@ -111,8 +111,10 @@ public class LevelTrigger : MonoBehaviour {
         if (!fightBarriers)
             yield break;
 
+        Vector3 targetHeight = new Vector3(fightBarriers.transform.position.x, fightBarriers.transform.position.y - 3f, fightBarriers.transform.position.z);
+
         _roomCleared = true;
-        while (fightBarriers.position.y > -1)
+        while (Vector3.Distance(fightBarriers.position, targetHeight) > .25f)
         {
             fightBarriers.position = Vector3.Lerp(fightBarriers.position, fightBarriers.position + (Vector3.down * 3), Time.deltaTime * raiseSpeed);
             yield return null;

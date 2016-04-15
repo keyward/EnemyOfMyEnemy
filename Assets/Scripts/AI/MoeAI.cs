@@ -89,6 +89,7 @@ public class MoeAI : MonoBehaviour {
         if(currentState == aiState.following)
             Follow();
 
+
         if(currentState == aiState.following || currentState == aiState.stopped)
         {
             if (!_idle && _navAgent.velocity == Vector3.zero)
@@ -144,6 +145,8 @@ public class MoeAI : MonoBehaviour {
                     ChangeState(aiState.stoned);
                     return;
                 }
+
+                StartCoroutine(AttackBugCheck());
                    
                 StartCoroutine(Attack());
                 break;
@@ -172,6 +175,20 @@ public class MoeAI : MonoBehaviour {
             if (_navAgent.velocity == Vector3.zero)
                 _navAgent.Resume();
         }  
+    }
+
+    IEnumerator AttackBugCheck()
+    {
+        float timer = 1.5f;
+
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+
+        if (currentState == aiState.attacking)
+            currentState = aiState.following;
     }
 
     // -- Area Attack -- //
