@@ -1,78 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &111416
+--- !u!1 &167058
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 498260}
-  - 65: {fileID: 6537634}
-  - 114: {fileID: 11416658}
-  - 54: {fileID: 5438186}
-  - 82: {fileID: 8227822}
-  - 114: {fileID: 11458166}
+  - 4: {fileID: 438538}
+  - 33: {fileID: 3303304}
+  - 23: {fileID: 2360504}
+  - 114: {fileID: 11494546}
+  - 136: {fileID: 13690370}
+  - 114: {fileID: 11411732}
+  - 82: {fileID: 8290164}
   m_Layer: 0
-  m_Name: PRE_ArcherStand_01
-  m_TagString: Enemy
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &154436
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 403282}
-  - 33: {fileID: 3347054}
-  - 23: {fileID: 2363030}
-  m_Layer: 0
-  m_Name: default
+  m_Name: PRE_PixieTrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &403282
+--- !u!4 &438538
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154436}
+  m_GameObject: {fileID: 167058}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 23.217209, y: 1.3387, z: -17.612}
+  m_LocalScale: {x: 21.816717, y: 12.544172, z: 21.190783}
   m_Children: []
-  m_Father: {fileID: 498260}
-  m_RootOrder: 0
---- !u!4 &498260
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111416}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 138.9, y: 1.976, z: -19.81}
-  m_LocalScale: {x: 0.013453127, y: 0.013453119, z: 0.013453119}
-  m_Children:
-  - {fileID: 403282}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &2363030
+--- !u!23 &2360504
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154436}
+  m_GameObject: {fileID: 167058}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: d499432e272375441a69030b66e5ac4d, type: 2}
+  - {fileID: 2100000, guid: c6b1f1aaec70da24ba335a516a3bfacf, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -88,46 +59,19 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3347054
+--- !u!33 &3303304
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154436}
-  m_Mesh: {fileID: 4300000, guid: a11999f3968c6fb4da420d1663835072, type: 3}
---- !u!54 &5438186
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111416}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
---- !u!65 &6537634
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111416}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 112.152306, y: 298.1486, z: 122.79675}
-  m_Center: {x: -4.6140018, y: 0.6210117, z: -0.18175866}
---- !u!82 &8227822
+  m_GameObject: {fileID: 167058}
+  m_Mesh: {fileID: 4300000, guid: 9141e1c75bfc6a34196bd20e20ede071, type: 3}
+--- !u!82 &8290164
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111416}
+  m_GameObject: {fileID: 167058}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -196,12 +140,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &11416658
+--- !u!114 &11411732
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111416}
+  m_GameObject: {fileID: 167058}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a3c2101ceb12e04cb8fea6b04d294f2, type: 3}
@@ -211,21 +155,33 @@ MonoBehaviour:
   damageCoolDown: 0
   deathParticles: {fileID: 127594, guid: 766e7d7bf60a73b44abb7f5f255cafa1, type: 2}
   damageSoundEffects:
-  - {fileID: 8300000, guid: 9ba6c938550aca340852b66282431484, type: 3}
   - {fileID: 8300000, guid: 35e5524fbe9fa3c4296e562b6444da95, type: 3}
---- !u!114 &11458166
+  - {fileID: 8300000, guid: 35e5524fbe9fa3c4296e562b6444da95, type: 3}
+--- !u!114 &11494546
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111416}
+  m_GameObject: {fileID: 167058}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 537a4bd30cc87b340b15bc9cf1855906, type: 3}
+  m_Script: {fileID: 11500000, guid: d249f55c69124b64482dc6510585b7ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  archerOnTower: {fileID: 0}
-  deathParticles: {fileID: 0}
+  pixieSpawner: {fileID: 0}
+--- !u!136 &13690370
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 167058}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.03
+  m_Height: 0.14
+  m_Direction: 1
+  m_Center: {x: 9.313225e-10, y: 0.057987906, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -235,5 +191,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 111416}
+  m_RootGameObject: {fileID: 167058}
   m_IsPrefabParent: 1
