@@ -14,7 +14,7 @@ GameObject:
   - 82: {fileID: 8227822}
   - 114: {fileID: 11458166}
   m_Layer: 0
-  m_Name: M_ArcherStand_01 (1)
+  m_Name: PRE_ArcherStand_01
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -225,6 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   archerOnTower: {fileID: 0}
+  deathParticles: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

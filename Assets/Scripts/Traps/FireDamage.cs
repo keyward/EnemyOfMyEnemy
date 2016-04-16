@@ -7,7 +7,7 @@ public class FireDamage : MonoBehaviour {
 
     void OnParticleCollision(GameObject other)
     {
-        if (other.CompareTag("Player"))
+        if (other.GetComponent<Health>())
             other.GetComponent<Health>().TakeDamage(damageAmount);
     }
 }
