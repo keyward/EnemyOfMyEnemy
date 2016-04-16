@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   archerOnTower: {fileID: 0}
-  deathParticles: {fileID: 0}
+  deathParticles: {fileID: 127594, guid: 766e7d7bf60a73b44abb7f5f255cafa1, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

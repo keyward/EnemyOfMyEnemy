@@ -188,7 +188,8 @@ public class MoeAI : MonoBehaviour {
         }
 
         if (currentState == aiState.attacking)
-            currentState = aiState.following;
+            CheckForEnemies();
+            //currentState = aiState.following;
     }
 
     // -- Area Attack -- //
@@ -222,7 +223,7 @@ public class MoeAI : MonoBehaviour {
             yield return null;
         }
 
-        print("**********MOE WAS STUCK************");
+        _attacking = false;
         CheckForEnemies();
     }
 
