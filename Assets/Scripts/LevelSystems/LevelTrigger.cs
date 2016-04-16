@@ -57,6 +57,9 @@ public class LevelTrigger : MonoBehaviour {
             _moeCrossed = true;
 
 
+        
+
+
         if (_playerCrossed && _moeCrossed || _playerCrossed && onlyNeedLarry || _moeCrossed && onlyNeedMoe)
         {
             triggerActivated = true;
@@ -71,10 +74,13 @@ public class LevelTrigger : MonoBehaviour {
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
-            _playerCrossed = false;
-        else if (other.CompareTag("Moe"))
-            _moeCrossed = false;
+        if(!onlyNeedLarry && !onlyNeedMoe)
+        {
+            if (other.CompareTag("Player"))
+                _playerCrossed = false;
+            else if (other.CompareTag("Moe"))
+                _moeCrossed = false;
+        }   
     }
 
     public void MinusOneEnemy()
