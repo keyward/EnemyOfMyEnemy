@@ -8,6 +8,7 @@ public class Trap_PixieBarrel : MonoBehaviour {
     void Awake()
     {
         pixieSpawner.SetActive(false);
+        pixieSpawner.transform.parent = null;
     }
 
 	void OnDestroy()
