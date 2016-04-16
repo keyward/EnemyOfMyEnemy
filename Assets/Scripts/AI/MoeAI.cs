@@ -223,7 +223,7 @@ public class MoeAI : MonoBehaviour {
             yield return null;
         }
 
-        print("**********MOE WAS STUCK************");
+        _attacking = false;
         CheckForEnemies();
     }
 
