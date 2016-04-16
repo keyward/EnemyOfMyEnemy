@@ -24,8 +24,6 @@ public class EnemySpawner : MonoBehaviour {
 	
     IEnumerator SpawnEnemy()
     {
-        print("spawning");
-
         yield return new WaitForSeconds(delayBeforeSpawn);
 
         for(int i = 0; i < enemiesToSpawn; i++)
