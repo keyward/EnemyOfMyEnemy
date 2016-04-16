@@ -767,7 +767,7 @@ GameObject:
   - 135: {fileID: 13582370}
   - 54: {fileID: 5461862}
   - 82: {fileID: 8246374}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: PRE_Ranged_Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}

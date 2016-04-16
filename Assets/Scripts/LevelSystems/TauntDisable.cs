@@ -29,7 +29,7 @@ public class TauntDisable : MonoBehaviour {
 
     IEnumerator RaiseSpikes()
     {
-        if (_spikesUp)
+        if (_spikesUp || !spikeWall)
             yield break;
 
         _spikesUp = true;
