@@ -1970,7 +1970,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100284}
-  m_LocalRotation: {x: -0.7048907, y: 0.7087583, z: 0.01994018, w: 0.01983137}
+  m_LocalRotation: {x: -0.70489067, y: 0.70875823, z: 0.019940179, w: 0.019831369}
   m_LocalPosition: {x: -0.02937142, y: 1.1279293e-16, z: 1.4413856e-16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2556,8 +2556,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aee3b9ea5c4a719419c3978e0820022e, type: 3}
   - {fileID: 8300000, guid: 1d615ee0126f46d41bb8130aff90d4a3, type: 3}
   - {fileID: 8300000, guid: 696d1f44a02b5c84f986d9ff802519c2, type: 3}
+  moveSpeed: 6
   tauntDisabled: 0
-  offset: 0
 --- !u!114 &11456104
 MonoBehaviour:
   m_ObjectHideFlags: 1
