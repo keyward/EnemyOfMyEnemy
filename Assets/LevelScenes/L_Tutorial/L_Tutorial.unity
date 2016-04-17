@@ -16895,7 +16895,7 @@ Prefab:
     - target: {fileID: 11422468, guid: 8631b177d3dbcb44498183ef26567514, type: 2}
       propertyPath: posterToDisplay
       value: 
-      objectReference: {fileID: 21300000, guid: c73f6ed31e6f0374f93cd13a56bdc1f3,
+      objectReference: {fileID: 21300000, guid: 4366af76780c4aa44a61d1692f1fcf10,
         type: 3}
     - target: {fileID: 11422468, guid: 8631b177d3dbcb44498183ef26567514, type: 2}
       propertyPath: _getsDestroyed
@@ -20067,7 +20067,7 @@ Prefab:
     - target: {fileID: 11422468, guid: 8631b177d3dbcb44498183ef26567514, type: 2}
       propertyPath: posterToDisplay
       value: 
-      objectReference: {fileID: 21300000, guid: 654d6b36740db6a4ba0ff32f598ce2b2,
+      objectReference: {fileID: 21300000, guid: 084acd3f9ee9a3c478025b1b7ef4cb6a,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8631b177d3dbcb44498183ef26567514, type: 2}
