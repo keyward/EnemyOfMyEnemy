@@ -456,8 +456,6 @@ public class MoeAI : MonoBehaviour {
     {
         _moeAnimator.SetBool(_moeCharge, false);
         //_moeAnimator.SetBool(_moeIdle, false);
-        _attacking = false;
-        _charging = false;
     }
 
     void OnTriggerEnter(Collider other)
