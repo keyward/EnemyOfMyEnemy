@@ -257,7 +257,7 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4278232319
+        rgba: 4278224127
       minMaxState: 0
     startSize:
       scalar: 2
@@ -641,7 +641,7 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 2712575
+          rgba: 2697727
         key1:
           serializedVersion: 2
           rgba: 4244675071
@@ -1638,7 +1638,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: InitialModule.startColor.maxColor.rgba
-      value: 4278232319
+      value: 4278224127
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ColorModule.enabled
@@ -1646,7 +1646,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ColorModule.gradient.maxGradient.key0.rgba
-      value: 2712575
+      value: 2697727
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ColorModule.gradient.maxGradient.key1.rgba
