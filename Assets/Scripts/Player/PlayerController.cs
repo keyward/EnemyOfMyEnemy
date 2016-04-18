@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour {
     private bool _canShoot;
     private bool _rotationDisabled;
 
+    private bool _gameIsPaused;
+
 
     void Awake()
     {
@@ -56,6 +58,8 @@ public class PlayerController : MonoBehaviour {
         _canShoot = true;
         canTaunt = true;
         tauntDisabled = false;
+
+        _gameIsPaused = false;
     }
 
     void FixedUpdate()
@@ -85,7 +89,8 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
-        //Debug.DrawRay(transform.position + Vector3.up * 3, transform.forward * 6, Color.red);
+        if (Input.GetButtonDown("Pause"))
+            PauseGame();
 
         // player shooting
         if (Input.GetAxis("Shoot") > 0f)
@@ -217,4 +222,15 @@ public class PlayerController : MonoBehaviour {
 			moveSpeedModifier = value;
 		}
 	}
+
+    void PauseGame()
+    {
+        _gameIsPaused = !_gameIsPaused;
+
+        if (_gameIsPaused == true)
+            Time.timeScale = 0.0f;
+        else
+            Time.timeScale = 1.0f;
+
+    }
 }
