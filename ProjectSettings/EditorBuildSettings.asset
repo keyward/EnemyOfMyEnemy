@@ -15,3 +15,5 @@ EditorBuildSettings:
     path: Assets/LevelScenes/L_Level2/L_Level2.unity
   - enabled: 1
     path: Assets/LevelScenes/L_Level3/L_Level3.unity
+  - enabled: 1
+    path: Assets/LevelScenes/EndingSceneGraphic.unity
