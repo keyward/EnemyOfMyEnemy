@@ -51,10 +51,14 @@ public class RangedEnemy : MonoBehaviour {
             transform.LookAt(_playerTransform);
             transform.rotation = new Quaternion(0f, transform.rotation.y, 0f, transform.rotation.w);
 
-            if (Vector3.Distance(transform.position, _playerTransform.position) > 3)
-                accuracyOffset = 3;
-            else
+            if (Vector3.Distance(transform.position, _playerTransform.position) < 3)
                 accuracyOffset = 1;
+            else
+            {
+                if (accuracyOffset != 4)
+                    accuracyOffset = 4;
+            }
+                
         }
     }
 

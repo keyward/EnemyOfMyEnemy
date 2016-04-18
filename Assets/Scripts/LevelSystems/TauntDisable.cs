@@ -22,7 +22,7 @@ public class TauntDisable : MonoBehaviour {
     {
         if(other.CompareTag("Player"))
         {
-            print("touched taunt disabler");
+            //print("touched taunt disabler");
             StartCoroutine(RaiseSpikes());
         }
     }

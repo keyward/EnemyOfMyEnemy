@@ -78,7 +78,7 @@ GameObject:
   m_Name: M_WallSpawn_Dungeon (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &136446
@@ -179,8 +179,8 @@ GameObject:
   m_Name: M_WallSpawn_Dungeon1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &179722
 GameObject:
@@ -229,7 +229,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152080}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.11457443, y: 0.25, z: -0.8988339}
+  m_LocalPosition: {x: 0.11, y: 0.25, z: -1.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 408682}
@@ -290,9 +290,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179722}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.99, y: 1.55, z: -1.65}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: -0.71197355, z: 0, w: 0.7022063}
+  m_LocalPosition: {x: 184.15, y: 0.33, z: 68.74}
+  m_LocalScale: {x: 1.6220536, y: 1.622053, z: 1.622053}
   m_Children:
   - {fileID: 495524}
   - {fileID: 482480}

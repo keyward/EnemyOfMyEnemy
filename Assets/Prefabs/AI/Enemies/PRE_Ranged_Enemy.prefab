@@ -2770,7 +2770,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5403394, guid: 1e03256e497e6f24fb08cba3582058d3, type: 2}
   firePoint: {fileID: 471690}
   fireDelay: 3
-  accuracyOffset: 3
+  accuracyOffset: 4
   looking: 0
   _stunParticles: {fileID: 19845886}
   enemySounds:

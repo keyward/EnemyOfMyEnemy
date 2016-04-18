@@ -15,10 +15,9 @@ public class MeleeEnemy : MonoBehaviour
 	private bool _attacking;
 	private bool _retreating;
 
-	private List<MeleeEnemy> enemyList;
-
 	// LevelSystem
 	private EnemyManager _enemyManagerRef;
+	private KnightManager _knightManagerRef;
 
 	// NavMesh
 	private NavMeshAgent _pathFinder;
@@ -52,6 +51,9 @@ public class MeleeEnemy : MonoBehaviour
 		_stunned = false;
 
 		_pathFinder.stoppingDistance = this.stoppingDistance;
+
+		_knightManagerRef = GameObject.FindObjectOfType(typeof(KnightManager)) as KnightManager;
+		_knightManagerRef.addEnemyToList ((MeleeEnemy)this);
 	}
 
 	// _enemyManagerRef lets the stage know when the enemy is dead so the player can move on //
@@ -63,16 +65,12 @@ public class MeleeEnemy : MonoBehaviour
 	void OnDestroy()
 	{
 		_enemyManagerRef.RemoveEnemy();
+		_knightManagerRef.removeEnemyFromList (this);
 	}
 	// ------------------------------------------------------------------------------------- //
 
 	void Update()
 	{
-		MeleeEnemy[] enemies = GameObject.FindObjectsOfType(typeof(MeleeEnemy)) as MeleeEnemy[];
-		this.enemyList = new List<MeleeEnemy>(enemies);
-		this.enemyList.Remove((MeleeEnemy)this);
-
-
 		// Melee enemy isn't stunned...
 		if (!_stunned)
 		{
@@ -95,7 +93,7 @@ public class MeleeEnemy : MonoBehaviour
 			else if (!_lunging && !this._attacking)
 				{
 					_pathFinder.stoppingDistance = this.stoppingDistance;
-					if (!this.checkForAttackers())
+					if (!this._knightManagerRef.checkForAttackers(this))
 					{
 						_attacking = true;
 					}
@@ -202,18 +200,6 @@ public class MeleeEnemy : MonoBehaviour
 		this._retreating = true;
 	}
 
-	private bool checkForAttackers()
-	{
-		foreach (MeleeEnemy e in this.enemyList)
-		{
-			if (e._attacking == true)
-			{
-				return true;
-			}
-		}
-		return false;
-	}
-
 	private void retreat()
 	{
 		this._pathFinder.SetDestination(this._retreatPosition);
@@ -227,4 +213,9 @@ public class MeleeEnemy : MonoBehaviour
 		}
 	}
 		
+	public bool attacking {
+		get {
+			return _attacking;
+		}
+	}
 }
