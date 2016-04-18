@@ -96,7 +96,7 @@ public class LevelTrigger : MonoBehaviour {
         }
            
 
-        Debug.LogWarning(_totalEnemyCount);
+        //Debug.LogWarning(_totalEnemyCount);
     }
 
     IEnumerator RaiseBarriers()
