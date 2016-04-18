@@ -96,8 +96,9 @@ public class PlayerController : MonoBehaviour {
             StartCoroutine(Taunt());
 
         //Restart Level
-        if (Input.GetKeyDown(KeyCode.Q))
-            SceneManager.LoadScene(0);
+        if (Input.GetKeyDown(KeyCode.R))
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
 
         //Exit Game
         if (Input.GetKeyDown(KeyCode.Escape))
