@@ -3,31 +3,36 @@ using System.Collections;
 
 public class DefenderEnemy : MonoBehaviour {
 
-    [Header("Defender Enemy")]
-    public float lungeDistance;
 
+    public float lungeDistance;
+   
     private Transform _moeTransform;
     [HideInInspector] public bool _shieldActive;
-    [HideInInspector] public Health _healthScript;
+    private Health _healthScript;
 
+    private EnemyManager _enemyManagerRef;
+
+    // navigation
     private NavMeshAgent _pathFinder;
     private Transform _playerTransform;
 
+    // states
     private bool _actionAvailable;
     private bool _lunging;
     private bool _paused;
 
-    public Animator defenderAnimator;
+    // animations
+    [HideInInspector] public Animator defenderAnimator;
+    [HideInInspector] public int shieldBreakTrigger;
     private AnimatorStateInfo currentBaseState;
     private int _attackAnimation;
     private int _movingAnimationState;
-    public int shieldBreakTrigger;
-    public int _shieldActiveBool;
+    private int _shieldActiveBool;
 
+    // audio
     public AudioClip[] defenderSounds;
     private AudioSource _defenderAudio;
 
-    public float distance;
 
     void Awake()
     {
@@ -52,6 +57,16 @@ public class DefenderEnemy : MonoBehaviour {
 
         _shieldActive = true;
         _healthScript.enabled = false;
+    }
+
+    void OnEnable()
+    {
+        _enemyManagerRef = GameObject.FindGameObjectWithTag("EnemyMgr").GetComponent<EnemyManager>();
+    }
+
+    void OnDestroy()
+    {
+        _enemyManagerRef.RemoveEnemy();
     }
 
 	void Update ()

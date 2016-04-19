@@ -767,7 +767,7 @@ GameObject:
   - 135: {fileID: 13582370}
   - 54: {fileID: 5461862}
   - 82: {fileID: 8246374}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: PRE_Ranged_Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1634,7 +1634,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157460}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.930786, y: 0.5040436, z: -5.6190796}
+  m_LocalPosition: {x: -36.112015, y: 6.5316358, z: -18.82338}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 499614}
@@ -2770,7 +2770,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5403394, guid: 1e03256e497e6f24fb08cba3582058d3, type: 2}
   firePoint: {fileID: 471690}
   fireDelay: 3
-  accuracyOffset: 3
+  accuracyOffset: 4
   looking: 0
   _stunParticles: {fileID: 19845886}
   enemySounds:
@@ -2826,7 +2826,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.74
+  m_Radius: 1
   m_Center: {x: 0, y: 1.05, z: -0.22}
 --- !u!136 &13666638
 CapsuleCollider:

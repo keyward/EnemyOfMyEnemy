@@ -759,15 +759,14 @@ GameObject:
   m_Component:
   - 4: {fileID: 405482}
   - 95: {fileID: 9542750}
-  - 114: {fileID: 11414996}
   - 82: {fileID: 8282608}
   - 195: {fileID: 19595562}
   - 136: {fileID: 13650908}
+  - 114: {fileID: 11414996}
   - 114: {fileID: 11473616}
-  - 114: {fileID: 11423590}
   m_Layer: 0
   m_Name: PRE_DefenderEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3391,30 +3390,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lungeDistance: 4
   _shieldActive: 0
-  _healthScript: {fileID: 0}
   defenderAnimator: {fileID: 0}
   shieldBreakTrigger: 0
-  _shieldActiveBool: 0
   defenderSounds:
   - {fileID: 8300000, guid: e661a7a8cc055eb4495c1f75b09040db, type: 3}
-  - {fileID: 8300000, guid: ffd24c0bc953f6a4ebf88fd2a23c4d96, type: 3}
-  distance: 0
---- !u!114 &11423590
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc34429c7e2346348b2cef47e90fe572, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 3
-  damageCoolDown: 1
-  deathParticles: {fileID: 130552, guid: 25a60522a2414d04da186729b0b4a521, type: 2}
-  damageSoundEffects:
-  - {fileID: 8300000, guid: 6131cdcda7474ce49bc47cfb8e928d74, type: 3}
   - {fileID: 8300000, guid: ffd24c0bc953f6a4ebf88fd2a23c4d96, type: 3}
 --- !u!114 &11473616
 MonoBehaviour:

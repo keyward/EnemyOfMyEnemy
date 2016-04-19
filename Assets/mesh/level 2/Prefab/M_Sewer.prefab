@@ -25,12 +25,14 @@ GameObject:
   - 4: {fileID: 400874}
   - 33: {fileID: 3338090}
   - 23: {fileID: 2385406}
+  - 65: {fileID: 6568908}
+  - 65: {fileID: 6509428}
   m_Layer: 0
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &400874
 Transform:
@@ -39,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126412}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 477970}
@@ -51,8 +53,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 37.4, y: 0.134, z: 29.46}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalPosition: {x: 43.75, y: -5.96, z: 51.94}
+  m_LocalScale: {x: 0.01746264, y: 0.017462641, z: 0.017462641}
   m_Children:
   - {fileID: 400874}
   m_Father: {fileID: 0}
@@ -90,6 +92,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126412}
   m_Mesh: {fileID: 4300000, guid: a451d7abbc9b71248a4b2693d98898dd, type: 3}
+--- !u!65 &6509428
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126412}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 131.51323, y: 127.98944, z: 131.51324}
+  m_Center: {x: -0.28035736, y: -70.65989, z: 0.19052505}
+--- !u!65 &6568908
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126412}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 131.51323, y: 127.98944, z: 131.51324}
+  m_Center: {x: -0.28035736, y: -70.65989, z: 0.19052505}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

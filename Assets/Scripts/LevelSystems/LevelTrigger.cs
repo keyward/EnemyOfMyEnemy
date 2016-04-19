@@ -57,6 +57,9 @@ public class LevelTrigger : MonoBehaviour {
             _moeCrossed = true;
 
 
+        
+
+
         if (_playerCrossed && _moeCrossed || _playerCrossed && onlyNeedLarry || _moeCrossed && onlyNeedMoe)
         {
             triggerActivated = true;
@@ -67,6 +70,17 @@ public class LevelTrigger : MonoBehaviour {
             if (needsToRaiseBarriers)
                 StartCoroutine(RaiseBarriers()); 
         }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if(!onlyNeedLarry && !onlyNeedMoe)
+        {
+            if (other.CompareTag("Player"))
+                _playerCrossed = false;
+            else if (other.CompareTag("Moe"))
+                _moeCrossed = false;
+        }   
     }
 
     public void MinusOneEnemy()
@@ -82,7 +96,7 @@ public class LevelTrigger : MonoBehaviour {
         }
            
 
-        Debug.LogWarning(_totalEnemyCount);
+        //Debug.LogWarning(_totalEnemyCount);
     }
 
     IEnumerator RaiseBarriers()
@@ -111,8 +125,10 @@ public class LevelTrigger : MonoBehaviour {
         if (!fightBarriers)
             yield break;
 
+        Vector3 targetHeight = new Vector3(fightBarriers.transform.position.x, fightBarriers.transform.position.y - 3f, fightBarriers.transform.position.z);
+
         _roomCleared = true;
-        while (fightBarriers.position.y > -1)
+        while (Vector3.Distance(fightBarriers.position, targetHeight) > .25f)
         {
             fightBarriers.position = Vector3.Lerp(fightBarriers.position, fightBarriers.position + (Vector3.down * 3), Time.deltaTime * raiseSpeed);
             yield return null;

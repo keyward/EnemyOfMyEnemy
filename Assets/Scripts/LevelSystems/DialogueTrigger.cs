@@ -29,7 +29,7 @@ public class DialogueTrigger : MonoBehaviour {
         _particle.SetActive(true);
 
         _dialogueClip.Play();
-        audioManager.SetFloat("GameVolume", -15f);
+        audioManager.SetFloat("GameVolume", -10f);
 
         while (_dialogueClip.isPlaying)
             yield return null;

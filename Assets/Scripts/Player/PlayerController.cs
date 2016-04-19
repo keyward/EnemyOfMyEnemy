@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour {
     private int _shootAnim;
 
     // Attributes
-    private float moveSpeed;
+    public float moveSpeed;
     private float moveSpeedModifier;
     private float horz;
     private float vert;
@@ -38,7 +38,6 @@ public class PlayerController : MonoBehaviour {
     private bool _canShoot;
     private bool _rotationDisabled;
 
-    public float offset;
 
     void Awake()
     {
@@ -51,7 +50,6 @@ public class PlayerController : MonoBehaviour {
         _shootAnim = Animator.StringToHash("Shoot");
 
         // Player metrics
-        moveSpeed = 5f;
         moveSpeedModifier = 1f;
 
         _canRoll = true;

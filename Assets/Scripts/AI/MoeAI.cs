@@ -43,6 +43,8 @@ public class MoeAI : MonoBehaviour {
     public SkinnedMeshRenderer[] moeSkin;
     private Material[] _partsToTurnToStone;
 
+    private bool _checkingForAttackBug;
+
 
 	void Awake ()
     {
@@ -53,6 +55,7 @@ public class MoeAI : MonoBehaviour {
         _idle = true;
         _charging = false;
         _hasAttacked = false;
+        _checkingForAttackBug = false;
 
         // Moe attack
         _areaDamage = transform.FindChild("AreaAttack").gameObject;
@@ -89,14 +92,17 @@ public class MoeAI : MonoBehaviour {
         if(currentState == aiState.following)
             Follow();
 
+
+
+
         if(currentState == aiState.following || currentState == aiState.stopped)
         {
-            if (!_idle && _navAgent.velocity == Vector3.zero)
+            if (_idle == false && _navAgent.velocity == Vector3.zero)
             {
                 _idle = true;
                 _moeAnimator.SetBool(_moeIdle, true);
             }
-            else if (_navAgent.velocity != Vector3.zero)
+            else if (_idle == true && _navAgent.velocity != Vector3.zero)
             {
                 _idle = false;
                 _moeAnimator.SetBool(_moeIdle, false);
@@ -144,6 +150,8 @@ public class MoeAI : MonoBehaviour {
                     ChangeState(aiState.stoned);
                     return;
                 }
+
+                StartCoroutine(AttackBugCheck());
                    
                 StartCoroutine(Attack());
                 break;
@@ -174,13 +182,30 @@ public class MoeAI : MonoBehaviour {
         }  
     }
 
+    IEnumerator AttackBugCheck()
+    {
+        _checkingForAttackBug = true;
+
+        float timer = 1.5f;
+
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+
+        if (currentState == aiState.attacking)
+            CheckForEnemies();
+
+        _checkingForAttackBug = false;
+    }
+
     // -- Area Attack -- //
     IEnumerator Attack()
     {
         if (_attacking || _frozen || _charging)
             yield break;
 
-        print("attack");
         _attacking = true;
 
         _navAgent.Stop();
@@ -205,7 +230,7 @@ public class MoeAI : MonoBehaviour {
             yield return null;
         }
 
-        print("**********MOE WAS STUCK************");
+        _attacking = false;
         CheckForEnemies();
     }
 
@@ -408,6 +433,7 @@ public class MoeAI : MonoBehaviour {
                 if (hit.collider.CompareTag("Fear"))
                 {
                     ChangeState(aiState.stoned);
+                    _attacking = false;
                     break;
                 }
                 else if (hit.collider.CompareTag("Enemy"))
@@ -419,6 +445,7 @@ public class MoeAI : MonoBehaviour {
                 {
                     ChangeState(aiState.following);
                     _frozen = false;
+                    _attacking = false;
                     StartCoroutine(StoneColorLerp());
                 }
             }
