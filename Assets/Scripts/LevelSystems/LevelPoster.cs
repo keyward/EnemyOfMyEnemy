@@ -42,22 +42,31 @@ public class LevelPoster : MonoBehaviour {
     {
         if(_inputEnabled && Input.GetButtonDown("Interact"))
         {
-            if (Time.timeScale == 1)
-                Time.timeScale = 0f;
-            else
-                Time.timeScale = 1f;
+            ShowPoster(); 
+        }
+        else if(_inputEnabled && Input.GetButton("Cancel") && _posterTurnedOn == true)
+        {
+            ShowPoster();
+        }
+    }
 
-            _posterTurnedOn = !_posterTurnedOn;
-            _soundClip.Play();
-            _posterPanel.SetActive(_posterTurnedOn);
+    void ShowPoster()
+    {
+        if (Time.timeScale == 1)
+            Time.timeScale = 0f;
+        else
+            Time.timeScale = 1f;
 
-            //destroys poster and spawns particle
-            if (_getsDestroyed == true && _posterTurnedOn == false)
-            {
-                print("dead");
-                Instantiate(destroyParticles, transform.position, destroyParticles.transform.rotation);
-                Destroy(gameObject);
-            }
+        _posterTurnedOn = !_posterTurnedOn;
+        _soundClip.Play();
+        _posterPanel.SetActive(_posterTurnedOn);
+
+        //destroys poster and spawns particle
+        if (_getsDestroyed == true && _posterTurnedOn == false)
+        {
+            print("dead");
+            Instantiate(destroyParticles, transform.position, destroyParticles.transform.rotation);
+            Destroy(gameObject);
         }
     }
 
