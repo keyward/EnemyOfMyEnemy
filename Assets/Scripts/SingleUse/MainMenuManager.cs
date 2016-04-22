@@ -62,6 +62,8 @@ public class MainMenuManager : MonoBehaviour {
         posterScreen.SetActive(true);
         startScreen.SetActive(false);
 
+        PosterTracker.Instance.UpdatePosters();
+
         EventSystem.current.SetSelectedGameObject(posterScreenFirstButton);
     }
 

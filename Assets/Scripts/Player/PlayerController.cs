@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour {
 
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour {
     private bool _canShoot;
     private bool _rotationDisabled;
 
+    public List<int> posterInventory;
 
     void Awake()
     {

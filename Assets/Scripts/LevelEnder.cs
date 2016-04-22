@@ -16,6 +16,14 @@ public class LevelEnder : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
+        {
+            PlayerController playerRef = other.GetComponent<PlayerController>();
+            for(int i = 0; i<playerRef.posterInventory.Count; i++)
+            {
+                PlayerPrefs.SetInt(i.ToString(), 1);
+            }
+
             StartCoroutine(EndLevel());
+        }   
     }
 }
