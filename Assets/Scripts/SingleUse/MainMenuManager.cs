@@ -67,6 +67,12 @@ public class MainMenuManager : MonoBehaviour {
         EventSystem.current.SetSelectedGameObject(posterScreenFirstButton);
     }
 
+    public void ResetPosters()
+    {
+        PlayerPrefs.DeleteAll();
+        PosterTracker.Instance.UpdatePosters();
+    }
+
     public void GoToCredits()
     {
         creditScreen.SetActive(true);
