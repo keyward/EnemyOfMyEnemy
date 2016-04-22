@@ -43,8 +43,6 @@ public class MoeAI : MonoBehaviour {
     public SkinnedMeshRenderer[] moeSkin;
     private Material[] _partsToTurnToStone;
 
-    private bool _checkingForAttackBug;
-
 
 	void Awake ()
     {
@@ -55,7 +53,6 @@ public class MoeAI : MonoBehaviour {
         _idle = true;
         _charging = false;
         _hasAttacked = false;
-        _checkingForAttackBug = false;
 
         // Moe attack
         _areaDamage = transform.FindChild("AreaAttack").gameObject;
@@ -184,8 +181,6 @@ public class MoeAI : MonoBehaviour {
 
     IEnumerator AttackBugCheck()
     {
-        _checkingForAttackBug = true;
-
         float timer = 1.5f;
 
         while (timer > 0)
@@ -196,8 +191,6 @@ public class MoeAI : MonoBehaviour {
 
         if (currentState == aiState.attacking)
             CheckForEnemies();
-
-        _checkingForAttackBug = false;
     }
 
     // -- Area Attack -- //

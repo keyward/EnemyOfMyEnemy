@@ -5914,6 +5914,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: fd263948bdb08d348b3639e213ecd1dd,
         type: 3}
+    - target: {fileID: 11422468, guid: 8631b177d3dbcb44498183ef26567514, type: 2}
+      propertyPath: posterIndex
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8631b177d3dbcb44498183ef26567514, type: 2}
   m_IsPrefabParent: 0
@@ -16995,6 +16999,10 @@ Prefab:
       propertyPath: _getsDestroyed
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11422468, guid: 8631b177d3dbcb44498183ef26567514, type: 2}
+      propertyPath: posterIndex
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8631b177d3dbcb44498183ef26567514, type: 2}
   m_IsPrefabParent: 0
@@ -17565,6 +17573,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 6f05c22cc722a504e80d4d39d76e7c78,
         type: 3}
+    - target: {fileID: 11422468, guid: b50e22bc09cfa2544ae028011f2694a1, type: 2}
+      propertyPath: posterIndex
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b50e22bc09cfa2544ae028011f2694a1, type: 2}
   m_IsPrefabParent: 0
@@ -20163,6 +20175,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 084acd3f9ee9a3c478025b1b7ef4cb6a,
         type: 3}
+    - target: {fileID: 11422468, guid: 8631b177d3dbcb44498183ef26567514, type: 2}
+      propertyPath: posterIndex
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8631b177d3dbcb44498183ef26567514, type: 2}
   m_IsPrefabParent: 0
@@ -29715,6 +29731,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 35fe0379bc5e86247b7431ad799f700b,
         type: 3}
+    - target: {fileID: 11422468, guid: b50e22bc09cfa2544ae028011f2694a1, type: 2}
+      propertyPath: posterIndex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b50e22bc09cfa2544ae028011f2694a1, type: 2}
   m_IsPrefabParent: 0
@@ -31379,6 +31399,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 9d6e1e5590907c64c93d27c19f494dbc,
         type: 3}
+    - target: {fileID: 11422468, guid: 8631b177d3dbcb44498183ef26567514, type: 2}
+      propertyPath: posterIndex
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8631b177d3dbcb44498183ef26567514, type: 2}
   m_IsPrefabParent: 0

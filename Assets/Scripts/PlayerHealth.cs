@@ -5,7 +5,7 @@ using System.Collections;
 public class PlayerHealth : Health {
 
     private Transform playerRespawnPoint;
-    private PlayerController _playerDashDisable;
+    private PlayerController _playerRef;
     private Image _playerHealthImage;
     private int _initialHealth;
 
@@ -14,7 +14,7 @@ public class PlayerHealth : Health {
         _initialHealth = health;
 
         _damageAudio = GetComponent<AudioSource>();
-        _playerDashDisable = GetComponent<PlayerController>();
+        _playerRef = GetComponent<PlayerController>();
         _playerHealthImage = GameObject.FindGameObjectWithTag("PosterCanvas").transform.FindChild("PlayerHealth").GetComponent<Image>();
 
         ChangeChainGraphic();
@@ -49,12 +49,15 @@ public class PlayerHealth : Health {
         _damageAudio.clip = damageSoundEffects[1];
         _damageAudio.Play();
 
-        _playerDashDisable.StopCoroutine("DashAnimEvent");
+        _playerRef.StopCoroutine("DashAnimEvent");
 
         if (playerRespawnPoint)
             transform.position = playerRespawnPoint.position;
 
         ChangeChainGraphic();
+
+        if (_playerRef.posterInventory.Count > 0)
+            _playerRef.posterInventory.Clear();
     }
 
     void ChangeChainGraphic()
