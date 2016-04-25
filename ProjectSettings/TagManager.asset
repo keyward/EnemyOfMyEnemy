@@ -15,6 +15,7 @@ TagManager:
   - EnemyMgr
   - PosterCanvas
   - EnemyManager
+  - Inventory
   layers:
   - Default
   - TransparentFX

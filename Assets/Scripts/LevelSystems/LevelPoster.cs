@@ -10,6 +10,7 @@ public class LevelPoster : MonoBehaviour {
     public AudioSource _soundClip;
     public bool _getsDestroyed;
     public GameObject destroyParticles;
+    public int posterIndex;
 
     private PlayerController _playerAbilities;
     private GameObject _posterPanel;
@@ -60,6 +61,8 @@ public class LevelPoster : MonoBehaviour {
         _posterTurnedOn = !_posterTurnedOn;
         _soundClip.Play();
         _posterPanel.SetActive(_posterTurnedOn);
+
+        PlayerPrefs.SetInt(posterIndex.ToString(), 1);
 
         //destroys poster and spawns particle
         if (_getsDestroyed == true && _posterTurnedOn == false)
