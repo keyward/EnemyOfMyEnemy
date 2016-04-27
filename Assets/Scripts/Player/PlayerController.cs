@@ -99,7 +99,13 @@ public class PlayerController : MonoBehaviour {
 
         //Restart Level
         if (Input.GetKeyDown(KeyCode.Q))
+        {
+            for (int i = 0; i < posterInventory.Count; i++)
+                PlayerPrefs.SetInt(i.ToString(), 1);
+            
             SceneManager.LoadScene(0);
+        }
+            
 
         //Exit Game
         if (Input.GetKeyDown(KeyCode.Escape))
