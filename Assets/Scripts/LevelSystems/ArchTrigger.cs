@@ -45,10 +45,18 @@ public class ArchTrigger : MonoBehaviour {
 
     public IEnumerator LowerBarriers()
     {
-        while (spikeWall.position.y > -1)
+        Vector3 targetHeight = new Vector3(spikeWall.transform.position.x, spikeWall.transform.position.y - 3f, spikeWall.transform.position.z);
+
+        while (Vector3.Distance(spikeWall.position, targetHeight) > .25f)
         {
             spikeWall.position = Vector3.Lerp(spikeWall.position, spikeWall.position + (Vector3.down * 3), Time.deltaTime * raiseSpeed);
             yield return null;
         }
+    }
+
+
+    public void LowerSpikesForBarrierDestroy()
+    {
+        StartCoroutine(LowerBarriers());
     }
 }
