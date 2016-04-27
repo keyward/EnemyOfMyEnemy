@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PosterTracker : MonoBehaviour {
 
@@ -16,7 +17,6 @@ public class PosterTracker : MonoBehaviour {
         else
             Destroy(gameObject);
 
-        DontDestroyOnLoad(gameObject);
 
         UpdatePosters();
     }

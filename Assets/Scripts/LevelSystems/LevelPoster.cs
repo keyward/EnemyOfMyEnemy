@@ -67,7 +67,6 @@ public class LevelPoster : MonoBehaviour {
         //destroys poster and spawns particle
         if (_getsDestroyed == true && _posterTurnedOn == false)
         {
-            print("dead");
             Instantiate(destroyParticles, transform.position, destroyParticles.transform.rotation);
             Destroy(gameObject);
         }
