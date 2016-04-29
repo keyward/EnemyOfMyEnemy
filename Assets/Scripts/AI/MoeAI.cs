@@ -423,6 +423,22 @@ public class MoeAI : MonoBehaviour {
         {
             foreach (RaycastHit hit in allHits)
             {
+                print(hit.collider.name);
+
+                if (hit.collider.name == "PRE_DefenderEnemy(Clone)")
+                {
+                    if (hit.collider.GetComponent<DefenderEnemy>()._shieldActive == true)
+                    {
+                        ChangeState(aiState.stoned);
+                        break;
+                    }  
+                    else
+                    {
+                        ChangeState(aiState.attacking);
+                        break;
+                    }
+                }
+
                 if (hit.collider.CompareTag("Fear"))
                 {
                     ChangeState(aiState.stoned);
@@ -455,6 +471,8 @@ public class MoeAI : MonoBehaviour {
     {
         if (_frozen)
             return;
+
+        print(other.name);
 
         // Touch a pixie to turn him to stone
         if (other.CompareTag("Fear"))
