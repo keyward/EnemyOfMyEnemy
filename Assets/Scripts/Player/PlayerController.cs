@@ -98,14 +98,21 @@ public class PlayerController : MonoBehaviour {
             StartCoroutine(Taunt());
 
         //Restart Level
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetButtonDown("Menu"))
         {
             for (int i = 0; i < posterInventory.Count; i++)
                 PlayerPrefs.SetInt(i.ToString(), 1);
             
             SceneManager.LoadScene(0);
         }
-            
+
+        if (Input.GetButtonDown("Pause"))
+        {
+            if (Time.timeScale == 1.0f)
+                Time.timeScale = 0f;
+            else
+                Time.timeScale = 1.0f;
+        }
 
         //Exit Game
         if (Input.GetKeyDown(KeyCode.Escape))
