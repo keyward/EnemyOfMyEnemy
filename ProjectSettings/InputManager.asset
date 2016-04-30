@@ -44,7 +44,7 @@ InputManager:
     negativeButton: 
     positiveButton: joystick button 0
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: joystick button 16
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -92,7 +92,7 @@ InputManager:
     negativeButton: 
     positiveButton: joystick button 3
     altNegativeButton: 
-    altPositiveButton: joystick button 1
+    altPositiveButton: joystick button 19
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -166,6 +166,22 @@ InputManager:
     axis: 3
     joyNum: 1
   - serializedVersion: 3
+    m_Name: RightHorzMac
+    descriptiveName: Right thumbstickX
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 2
+    joyNum: 1
+  - serializedVersion: 3
     m_Name: RightVert
     descriptiveName: 
     descriptiveNegativeName: 
@@ -182,13 +198,29 @@ InputManager:
     axis: 4
     joyNum: 1
   - serializedVersion: 3
+    m_Name: RightVertMac
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 0
+    invert: 1
+    type: 2
+    axis: 3
+    joyNum: 1
+  - serializedVersion: 3
     m_Name: Shoot
     descriptiveName: X Button
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: joystick button 2
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: joystick button 18
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -204,7 +236,7 @@ InputManager:
     negativeButton: 
     positiveButton: joystick button 0
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: joystick button 16
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -220,7 +252,7 @@ InputManager:
     negativeButton: 
     positiveButton: joystick button 1
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: joystick button 17
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -234,9 +266,9 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: return
+    positiveButton: joystick button 0
     altNegativeButton: 
-    altPositiveButton: joystick button 0
+    altPositiveButton: joystick button 16
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -284,7 +316,7 @@ InputManager:
     negativeButton: 
     positiveButton: joystick button 7
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: joystick button 9
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -300,7 +332,7 @@ InputManager:
     negativeButton: 
     positiveButton: joystick button 6
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: joystick button 10
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
