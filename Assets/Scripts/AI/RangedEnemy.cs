@@ -14,6 +14,7 @@ public class RangedEnemy : MonoBehaviour {
     [Range(0, 4)] public float accuracyOffset;
 
     // States
+    [SerializeField]
     private bool _stunned;
     private bool _actionAvailable;
     [HideInInspector] public bool looking;
@@ -48,17 +49,13 @@ public class RangedEnemy : MonoBehaviour {
     {
         if(looking)
         {
-            transform.LookAt(_playerTransform);
-            transform.rotation = new Quaternion(0f, transform.rotation.y, 0f, transform.rotation.w);
-
             if (Vector3.Distance(transform.position, _playerTransform.position) < 3)
                 accuracyOffset = 1;
             else
             {
                 if (accuracyOffset != 4)
                     accuracyOffset = 4;
-            }
-                
+            }       
         }
     }
 
@@ -67,8 +64,15 @@ public class RangedEnemy : MonoBehaviour {
         if (_stunned)
             return;
 
+        print("Not Stunned");
+
         if (!looking)
             looking = true;
+
+
+        // archer looks at player
+        transform.LookAt(_playerTransform);
+        transform.rotation = new Quaternion(0f, transform.rotation.y, 0f, transform.rotation.w);
 
 
         // Make the archer shoot with some inaccuracy
