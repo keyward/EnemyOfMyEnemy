@@ -246,6 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ede7d6d65b2ba40bbd0ad445811f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fader: {fileID: 1312266486}
 --- !u!4 &401463390
 Transform:
   m_ObjectHideFlags: 0
@@ -258,6 +259,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!114 &1312266486 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11494182, guid: 931fa508e960d9742829a0f57b78c9d7,
+    type: 2}
+  m_PrefabInternal: {fileID: 63722760}
+  m_Script: {fileID: 11500000, guid: 81703ce6664a20b45a4062b691f3a00c, type: 3}
 --- !u!1 &1394424839
 GameObject:
   m_ObjectHideFlags: 0
