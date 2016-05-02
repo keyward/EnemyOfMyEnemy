@@ -4,6 +4,8 @@ using System.Collections;
 
 public class GameEnder : MonoBehaviour {
 
+    public Fading fader;
+
 	void Start()
     {
         StartCoroutine(RestartGame());
@@ -11,7 +13,11 @@ public class GameEnder : MonoBehaviour {
 
     IEnumerator RestartGame()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(6f);
+
+        fader.BeginFade(1);
+
+        yield return new WaitForSeconds(4f);
 
         SceneManager.LoadScene(0);
     }
