@@ -67,14 +67,14 @@ public class PlayerController : MonoBehaviour {
         vert = Input.GetAxisRaw("LeftVert");
         // -- right thumbstick controls -- //
 
-		#if UNITY_STANDALONE_OSX
-		float rightHorz = Input.GetAxis("RightHorzMac");
-		float rightVert = Input.GetAxis("RightVertMac");
+		//#if UNITY_STANDALONE_OSX
+		//float rightHorz = Input.GetAxis("RightHorzMac");
+		//float rightVert = Input.GetAxis("RightVertMac");
 
-		#else
-		float rightHorz = Input.GetAxis("RightHorz");
+      //  #else
+        float rightHorz = Input.GetAxis("RightHorz");
 		float rightVert = Input.GetAxis("RightVert");
-		#endif
+		//#endif
 
         // move player with left stick
         if (horz != 0f || vert != 0f)
