@@ -8,7 +8,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 440558}
-  - 114: {fileID: 11405858}
+  - 114: {fileID: 11479812}
+  - 135: {fileID: 13574032}
   m_Layer: 0
   m_Name: PRE_Skull_Horns
   m_TagString: Untagged
@@ -91,7 +92,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 133594}
   m_Mesh: {fileID: 4300000, guid: dc0888336370ff542b0f6c769433bda6, type: 3}
---- !u!114 &11405858
+--- !u!114 &11479812
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -99,11 +100,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 114026}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d348fecb44e4f64ebc6bb91b75579ff, type: 3}
+  m_Script: {fileID: 11500000, guid: f1f6d1ce3059b144ebc8b4d993905848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   destroyParticles: {fileID: 127594, guid: 766e7d7bf60a73b44abb7f5f255cafa1, type: 2}
   canBeDestroyed: 1
+--- !u!135 &13574032
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114026}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.54
+  m_Center: {x: 0, y: 0.48, z: 0.15}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

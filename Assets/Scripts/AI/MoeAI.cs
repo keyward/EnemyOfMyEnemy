@@ -472,7 +472,7 @@ public class MoeAI : MonoBehaviour {
         if (_frozen)
             return;
 
-        print(other.name);
+        //print(other.name);
 
         // Touch a pixie to turn him to stone
         if (other.CompareTag("Fear"))
