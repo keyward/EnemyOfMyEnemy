@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 475192}
   - 33: {fileID: 3330270}
   - 23: {fileID: 2357198}
-  - 95: {fileID: 9580140}
   - 136: {fileID: 13602626}
   - 114: {fileID: 11445064}
   m_Layer: 0
@@ -29,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 21.63, y: 1.23, z: -3.0900402}
   m_LocalScale: {x: 22.724827, y: 11.369741, z: 22.072845}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -65,23 +65,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160544}
   m_Mesh: {fileID: 4300000, guid: 9141e1c75bfc6a34196bd20e20ede071, type: 3}
---- !u!95 &9580140
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 160544}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 9141e1c75bfc6a34196bd20e20ede071, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11445064
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 480968}
   - 33: {fileID: 3355238}
   - 23: {fileID: 2373126}
-  - 95: {fileID: 9585804}
   - 64: {fileID: 6403460}
   - 65: {fileID: 6558716}
   m_Layer: 0
@@ -29,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.999549, z: 0, w: 0.030032413}
   m_LocalPosition: {x: 73.34367, y: -2.1680825, z: 54.519897}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -89,23 +89,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8.712905, y: 15, z: 0.5}
   m_Center: {x: -0.047234546, y: 0.11581969, z: 0.100557946}
---- !u!95 &9585804
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 145812}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 6c8755f5c24543b4fbdf11aa81042d04, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

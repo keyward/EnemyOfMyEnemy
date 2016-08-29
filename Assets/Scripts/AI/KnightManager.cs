@@ -13,7 +13,7 @@ public class KnightManager : MonoBehaviour {
 
 	public void addEnemyToList(MeleeEnemy enemy)
 	{
-		print ("adding enemy" + enemy.ToString());
+		//print ("adding enemy" + enemy.ToString());
 		this.enemyList.Add (enemy);
 	}
 
