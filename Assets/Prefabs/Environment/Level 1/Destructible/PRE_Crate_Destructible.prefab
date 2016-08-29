@@ -23,7 +23,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 462982}
-  - 95: {fileID: 9582596}
   - 65: {fileID: 6502496}
   - 208: {fileID: 20880904}
   - 114: {fileID: 11493756}
@@ -60,6 +59,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 461252}
   m_Father: {fileID: 462982}
@@ -73,6 +73,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 448258}
   m_RootOrder: 0
@@ -85,6 +86,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 23.03, y: 1.95, z: 1.17}
   m_LocalScale: {x: 1.5316817, y: 1.5316811, z: 1.5316811}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 448258}
   m_Father: {fileID: 0}
@@ -134,23 +136,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &9582596
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 179200}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 446fc072703c82244980a643846ddc8f, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11493756
 MonoBehaviour:
   m_ObjectHideFlags: 1

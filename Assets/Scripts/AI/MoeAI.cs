@@ -423,7 +423,7 @@ public class MoeAI : MonoBehaviour {
         {
             foreach (RaycastHit hit in allHits)
             {
-                print(hit.collider.name);
+                //print(hit.collider.name);
 
                 if (hit.collider.name == "PRE_DefenderEnemy(Clone)")
                 {
